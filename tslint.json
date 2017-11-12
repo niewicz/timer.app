@@ -118,13 +118,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "timer",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "timer",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

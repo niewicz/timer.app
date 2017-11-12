@@ -1,0 +1,16 @@
+<form
+  [formGroup]="form">
+
+  <input
+    formControlName="email">
+
+  <input
+    type="password"
+    formControlName="password">
+
+  <button
+    type="submit"
+    (click)=handleSubmit()>
+    Log In
+  </button>
+</form>
