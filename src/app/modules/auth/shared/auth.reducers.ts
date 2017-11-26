@@ -1,7 +1,6 @@
 import * as authActions from './auth.actions';
 
 import { IUser } from './auth.interfaces';
-import { statSync } from 'fs';
 
 export interface AuthState {
   currentUser: IUser;
@@ -49,6 +48,7 @@ export function reducer(state = initialState, action: authActions.Actions) {
         currentUser: action.payload,
       };
     case authActions.SIGN_IN_USER_FAILURE:
+      console.log(action.payload);
       return {
         ...state,
         pending: false,
@@ -92,5 +92,7 @@ export function reducer(state = initialState, action: authActions.Actions) {
         pending: false,
         errors: 'edit current user error',
       };
+    default:
+      return state;
   }
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-
-import { Store, State } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { IUser } from './auth.interfaces';
+import { State } from '../../../store/index';
 
 @Injectable()
 export class AuthSelectors {

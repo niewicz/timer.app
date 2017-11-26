@@ -1,38 +1,42 @@
-import { AuthDispatchers } from './auth.dispatchers';
 import { Injectable } from '@angular/core';
-
 import { Angular2TokenService, SignInData, RegisterData } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
+
+import { UtilsService } from './../../../core/services/utils.service';
+import { AuthDispatchers } from './auth.dispatchers';
 import { IUser } from './auth.interfaces';
 
 @Injectable()
 export class AuthService {
-  constructor(private tokenService: Angular2TokenService) {
-    this.tokenService.init({
-      apiBase: 'http://localhost:3000',
-    });
-  }
+  constructor(
+    private tokenService: Angular2TokenService,
+    private utils: UtilsService,
+  ) {}
 
   logIn(logInData: SignInData): Observable<IUser> {
-    return (
-      this.tokenService
-        .signIn(logInData)
-        .map((response: Response) => {
-          this._reverseParseAuthToken();
-          return response.json();
-        })
-        .map(response => response.data)
-        // .map( camelize )
-        .catch((error: Response) => Observable.throw(error.json()))
-    );
+    return this.tokenService
+      .signIn(logInData)
+      .map(response => {
+        console.log(response);
+        this._reverseParseAuthToken();
+        return response.json();
+      })
+      .map(response => response.data)
+      .map(response => this.utils.camelize(response))
+      .catch(error => Observable.throw(error));
   }
 
   signUp(registerData: RegisterData): Observable<IUser> {
     return this.tokenService
       .registerAccount(registerData)
-      .map((response: Response) => response.json())
-      .map(response => response.user)
-      .catch((error: Response) => Observable.throw(error.json()));
+      .map(response => response.json())
+      .map(response => response.data)
+      .map(response => this.utils.camelize(response))
+      .catch(error => Observable.throw(error));
+  }
+
+  isLoggedIn(): boolean {
+    return this.tokenService.userSignedIn();
   }
 
   private _saveValue(key: string, value: string): void {

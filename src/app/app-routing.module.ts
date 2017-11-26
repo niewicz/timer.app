@@ -5,8 +5,14 @@ import { AuthLayoutComponent } from './modules/auth/components/auth-layout/auth-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './modules/dashboard/components/dashboard-layout/dashboard-layout.component';
+import { HomeComponent } from './home.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'users',
     component: AuthLayoutComponent,

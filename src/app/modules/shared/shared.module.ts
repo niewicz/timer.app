@@ -23,6 +23,8 @@ import {
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { UtilsService } from './../../core/services/utils.service';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -47,7 +49,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [UtilsService],
   exports: [
     MatMenuModule,
     MatSidenavModule,

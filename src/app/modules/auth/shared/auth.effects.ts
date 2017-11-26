@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 import * as authActions from './auth.actions';
 
 import { AuthService } from './auth.service';
 
-import { SignInData } from 'angular2-token';
+import { RegisterData, SignInData } from 'angular2-token';
 import { IUser } from './auth.interfaces';
 
 @Injectable()
@@ -43,8 +43,5 @@ export class AuthEffects {
         ),
     );
 
-  constructor(
-    private actions$: authActions.Actions,
-    private authService: AuthService,
-  ) {}
+  constructor(private actions$: Actions, private authService: AuthService) {}
 }

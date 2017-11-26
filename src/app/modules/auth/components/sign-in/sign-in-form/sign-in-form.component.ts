@@ -13,7 +13,7 @@ import { SignInData } from 'angular2-token';
   templateUrl: './sign-in-form.component.html',
 })
 export class AuthSignInFormComponent {
-  @Output() loginIn = new EventEmitter<SignInData>();
+  @Output() logIn = new EventEmitter<SignInData>();
 
   form: FormGroup;
 
@@ -30,7 +30,7 @@ export class AuthSignInFormComponent {
   onLogIn(): void {
     console.log(this.form.value);
     if (this.form.valid) {
-      this.loginIn.emit({
+      this.logIn.emit({
         email: this.form.get('email').value,
         password: this.form.get('password').value,
       });
