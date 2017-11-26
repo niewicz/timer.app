@@ -21,7 +21,7 @@ export class AuthService {
           this._reverseParseAuthToken();
           return response.json();
         })
-        .map(response => response.user)
+        .map(response => response.data)
         // .map( camelize )
         .catch((error: Response) => Observable.throw(error.json()))
     );

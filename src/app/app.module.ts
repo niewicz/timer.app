@@ -1,3 +1,5 @@
+import './rxjs.imports';
+
 import { environment } from './../environments/environment.prod';
 
 import { BrowserModule } from '@angular/platform-browser';
