@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
+import { Injectable, Inject } from '@angular/core';
 import { Angular2TokenService, SignInData, RegisterData } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
 
@@ -9,6 +10,7 @@ import { IUser } from './auth.interfaces';
 @Injectable()
 export class AuthService {
   constructor(
+    @Inject(DOCUMENT) private document,
     private tokenService: Angular2TokenService,
     private utils: UtilsService,
   ) {}
@@ -32,6 +34,17 @@ export class AuthService {
       .map(response => response.json())
       .map(response => response.data)
       .map(response => this.utils.camelize(response))
+      .catch(error => Observable.throw(error));
+  }
+
+  signOut() {
+    return this.tokenService
+      .signOut()
+      .map(response => {
+        this.document.location.href = '/users/sign_in';
+        this._cleanStorage();
+        return response;
+      })
       .catch(error => Observable.throw(error));
   }
 
