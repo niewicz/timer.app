@@ -1,28 +1,21 @@
-import { ActionReducer, ActionReducerMap } from '@ngrx/store';
-
+import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
-import * as fromAuth from './../modules/auth/shared/auth.reducers';
-import { MetaReducer } from '@ngrx/store/src/models';
 import { environment } from '../../environments/environment';
-import { combineReducers } from '@ngrx/store';
+
+import * as fromAuth from './../modules/auth/shared/auth.reducers';
+import * as fromTimeEntries from './../modules/dashboard/shared/time-entries/time-entries.reducers';
 
 export interface State {
   auth: fromAuth.AuthState;
+  timeEntries: fromTimeEntries.TimeEntriesState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   auth: fromAuth.reducer,
+  timeEntries: fromTimeEntries.reducer,
 };
-
-// export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
-//   return function(state: State, action: any): State {
-//     console.log('state', state);
-//     console.log('action', action);
-
-//     return reducer(state, action);
-//   };
-// }
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
   ? [storeFreeze]

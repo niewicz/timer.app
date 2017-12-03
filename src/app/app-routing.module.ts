@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './modules/dashboard/components/dashboard-layout/dashboard-layout.component';
 import { HomeComponent } from './home.component';
+import { TimeEntriesComponent } from './modules/dashboard/time-entries/containers/time-entries/time-entries.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,13 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
-    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: TimeEntriesComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
 ];
 

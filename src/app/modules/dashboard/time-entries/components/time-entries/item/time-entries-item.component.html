@@ -1,0 +1,19 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center">
+  <div fxFlex="35">
+    {{ timeEntry.task?.title || 'undefined' }}
+  </div>
+  <div fxFlex="20">
+    {{ timeEntry.project?.title || 'undefined' }}
+  </div>
+  <div fxFlex="15">
+    {{ timeEntry.client?.name || 'undefined' }}
+  </div>
+  <div fxFlex="15">
+    {{ timeEntry.startAt }}
+  </div>
+  <div fxFlex="15">
+    {{ timeEntry.endAt }}
+  </div>
+</div>

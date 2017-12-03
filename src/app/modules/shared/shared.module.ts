@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import {
   MatMenuModule,
@@ -24,10 +25,13 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { UtilsService } from './../../core/services/utils.service';
+import { ApiRoutes } from './../../core/services/api-routes.service';
 
 @NgModule({
   declarations: [],
   imports: [
+    CommonModule,
+
     MatMenuModule,
     MatSidenavModule,
     MatTooltipModule,
@@ -49,8 +53,10 @@ import { UtilsService } from './../../core/services/utils.service';
 
     FlexLayoutModule,
   ],
-  providers: [UtilsService],
+  providers: [UtilsService, ApiRoutes],
   exports: [
+    CommonModule,
+
     MatMenuModule,
     MatSidenavModule,
     MatTooltipModule,

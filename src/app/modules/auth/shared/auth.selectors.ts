@@ -7,8 +7,8 @@ import { State } from '../../../store/index';
 
 @Injectable()
 export class AuthSelectors {
-  currentUser$ = this.store.select(state => state.auth.currentUser);
-  pending$ = this.store.select(state => state.auth.pending);
+  private currentUser$ = this.store.select(state => state.auth.currentUser);
+  private pending$ = this.store.select(state => state.auth.pending);
 
   constructor(private store: Store<State>) {}
 
