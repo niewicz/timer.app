@@ -4,31 +4,31 @@ import { Observable } from 'rxjs/Observable';
 
 import { UtilsService } from '../../../../core/services/utils.service';
 import {
-  ITimeEntriesParams,
-  ITimeEntry,
-  ITimeEntriesResponse,
-} from './time-entries.interfaces';
+  IProjectsParams,
+  IProject,
+  IProjectsResponse,
+} from './projects.interfaces';
 import { ApiRoutes } from '../../../../core/services/api-routes.service';
 
 @Injectable()
-export class TimeEntriesService {
+export class ProjectsService {
   constructor(
     private http: HttpClient,
     private utils: UtilsService,
     private api: ApiRoutes,
   ) {}
 
-  getTimeEntries(params: ITimeEntriesParams): Observable<ITimeEntry[]> {
+  getProjects(params: IProjectsParams): Observable<IProject[]> {
     return this.http
-      .get<ITimeEntriesResponse>(this.api.timeEntriesPath(), {
+      .get<IProjectsResponse>(this.api.projectsPath(), {
         params: new HttpParams()
           .set('limit', params.limit ? params.limit.toString() : '')
           .set('offest', params.offset ? params.offset.toString() : '')
-          .set('since', params.since ? params.since.toString() : '')
-          .set('to', params.to ? params.to.toString() : ''),
+          .set('client_id', params.clientId ? params.clientId.toString() : '')
+          .set('q', params.q ? params.q : ''),
       })
       .map(response => this.utils.camelize(response))
-      .map(response => response.timeEntries)
+      .map(response => response.projects)
       .catch(error => Observable.throw(error));
   }
 }

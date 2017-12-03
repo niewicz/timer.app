@@ -12,6 +12,15 @@ import { DashboardLayoutComponent } from './components/dashboard-layout/dashboar
 import { TimeEntriesService } from './shared/time-entries/time-entries.service';
 import { TimeEntriesDispatchers } from './shared/time-entries/time-entries.dispatchers';
 import { TimeEntriesSelectors } from './shared/time-entries/time-entries.selectors';
+import { ClientsService } from './shared/clients/clients.service';
+import { ClientsDispatchers } from './shared/clients/clients.dispatchers';
+import { ClientsSelectors } from './shared/clients/clients.selectors';
+import { ProjectsService } from './shared/projects/projects.service';
+import { ProjectsDispatchers } from './shared/projects/projects.dispatchers';
+import { ProjectsSelectors } from './shared/projects/projects.selectors';
+import { TasksService } from './shared/tasks/tasks.service';
+import { TasksDispatchers } from './shared/tasks/tasks.dispatchers';
+import { TasksSelectors } from './shared/tasks/tasks.selectors';
 
 import { TimeEntriesComponent } from './time-entries/containers/time-entries/time-entries.component';
 import { CurrentTimeEntryComponent } from './time-entries/containers/current-time-entry/current-time-entry.component';
@@ -32,9 +41,19 @@ import { TimeEntriesItemComponent } from './time-entries/components/time-entries
   ],
   providers: [
     Angular2TokenService,
+
     TimeEntriesService,
     TimeEntriesDispatchers,
     TimeEntriesSelectors,
+    ClientsService,
+    ClientsDispatchers,
+    ClientsSelectors,
+    ProjectsService,
+    ProjectsDispatchers,
+    ProjectsSelectors,
+    TasksService,
+    TasksDispatchers,
+    TasksSelectors,
   ],
   imports: [
     HttpModule,

@@ -3,32 +3,33 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { UtilsService } from '../../../../core/services/utils.service';
-import {
-  ITimeEntriesParams,
-  ITimeEntry,
-  ITimeEntriesResponse,
-} from './time-entries.interfaces';
+
 import { ApiRoutes } from '../../../../core/services/api-routes.service';
+import { ITask, ITasksParams, ITasksResponse } from './tasks.interfaces';
 
 @Injectable()
-export class TimeEntriesService {
+export class TasksService {
   constructor(
     private http: HttpClient,
     private utils: UtilsService,
     private api: ApiRoutes,
   ) {}
 
-  getTimeEntries(params: ITimeEntriesParams): Observable<ITimeEntry[]> {
+  getTasks(params: ITasksParams): Observable<ITask[]> {
     return this.http
-      .get<ITimeEntriesResponse>(this.api.timeEntriesPath(), {
+      .get<ITasksResponse>(this.api.tasksPath(), {
         params: new HttpParams()
           .set('limit', params.limit ? params.limit.toString() : '')
           .set('offest', params.offset ? params.offset.toString() : '')
-          .set('since', params.since ? params.since.toString() : '')
-          .set('to', params.to ? params.to.toString() : ''),
+          .set('client_id', params.clientId ? params.clientId.toString() : '')
+          .set(
+            'project_id',
+            params.projectId ? params.projectId.toString() : '',
+          )
+          .set('q', params.q ? params.q : ''),
       })
       .map(response => this.utils.camelize(response))
-      .map(response => response.timeEntries)
+      .map(response => response.tasks)
       .catch(error => Observable.throw(error));
   }
 }

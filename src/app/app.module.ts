@@ -29,6 +29,9 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 import { AuthEffects } from './modules/auth/shared/auth.effects';
 import { TimeEntriesEffects } from './modules/dashboard/shared/time-entries/time-entries.effects';
+import { ClientsEffects } from './modules/dashboard/shared/clients/clients.effects';
+import { ProjectsEffects } from './modules/dashboard/shared/projects/projects.effects';
+import { TasksEffects } from './modules/dashboard/shared/tasks/tasks.effects';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -45,7 +48,13 @@ import { TimeEntriesEffects } from './modules/dashboard/shared/time-entries/time
       ? StoreDevtoolsModule.instrument({ maxAge: 25 })
       : [],
 
-    EffectsModule.forRoot([AuthEffects, TimeEntriesEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      TimeEntriesEffects,
+      ClientsEffects,
+      ProjectsEffects,
+      TasksEffects,
+    ]),
 
     AppRoutingModule,
     SharedModule,
