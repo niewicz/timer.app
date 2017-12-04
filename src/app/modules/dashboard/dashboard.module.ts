@@ -25,11 +25,17 @@ import { TasksSelectors } from './shared/tasks/tasks.selectors';
 import { TimeEntriesComponent } from './time-entries/containers/time-entries/time-entries.component';
 import { CurrentTimeEntryComponent } from './time-entries/containers/current-time-entry/current-time-entry.component';
 import { ClientsComponent } from './clients/containers/clients/clients.component';
+import { ProjectsComponent } from './projects/containers/projects/projects.component';
+import { TasksComponent } from './tasks/containers/tasks/tasks.component';
 
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
 import { TimeEntriesItemComponent } from './time-entries/components/time-entries/item/time-entries-item.component';
 import { ClientsListComponent } from './clients/components/clients/list/clients-list.component';
 import { ClientsItemComponent } from './clients/components/clients/item/clients-item.component';
+import { ProjectsItemComponent } from './projects/components/projects/item/projects-item.component';
+import { ProjectsListComponent } from './projects/components/projects/list/projects-list.component';
+import { TasksListComponent } from './tasks/components/tasks/list/tasks-list.component';
+import { TasksItemComponent } from './tasks/components/tasks/item/tasks-item.component';
 
 @NgModule({
   declarations: [
@@ -40,10 +46,16 @@ import { ClientsItemComponent } from './clients/components/clients/item/clients-
     TimeEntriesItemComponent,
     ClientsListComponent,
     ClientsItemComponent,
+    ProjectsListComponent,
+    ProjectsItemComponent,
+    TasksListComponent,
+    TasksItemComponent,
     // Containers
     TimeEntriesComponent,
     CurrentTimeEntryComponent,
     ClientsComponent,
+    ProjectsComponent,
+    TasksComponent,
   ],
   providers: [
     Angular2TokenService,

@@ -10,6 +10,7 @@ import { AuthLayoutComponent } from './modules/auth/components/auth-layout/auth-
 import { DashboardLayoutComponent } from './modules/dashboard/components/dashboard-layout/dashboard-layout.component';
 import { TimeEntriesComponent } from './modules/dashboard/time-entries/containers/time-entries/time-entries.component';
 import { ClientsComponent } from './modules/dashboard/clients/containers/clients/clients.component';
+import { ProjectsComponent } from './modules/dashboard/projects/containers/projects/projects.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
       {
         path: 'clients',
         component: ClientsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'projects',
+        component: ProjectsComponent,
         canActivate: [AuthGuard],
       },
     ],

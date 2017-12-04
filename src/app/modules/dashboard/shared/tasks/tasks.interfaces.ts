@@ -4,6 +4,7 @@ export interface ITask {
   clientId?: number;
   title: string;
   price?: number;
+  totalTime?: string;
 }
 
 export interface ITasksParams {
