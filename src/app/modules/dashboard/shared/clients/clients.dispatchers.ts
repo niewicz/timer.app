@@ -9,7 +9,7 @@ import { IClientsParams } from './clients.interfaces';
 export class ClientsDispatchers {
   constructor(private store: Store<State>) {}
 
-  public getTimeEntries(): void {
+  public getClients(): void {
     this.store.dispatch(new clientsActions.GetClientsAction());
   }
 }

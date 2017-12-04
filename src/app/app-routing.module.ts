@@ -1,12 +1,15 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AuthGuard } from './core/guards/auth.guard';
+
+import { HomeComponent } from './home.component';
 import { AuthSignInComponent } from './modules/auth/containers/sign-in/sign-in.component';
 import { AuthSignUpComponent } from './modules/auth/containers/sign-up/sign-up.component';
 import { AuthLayoutComponent } from './modules/auth/components/auth-layout/auth-layout.component';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './modules/dashboard/components/dashboard-layout/dashboard-layout.component';
-import { HomeComponent } from './home.component';
 import { TimeEntriesComponent } from './modules/dashboard/time-entries/containers/time-entries/time-entries.component';
+import { ClientsComponent } from './modules/dashboard/clients/containers/clients/clients.component';
 
 const routes: Routes = [
   {
@@ -35,6 +38,11 @@ const routes: Routes = [
       {
         path: '',
         component: TimeEntriesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'clients',
+        component: ClientsComponent,
         canActivate: [AuthGuard],
       },
     ],
