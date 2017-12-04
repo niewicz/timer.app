@@ -17,8 +17,4 @@ export class TimeEntriesComponent implements OnInit {
   ) {
     this.timeEntriesDispatchers.getTimeEntries();
   }
-
-  ngOnInit() {
-    this.timeEntries$.subscribe(cos => console.log(cos));
-  }
 }

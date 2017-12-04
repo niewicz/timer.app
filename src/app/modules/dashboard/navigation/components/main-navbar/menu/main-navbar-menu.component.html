@@ -1,0 +1,23 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-around center">
+  <div
+    [routerLink]="['/', 'dashboard']">
+    HOME
+  </div>
+  <div
+    [routerLink]="['/', 'dashboard', 'projects']">
+    PROJECTS
+  </div>
+  <div
+    [routerLink]="['/', 'dashboard', 'clients']">
+    CLIENTS
+  </div>
+  <div>
+    PROFILE
+  </div>
+  <div
+    (click)="onLogOut()">
+    LOG OUT
+  </div>
+</div>

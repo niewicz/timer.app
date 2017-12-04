@@ -22,12 +22,14 @@ import { TasksService } from './shared/tasks/tasks.service';
 import { TasksDispatchers } from './shared/tasks/tasks.dispatchers';
 import { TasksSelectors } from './shared/tasks/tasks.selectors';
 
+import { MainNavbarComponent } from './navigation/containers/main-navbar.component';
 import { TimeEntriesComponent } from './time-entries/containers/time-entries/time-entries.component';
 import { CurrentTimeEntryComponent } from './time-entries/containers/current-time-entry/current-time-entry.component';
 import { ClientsComponent } from './clients/containers/clients/clients.component';
 import { ProjectsComponent } from './projects/containers/projects/projects.component';
 import { TasksComponent } from './tasks/containers/tasks/tasks.component';
 
+import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
 import { TimeEntriesItemComponent } from './time-entries/components/time-entries/item/time-entries-item.component';
 import { ClientsListComponent } from './clients/components/clients/list/clients-list.component';
@@ -36,14 +38,17 @@ import { ProjectsItemComponent } from './projects/components/projects/item/proje
 import { ProjectsListComponent } from './projects/components/projects/list/projects-list.component';
 import { TasksListComponent } from './tasks/components/tasks/list/tasks-list.component';
 import { TasksItemComponent } from './tasks/components/tasks/item/tasks-item.component';
+import { CurrentTimeEntryFormComponent } from './time-entries/components/current-time-entry/form/current-time-entry-form.component';
 
 @NgModule({
   declarations: [
     // Layout
     DashboardLayoutComponent,
     // Components
+    MainNavbarMenuComponent,
     TimeEntriesListComponent,
     TimeEntriesItemComponent,
+    CurrentTimeEntryFormComponent,
     ClientsListComponent,
     ClientsItemComponent,
     ProjectsListComponent,
@@ -51,6 +56,7 @@ import { TasksItemComponent } from './tasks/components/tasks/item/tasks-item.com
     TasksListComponent,
     TasksItemComponent,
     // Containers
+    MainNavbarComponent,
     TimeEntriesComponent,
     CurrentTimeEntryComponent,
     ClientsComponent,
