@@ -1,6 +1,7 @@
 <div
+  fxFlex="35"
   fxLayout="column"
-  fxLayoutAlign="start center">
+  fxLayoutAlign="center center">
   <form
     class="sign-in-form"
     [formGroup]="form">
@@ -29,26 +30,36 @@
     <div
       fxLayout="row"
       fxLayoutAlign="space-around center">
+      <button
+        mat-raised-button
+        class="signin-button"
+        color="warn"
+        type="button"
+        (click)="onLogIn()">
+        &nbsp; Log in <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
       <div
-        fxLayout="column"
-        fxLayoutAlign="start center">
+        class="signup"
+        [routerLink]="['/', 'users', 'sign_up']">
         Don't have account?
-        <button
-          mat-raised-button
-          type="button"
-          [routerLink]="['/', 'users', 'sign_up']">
-          Sign up
-        </button>
-      </div>
-      <div>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          (click)="onLogIn()">
-          Log In
-        </button>
       </div>
     </div>
   </form>
+</div>
+<div
+  fxFlex="65"
+  fxLayout="column"
+  fxLayoutAlign="center start"
+  class="right-panel">
+  <div class="bar">
+    <div class="app-title">
+      Timer
+    </div>
+    <div class="app-description">
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+      totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+      dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+      qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.
+    </div>
+  </div>
 </div>

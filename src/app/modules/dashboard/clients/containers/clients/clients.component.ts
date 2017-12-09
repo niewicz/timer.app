@@ -15,7 +15,5 @@ export class ClientsComponent {
     private clientsSelectors: ClientsSelectors,
   ) {
     this.clientsDispatchers.getClients();
-
-    this.clients$.subscribe(clients => console.log(clients));
   }
 }

@@ -1,5 +1,5 @@
 import { TimeEntriesSelectors } from './../../../shared/time-entries/time-entries.selectors';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TimeEntriesDispatchers } from '../../../shared/time-entries/time-entries.dispatchers';
 
 @Component({
@@ -7,7 +7,7 @@ import { TimeEntriesDispatchers } from '../../../shared/time-entries/time-entrie
   templateUrl: './time-entries.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimeEntriesComponent implements OnInit {
+export class TimeEntriesComponent {
   timeEntries$ = this.timeEntriesSelectors.getTimeEntries();
   pending$ = this.timeEntriesSelectors.isPending();
 
