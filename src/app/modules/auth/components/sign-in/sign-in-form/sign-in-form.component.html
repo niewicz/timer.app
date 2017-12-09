@@ -13,6 +13,12 @@
           matInput
           placeholder="Email"
           formControlName="email">
+          <mat-error *ngIf="form.controls.email.errors?.required">
+            This field is required.
+          </mat-error>
+          <mat-error *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email">
+            Please provide valid email address.
+          </mat-error>
       </mat-form-field>
     </div>
 
@@ -24,12 +30,19 @@
           placeholder="Password"
           type="password"
           formControlName="password">
+          <mat-error *ngIf="form.controls.password.errors?.required">
+            This field is required.
+          </mat-error>
+          <mat-error *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength">
+            Password is too short.
+          </mat-error>
       </mat-form-field>
     </div>
 
     <div
       fxLayout="row"
-      fxLayoutAlign="space-around center">
+      fxLayoutAlign="space-around center"
+      class="below-inputs">
       <button
         mat-raised-button
         class="signin-button"
