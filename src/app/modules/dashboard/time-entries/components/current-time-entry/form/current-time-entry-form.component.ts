@@ -5,10 +5,12 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'timer-current-time-entry-form',
   templateUrl: './current-time-entry-form.component.html',
+  styleUrls: ['./current-time-entry-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentTimeEntryFormComponent implements OnInit {
   timeEntry: FormGroup;
+  toggling: boolean = false;
   toggled$: any;
 
   constructor(private fb: FormBuilder) {
@@ -36,6 +38,7 @@ export class CurrentTimeEntryFormComponent implements OnInit {
   }
 
   startToggling() {
+    this.toggling = true;
     this.timeEntry.patchValue({ startAt: new Date().toString() });
   }
 }

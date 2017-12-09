@@ -1,30 +1,48 @@
-<div>
-  <form>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-between center">
-      <input
-        placeholder="Task title">
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  class="form">
+  <div
+    fxFlex="20"
+    class="app-title">
+    Timer
+  </div>
+  <form
+    fxLayout="row"
+    fxLayoutAlign="space-around center"
+    class="entry">
+    <input
+      placeholder="Task title">
 
-      <div>
-        select project
-      </div>
-
-      <input placeholder="Price">
-      <input placeholder="Currency">
-
-      <div>
-        {{ timeEntry.get('startAt').value || '0:00:00' }}
-      </div>
-
-      <div>
-        {{ (toggled$ | async) | date: 'h:mm:ss' }}
-      </div>
-
-      <button
-        (click)="startToggling()">
-        START
-      </button>
+    <div>
+      select project
     </div>
+
+    <input placeholder="Price">
+    <input placeholder="Currency">
+
+    <!-- <div>
+      {{ timeEntry.get('startAt').value || '0:00:00' }}
+    </div> -->
+
+    <div>
+      {{ (toggled$ | async) | date: 'h:mm:ss' }}
+    </div>
+
+    <button
+      mat-mini-fab
+      class="signin-button"
+      color="warn"
+      type="button"
+      (click)="startToggling()">
+      <mat-icon
+        *ngIf="!toggling">
+        play_arrow
+      </mat-icon>
+      <mat-icon
+        *ngIf="toggling">
+        stop
+      </mat-icon>
+    </button>
   </form>
 </div>
