@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -7,5 +12,11 @@ import { FormBuilder } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentTimeEntryComponent {
+  @Output() menu = new EventEmitter<boolean>();
+
   constructor(private fb: FormBuilder) {}
+
+  handleMenu(show: boolean) {
+    this.menu.emit(show);
+  }
 }

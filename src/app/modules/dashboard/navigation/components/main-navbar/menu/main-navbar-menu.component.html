@@ -3,22 +3,47 @@
   fxLayoutAlign="space-around center"
   class="main-navbar-menu">
   <div
-    [routerLink]="['/', 'dashboard']">
-    HOME
+    class="item"
+    [routerLink]="['/', 'dashboard']"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      home
+    </mat-icon>
+    Home
   </div>
   <div
-    [routerLink]="['/', 'dashboard', 'projects']">
-    PROJECTS
+    class="item"
+    [routerLink]="['/', 'dashboard', 'projects']"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      folder
+    </mat-icon>
+    Projects
   </div>
   <div
-    [routerLink]="['/', 'dashboard', 'clients']">
-    CLIENTS
-  </div>
-  <div>
-    PROFILE
+    class="item"
+    [routerLink]="['/', 'dashboard', 'clients']"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      people
+    </mat-icon>
+    Clients
   </div>
   <div
-    (click)="onLogOut()">
-    LOG OUT
+    class="item"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      settings
+    </mat-icon>
+    My profile
+  </div>
+  <div
+    class="item"
+    (click)="onLogOut()"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      exit_to_app
+    </mat-icon>
+    Log out
   </div>
 </div>

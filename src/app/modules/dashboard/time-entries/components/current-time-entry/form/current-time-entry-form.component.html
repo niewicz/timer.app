@@ -3,44 +3,75 @@
   fxLayoutAlign="space-between center"
   class="form">
   <div
+    fxFlex="5"
+    class="menu-icon">
+    <mat-icon
+      *ngIf="!showMenu"
+      (click)="toggleMenu()">
+      keyboard_arrow_down
+    </mat-icon>
+    <mat-icon
+      *ngIf="showMenu"
+      (click)="toggleMenu()">
+      keyboard_arrow_up
+    </mat-icon>
+  </div>
+  <div
     fxFlex="20"
     class="app-title">
     Timer
   </div>
   <form
+    fxFlex="75"
     fxLayout="row"
-    fxLayoutAlign="space-around center"
+    fxLayoutAlign="end center"
     class="entry">
-    <input
-      placeholder="Task title">
 
-    <div>
-      select project
+    <input
+      fxFlex="60"
+      placeholder="What are you coding?"
+      class="item input task-title">
+
+    <div
+      class="item">
+      <mat-icon>
+        folder
+      </mat-icon>
     </div>
 
-    <input placeholder="Price">
-    <input placeholder="Currency">
+    <input
+    fxFlex="6"
+      placeholder="Price"
+      class="item input">
 
-    <!-- <div>
-      {{ timeEntry.get('startAt').value || '0:00:00' }}
-    </div> -->
+    <input
+      fxFlex="3"
+      placeholder="$"
+      class="item input">
 
-    <div>
-      {{ (toggled$ | async) | date: 'h:mm:ss' }}
+    <div
+      class="item">
+      {{ toggled | date: 'h:mm:ss' }}
     </div>
 
     <button
+      *ngIf="!toggling"
       mat-mini-fab
-      class="signin-button"
-      color="warn"
+      class="item green"
       type="button"
       (click)="startToggling()">
-      <mat-icon
-        *ngIf="!toggling">
+      <mat-icon>
         play_arrow
       </mat-icon>
-      <mat-icon
-        *ngIf="toggling">
+    </button>
+    <button
+      *ngIf="toggling"
+      mat-mini-fab
+      class="item"
+      color="warn"
+      type="button"
+      (click)="stopToggling()">
+      <mat-icon>
         stop
       </mat-icon>
     </button>

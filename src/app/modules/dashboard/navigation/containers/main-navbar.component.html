@@ -1,8 +1,12 @@
 <div
   fxLayout="column"
   fxLayoutAlign="center start">
-  <timer-current-time-entry></timer-current-time-entry>
+  <timer-current-time-entry
+    (menu)="handleMenu($event)">
+  </timer-current-time-entry>
   <timer-main-navbar-menu
+    *ngIf="showMenu"
+    @ngIfAnimation
     (logOut)="handleLogOut()">
   </timer-main-navbar-menu>
 </div>

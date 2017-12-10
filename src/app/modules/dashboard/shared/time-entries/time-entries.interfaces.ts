@@ -20,6 +20,14 @@ export interface ITimeEntriesParams {
   to?: string;
 }
 
+export interface ITransferTimeEntry {
+  id?: number;
+  startAt: string;
+  endAt?: string;
+  taskId?: number;
+  projectId?: number;
+}
+
 export interface ITimeEntriesResponse {
   timeEntries: ITimeEntry[];
 }
