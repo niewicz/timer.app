@@ -1,19 +1,45 @@
 <div
   fxLayout="row"
-  fxLayoutAlign="space-between center">
+  fxLayoutAlign="space-between center"
+  class="item">
+
   <div fxFlex="35">
-    {{ timeEntry.task?.title || 'undefined' }}
+    {{ timeEntry.task?.title }}
   </div>
+
   <div fxFlex="20">
-    {{ timeEntry.project?.title || 'undefined' }}
+    {{ timeEntry.project?.title }}
   </div>
-  <div fxFlex="15">
-    {{ timeEntry.client?.name || 'undefined' }}
+
+  <div fxFlex="10">
+    {{ timeEntry.client?.name }}
   </div>
-  <div fxFlex="15">
-    {{ timeEntry.startAt }}
+
+  <div fxFlex="10">
+    <div class="date">
+      {{ timeEntry.startAt | date: 'yyyy/MM/dd' }}
+    </div>
+    <div class="time">
+      {{ timeEntry.startAt | date: 'HH:mm:ss' }}
+    </div>
   </div>
-  <div fxFlex="15">
-    {{ timeEntry.endAt }}
+
+  <div fxFlex="10">
+    <div class="date">
+      {{ timeEntry.endAt | date: 'yyyy/MM/dd' }}
+    </div>
+    <div class="time">
+      {{ timeEntry.endAt | date: 'HH:mm:ss' }}
+    </div>
+  </div>
+
+  <div fxFlex="10">
+    {{ duration }}
+  </div>
+
+  <div fxFlex="5">
+    <mat-icon>
+      delete
+    </mat-icon>
   </div>
 </div>

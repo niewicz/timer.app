@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../../../../core/services/utils.service';
 import { Subscription } from 'rxjs/Subscription';
 import {
   Component,
@@ -24,12 +25,16 @@ export class CurrentTimeEntryFormComponent implements OnInit {
   timeEntry: FormGroup;
   toggling = false;
   toggled$: Subscription;
-  toggled = 0;
+  duration = '00:00:00';
 
   @Output() menu = new EventEmitter<boolean>();
   @Output() stop = new EventEmitter<ITransferTimeEntry>();
 
-  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
+  constructor(
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
+    private utils: UtilsService,
+  ) {
     this.timeEntry = this.fb.group({
       taskId: '',
       taskTitle: '',
@@ -53,9 +58,10 @@ export class CurrentTimeEntryFormComponent implements OnInit {
 
   startToggling() {
     this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
-      this.toggled =
-        new Date().getTime() -
-        new Date(this.timeEntry.get('startAt').value).getTime();
+      this.duration = this.utils.getDuration(
+        new Date().toString(),
+        this.timeEntry.get('startAt').value,
+      );
       this.cd.detectChanges();
     });
     this.toggling = true;
@@ -64,7 +70,7 @@ export class CurrentTimeEntryFormComponent implements OnInit {
 
   stopToggling() {
     this.toggling = false;
-    this.toggled = 0;
+    this.toggled = '00:00:00';
     this.toggled$.unsubscribe();
   }
 }

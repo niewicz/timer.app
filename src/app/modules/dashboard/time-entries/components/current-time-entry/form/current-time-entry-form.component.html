@@ -20,6 +20,12 @@
     fxFlex="20"
     class="app-title">
     Timer
+    <sup>
+      <mat-icon
+        class="app-icon">
+        access_time
+      </mat-icon>
+    </sup>
   </div>
   <form
     fxFlex="75"
@@ -51,7 +57,7 @@
 
     <div
       class="item">
-      {{ toggled | date: 'h:mm:ss' }}
+      {{ duration }}
     </div>
 
     <button

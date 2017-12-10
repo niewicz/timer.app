@@ -19,7 +19,6 @@ export class AuthService {
     return this.tokenService
       .signIn(logInData)
       .map(response => {
-        console.log(response);
         this._reverseParseAuthToken();
         return response.json();
       })
@@ -41,8 +40,8 @@ export class AuthService {
     return this.tokenService
       .signOut()
       .map(response => {
-        this.document.location.href = '/users/sign_in';
         this._cleanStorage();
+        this.document.location.href = '/users/sign_in';
         return response;
       })
       .catch(error => Observable.throw(error));
@@ -66,11 +65,11 @@ export class AuthService {
     localStorage.removeItem('expiry');
     localStorage.removeItem('tokenType');
     localStorage.removeItem('uid');
-    localStorage.removeItem('authHeaders');
+    localStorage.removeItem('auth_headers');
   }
 
   private _parseAuthToken() {
-    const authHeaders = JSON.parse(this._retrieveValue('authHeaders'));
+    const authHeaders = JSON.parse(this._retrieveValue('auth_headers'));
     if (authHeaders) {
       const accessToken = authHeaders['access-token'];
       this._saveValue('accessToken', accessToken);
