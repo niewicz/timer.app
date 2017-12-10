@@ -94,6 +94,6 @@ export class AuthService {
       expiry: localStorage.getItem('expiry'),
       uid: localStorage.getItem('uid'),
     };
-    localStorage.setItem('authHeaders', JSON.stringify(authHeaders));
+    localStorage.setItem('auth_headers', JSON.stringify(authHeaders));
   }
 }

@@ -2,6 +2,7 @@ import * as timeEntriesActions from './time-entries.actions';
 import { ITimeEntry, ITimeEntriesParams } from './time-entries.interfaces';
 
 export interface TimeEntriesState {
+  currentTimeEntry: ITimeEntry;
   timeEntries: ITimeEntry[];
   params: ITimeEntriesParams;
   pending: boolean;
@@ -9,6 +10,7 @@ export interface TimeEntriesState {
 }
 
 const initialState: TimeEntriesState = {
+  currentTimeEntry: undefined,
   timeEntries: undefined,
   params: {
     limit: 15,
@@ -48,7 +50,26 @@ export function reducer(
       return {
         ...state,
         pending: false,
-        errors: 'todo errors',
+        errors: action.payload,
+      };
+    case timeEntriesActions.CREATE_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.CREATE_TIME_ENTRY_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        currentTimeEntry: action.payload,
+        errors: undefined,
+      };
+    case timeEntriesActions.CREATE_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
       };
     default:
       return state;

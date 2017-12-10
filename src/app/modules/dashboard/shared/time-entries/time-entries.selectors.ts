@@ -9,6 +9,9 @@ export class TimeEntriesSelectors {
   private timeEntries$ = this.store.select(
     state => state.timeEntries.timeEntries,
   );
+  private currentTimeEntry$ = this.store.select(
+    state => state.timeEntries.currentTimeEntry,
+  );
   private pending$ = this.store.select(state => state.timeEntries.pending);
   private params$ = this.store.select(state => state.timeEntries.params);
 
@@ -24,5 +27,9 @@ export class TimeEntriesSelectors {
 
   public getParams(): Observable<ITimeEntriesParams> {
     return this.params$;
+  }
+
+  public getCurrentTimeEntry(): Observable<ITimeEntry> {
+    return this.currentTimeEntry$;
   }
 }

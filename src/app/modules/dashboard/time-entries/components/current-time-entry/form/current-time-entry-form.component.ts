@@ -28,6 +28,8 @@ export class CurrentTimeEntryFormComponent implements OnInit {
   duration = '00:00:00';
 
   @Output() menu = new EventEmitter<boolean>();
+  @Output() create = new EventEmitter<ITransferTimeEntry>();
+  @Output() update = new EventEmitter<ITransferTimeEntry>();
   @Output() stop = new EventEmitter<ITransferTimeEntry>();
 
   constructor(
@@ -56,7 +58,9 @@ export class CurrentTimeEntryFormComponent implements OnInit {
     this.menu.emit(this.showMenu);
   }
 
-  startToggling() {
+  startToggling(): void {
+    this.timeEntry.patchValue({ startAt: new Date().toString() });
+    this.create.emit(this.timeEntry.value);
     this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
       this.duration = this.utils.getDuration(
         new Date().toString(),
@@ -65,12 +69,28 @@ export class CurrentTimeEntryFormComponent implements OnInit {
       this.cd.detectChanges();
     });
     this.toggling = true;
-    this.timeEntry.patchValue({ startAt: new Date().toString() });
   }
 
-  stopToggling() {
+  stopToggling(): void {
     this.toggling = false;
-    this.toggled = '00:00:00';
+    this.duration = '00:00:00';
     this.toggled$.unsubscribe();
+    this.timeEntry.patchValue({ endAt: new Date().toString() });
+    this.stop.emit(this.timeEntry.value);
   }
+
+  // changeTask(id: number): void {
+  //   this.timeEntry.patchValue({ taskId: id });
+  //   this.update.emit(this.timeEntry.value);
+  // }
+
+  // changeTaskTitle(title: string): void {
+  //   this.timeEntry.patchValue({ taskTitle: title });
+  //   this.update.emit(this.timeEntry.value);
+  // }
+
+  // changeProject(id: number): void {
+  //   this.timeEntry.patchValue({ projectId: id });
+  //   this.update.emit(this.timeEntry.value);
+  // }
 }

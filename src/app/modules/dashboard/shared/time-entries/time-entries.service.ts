@@ -7,6 +7,8 @@ import {
   ITimeEntriesParams,
   ITimeEntry,
   ITimeEntriesResponse,
+  ITransferTimeEntry,
+  ITimeEntryResponse,
 } from './time-entries.interfaces';
 import { ApiRoutes } from '../../../../core/services/api-routes.service';
 
@@ -29,6 +31,16 @@ export class TimeEntriesService {
       })
       .map(response => this.utils.camelize(response))
       .map(response => response.timeEntries)
+      .catch(error => Observable.throw(error));
+  }
+
+  createTimeEntry(params: ITransferTimeEntry): Observable<ITimeEntry> {
+    return this.http
+      .post<ITimeEntryResponse>(this.api.timeEntriesPath(), {
+        time_entry: this.utils.decamelize(params),
+      })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.timeEntry)
       .catch(error => Observable.throw(error));
   }
 }

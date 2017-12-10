@@ -5,8 +5,13 @@ import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
 import { TimeEntriesService } from './time-entries.service';
-import { ITimeEntry, ITimeEntriesParams } from './time-entries.interfaces';
+import {
+  ITimeEntry,
+  ITimeEntriesParams,
+  ITransferTimeEntry,
+} from './time-entries.interfaces';
 import * as timeEntriesActions from './time-entries.actions';
+import { toPayload } from '@ngrx/effects/src/util';
 
 @Injectable()
 export class TimeEntriesEffects {
@@ -14,8 +19,8 @@ export class TimeEntriesEffects {
   getTimeEntries$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.GET_TIME_ENTRIES)
     .withLatestFrom(this.store, (action, state) => state.timeEntries.params)
-    .switchMap((params: ITimeEntriesParams) => {
-      return this.timeEntriesService
+    .switchMap((params: ITimeEntriesParams) =>
+      this.timeEntriesService
         .getTimeEntries(params)
         .map(
           (timeEntries: ITimeEntry[]) =>
@@ -25,8 +30,26 @@ export class TimeEntriesEffects {
           Observable.of(
             new timeEntriesActions.GetTimeEntriesFailureAction(error),
           ),
-        );
-    });
+        ),
+    );
+
+  @Effect()
+  createTimeEntry: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.CREATE_TIME_ENTRY)
+    .map(toPayload)
+    .switchMap((payload: ITransferTimeEntry) =>
+      this.timeEntriesService
+        .createTimeEntry(payload)
+        .map(
+          (timeEntry: ITimeEntry) =>
+            new timeEntriesActions.CreateTimeEntrySuccessAction(timeEntry),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.CreateTimeEntryFailureAction(error),
+          ),
+        ),
+    );
 
   constructor(
     private actions$: Actions,

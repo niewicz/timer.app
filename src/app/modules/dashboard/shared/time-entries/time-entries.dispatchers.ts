@@ -3,7 +3,10 @@ import { Injectable } from '@angular/core';
 
 import * as timeEntriesActions from './time-entries.actions';
 import { State } from '../../../../store/index';
-import { ITimeEntriesParams } from './time-entries.interfaces';
+import {
+  ITimeEntriesParams,
+  ITransferTimeEntry,
+} from './time-entries.interfaces';
 
 @Injectable()
 export class TimeEntriesDispatchers {
@@ -11,5 +14,21 @@ export class TimeEntriesDispatchers {
 
   public getTimeEntries(): void {
     this.store.dispatch(new timeEntriesActions.GetTimeEntriesAction());
+  }
+
+  public createTimeEntry(params: ITransferTimeEntry): void {
+    this.store.dispatch(new timeEntriesActions.CreateTimeEntryAction(params));
+  }
+
+  public updateTimeEntry(params: ITransferTimeEntry): void {
+    console.log('finish me');
+  }
+
+  public updateCurrentTimeEntry(params: ITransferTimeEntry): void {
+    console.log('finish me');
+  }
+
+  public stopCurrentTimeEntry(params: ITransferTimeEntry): void {
+    console.log('finish me');
   }
 }
