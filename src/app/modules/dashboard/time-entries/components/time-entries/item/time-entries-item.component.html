@@ -1,44 +1,100 @@
 <div
   fxLayout="row"
   fxLayoutAlign="space-between center"
-  class="item">
+  class="item"
+  [ngClass]="{'darken': showIcons}"
+  (mouseover)="onMouseenter()"
+  (mouseleave)="onMouseleave()">
 
-  <div fxFlex="35">
+  <div
+    fxFlex="49"
+    class="title"
+    contenteditable="true">
     {{ timeEntry.task?.title }}
   </div>
 
-  <div fxFlex="20">
+  <div
+    *ngIf="timeEntry.project"
+    fxFlex="15"
+    fxLayoutAlign="end center"
+    class="project">
     {{ timeEntry.project?.title }}
   </div>
 
-  <div fxFlex="10">
-    {{ timeEntry.client?.name }}
+  <div
+    *ngIf="timeEntry.project"
+    fxFlex="8"
+    fxFlexLayoutAlign="start center"
+    class="client">
+    <div
+      *ngIf="timeEntry.client"
+      class="content">
+      {{ timeEntry.client?.name }}
+    </div>
   </div>
 
-  <div fxFlex="10">
-    <div class="date">
+  <div
+    *ngIf="!timeEntry.project"
+    fxFlex="23"
+    fxLayoutAlign="center center"
+    class="add-project">
+    <mat-icon
+      *ngIf="showIcons">
+      folder
+    </mat-icon>
+    <div
+      *ngIf="showIcons">
+      Select project
+    </div>
+  </div>
+
+  <div
+    fxFlex="8">
+    <div
+      class="date">
       {{ timeEntry.startAt | date: 'yyyy/MM/dd' }}
     </div>
-    <div class="time">
+    <div
+      class="time">
       {{ timeEntry.startAt | date: 'HH:mm:ss' }}
     </div>
   </div>
 
-  <div fxFlex="10">
-    <div class="date">
+  <div
+    fxFlex="8">
+    <div
+      class="date">
       {{ timeEntry.endAt | date: 'yyyy/MM/dd' }}
     </div>
-    <div class="time">
+    <div
+      class="time">
       {{ timeEntry.endAt | date: 'HH:mm:ss' }}
     </div>
   </div>
 
-  <div fxFlex="10">
+  <div
+    fxFlex="6"
+    fxLayoutAlign="end center"
+    class="duration">
     {{ duration }}
   </div>
 
-  <div fxFlex="5">
-    <mat-icon>
+  <div
+    fxFlex="3"
+    fxLayoutAlign="center center"
+    class="continue">
+    <mat-icon
+      *ngIf="showIcons">
+      play_arrow
+    </mat-icon>
+  </div>
+
+  <div
+    fxFlex="3"
+    fxLayoutAlign="center center"
+    class="remove">
+    <mat-icon
+      *ngIf="showIcons">
       delete
     </mat-icon>
   </div>

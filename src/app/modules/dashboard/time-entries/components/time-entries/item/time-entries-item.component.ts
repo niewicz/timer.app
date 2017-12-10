@@ -11,6 +11,8 @@ import { ITimeEntry } from '../../../../shared/time-entries/time-entries.interfa
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeEntriesItemComponent {
+  showIcons = false;
+
   @Input() timeEntry: ITimeEntry;
 
   get duration() {
@@ -18,4 +20,12 @@ export class TimeEntriesItemComponent {
   }
 
   constructor(private utils: UtilsService) {}
+
+  onMouseenter(): void {
+    this.showIcons = true;
+  }
+
+  onMouseleave(): void {
+    this.showIcons = false;
+  }
 }

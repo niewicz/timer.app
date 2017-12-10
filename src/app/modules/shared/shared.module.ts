@@ -24,11 +24,13 @@ import {
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { ContenteditableDirective } from 'ng-contenteditable';
+
 import { UtilsService } from './../../core/services/utils.service';
 import { ApiRoutes } from './../../core/services/api-routes.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [ContenteditableDirective],
   imports: [
     CommonModule,
 
