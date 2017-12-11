@@ -12,6 +12,7 @@ import {
 } from './time-entries.interfaces';
 import * as timeEntriesActions from './time-entries.actions';
 import { toPayload } from '@ngrx/effects/src/util';
+import { ITransferTimeEntry } from './time-entries.interfaces';
 
 @Injectable()
 export class TimeEntriesEffects {
@@ -34,7 +35,24 @@ export class TimeEntriesEffects {
     );
 
   @Effect()
-  createTimeEntry: Observable<Action> = this.actions$
+  getCurrentTimeEntry$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.GET_CURRENT_TIME_ENTRY)
+    .switchMap(() =>
+      this.timeEntriesService
+        .getCurrentTimeEntry()
+        .map(
+          (timeEntry: ITimeEntry) =>
+            new timeEntriesActions.GetCurrentTimeEntrySuccessAction(timeEntry),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.GetCurrentTimeEntryFailureAction(error),
+          ),
+        ),
+    );
+
+  @Effect()
+  createTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.CREATE_TIME_ENTRY)
     .map(toPayload)
     .switchMap((payload: ITransferTimeEntry) =>
@@ -47,6 +65,24 @@ export class TimeEntriesEffects {
         .catch((error: any) =>
           Observable.of(
             new timeEntriesActions.CreateTimeEntryFailureAction(error),
+          ),
+        ),
+    );
+
+  @Effect()
+  stopCurrentTimeEntry$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.STOP_CURRENT_TIME_ENTRY)
+    .map(toPayload)
+    .switchMap((payload: ITransferTimeEntry) =>
+      this.timeEntriesService
+        .updateTimeEntry(payload)
+        .map(
+          (timeEntry: ITimeEntry) =>
+            new timeEntriesActions.StopCurrentTimeEntrySuccessAction(timeEntry),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.StopCurrentTimeEntryFailureAction(error),
           ),
         ),
     );

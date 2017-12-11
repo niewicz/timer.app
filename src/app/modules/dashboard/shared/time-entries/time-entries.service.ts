@@ -34,9 +34,27 @@ export class TimeEntriesService {
       .catch(error => Observable.throw(error));
   }
 
+  getCurrentTimeEntry(): Observable<ITimeEntry> {
+    return this.http
+      .get<ITimeEntryResponse>(this.api.currentTimeEntryPath())
+      .map(response => this.utils.camelize(response))
+      .map(response => response.timeEntry)
+      .catch(error => Observable.throw(error));
+  }
+
   createTimeEntry(params: ITransferTimeEntry): Observable<ITimeEntry> {
     return this.http
       .post<ITimeEntryResponse>(this.api.timeEntriesPath(), {
+        time_entry: this.utils.decamelize(params),
+      })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.timeEntry)
+      .catch(error => Observable.throw(error));
+  }
+
+  updateTimeEntry(params: ITransferTimeEntry): Observable<ITimeEntry> {
+    return this.http
+      .patch<ITimeEntryResponse>(this.api.timeEntryPath(params.id), {
         time_entry: this.utils.decamelize(params),
       })
       .map(response => this.utils.camelize(response))

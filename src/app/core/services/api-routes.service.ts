@@ -31,6 +31,10 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/time_entries/${id}`;
   }
 
+  public currentTimeEntryPath(): string {
+    return `${this.apiBasePath()}/time_entries/current`;
+  }
+
   public clientsPath(): string {
     return `${this.apiBasePath()}/clients`;
   }

@@ -5,6 +5,10 @@ import {
   ITimeEntry,
   ITransferTimeEntry,
 } from './time-entries.interfaces';
+import {
+  GetClientsSuccessAction,
+  GetClientsFailureAction,
+} from '../clients/clients.actions';
 
 export const GET_TIME_ENTRIES = '[Dahboard] Get Time Entries';
 export const GET_TIME_ENTRIES_SUCCESS = '[Dahboard] Get Time Entries Success';
@@ -21,6 +25,12 @@ export const REMOVE_TIME_ENTRY_SUCCESS =
   '[Dashboard] Remove Time Entry Success';
 export const REMOVE_TIME_ENTRY_FAILURE =
   '[Dashboard] Remove Time Entry Failure';
+
+export const GET_CURRENT_TIME_ENTRY = '[Dashboard] Get Current Time Entry';
+export const GET_CURRENT_TIME_ENTRY_SUCCESS =
+  '[Dashboard] Get Current Time Entry Success';
+export const GET_CURRENT_TIME_ENTRY_FAILURE =
+  '[Dashboard] Get Current Time Entry Failure';
 
 export const CREATE_TIME_ENTRY = '[Dashboard] Create Time Entry';
 export const CREATE_TIME_ENTRY_SUCCESS =
@@ -89,6 +99,20 @@ export class RemoveTimeEntrySuccessAction implements Action {
 
 export class RemoveTimeEntryFailureAction implements Action {
   readonly type = REMOVE_TIME_ENTRY_FAILURE;
+  constructor(public payload: any) {}
+}
+
+export class GetCurrentTimeEntryAction implements Action {
+  readonly type = GET_CURRENT_TIME_ENTRY;
+}
+
+export class GetCurrentTimeEntrySuccessAction implements Action {
+  readonly type = GET_CURRENT_TIME_ENTRY_SUCCESS;
+  constructor(public payload: ITimeEntry) {}
+}
+
+export class GetCurrentTimeEntryFailureAction implements Action {
+  readonly type = GET_CURRENT_TIME_ENTRY_FAILURE;
   constructor(public payload: any) {}
 }
 
@@ -161,6 +185,9 @@ export type Actions =
   | RemoveTimeEntryAction
   | RemoveTimeEntrySuccessAction
   | RemoveTimeEntryFailureAction
+  | GetCurrentTimeEntryAction
+  | GetClientsSuccessAction
+  | GetClientsFailureAction
   | CreateTimeEntryAction
   | CreateTimeEntrySuccessAction
   | CreateTimeEntryFailureAction

@@ -29,6 +29,8 @@ export class TimeEntriesDispatchers {
   }
 
   public stopCurrentTimeEntry(params: ITransferTimeEntry): void {
-    console.log('finish me');
+    this.store.dispatch(
+      new timeEntriesActions.StopCurrentTimeEntryAction(params),
+    );
   }
 }
