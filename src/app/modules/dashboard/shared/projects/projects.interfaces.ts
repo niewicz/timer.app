@@ -1,8 +1,11 @@
+import { IClient } from '../clients/clients.interfaces';
+
 export interface IProject {
   id?: number;
   clientId?: number;
   title: string;
   description?: string;
+  client?: IClient;
 }
 
 export interface IProjectsParams {

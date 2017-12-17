@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -7,6 +6,8 @@ import {
   Input,
   EventEmitter,
 } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'timer-modal',
   templateUrl: './modal.component.html',

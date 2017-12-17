@@ -28,6 +28,7 @@ import { CurrentTimeEntryComponent } from './time-entries/containers/current-tim
 import { ClientsComponent } from './clients/containers/clients/clients.component';
 import { ProjectsComponent } from './projects/containers/projects/projects.component';
 import { TasksComponent } from './tasks/containers/tasks/tasks.component';
+import { SelectProjectMenuComponent } from './projects/components/select-project/menu/select-project-menu.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -39,6 +40,7 @@ import { ProjectsListComponent } from './projects/components/projects/list/proje
 import { TasksListComponent } from './tasks/components/tasks/list/tasks-list.component';
 import { TasksItemComponent } from './tasks/components/tasks/item/tasks-item.component';
 import { CurrentTimeEntryFormComponent } from './time-entries/components/current-time-entry/form/current-time-entry-form.component';
+import { SelectProjectComponent } from './projects/containers/select-project/select-project.component';
 
 @NgModule({
   declarations: [
@@ -55,12 +57,14 @@ import { CurrentTimeEntryFormComponent } from './time-entries/components/current
     ProjectsItemComponent,
     TasksListComponent,
     TasksItemComponent,
+    SelectProjectMenuComponent,
     // Containers
     MainNavbarComponent,
     TimeEntriesComponent,
     CurrentTimeEntryComponent,
     ClientsComponent,
     ProjectsComponent,
+    SelectProjectComponent,
     TasksComponent,
   ],
   providers: [

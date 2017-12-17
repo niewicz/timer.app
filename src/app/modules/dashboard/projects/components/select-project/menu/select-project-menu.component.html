@@ -1,0 +1,47 @@
+<mat-menu
+  #projectsMenu="matMenu">
+  <div
+    class="search"
+    fxLayout="row">
+    <input
+      class="search-input"
+      (click)="$event.stopPropagation()"
+      (input)="onInput($event)"
+      placeholder="Search"
+      type="text">
+    <div
+      class="create-project"
+      fxLayoutAlign="center center"
+      (click)="$event.stopPropagation()">
+      <mat-icon
+        fxLayoutAlign="center center">
+        create_new_folder
+      </mat-icon>
+    </div>
+  </div>
+  <div
+    *ngFor="let project of projects">
+    <div
+      fxLayout="row"
+      class="item">
+      <div
+        fxLayoutAlign="end center"
+        class="project">
+        {{ project.title }}
+      </div>
+      <div
+        fxFlexLayoutAlign="start center"
+        class="client">
+        <div
+          class="content">
+          Prolwy
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-menu>
+
+<mat-icon
+  [matMenuTriggerFor]="projectsMenu">
+  folder
+</mat-icon>

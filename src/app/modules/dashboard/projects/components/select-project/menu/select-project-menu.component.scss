@@ -1,0 +1,51 @@
+.search {
+  padding: 10px 10px 15px 10px;
+}
+
+.search-input {
+  font-size: 15px;
+  border: 1px solid #aaaaaa;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.item {
+  padding: 10px 10px 10px 10px;
+
+  &:hover {
+    background: #eeeeee;
+  }
+}
+
+.project {
+  color: #444444;
+  padding: 0 10px 0 0;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.client {
+  color: #444444;
+  font-size: 13px;
+
+  .content {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px;
+    width: fit-content;
+  }
+}
+
+.create-project {
+  padding: 0 2px 0 7px;
+  cursor: pointer;
+  color: #aaaaaa;
+
+  mat-icon {
+    font-size: 24px;
+  }
+
+  &:hover {
+    color: #444444;
+  }
+}
