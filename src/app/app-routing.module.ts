@@ -11,6 +11,7 @@ import { DashboardLayoutComponent } from './modules/dashboard/components/dashboa
 import { TimeEntriesComponent } from './modules/dashboard/time-entries/containers/time-entries/time-entries.component';
 import { ClientsComponent } from './modules/dashboard/clients/containers/clients/clients.component';
 import { ProjectsComponent } from './modules/dashboard/projects/containers/projects/projects.component';
+import { CreateProjectComponent } from './modules/dashboard/projects/containers/create-project/create-project.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
     ],
+  },
+  {
+    path: 'projects/create',
+    component: CreateProjectComponent,
+    outlet: 'modal',
+    canActivate: [AuthGuard],
   },
 ];
 

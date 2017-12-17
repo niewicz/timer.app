@@ -38,14 +38,9 @@
     fxFlex="23"
     fxLayoutAlign="center center"
     class="add-project">
-    <mat-icon
-      *ngIf="showIcons">
-      folder
-    </mat-icon>
-    <div
-      *ngIf="showIcons">
-      Select project
-    </div>
+    <timer-select-project
+      [displayText]="'Select Project'">
+    </timer-select-project>
   </div>
 
   <div
