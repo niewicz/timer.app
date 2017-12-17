@@ -13,6 +13,15 @@
   </div>
   <div
     class="item"
+    [routerLink]="['/', 'dashboard', 'summaries']"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      show_chart
+    </mat-icon>
+    Summaries
+  </div>
+  <div
+    class="item"
     [routerLink]="['/', 'dashboard', 'projects']"
     fxLayoutAlign="center center">
     <mat-icon>
@@ -31,11 +40,12 @@
   </div>
   <div
     class="item"
+    [routerLink]="['/', 'dashboard', 'settings']"
     fxLayoutAlign="center center">
     <mat-icon>
       settings
     </mat-icon>
-    My profile
+    Settings
   </div>
   <div
     class="item"

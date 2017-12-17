@@ -88,7 +88,7 @@ export class AuthService {
 
   private _reverseParseAuthToken() {
     const authHeaders = {
-      'access-token': localStorage.getItem('access-token'),
+      'access-token': localStorage.getItem('accessToken'),
       'token-type': localStorage.getItem('tokenType'),
       client: localStorage.getItem('client'),
       expiry: localStorage.getItem('expiry'),

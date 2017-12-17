@@ -12,7 +12,6 @@ import {
 } from './time-entries.interfaces';
 import * as timeEntriesActions from './time-entries.actions';
 import { toPayload } from '@ngrx/effects/src/util';
-import { ITransferTimeEntry } from './time-entries.interfaces';
 
 @Injectable()
 export class TimeEntriesEffects {
