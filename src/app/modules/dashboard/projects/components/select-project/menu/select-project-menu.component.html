@@ -11,37 +11,69 @@
       type="text">
     <div
       class="create-project"
-      fxLayoutAlign="center center"
-      (click)="$event.stopPropagation()">
+      fxLayoutAlign="center center">
       <mat-icon
-        fxLayoutAlign="center center">
+        fxLayoutAlign="center center"
+        [routerLink]="['', {outlets: {modal: ['projects', 'create']}}]">
         create_new_folder
       </mat-icon>
     </div>
   </div>
   <div
-    *ngFor="let project of projects">
+    *ngFor="let project of projects"
+    (click)="onClick(project)">
     <div
       fxLayout="row"
       class="item">
       <div
         fxLayoutAlign="end center"
         class="project">
-        {{ project.title }}
+        {{ project?.title }}
       </div>
       <div
+        *ngIf="project?.client"
         fxFlexLayoutAlign="start center"
         class="client">
         <div
           class="content">
-          Prolwy
+          {{ project?.client?.name }}
         </div>
       </div>
     </div>
   </div>
 </mat-menu>
 
-<mat-icon
-  [matMenuTriggerFor]="projectsMenu">
-  folder
-</mat-icon>
+<div
+  [matMenuTriggerFor]="projectsMenu"
+  class="pointer">
+  <div
+    *ngIf="!selected"
+    fxLayout="row"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      folder
+    </mat-icon>
+    <div
+      class="text">
+      {{ text }}
+    </div>
+  </div>
+  <div
+    *ngIf="selected"
+    fxLayout="row">
+    <div
+      fxLayoutAlign="end center"
+      class="project">
+      {{ selected?.title }}
+    </div>
+    <div
+      *ngIf="selected?.client"
+      fxFlexLayoutAlign="start center"
+      class="client">
+      <div
+        class="content">
+        {{ selected?.client?.name }}
+      </div>
+    </div>
+  </div>
+</div>

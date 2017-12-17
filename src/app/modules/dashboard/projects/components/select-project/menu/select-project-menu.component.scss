@@ -2,6 +2,10 @@
   padding: 10px 10px 15px 10px;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .search-input {
   font-size: 15px;
   border: 1px solid #aaaaaa;
@@ -48,4 +52,8 @@
   &:hover {
     color: #444444;
   }
+}
+
+.text {
+  padding: 0 0 0 7px;
 }
