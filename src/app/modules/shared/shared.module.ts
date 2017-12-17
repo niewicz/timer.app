@@ -1,3 +1,4 @@
+import { ModalComponent } from './components/modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -30,7 +31,7 @@ import { UtilsService } from './../../core/services/utils.service';
 import { ApiRoutes } from './../../core/services/api-routes.service';
 
 @NgModule({
-  declarations: [ContenteditableDirective],
+  declarations: [ContenteditableDirective, ModalComponent],
   imports: [
     CommonModule,
 
@@ -79,6 +80,8 @@ import { ApiRoutes } from './../../core/services/api-routes.service';
     MatCardModule,
 
     FlexLayoutModule,
+
+    ModalComponent,
   ],
 })
 export class SharedModule {}
