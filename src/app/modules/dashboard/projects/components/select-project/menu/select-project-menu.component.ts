@@ -13,9 +13,10 @@ export class SelectProjectMenuComponent {
   @Input() text: string;
 
   @Output() choice = new EventEmitter<IProject>();
+  @Output() search = new EventEmitter<string>();
 
-  onInput(event: any) {
-    console.log(event);
+  onInput(event: string) {
+    this.search.emit(event);
   }
 
   onClick(project: IProject) {

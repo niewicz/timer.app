@@ -6,7 +6,7 @@
     <input
       class="search-input"
       (click)="$event.stopPropagation()"
-      (input)="onInput($event)"
+      (input)="onInput($event.target.value)"
       placeholder="Search"
       type="text">
     <div

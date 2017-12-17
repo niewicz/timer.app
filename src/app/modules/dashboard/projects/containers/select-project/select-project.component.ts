@@ -1,14 +1,18 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { ProjectsDispatchers } from '../../../shared/projects/projects.dispatchers';
 import { ProjectsSelectors } from './../../../shared/projects/projects.selectors';
+import { IProject } from '../../../shared/projects/projects.interfaces';
 
 @Component({
   selector: 'timer-select-project',
   templateUrl: './select-project.component.html',
 })
-export class SelectProjectComponent implements OnChanges {
+export class SelectProjectComponent implements OnInit {
   @Input() displayText: string;
+  @Input() selectedProject: IProject;
+
+  @Output() selectProject = new EventEmitter<IProject>();
 
   projects$ = this.selectors.getProjects();
 
@@ -17,8 +21,15 @@ export class SelectProjectComponent implements OnChanges {
     private selectors: ProjectsSelectors,
   ) {}
 
-  ngOnChanges() {
-    console.log('jaja');
+  ngOnInit() {
     this.dispatchers.getProjects();
+  }
+
+  handleChoice(event: IProject) {
+    this.selectProject.emit(event);
+  }
+
+  handleSearch(event: string) {
+    // this.dispatchers.searchProjects(event);
   }
 }
