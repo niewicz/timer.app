@@ -9,6 +9,7 @@ import {
   IProjectsResponse,
 } from './projects.interfaces';
 import { ApiRoutes } from '../../../../core/services/api-routes.service';
+import { IProjectResponse } from './projects.interfaces';
 
 @Injectable()
 export class ProjectsService {
@@ -29,6 +30,16 @@ export class ProjectsService {
       })
       .map(response => this.utils.camelize(response))
       .map(response => response.projects)
+      .catch(error => Observable.throw(error));
+  }
+
+  createProject(project: IProject): Observable<IProject> {
+    project = this.utils.decamelize(project);
+
+    return this.http
+      .post<IProjectResponse>(this.api.projectsPath(), { project })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.project)
       .catch(error => Observable.throw(error));
   }
 }

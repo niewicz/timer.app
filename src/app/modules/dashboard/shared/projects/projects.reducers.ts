@@ -33,6 +33,7 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
           offset: 0,
         },
       };
+
     case projectsActions.GET_PROJECTS_SUCCESS:
       return {
         ...state,
@@ -40,12 +41,38 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
         errors: undefined,
         projects: action.payload,
       };
+
     case projectsActions.GET_PROJECTS_FAILURE:
       return {
         ...state,
         pending: false,
-        errors: 'todo errors',
+        errors: action.payload,
       };
+
+    case projectsActions.CREATE_PROJECT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case projectsActions.CREATE_PROJECT_SUCCESS:
+      const newList = [...state.projects, action.payload];
+
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        projects: newList,
+      };
+
+    case projectsActions.CREATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
     default:
       return state;
   }

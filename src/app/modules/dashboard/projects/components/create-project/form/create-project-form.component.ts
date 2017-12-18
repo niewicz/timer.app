@@ -10,7 +10,7 @@ import { IProject } from '../../../../shared/projects/projects.interfaces';
   styleUrls: ['./create-project-form.component.scss'],
 })
 export class CreateProjectFormComponent {
-  @Output() create = new EventEmitter<IProject>();
+  @Output() createProject = new EventEmitter<IProject>();
 
   selectedClient: IClient;
   form: FormGroup;
@@ -30,7 +30,7 @@ export class CreateProjectFormComponent {
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.create.emit(this.form.value);
+      this.createProject.emit(this.form.value);
     }
   }
 
