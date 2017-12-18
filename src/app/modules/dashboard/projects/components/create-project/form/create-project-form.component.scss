@@ -24,6 +24,11 @@
   max-height: 200px;
 }
 
+.select-client {
+  padding: 5px;
+  width: auto;
+}
+
 .footer {
   padding: 5px;
 }
@@ -31,5 +36,15 @@
 .button {
   padding-left: 20px;
   padding-right: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
+}
+
+.remove-client {
+  font-size: 20px;
+  color: #aaaaaa;
+  cursor: pointer;
+
+  &:hover {
+    color: #444444;
+  }
 }

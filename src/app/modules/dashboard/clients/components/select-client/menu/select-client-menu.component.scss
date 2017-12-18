@@ -37,3 +37,21 @@
     }
   }
 }
+
+.menu-trigger {
+  padding: 5px;
+  width: fit-content;
+  font-size: 15px;
+}
+
+.selected {
+  color: #444444;
+  font-size: 15px;
+
+  .content {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px;
+    width: fit-content;
+  }
+}

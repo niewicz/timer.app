@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { ClientsDispatchers } from '../../../shared/clients/clients.dispatchers';
 import { ClientsSelectors } from '../../../shared/clients/clients.selectors';
@@ -7,6 +14,7 @@ import { IClient } from '../../../shared/clients/clients.interfaces';
 @Component({
   selector: 'timer-select-client',
   templateUrl: './select-client.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectClientComponent implements OnInit {
   @Input() displayText: string;
@@ -30,6 +38,7 @@ export class SelectClientComponent implements OnInit {
   }
 
   handleChoice(event: IClient): void {
+    console.log(event);
     this.newSelectedClient.emit(event);
   }
 

@@ -36,13 +36,29 @@
           </textarea>
         </div>
 
-        <div>
-          <div>
+        <div
+          class="field">
+          <div
+            class="label">
             Client
           </div>
-          <timer-select-client
-            [displayText]="'Select client'">
-          </timer-select-client>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center">
+            <timer-select-client
+              class="select-client"
+              [displayText]="'Select client'"
+              [selectedClient]="selectedClient"
+              (newSelectedClient)="handleClientChange($event)">
+            </timer-select-client>
+            <mat-icon
+              *ngIf="selectedClient"
+              class="remove-client"
+              (click)="removeClient()"
+              fxLayoutAlign="center center">
+              highlight_off
+            </mat-icon>
+          </div>
         </div>
 
         <div
@@ -51,7 +67,9 @@
           <button
             mat-raised-button
             color="warn"
-            class="button">
+            class="button"
+            [disabled]="!form.valid"
+            (click)="onSubmit()">
             Create
           </button>
         </div>

@@ -48,7 +48,8 @@
   <div
     *ngIf="!selected"
     fxLayout="row"
-    fxLayoutAlign="center center">
+    fxLayoutAlign="start center"
+    class="menu-trigger">
     <mat-icon>
       person
     </mat-icon>
@@ -59,7 +60,11 @@
   </div>
   <div
     *ngIf="selected"
-    fxLayout="row">
-    {{ selected?.name }}
+    fxLayout="row"
+    class="menu-trigger selected">
+    <div
+      class="content">
+      {{ selected?.name }}
+    </div>
   </div>
 </div>

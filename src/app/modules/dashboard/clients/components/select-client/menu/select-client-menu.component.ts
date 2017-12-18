@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IClient } from './../../../../shared/clients/clients.interfaces';
@@ -7,6 +13,7 @@ import { IClient } from './../../../../shared/clients/clients.interfaces';
   selector: 'timer-select-client-menu',
   templateUrl: './select-client-menu.component.html',
   styleUrls: ['./select-client-menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectClientMenuComponent {
   @Input() clients: IClient[];
