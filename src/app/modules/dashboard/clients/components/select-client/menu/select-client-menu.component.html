@@ -11,35 +11,39 @@
       type="text">
   </div>
   <div
-    *ngFor="let client of clients"
-    (click)="onChoice(client)">
+    class="items scrollbar"
+    [perfectScrollbar]="config">
     <div
-      class="item">
+      *ngFor="let client of clients"
+      (click)="onChoice(client)">
       <div
-        class="client">
-        {{ client?.name }}
+        class="item">
+        <div
+          class="client">
+          {{ client?.name }}
+        </div>
       </div>
     </div>
   </div>
-    <form
-      [formGroup]="form">
-      <div
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      class="create-client">
-      <input
-        class="search-input"
-        type="text"
-        placeholder="Create client"
-        formControlName="name"
-        (click)="$event.stopPropagation()"
-        (keyup.enter)="onCreate()">
-      <mat-icon
-        (click)="onCreate();">
-        person_add
-      </mat-icon>
-      </div>
-    </form>
+  <form
+    [formGroup]="form">
+    <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="create-client">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Create client"
+      formControlName="name"
+      (click)="$event.stopPropagation()"
+      (keyup.enter)="onCreate()">
+    <mat-icon
+      (click)="onCreate()">
+      person_add
+    </mat-icon>
+    </div>
+  </form>
   </mat-menu>
 
 <div

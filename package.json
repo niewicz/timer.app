@@ -36,6 +36,7 @@
     "ng-contenteditable": "^1.0.5",
     "ng-http-interceptor": "^4.0.0",
     "ngrx-store-freeze": "^0.2.0",
+    "ngx-perfect-scrollbar": "^5.2.0",
     "promise-polyfill": "6.1.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

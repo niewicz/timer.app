@@ -23,12 +23,20 @@ import {
   MatCardModule,
 } from '@angular/material';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ContenteditableDirective } from 'ng-contenteditable';
 
 import { UtilsService } from './../../core/services/utils.service';
 import { ApiRoutes } from './../../core/services/api-routes.service';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
 @NgModule({
   declarations: [ContenteditableDirective, ModalComponent],
@@ -55,8 +63,18 @@ import { ApiRoutes } from './../../core/services/api-routes.service';
     MatCardModule,
 
     FlexLayoutModule,
+
+    PerfectScrollbarModule,
   ],
-  providers: [UtilsService, ApiRoutes],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+
+    UtilsService,
+    ApiRoutes,
+  ],
   exports: [
     CommonModule,
 
@@ -82,6 +100,8 @@ import { ApiRoutes } from './../../core/services/api-routes.service';
     FlexLayoutModule,
 
     ModalComponent,
+
+    PerfectScrollbarModule,
   ],
 })
 export class SharedModule {}
