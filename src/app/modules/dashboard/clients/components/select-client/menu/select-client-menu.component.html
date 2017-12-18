@@ -1,0 +1,65 @@
+<mat-menu
+  #clientsMenu="matMenu">
+  <div
+    class="search"
+    fxLayout="row">
+    <input
+      class="search-input"
+      (click)="$event.stopPropagation()"
+      (input)="onInput($event.target.value)"
+      placeholder="Search"
+      type="text">
+  </div>
+  <div
+    *ngFor="let client of clients"
+    (click)="onChoice(client)">
+    <div
+      class="item">
+      <div
+        class="client">
+        {{ client?.name }}
+      </div>
+    </div>
+  </div>
+    <form
+      [formGroup]="form">
+      <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="create-client">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Create client"
+        formControlName="name"
+        (click)="$event.stopPropagation()"
+        (keyup.enter)="onCreate()">
+      <mat-icon
+        (click)="onCreate();">
+        person_add
+      </mat-icon>
+      </div>
+    </form>
+  </mat-menu>
+
+<div
+  [matMenuTriggerFor]="clientsMenu"
+  class="pointer">
+  <div
+    *ngIf="!selected"
+    fxLayout="row"
+    fxLayoutAlign="center center">
+    <mat-icon>
+      person
+    </mat-icon>
+    <div
+      class="text">
+      {{ text }}
+    </div>
+  </div>
+  <div
+    *ngIf="selected"
+    fxLayout="row">
+    {{ selected?.name }}
+  </div>
+</div>

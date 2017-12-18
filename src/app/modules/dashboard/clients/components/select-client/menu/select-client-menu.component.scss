@@ -1,0 +1,39 @@
+.search {
+  padding: 10px 10px 15px 10px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.search-input {
+  font-size: 15px;
+  border: 1px solid #aaaaaa;
+  border-radius: 2px;
+  padding: 5px;
+  width: stretch;
+}
+
+.item {
+  padding: 10px 10px 10px 10px;
+  font-size: 15px;
+
+  &:hover {
+    background: #eeeeee;
+  }
+}
+
+.create-client {
+  border-top: 1px solid #eeeeee;
+  padding: 10px 10px 0px 10px;
+
+  mat-icon {
+    padding-left: 10px;
+    color: #aaaaaa;
+    cursor: pointer;
+
+    &:hover {
+      color: #444444;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<timer-select-client-menu
+  [clients]="clients$ | async"
+  [selected]="selectedClient"
+  [text]="displayText"
+  (search)="handleSearch($event)"
+  (choice)="handleChoice($event)"
+  (create)="handleCreate($event)">
+</timer-select-client-menu>

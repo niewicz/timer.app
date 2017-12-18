@@ -30,6 +30,7 @@ import { ProjectsComponent } from './projects/containers/projects/projects.compo
 import { TasksComponent } from './tasks/containers/tasks/tasks.component';
 import { SelectProjectMenuComponent } from './projects/components/select-project/menu/select-project-menu.component';
 import { CreateProjectFormComponent } from './projects/components/create-project/form/create-project-form.component';
+import { SelectClientComponent } from './clients/containers/select-client/select-client.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -43,6 +44,7 @@ import { TasksItemComponent } from './tasks/components/tasks/item/tasks-item.com
 import { CurrentTimeEntryFormComponent } from './time-entries/components/current-time-entry/form/current-time-entry-form.component';
 import { SelectProjectComponent } from './projects/containers/select-project/select-project.component';
 import { CreateProjectComponent } from './projects/containers/create-project/create-project.component';
+import { SelectClientMenuComponent } from './clients/components/select-client/menu/select-client-menu.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { CreateProjectComponent } from './projects/containers/create-project/cre
     CurrentTimeEntryFormComponent,
     ClientsListComponent,
     ClientsItemComponent,
+    SelectClientMenuComponent,
     ProjectsListComponent,
     ProjectsItemComponent,
     TasksListComponent,
@@ -66,6 +69,7 @@ import { CreateProjectComponent } from './projects/containers/create-project/cre
     TimeEntriesComponent,
     CurrentTimeEntryComponent,
     ClientsComponent,
+    SelectClientComponent,
     ProjectsComponent,
     SelectProjectComponent,
     CreateProjectComponent,

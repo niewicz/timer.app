@@ -7,7 +7,8 @@
     modal-body>
     <div
       class="content">
-      <form>
+      <form
+        [formGroup]="form">
         <div
           fxLayout="column"
           fxLayoutAlign="center start"
@@ -17,7 +18,8 @@
             Title
           </div>
           <input
-            class="input">
+            class="input"
+            formControlName="title">
         </div>
 
         <div
@@ -29,8 +31,18 @@
             Description
           </div>
           <textarea
-            class="input description">
+            class="input description"
+            formControlName="description">
           </textarea>
+        </div>
+
+        <div>
+          <div>
+            Client
+          </div>
+          <timer-select-client
+            [displayText]="'Select client'">
+          </timer-select-client>
         </div>
 
         <div
