@@ -7,6 +7,7 @@ import { ApiRoutes } from '../../../../core/services/api-routes.service';
 import {
   IClient,
   IClientsResponse,
+  IClientResponse,
   IClientsParams,
 } from './clients.interfaces';
 
@@ -28,6 +29,16 @@ export class ClientsService {
       })
       .map(response => this.utils.camelize(response))
       .map(response => response.clients)
+      .catch(error => Observable.throw(error));
+  }
+
+  createClient(client: IClient): Observable<IClient> {
+    client = this.utils.decamelize(client);
+
+    return this.http
+      .post<IClientResponse>(this.api.clientsPath(), { client })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.client)
       .catch(error => Observable.throw(error));
   }
 }

@@ -43,7 +43,29 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
       return {
         ...state,
         pending: false,
-        errors: 'todo errors',
+        errors: action.payload,
+      };
+    case clientsActions.CREATE_CLIENT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case clientsActions.CREATE_CLIENT_SUCCESS:
+      const newList = [...state.clients, action.payload];
+
+      return {
+        ...state,
+        pending: false,
+        clients: newList,
+        errors: undefined,
+      };
+
+    case clientsActions.CREATE_CLIENT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
       };
     default:
       return state;
