@@ -1,0 +1,5 @@
+<timer-select-task-menu
+  [tasks]="tasks$ | async"
+  (search)="handleSearch($event)"
+  (choice)="handleChoice($event)">
+</timer-select-task-menu>

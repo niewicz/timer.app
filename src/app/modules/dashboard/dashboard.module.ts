@@ -1,3 +1,4 @@
+import { SelectTaskMenuComponent } from './tasks/components/select-task/menu/select-task-menu.component';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -31,6 +32,7 @@ import { TasksComponent } from './tasks/containers/tasks/tasks.component';
 import { SelectProjectMenuComponent } from './projects/components/select-project/menu/select-project-menu.component';
 import { CreateProjectFormComponent } from './projects/components/create-project/form/create-project-form.component';
 import { SelectClientComponent } from './clients/containers/select-client/select-client.component';
+import { SelectTaskComponent } from './tasks/containers/select-task/select-task.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -62,6 +64,7 @@ import { SelectClientMenuComponent } from './clients/components/select-client/me
     ProjectsItemComponent,
     TasksListComponent,
     TasksItemComponent,
+    SelectTaskMenuComponent,
     SelectProjectMenuComponent,
     CreateProjectFormComponent,
     // Containers
@@ -74,6 +77,7 @@ import { SelectClientMenuComponent } from './clients/components/select-client/me
     SelectProjectComponent,
     CreateProjectComponent,
     TasksComponent,
+    SelectTaskComponent,
   ],
   providers: [
     Angular2TokenService,
