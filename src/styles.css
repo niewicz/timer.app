@@ -9,6 +9,12 @@ body {
   margin: 0;
 }
 
+.app-button {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  border-radius: 20px !important;
+}
+
 .scrollbar {
   overflow: hidden;
   position: relative;
