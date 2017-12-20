@@ -27,6 +27,11 @@ export class ClientsEffects {
     );
 
   @Effect()
+  searchClients$: Observable<Action> = this.actions$
+    .ofType(clientsActions.SEARCH_CLIENTS)
+    .map(() => new clientsActions.GetClientsAction());
+
+  @Effect()
   createClient$: Observable<Action> = this.actions$
     .ofType(clientsActions.CREATE_CLIENT)
     .map(toPayload)

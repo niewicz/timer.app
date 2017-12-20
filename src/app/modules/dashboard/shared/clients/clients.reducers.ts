@@ -45,6 +45,16 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         pending: false,
         errors: action.payload,
       };
+
+    case clientsActions.SEARCH_CLIENTS:
+      return {
+        ...state,
+        params: {
+          ...state.params,
+          q: action.payload.q,
+        },
+      };
+
     case clientsActions.CREATE_CLIENT:
       return {
         ...state,

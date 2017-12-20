@@ -6,6 +6,8 @@ export const GET_CLIENTS = '[Dahboard] Get Clients';
 export const GET_CLIENTS_SUCCESS = '[Dahboard] Get Clients Success';
 export const GET_CLIENTS_FAILURE = '[Dahboard] Get Clients Failure';
 
+export const SEARCH_CLIENTS = '[Dashboard] Search Clients';
+
 export const CREATE_CLIENT = '[Dashboard] Craete Client';
 export const CREATE_CLIENT_SUCCESS = '[Dashboard] Craete Client Success';
 export const CREATE_CLIENT_FAILURE = '[Dashboard] Craete Client Failure';
@@ -22,6 +24,11 @@ export class GetClientsSuccessAction implements Action {
 export class GetClientsFailureAction implements Action {
   readonly type = GET_CLIENTS_FAILURE;
   constructor(public payload: any) {}
+}
+
+export class SearchClientsAction implements Action {
+  readonly type = SEARCH_CLIENTS;
+  constructor(public payload: IClientsParams) {}
 }
 
 export class CreateClientAction implements Action {
@@ -43,6 +50,7 @@ export type Actions =
   | GetClientsAction
   | GetClientsSuccessAction
   | GetClientsFailureAction
+  | SearchClientsAction
   | CreateClientAction
   | CreateClientSuccessAction
   | CreateClientFailureAction;

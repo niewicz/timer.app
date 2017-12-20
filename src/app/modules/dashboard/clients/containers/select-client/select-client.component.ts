@@ -34,7 +34,7 @@ export class SelectClientComponent implements OnInit {
   }
 
   handleSearch(event: string): void {
-    // this.dispatchers.searchClients();
+    this.dispatchers.searchClients({ q: event });
   }
 
   handleChoice(event: IClient): void {

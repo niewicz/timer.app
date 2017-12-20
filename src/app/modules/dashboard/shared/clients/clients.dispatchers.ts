@@ -14,6 +14,10 @@ export class ClientsDispatchers {
     this.store.dispatch(new clientsActions.GetClientsAction());
   }
 
+  public searchClients(params: IClientsParams): void {
+    this.store.dispatch(new clientsActions.SearchClientsAction(params));
+  }
+
   public createClient(client: IClient): void {
     this.store.dispatch(new clientsActions.CreateClientAction(client));
   }
