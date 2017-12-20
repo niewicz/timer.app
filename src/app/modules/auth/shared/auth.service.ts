@@ -28,9 +28,14 @@ export class AuthService {
   }
 
   signUp(registerData: RegisterData): Observable<IUser> {
-    console.log(registerData);
+    const data = {
+      email: registerData.email,
+      password: registerData.password,
+      passwordConfirmation: registerData.passwordConfirmation,
+    };
+
     return this.tokenService
-      .registerAccount(registerData)
+      .registerAccount(data)
       .map(response => response.json())
       .map(response => response.data)
       .map(response => this.utils.camelize(response))

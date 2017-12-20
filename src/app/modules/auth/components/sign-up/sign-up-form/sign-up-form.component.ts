@@ -34,7 +34,6 @@ export class AuthSignUpFormComponent {
   }
 
   onSignUp(): void {
-    console.log(this.form.value);
     if (this.form.valid) {
       this.signUp.emit({
         email: this.form.get('email').value,

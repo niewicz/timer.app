@@ -15,19 +15,17 @@ export class AuthSignUpComponent implements OnInit, OnDestroy {
   currentUser$: Subscription;
 
   constructor(
-    private dispatchers: AuthDispatchers, 
-    private selectors: AuthSelectors, 
-    private router: Router
+    private dispatchers: AuthDispatchers,
+    private selectors: AuthSelectors,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.selectors
-      .getCurrentUser()
-      .subscribe(user => {
-        if (user) {
-          this.router.navigate(['/']);
-        }
-      });
+    this.currentUser$ = this.selectors.getCurrentUser().subscribe(user => {
+      if (user) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
   ngOnDestroy(): void {

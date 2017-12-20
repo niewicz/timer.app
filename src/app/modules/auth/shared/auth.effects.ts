@@ -22,7 +22,10 @@ export class AuthEffects {
         .mergeMap((user: IUser) => {
           return [
             new authActions.CreateUserSuccessAction(user),
-            new authActions.SignInUserAction(payload),
+            new authActions.SignInUserAction({
+              email: payload.email,
+              password: payload.password,
+            }),
           ];
         })
         .catch((error: any) =>
