@@ -28,6 +28,7 @@ export class AuthService {
   }
 
   signUp(registerData: RegisterData): Observable<IUser> {
+    console.log(registerData);
     return this.tokenService
       .registerAccount(registerData)
       .map(response => response.json())
