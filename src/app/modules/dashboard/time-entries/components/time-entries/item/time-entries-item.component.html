@@ -13,32 +13,13 @@
   </div>
 
   <div
-    *ngIf="timeEntry.project"
-    fxFlex="15"
-    fxLayoutAlign="end center"
-    class="project">
-    {{ timeEntry.project?.title }}
-  </div>
-
-  <div
-    *ngIf="timeEntry.project"
-    fxFlex="8"
-    fxFlexLayoutAlign="start center"
-    class="client">
-    <div
-      *ngIf="timeEntry.client"
-      class="content">
-      {{ timeEntry.client?.name }}
-    </div>
-  </div>
-
-  <div
-    *ngIf="!timeEntry.project"
     fxFlex="23"
     fxLayoutAlign="center center"
     class="add-project">
     <timer-select-project
-      [displayText]="'Select Project'">
+      [selectedProject]="timeEntry?.project"
+      [displayText]="'Select Project'"
+      (selectProject)="handleSelectProject($event)">
     </timer-select-project>
   </div>
 

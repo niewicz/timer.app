@@ -1,8 +1,16 @@
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  Output,
+} from '@angular/core';
+
 import { UtilsService } from './../../../../../../core/services/utils.service';
 import { TimeEntriesSelectors } from '../../../../shared/time-entries/time-entries.selectors';
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { TimeEntriesDispatchers } from '../../../../shared/time-entries/time-entries.dispatchers';
 import { ITimeEntry } from '../../../../shared/time-entries/time-entries.interfaces';
+import { IProject } from '../../../../shared/projects/projects.interfaces';
 
 @Component({
   selector: 'timer-time-entries-item',
@@ -14,6 +22,8 @@ export class TimeEntriesItemComponent {
   showIcons = false;
 
   @Input() timeEntry: ITimeEntry;
+
+  // @Output() updateProject = new EventEmitter<{id: }>();
 
   get duration() {
     return this.utils.getDuration(this.timeEntry.endAt, this.timeEntry.startAt);
@@ -27,5 +37,9 @@ export class TimeEntriesItemComponent {
 
   onMouseleave(): void {
     this.showIcons = false;
+  }
+
+  handleSelectProject(event: IProject): void {
+    // this.updateProject.emit(event);
   }
 }
