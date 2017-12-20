@@ -27,6 +27,11 @@ export class ProjectsEffects {
     });
 
   @Effect()
+  searchProjects$: Observable<Action> = this.actions$
+    .ofType(projectsActions.SEARCH_PROJECTS)
+    .map(() => new projectsActions.GetProjectsAction());
+
+  @Effect()
   createProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.CREATE_PROJECT)
     .map(toPayload)

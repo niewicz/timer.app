@@ -30,6 +30,6 @@ export class SelectProjectComponent implements OnInit {
   }
 
   handleSearch(event: string) {
-    // this.dispatchers.searchProjects(event);
+    this.dispatchers.searchProjects({ q: event });
   }
 }

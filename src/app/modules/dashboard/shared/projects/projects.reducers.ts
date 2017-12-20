@@ -49,6 +49,15 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
         errors: action.payload,
       };
 
+    case projectsActions.SEARCH_PROJECTS:
+      return {
+        ...state,
+        params: {
+          ...state.params,
+          q: action.payload.q,
+        },
+      };
+
     case projectsActions.CREATE_PROJECT:
       return {
         ...state,

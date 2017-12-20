@@ -1,10 +1,12 @@
 import { Action } from '@ngrx/store';
 
-import { IProject } from './projects.interfaces';
+import { IProject, IProjectsParams } from './projects.interfaces';
 
 export const GET_PROJECTS = '[Dahboard] Get Projects';
 export const GET_PROJECTS_SUCCESS = '[Dahboard] Get Projects Success';
 export const GET_PROJECTS_FAILURE = '[Dahboard] Get Projects Failure';
+
+export const SEARCH_PROJECTS = '[Dashboard] Search Projects';
 
 export const CREATE_PROJECT = '[Dashboard] Craete Client';
 export const CREATE_PROJECT_SUCCESS = '[Dashboard] Craete Client Success';
@@ -22,6 +24,11 @@ export class GetProjectsSuccessAction implements Action {
 export class GetProjectsFailureAction implements Action {
   readonly type = GET_PROJECTS_FAILURE;
   constructor(public payload: any) {}
+}
+
+export class SearchProjectsAction implements Action {
+  readonly type = SEARCH_PROJECTS;
+  constructor(public payload: IProjectsParams) {}
 }
 
 export class CreateProjectAction implements Action {
@@ -43,6 +50,7 @@ export type Actions =
   | GetProjectsAction
   | GetProjectsSuccessAction
   | GetProjectsFailureAction
+  | SearchProjectsAction
   | CreateProjectAction
   | CreateProjectSuccessAction
   | CreateProjectFailureAction;

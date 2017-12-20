@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import * as projectsActions from './projects.actions';
 import { State } from '../../../../store/index';
-import { IProject } from './projects.interfaces';
+import { IProject, IProjectsParams } from './projects.interfaces';
 
 @Injectable()
 export class ProjectsDispatchers {
@@ -11,6 +11,10 @@ export class ProjectsDispatchers {
 
   public getProjects(): void {
     this.store.dispatch(new projectsActions.GetProjectsAction());
+  }
+
+  public searchProjects(params: IProjectsParams): void {
+    this.store.dispatch(new projectsActions.SearchProjectsAction(params));
   }
 
   public createProject(project: IProject): void {
