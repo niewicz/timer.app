@@ -25,6 +25,10 @@ export class SelectTaskMenuComponent {
   }
 
   onSearch(q: string): void {
-    this.onSearch.emit(q);
+    if (q.length >= 2) {
+      this.search.emit(q);
+    } else {
+      this.tasks = undefined;
+    }
   }
 }

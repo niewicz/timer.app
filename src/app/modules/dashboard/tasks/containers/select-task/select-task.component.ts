@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   EventEmitter,
   Output,
-  OnInit,
 } from '@angular/core';
 
 import { TasksSelectors } from './../../../shared/tasks/tasks.selectors';
@@ -15,7 +14,7 @@ import { ITask } from '../../../shared/tasks/tasks.interfaces';
   templateUrl: './select-task.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectTaskComponent implements OnInit {
+export class SelectTaskComponent {
   @Output() selectTask = new EventEmitter<ITask>();
 
   tasks$ = this.selectors.getTasks();
@@ -25,12 +24,8 @@ export class SelectTaskComponent implements OnInit {
     private selectors: TasksSelectors,
   ) {}
 
-  ngOnInit(): void {
-    this.dispatchers.getTasks();
-  }
-
   handleSearch(event: string): void {
-    // this.dispatchers.searchTasks(event);
+    this.dispatchers.searchTasks({ q: event });
   }
 
   handleChoice(event: ITask): void {}

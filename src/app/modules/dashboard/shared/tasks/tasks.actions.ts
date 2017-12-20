@@ -1,10 +1,12 @@
 import { Action } from '@ngrx/store';
 
-import { ITask } from './tasks.interfaces';
+import { ITask, ITasksParams } from './tasks.interfaces';
 
 export const GET_TASKS = '[Dahboard] Get Tasks';
 export const GET_TASKS_SUCCESS = '[Dahboard] Get Tasks Success';
 export const GET_TASKS_FAILURE = '[Dahboard] Get Tasks Failure';
+
+export const SEARCH_TASKS = '[Dashboard] Search Tasks';
 
 export class GetTasksAction implements Action {
   readonly type = GET_TASKS;
@@ -20,7 +22,13 @@ export class GetTasksFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class SearchTasksAction implements Action {
+  readonly type = SEARCH_TASKS;
+  constructor(public payload: ITasksParams) {}
+}
+
 export type Actions =
   | GetTasksAction
   | GetTasksSuccessAction
-  | GetTasksFailureAction;
+  | GetTasksFailureAction
+  | SearchTasksAction;

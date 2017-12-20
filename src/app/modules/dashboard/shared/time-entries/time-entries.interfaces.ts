@@ -25,7 +25,6 @@ export interface ITransferTimeEntry {
   startAt: string;
   endAt?: string;
   taskId?: number;
-  projectId?: number;
 }
 
 export interface ITimeEntriesResponse {

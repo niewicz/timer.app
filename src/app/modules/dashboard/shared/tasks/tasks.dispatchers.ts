@@ -12,4 +12,8 @@ export class TasksDispatchers {
   public getTasks(): void {
     this.store.dispatch(new tasksActions.GetTasksAction());
   }
+
+  public searchTasks(params: ITasksParams): void {
+    this.store.dispatch(new tasksActions.SearchTasksAction(params));
+  }
 }

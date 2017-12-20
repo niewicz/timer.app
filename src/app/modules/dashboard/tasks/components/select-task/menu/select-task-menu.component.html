@@ -1,18 +1,14 @@
-<mat-menu
-  #tasksMenu="matMenu">
-  <div
-    class="items">
-    <div
-      *ngFor="let task of tasks"
-      (click)="onClick(task)">
-      <div
-        class="item">
-        {{ task.title }}
-      </div>
-    </div>
-  </div>
-</mat-menu>
+<input
+  type="text"
+  class="title"
+  (input)="onSearch($event.target.value)"
+  [matAutocomplete]="auto">
 
-<div
-  [matMenuTriggerFor]="tasksMenu">
-</div>
+ <mat-autocomplete
+  #auto="matAutocomplete">
+  <mat-option
+    *ngFor="let task of tasks"
+    [value]="task.title">
+    {{ task.title }}
+  </mat-option>
+ </mat-autocomplete>

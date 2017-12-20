@@ -23,6 +23,11 @@ export class TasksEffects {
         );
     });
 
+  @Effect()
+  searchTasks$: Observable<Action> = this.actions$
+    .ofType(tasksActions.SEARCH_TASKS)
+    .map(() => new tasksActions.GetTasksAction());
+
   constructor(
     private actions$: Actions,
     private tasksService: TasksService,

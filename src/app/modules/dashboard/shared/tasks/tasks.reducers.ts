@@ -44,7 +44,15 @@ export function reducer(state = initialState, action: tasksActions.Actions) {
       return {
         ...state,
         pending: false,
-        errors: 'todo errors',
+        errors: action.payload,
+      };
+    case tasksActions.SEARCH_TASKS:
+      return {
+        ...state,
+        params: {
+          ...state.params,
+          q: action.payload.q,
+        },
       };
     default:
       return state;
