@@ -1,96 +1,102 @@
 <div
-  fxFlex="35"
-  fxLayout="column"
-  fxLayoutAlign="center center">
-  <form
-    class="sign-up-form"
-    [formGroup]="form">
-
-    <div>
-      <mat-form-field
-        class="input">
-        <input
-          matInput
-          placeholder="Email"
-          formControlName="email">
-        <mat-error *ngIf="form.controls.email.errors?.required">
-          This field is required.
-        </mat-error>
-        <mat-error *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email">
-          Please provide valid email address.
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field
-        class="input">
-        <input
-          matInput
-          placeholder="Password"
-          type="password"
-          formControlName="password">
-        <mat-error *ngIf="form.controls.password.errors?.required">
-          This field is required.
-        </mat-error>
-        <mat-error *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength">
-          Password is too short.
-        </mat-error>
-        <mat-error *ngIf="form.controls.password.errors?.maxlength">
-          Password is too long.
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field
-        class="input">
-        <input
-          matInput
-          placeholder="Password confirmation"
-          type="password"
-          formControlName="passwordConfirmation">
-        <mat-error *ngIf="form.controls.passwordConfirmation.errors?.required">
-          This field is required.
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-around center"
-      class="below-inputs">
-      <button
-        mat-raised-button
-        class="app-button signup-button"
-        color="warn"
-        type="button"
-        [disabled]="form.invalid || form.pristine"
-        (click)="onSignUp()">
-        &nbsp; Sign up <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-      <div
-        class="signin"
-        [routerLink]="['/', 'users', 'sign_in']">
-        Already have account?
-      </div>
-    </div>
-  </form>
-  </div>
-  <div
-  fxFlex="65"
   fxLayout="column"
   fxLayoutAlign="center start"
-  class="right-panel">
+  class="background">
   <div class="bar">
     <div class="app-title">
       Timer
     </div>
-    <div class="app-description">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-      totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-      dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-      qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      class="form-container">
+      <form
+        class="sign-up-form"
+        [formGroup]="form">
+
+        <div
+          class="input-container">
+          <input
+            fxLayoutAlign="start center"
+            class="input"
+            [ngClass]="{'input--error': form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)}"
+            placeholder="Email"
+            formControlName="email">
+          <div
+            *ngIf="form.controls.email.errors?.required && (form.controls.email.touched || form.controls.email.dirty)"
+            class="error">
+            This field is required.
+          </div>
+          <div
+            *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email  && (form.controls.email.touched || form.controls.email.dirty)"
+            class="error">
+            Please provide valid email address.
+          </div>
+        </div>
+
+        <div
+          class="input-container">
+          <input
+            fxLayoutAlign="start center"
+            class="input"
+            [ngClass]="{'input--error': form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)}"
+            placeholder="Password"
+            type="password"
+            formControlName="password">
+          <div
+            *ngIf="form.controls.password.errors?.required && (form.controls.password.touched || form.controls.password.dirty)"
+            class="error">
+            This field is required.
+          </div>
+          <div
+            *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength && (form.controls.password.touched || form.controls.password.dirty)"
+            class="error">
+            Password is too short.
+          </div>
+          <div
+            *ngIf="form.controls.password.errors?.maxlength && (form.controls.password.touched || form.controls.password.dirty)"
+            class="error">
+            Password is too long.
+          </div>
+        </div>
+
+        <div
+          class="input-container">
+          <input
+            fxLayoutAlign="start center"
+            class="input"
+            [ngClass]="{'input--error': form.controls.passwordConfirmation.invalid && (form.controls.passwordConfirmation.touched || form.controls.passwordConfirmation.dirty)}"
+            placeholder="Password confirmation"
+            type="password"
+            formControlName="passwordConfirmation">
+          <div
+            *ngIf="form.controls.passwordConfirmation.errors?.required && (form.controls.passwordConfirmation.touched || form.controls.passwordConfirmation.dirty)"
+            class="error">
+            This field is required.
+          </div>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-around center"
+          class="below-inputs">
+          <button
+            mat-raised-button
+            class="app-button signup-button"
+            color="warn"
+            type="button"
+            [disabled]="form.invalid || form.pristine"
+            (click)="onSignUp()">
+            &nbsp; Sign up <mat-icon>arrow_right</mat-icon>
+          </button>
+          <div
+            class="signin"
+            [routerLink]="['/', 'users', 'sign_in']">
+            Already have account?
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+

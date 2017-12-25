@@ -1,78 +1,80 @@
 <div
-  fxFlex="35"
-  fxLayout="column"
-  fxLayoutAlign="center center">
-  <form
-    class="sign-in-form"
-    [formGroup]="form">
-
-    <div>
-      <mat-form-field
-        class="input">
-        <input
-          matInput
-          placeholder="Email"
-          formControlName="email">
-          <mat-error *ngIf="form.controls.email.errors?.required">
-            This field is required.
-          </mat-error>
-          <mat-error *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email">
-            Please provide valid email address.
-          </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field
-        class="input">
-        <input
-          matInput
-          placeholder="Password"
-          type="password"
-          formControlName="password">
-          <mat-error *ngIf="form.controls.password.errors?.required">
-            This field is required.
-          </mat-error>
-          <mat-error *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength">
-            Password is too short.
-          </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div
-      fxLayout="row"
-      fxLayoutAlign="space-around center"
-      class="below-inputs">
-      <button
-        mat-raised-button
-        class="app-button signin-button"
-        color="warn"
-        type="button"
-        (click)="onLogIn()">
-        &nbsp; Log in <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-      <div
-        class="signup"
-        [routerLink]="['/', 'users', 'sign_up']">
-        Don't have account?
-      </div>
-    </div>
-  </form>
-</div>
-<div
-  fxFlex="65"
   fxLayout="column"
   fxLayoutAlign="center start"
-  class="right-panel">
+  class="background">
   <div class="bar">
     <div class="app-title">
       Timer
     </div>
-    <div class="app-description">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-      totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-      dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-      qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      class="form-container">
+      <form
+        class="sign-in-form"
+        [formGroup]="form">
+
+        <div
+          class="input-container">
+          <input
+            fxLayoutAlign="start center"
+            class="input"
+            [ngClass]="{'input--error': form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)}"
+            placeholder="Email"
+            formControlName="email">
+            <div
+              *ngIf="form.controls.email.errors?.required && (form.controls.email.touched || form.controls.email.dirty)"
+              class="error">
+              This field is required.
+            </div>
+            <div
+              *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email && (form.controls.email.touched || form.controls.email.dirty)"
+              class="error">
+              Please provide valid email address.
+          </div>
+        </div>
+
+        <div
+          class="input-container">
+          <input
+            fxLayoutAlign="start center"
+            placeholder="Password"
+            type="password"
+            class="input"
+            [ngClass]="{'input--error': form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)}"
+            formControlName="password">
+            <div
+              *ngIf="form.controls.password.errors?.required && (form.controls.password.touched || form.controls.password.dirty)"
+              class="error">
+              This field is required.
+            </div>
+            <div
+              *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength && (form.controls.password.touched || form.controls.password.dirty)"
+              class="error">
+              Password is too short.
+            </div>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-around center"
+          class="below-inputs">
+          <button
+            mat-raised-button
+            class="app-button signin-button"
+            color="warn"
+            type="submit"
+            [disabled]="form.invalid || form.pristine"
+            (click)="onLogIn()">
+            &nbsp; Log in <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+          <div
+            class="signup"
+            [routerLink]="['/', 'users', 'sign_up']">
+            Don't have account?
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

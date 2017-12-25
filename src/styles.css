@@ -1,12 +1,13 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   margin: 0;
+  background-color: #fafafa;
 }
 
 .app-button {
