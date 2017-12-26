@@ -1,10 +1,13 @@
+import { IProject } from './../projects/projects.interfaces';
 export interface ITask {
   id?: number;
   projectId?: number;
   clientId?: number;
   title: string;
   price?: number;
+  currency?: string;
   totalTime?: string;
+  project?: IProject;
 }
 
 export interface ITasksParams {

@@ -2,6 +2,7 @@
   [projects]="projects$ | async"
   [text]="displayText"
   [selected]="selectedProject"
+  [navbar]="navbar"
   (choice)="handleChoice($event)"
   (search)="handleSearch($event)">
 </timer-select-project-menu>

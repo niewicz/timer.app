@@ -61,7 +61,8 @@
   </div>
   <div
     *ngIf="selected"
-    fxLayout="row">
+    fxLayout="row"
+    [ngClass]="{'selected-navbar': navbar}">
     <div
       fxLayoutAlign="end center"
       class="project">

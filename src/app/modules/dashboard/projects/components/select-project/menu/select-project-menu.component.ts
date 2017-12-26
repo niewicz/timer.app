@@ -11,6 +11,7 @@ export class SelectProjectMenuComponent {
   @Input() projects: IProject[];
   @Input() selected: IProject;
   @Input() text: string;
+  @Input() navbar = false;
 
   @Output() choice = new EventEmitter<IProject>();
   @Output() search = new EventEmitter<string>();

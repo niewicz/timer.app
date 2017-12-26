@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   EventEmitter,
   Output,
+  Input,
 } from '@angular/core';
 
 import { TasksSelectors } from './../../../shared/tasks/tasks.selectors';
@@ -15,6 +16,10 @@ import { ITask } from '../../../shared/tasks/tasks.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectTaskComponent {
+  @Input() displayText: string;
+  @Input() selectedTask: ITask;
+  @Input() navbar: boolean;
+
   @Output() selectTask = new EventEmitter<ITask>();
 
   tasks$ = this.selectors.getTasks();

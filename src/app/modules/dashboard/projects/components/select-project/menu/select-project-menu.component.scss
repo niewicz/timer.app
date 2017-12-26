@@ -40,6 +40,20 @@
   }
 }
 
+.selected-navbar {
+  .project {
+    color: #efefef;
+  }
+
+  .client {
+    color: #fefefe;
+
+    .content {
+      background: linear-gradient(to right, rgb(203, 45, 62), rgb(213, 65, 72));
+    }
+  }
+}
+
 .create-project {
   padding: 0 2px 0 7px;
   cursor: pointer;

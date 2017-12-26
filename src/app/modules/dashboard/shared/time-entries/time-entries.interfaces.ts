@@ -4,12 +4,12 @@ import { ITask } from './../tasks/tasks.interfaces';
 
 export interface ITimeEntry {
   id?: number;
-  taskId?: number;
   startAt: string;
   endAt?: string;
   task?: ITask;
+  taskId?: number;
   project?: IProject;
-  client?: IClient;
+  projectId?: number;
 }
 
 export interface ITimeEntriesParams {

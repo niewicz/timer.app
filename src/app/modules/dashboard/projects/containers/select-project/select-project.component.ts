@@ -11,6 +11,7 @@ import { IProject } from '../../../shared/projects/projects.interfaces';
 export class SelectProjectComponent implements OnInit {
   @Input() displayText: string;
   @Input() selectedProject: IProject;
+  @Input() navbar: boolean;
 
   @Output() selectProject = new EventEmitter<IProject>();
 

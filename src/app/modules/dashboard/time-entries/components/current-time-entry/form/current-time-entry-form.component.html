@@ -33,20 +33,27 @@
     fxLayoutAlign="end center"
     class="entry">
 
-    <input
-      fxFlex="60"
-      placeholder="What are you coding?"
-      class="item input task-title">
+    <div
+      class="item"
+      fxFlex="60">
+      <timer-select-task
+        [displayText]="'What are you coding?'"
+        [selectedTask]="timeEntry?.task"
+        [navbar]="true">
+      </timer-select-task>
+    </div>
 
     <div
       class="item">
-
-      <timer-select-project>
+      <timer-select-project
+        [selectedProject]="selectedProject"
+        [navbar]="true"
+        (selectProject)="onSelectProject($event)">
       </timer-select-project>
     </div>
 
     <input
-    fxFlex="6"
+      fxFlex="6"
       placeholder="Price"
       class="item input">
 

@@ -1,5 +1,8 @@
 <timer-select-task-menu
+  [displayText]="displayText"
+  [selectedTask]="selectedTask"
   [tasks]="tasks$ | async"
+  [navbar]="navbar"
   (search)="handleSearch($event)"
   (choice)="handleChoice($event)">
 </timer-select-task-menu>

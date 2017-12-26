@@ -15,7 +15,10 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectTaskMenuComponent {
+  @Input() displayText: string;
+  @Input() selectedTask: ITask;
   @Input() tasks: ITask[];
+  @Input() navbar = false;
 
   @Output() choice = new EventEmitter<ITask>();
   @Output() search = new EventEmitter<string>();

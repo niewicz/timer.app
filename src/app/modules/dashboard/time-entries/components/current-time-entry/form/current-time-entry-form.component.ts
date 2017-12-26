@@ -16,6 +16,7 @@ import {
   ITransferTimeEntry,
   ITimeEntry,
 } from './../../../../shared/time-entries/time-entries.interfaces';
+import { IProject } from '../../../../shared/projects/projects.interfaces';
 
 @Component({
   selector: 'timer-current-time-entry-form',
@@ -38,6 +39,8 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   toggled$: Subscription;
   duration = '00:00:00';
 
+  selectedProject: IProject;
+
   constructor(
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
@@ -52,9 +55,6 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
       taskId: '',
       taskTitle: '',
       projectId: '',
-      projectTitle: '',
-      clientId: '',
-      clientName: '',
     });
   }
 
@@ -64,6 +64,29 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
         id: this.currentTimeEntry.id,
         startAt: this.currentTimeEntry.startAt,
       });
+    }
+
+    if (this.currentTimeEntry && this.currentTimeEntry.project) {
+      this.selectedProject = this.currentTimeEntry.project;
+      this.timeEntry.patchValue({
+        projectId: this.currentTimeEntry.project.id,
+      });
+    }
+
+    if (this.currentTimeEntry && this.currentTimeEntry.task) {
+      this.timeEntry.patchValue({
+        taskId: this.currentTimeEntry.task.id,
+        taskTitle: this.currentTimeEntry.task.title,
+        price: this.currentTimeEntry.task.price,
+        currency: this.currentTimeEntry.task.currency,
+      });
+
+      if (this.currentTimeEntry.task.project) {
+        this.selectedProject = this.currentTimeEntry.task.project;
+        this.timeEntry.patchValue({
+          projectId: this.currentTimeEntry.task.project.id,
+        });
+      }
     }
   }
 
@@ -91,6 +114,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     this.toggled$.unsubscribe();
     this.timeEntry.patchValue({ endAt: new Date().toString() });
     this.stop.emit(this.timeEntry.value);
+    this.selectedProject = undefined;
     this.timeEntry.reset();
   }
 
@@ -104,8 +128,12 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   //   this.update.emit(this.timeEntry.value);
   // }
 
-  // changeProject(id: number): void {
-  //   this.timeEntry.patchValue({ projectId: id });
-  //   this.update.emit(this.timeEntry.value);
-  // }
+  onSelectProject(event: IProject): void {
+    this.timeEntry.patchValue({ projectId: event.id });
+    this.selectedProject = event;
+
+    if (this.toggling) {
+      this.update.emit(this.timeEntry.value);
+    }
+  }
 }

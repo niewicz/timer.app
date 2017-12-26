@@ -8,7 +8,9 @@
 
   <div
     fxFlex="49">
-    <timer-select-task>
+    <timer-select-task
+      [displayText]="'Describe what you have done'"
+      [selectedTask]="timeEntry?.task">
     </timer-select-task>
   </div>
 

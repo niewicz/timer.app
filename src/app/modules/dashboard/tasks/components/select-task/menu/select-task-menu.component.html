@@ -1,7 +1,10 @@
 <input
   type="text"
-  class="title"
+  class="input"
+  [ngClass]="{'title-navbar': navbar, 'title': !navbar}"
   (input)="onSearch($event.target.value)"
+  [value]="selectedTask?.title"
+  [placeholder]="displayText ? displayText : ''"
   [matAutocomplete]="auto">
 
  <mat-autocomplete
