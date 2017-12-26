@@ -54,6 +54,11 @@ export function reducer(state = initialState, action: tasksActions.Actions) {
           q: action.payload.q,
         },
       };
+    case tasksActions.CLEAR_TASKS:
+      return {
+        ...state,
+        tasks: [],
+      };
     default:
       return state;
   }

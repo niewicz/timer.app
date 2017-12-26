@@ -4,5 +4,6 @@
   [tasks]="tasks$ | async"
   [navbar]="navbar"
   (search)="handleSearch($event)"
-  (choice)="handleChoice($event)">
+  (selectTask)="handleSelectTask($event)"
+  (forceClear)="handleForceClear()">
 </timer-select-task-menu>

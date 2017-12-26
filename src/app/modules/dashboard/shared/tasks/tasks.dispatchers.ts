@@ -16,4 +16,8 @@ export class TasksDispatchers {
   public searchTasks(params: ITasksParams): void {
     this.store.dispatch(new tasksActions.SearchTasksAction(params));
   }
+
+  public clearTasks(): void {
+    this.store.dispatch(new tasksActions.ClearTasksAction());
+  }
 }

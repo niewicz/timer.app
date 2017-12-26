@@ -3,6 +3,7 @@
   class="input"
   [ngClass]="{'title-navbar': navbar, 'title': !navbar}"
   (input)="onSearch($event.target.value)"
+  (blur)="onBlur()"
   [value]="selectedTask?.title"
   [placeholder]="displayText ? displayText : ''"
   [matAutocomplete]="auto">
@@ -11,7 +12,31 @@
   #auto="matAutocomplete">
   <mat-option
     *ngFor="let task of tasks"
+    (click)="onClick(task)"
     [value]="task.title">
-    {{ task.title }}
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      class="item">
+      <div
+        class="task">
+        {{ task.title }}
+      </div>
+      <mat-icon
+        *ngIf="task.project">
+        radio_button_unchecked
+      </mat-icon>
+      <div
+        *ngIf="task.project"
+        class="project">
+        {{ task.project?.title }}
+      </div>
+      <div
+        *ngIf="task.project?.client"
+        fxLayoutAlign="start center"
+        class="client">
+        {{ task.project?.client?.name }}
+      </div>
+    </div>
   </mat-option>
  </mat-autocomplete>

@@ -20,18 +20,24 @@ export class SelectTaskMenuComponent {
   @Input() tasks: ITask[];
   @Input() navbar = false;
 
-  @Output() choice = new EventEmitter<ITask>();
+  @Output() selectTask = new EventEmitter<ITask>();
   @Output() search = new EventEmitter<string>();
+  @Output() forceClear = new EventEmitter();
 
   onClick(task: ITask): void {
-    this.choice.emit(task);
+    this.selectTask.emit(task);
+    this.forceClear.emit();
+  }
+
+  onBlur() {
+    this.forceClear.emit();
   }
 
   onSearch(q: string): void {
     if (q.length >= 2) {
       this.search.emit(q);
     } else {
-      this.tasks = undefined;
+      this.forceClear.emit();
     }
   }
 }

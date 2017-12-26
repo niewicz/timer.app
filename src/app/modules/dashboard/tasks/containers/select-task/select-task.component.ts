@@ -33,5 +33,11 @@ export class SelectTaskComponent {
     this.dispatchers.searchTasks({ q: event });
   }
 
-  handleChoice(event: ITask): void {}
+  handleSelectTask(event: ITask): void {
+    this.selectTask.emit(event);
+  }
+
+  handleForceClear() {
+    this.dispatchers.clearTasks();
+  }
 }

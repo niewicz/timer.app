@@ -8,6 +8,8 @@ export const GET_TASKS_FAILURE = '[Dahboard] Get Tasks Failure';
 
 export const SEARCH_TASKS = '[Dashboard] Search Tasks';
 
+export const CLEAR_TASKS = '[Dashboard] Clear Tasks';
+
 export class GetTasksAction implements Action {
   readonly type = GET_TASKS;
 }
@@ -27,8 +29,13 @@ export class SearchTasksAction implements Action {
   constructor(public payload: ITasksParams) {}
 }
 
+export class ClearTasksAction implements Action {
+  readonly type = CLEAR_TASKS;
+}
+
 export type Actions =
   | GetTasksAction
   | GetTasksSuccessAction
   | GetTasksFailureAction
-  | SearchTasksAction;
+  | SearchTasksAction
+  | ClearTasksAction;
