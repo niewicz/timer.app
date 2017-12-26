@@ -25,6 +25,7 @@ export class SelectClientMenuComponent {
   @Output() create = new EventEmitter<IClient>();
 
   form: FormGroup;
+  config;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
