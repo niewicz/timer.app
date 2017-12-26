@@ -2,10 +2,12 @@
   fxLayout="column"
   fxLayoutAlign="center start">
   <timer-current-time-entry
-    (menu)="handleMenu($event)">
+    (menu)="handleMenu($event)"
+    class="fit-page">
   </timer-current-time-entry>
   <timer-main-navbar-menu
     *ngIf="showMenu"
+    class="fit-page"
     @ngIfAnimation
     (logOut)="handleLogOut()">
   </timer-main-navbar-menu>

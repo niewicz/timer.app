@@ -19,6 +19,7 @@ import { AuthService } from '../../../auth/shared/auth.service';
   selector: 'timer-main-navbar',
   templateUrl: './main-navbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./main-navbar.component.scss'],
   animations: [
     trigger('ngIfAnimation', [
       transition('void => *', [

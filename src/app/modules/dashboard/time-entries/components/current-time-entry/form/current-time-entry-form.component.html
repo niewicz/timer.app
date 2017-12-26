@@ -1,41 +1,45 @@
 <div
   fxLayout="row"
-  fxLayoutAlign="space-between center"
+  fxLayoutAlign="start center"
   class="form">
   <div
-    class="menu-icon">
-    <mat-icon
-      *ngIf="!showMenu"
-      (click)="toggleMenu()">
-      menu
-    </mat-icon>
-    <mat-icon
-      *ngIf="showMenu"
-      (click)="toggleMenu()">
-      keyboard_arrow_up
-    </mat-icon>
-  </div>
-  <div
     fxFlex="20"
-    class="app-title"
-    [routerLink]="['/', 'dashboard']">
-    Timer
-    <sup>
+    fxLayout="row">
+    <div
+      class="menu-icon"
+      fxLayoutAlign="center end">
       <mat-icon
-        class="app-icon">
-        access_time
+        *ngIf="!showMenu"
+        (click)="toggleMenu()">
+        keyboard_arrow_down
       </mat-icon>
-    </sup>
+      <mat-icon
+        *ngIf="showMenu"
+        (click)="toggleMenu()">
+        keyboard_arrow_up
+      </mat-icon>
+    </div>
+    <div
+      class="app-title"
+      [routerLink]="['/', 'dashboard']">
+      Timer
+      <sup>
+        <mat-icon
+          class="app-icon">
+          access_time
+        </mat-icon>
+      </sup>
+    </div>
   </div>
   <form
-    fxFlex="75"
+    fxFlex="80"
     fxLayout="row"
     fxLayoutAlign="end center"
     class="entry">
 
     <div
-      class="item"
-      fxFlex="60">
+      fxFlex
+      class="item">
       <timer-select-task
         [displayText]="'What are you coding?'"
         [selectedTask]="selectedTask"
