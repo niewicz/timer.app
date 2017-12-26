@@ -29,6 +29,7 @@ export interface ITransferTimeEntry {
 
 export interface ITimeEntriesResponse {
   timeEntries: ITimeEntry[];
+  total: number;
 }
 
 export interface ITimeEntryResponse {

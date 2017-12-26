@@ -14,6 +14,7 @@ export class TimeEntriesSelectors {
   );
   private pending$ = this.store.select(state => state.timeEntries.pending);
   private params$ = this.store.select(state => state.timeEntries.params);
+  private total$ = this.store.select(state => state.timeEntries.total);
 
   constructor(private store: Store<State>) {}
 
@@ -27,6 +28,10 @@ export class TimeEntriesSelectors {
 
   public getParams(): Observable<ITimeEntriesParams> {
     return this.params$;
+  }
+
+  public getTotal(): Observable<number> {
+    return this.total$;
   }
 
   public getCurrentTimeEntry(): Observable<ITimeEntry> {

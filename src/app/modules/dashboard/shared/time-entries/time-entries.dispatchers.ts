@@ -17,6 +17,10 @@ export class TimeEntriesDispatchers {
     this.store.dispatch(new timeEntriesActions.GetTimeEntriesAction());
   }
 
+  public loadMoreTimeEntries(): void {
+    this.store.dispatch(new timeEntriesActions.LoadMoreTimeEntriesAction());
+  }
+
   public createTimeEntry(params: ITransferTimeEntry): void {
     this.store.dispatch(new timeEntriesActions.CreateTimeEntryAction(params));
   }

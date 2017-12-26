@@ -9,6 +9,7 @@ import {
   ITimeEntry,
   ITimeEntriesParams,
   ITransferTimeEntry,
+  ITimeEntriesResponse,
 } from './time-entries.interfaces';
 import * as timeEntriesActions from './time-entries.actions';
 import { toPayload } from '@ngrx/effects/src/util';
@@ -23,12 +24,34 @@ export class TimeEntriesEffects {
       this.timeEntriesService
         .getTimeEntries(params)
         .map(
-          (timeEntries: ITimeEntry[]) =>
-            new timeEntriesActions.GetTimeEntriesSuccessAction(timeEntries),
+          (timeEntriesResponse: ITimeEntriesResponse) =>
+            new timeEntriesActions.GetTimeEntriesSuccessAction(
+              timeEntriesResponse,
+            ),
         )
         .catch((error: any) =>
           Observable.of(
             new timeEntriesActions.GetTimeEntriesFailureAction(error),
+          ),
+        ),
+    );
+
+  @Effect()
+  loadMoreTimeEntries$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.LOAD_MORE_TIME_ENTRIES)
+    .withLatestFrom(this.store, (action, state) => state.timeEntries.params)
+    .switchMap((params: ITimeEntriesParams) =>
+      this.timeEntriesService
+        .getTimeEntries(params)
+        .map(
+          (timeEntriesResponse: ITimeEntriesResponse) =>
+            new timeEntriesActions.LoadMoreTimeEntriesSuccessAction(
+              timeEntriesResponse,
+            ),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.LoadMoreTimeEntriesFailureAction(error),
           ),
         ),
     );

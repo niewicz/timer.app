@@ -10,11 +10,16 @@ import { TimeEntriesDispatchers } from '../../../shared/time-entries/time-entrie
 export class TimeEntriesComponent {
   timeEntries$ = this.timeEntriesSelectors.getTimeEntries();
   pending$ = this.timeEntriesSelectors.isPending();
+  total$ = this.timeEntriesSelectors.getTotal();
 
   constructor(
     private timeEntriesDispatchers: TimeEntriesDispatchers,
     private timeEntriesSelectors: TimeEntriesSelectors,
   ) {
     this.timeEntriesDispatchers.getTimeEntries();
+  }
+
+  handleLoadMore() {
+    this.timeEntriesDispatchers.loadMoreTimeEntries();
   }
 }

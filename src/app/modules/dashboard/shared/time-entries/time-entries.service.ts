@@ -20,17 +20,17 @@ export class TimeEntriesService {
     private api: ApiRoutes,
   ) {}
 
-  getTimeEntries(params: ITimeEntriesParams): Observable<ITimeEntry[]> {
+  getTimeEntries(params: ITimeEntriesParams): Observable<ITimeEntriesResponse> {
+    console.log(params);
     return this.http
       .get<ITimeEntriesResponse>(this.api.timeEntriesPath(), {
         params: new HttpParams()
           .set('limit', params.limit ? params.limit.toString() : '')
-          .set('offest', params.offset ? params.offset.toString() : '')
+          .set('offset', params.offset ? params.offset.toString() : '')
           .set('since', params.since ? params.since.toString() : '')
           .set('to', params.to ? params.to.toString() : ''),
       })
       .map(response => this.utils.camelize(response))
-      .map(response => response.timeEntries)
       .catch(error => Observable.throw(error));
   }
 

@@ -6,7 +6,6 @@ import { ITimeEntry } from '../../../../shared/time-entries/time-entries.interfa
 @Component({
   selector: 'timer-time-entries-list',
   templateUrl: './time-entries-list.component.html',
-  styleUrls: ['./time-entries-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeEntriesListComponent {

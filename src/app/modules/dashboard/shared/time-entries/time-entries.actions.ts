@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { ITimeEntriesResponse } from './time-entries.interfaces';
 
 import {
   ITimeEntriesParams,
@@ -13,6 +14,12 @@ import {
 export const GET_TIME_ENTRIES = '[Dahboard] Get Time Entries';
 export const GET_TIME_ENTRIES_SUCCESS = '[Dahboard] Get Time Entries Success';
 export const GET_TIME_ENTRIES_FAILURE = '[Dahboard] Get Time Entries Failure';
+
+export const LOAD_MORE_TIME_ENTRIES = '[Dahboard] Load More Time Entries';
+export const LOAD_MORE_TIME_ENTRIES_SUCCESS =
+  '[Dahboard] Load More Time Entries Success';
+export const LOAD_MORE_TIME_ENTRIES_FAILURE =
+  '[Dahboard] Load More Time Entries Failure';
 
 export const UPDATE_TIME_ENTRY = '[Dashboard] Update Time Entry';
 export const UPDATE_TIME_ENTRY_SUCCESS =
@@ -64,11 +71,25 @@ export class GetTimeEntriesAction implements Action {
 
 export class GetTimeEntriesSuccessAction implements Action {
   readonly type = GET_TIME_ENTRIES_SUCCESS;
-  constructor(public payload: ITimeEntry[]) {}
+  constructor(public payload: ITimeEntriesResponse) {}
 }
 
 export class GetTimeEntriesFailureAction implements Action {
   readonly type = GET_TIME_ENTRIES_FAILURE;
+  constructor(public payload: any) {}
+}
+
+export class LoadMoreTimeEntriesAction implements Action {
+  readonly type = LOAD_MORE_TIME_ENTRIES;
+}
+
+export class LoadMoreTimeEntriesSuccessAction implements Action {
+  readonly type = LOAD_MORE_TIME_ENTRIES_SUCCESS;
+  constructor(public payload: ITimeEntriesResponse) {}
+}
+
+export class LoadMoreTimeEntriesFailureAction implements Action {
+  readonly type = LOAD_MORE_TIME_ENTRIES_FAILURE;
   constructor(public payload: any) {}
 }
 
@@ -179,6 +200,9 @@ export type Actions =
   | GetTimeEntriesAction
   | GetTimeEntriesSuccessAction
   | GetTimeEntriesFailureAction
+  | LoadMoreTimeEntriesAction
+  | LoadMoreTimeEntriesSuccessAction
+  | LoadMoreTimeEntriesFailureAction
   | UpdateTimeEntryAction
   | UpdateTimeEntrySuccessAction
   | UpdateTimeEntryFailureAction
