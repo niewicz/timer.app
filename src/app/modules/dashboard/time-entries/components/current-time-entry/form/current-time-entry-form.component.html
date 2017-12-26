@@ -39,7 +39,8 @@
       <timer-select-task
         [displayText]="'What are you coding?'"
         [selectedTask]="timeEntry?.task"
-        [navbar]="true">
+        [navbar]="true"
+        (selectTask)="onSelectTask($event)">
       </timer-select-task>
     </div>
 

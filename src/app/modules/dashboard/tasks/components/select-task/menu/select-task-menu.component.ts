@@ -30,7 +30,7 @@ export class SelectTaskMenuComponent {
   }
 
   onBlur() {
-    this.forceClear.emit();
+    // this.forceClear.emit();
   }
 
   onSearch(q: string): void {

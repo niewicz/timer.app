@@ -17,6 +17,7 @@ import {
   ITimeEntry,
 } from './../../../../shared/time-entries/time-entries.interfaces';
 import { IProject } from '../../../../shared/projects/projects.interfaces';
+import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 
 @Component({
   selector: 'timer-current-time-entry-form',
@@ -40,6 +41,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   duration = '00:00:00';
 
   selectedProject: IProject;
+  selectedTask: ITask;
 
   constructor(
     private fb: FormBuilder,
@@ -48,12 +50,9 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   ) {
     this.timeEntry = this.fb.group({
       id: '',
-      price: '',
-      currency: '',
       startAt: '',
       endAt: '',
       taskId: '',
-      taskTitle: '',
       projectId: '',
     });
   }
@@ -76,10 +75,8 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     if (this.currentTimeEntry && this.currentTimeEntry.task) {
       this.timeEntry.patchValue({
         taskId: this.currentTimeEntry.task.id,
-        taskTitle: this.currentTimeEntry.task.title,
-        price: this.currentTimeEntry.task.price,
-        currency: this.currentTimeEntry.task.currency,
       });
+      this.selectedTask = this.currentTimeEntry.task;
 
       if (this.currentTimeEntry.task.project) {
         this.selectedProject = this.currentTimeEntry.task.project;
@@ -118,15 +115,17 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     this.timeEntry.reset();
   }
 
-  // changeTask(id: number): void {
-  //   this.timeEntry.patchValue({ taskId: id });
-  //   this.update.emit(this.timeEntry.value);
-  // }
+  onSelectTask(event: ITask): void {
+    this.timeEntry.patchValue({ taskId: event.id });
+    this.selectedTask = event;
+    if (event.project) {
+      this.selectedProject = event.project;
+    }
 
-  // changeTaskTitle(title: string): void {
-  //   this.timeEntry.patchValue({ taskTitle: title });
-  //   this.update.emit(this.timeEntry.value);
-  // }
+    if (this.toggling) {
+      this.update.emit(this.timeEntry.value);
+    }
+  }
 
   onSelectProject(event: IProject): void {
     this.timeEntry.patchValue({ projectId: event.id });
