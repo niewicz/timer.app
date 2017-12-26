@@ -21,7 +21,7 @@ const initialState: TimeEntriesState = {
     to: undefined,
   },
   pending: false,
-  total: 0;
+  total: 0,
   errors: undefined,
 };
 
