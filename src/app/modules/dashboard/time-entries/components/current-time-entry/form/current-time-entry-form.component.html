@@ -6,9 +6,8 @@
     class="menu-icon">
     <mat-icon
       *ngIf="!showMenu"
-      fxLayoutAlign="center end"
       (click)="toggleMenu()">
-      keyboard_arrow_down
+      menu
     </mat-icon>
     <mat-icon
       *ngIf="showMenu"
@@ -18,7 +17,8 @@
   </div>
   <div
     fxFlex="20"
-    class="app-title">
+    class="app-title"
+    [routerLink]="['/', 'dashboard']">
     Timer
     <sup>
       <mat-icon

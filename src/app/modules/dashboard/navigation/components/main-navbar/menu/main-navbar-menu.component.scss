@@ -19,4 +19,8 @@ mat-icon {
   &:hover {
     color: #fefefe;
   }
+
+  &:focus {
+    outline: 0;
+  }
 }

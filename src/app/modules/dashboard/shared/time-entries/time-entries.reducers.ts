@@ -71,6 +71,26 @@ export function reducer(
         pending: false,
         errors: action.payload,
       };
+    case timeEntriesActions.STOP_CURRENT_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.STOP_CURRENT_TIME_ENTRY_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        currentTimeEntry: undefined,
+        timeEntries: [...state.timeEntries, action.payload],
+        errors: undefined,
+      };
+    case timeEntriesActions.STOP_CURRENT_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
     default:
       return state;
   }

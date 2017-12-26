@@ -1,17 +1,21 @@
-import { UtilsService } from './../../../../../../core/services/utils.service';
-import { Subscription } from 'rxjs/Subscription';
 import {
   Component,
   ChangeDetectionStrategy,
-  OnInit,
+  OnChanges,
   Output,
   EventEmitter,
   ChangeDetectorRef,
+  Input,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
-import { ITransferTimeEntry } from './../../../../shared/time-entries/time-entries.interfaces';
+import { UtilsService } from './../../../../../../core/services/utils.service';
+import {
+  ITransferTimeEntry,
+  ITimeEntry,
+} from './../../../../shared/time-entries/time-entries.interfaces';
 
 @Component({
   selector: 'timer-current-time-entry-form',
@@ -19,7 +23,14 @@ import { ITransferTimeEntry } from './../../../../shared/time-entries/time-entri
   styleUrls: ['./current-time-entry-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class CurrentTimeEntryFormComponent implements OnInit {
+export class CurrentTimeEntryFormComponent implements OnChanges {
+  @Input() currentTimeEntry: ITimeEntry;
+
+  @Output() menu = new EventEmitter<boolean>();
+  @Output() create = new EventEmitter<ITransferTimeEntry>();
+  @Output() update = new EventEmitter<ITransferTimeEntry>();
+  @Output() stop = new EventEmitter<ITransferTimeEntry>();
+
   showMenu = false;
 
   timeEntry: FormGroup;
@@ -27,31 +38,34 @@ export class CurrentTimeEntryFormComponent implements OnInit {
   toggled$: Subscription;
   duration = '00:00:00';
 
-  @Output() menu = new EventEmitter<boolean>();
-  @Output() create = new EventEmitter<ITransferTimeEntry>();
-  @Output() update = new EventEmitter<ITransferTimeEntry>();
-  @Output() stop = new EventEmitter<ITransferTimeEntry>();
-
   constructor(
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
     private utils: UtilsService,
   ) {
     this.timeEntry = this.fb.group({
+      id: '',
+      price: '',
+      currency: '',
+      startAt: '',
+      endAt: '',
       taskId: '',
       taskTitle: '',
       projectId: '',
       projectTitle: '',
       clientId: '',
       clientName: '',
-      price: '',
-      currency: '',
-      startAt: '',
-      endAt: '',
     });
   }
 
-  ngOnInit() {}
+  ngOnChanges() {
+    if (this.currentTimeEntry) {
+      this.timeEntry.patchValue({
+        id: this.currentTimeEntry.id,
+        startAt: this.currentTimeEntry.startAt,
+      });
+    }
+  }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -77,6 +91,7 @@ export class CurrentTimeEntryFormComponent implements OnInit {
     this.toggled$.unsubscribe();
     this.timeEntry.patchValue({ endAt: new Date().toString() });
     this.stop.emit(this.timeEntry.value);
+    this.timeEntry.reset();
   }
 
   // changeTask(id: number): void {

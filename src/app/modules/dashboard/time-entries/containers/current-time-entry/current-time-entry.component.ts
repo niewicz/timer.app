@@ -17,6 +17,8 @@ import { TimeEntriesSelectors } from '../../../shared/time-entries/time-entries.
 export class CurrentTimeEntryComponent {
   @Output() menu = new EventEmitter<boolean>();
 
+  currentTimeEntry$ = this.timeEntriesSelectors.getCurrentTimeEntry();
+
   constructor(
     private fb: FormBuilder,
     private timeEntriesDispatchers: TimeEntriesDispatchers,

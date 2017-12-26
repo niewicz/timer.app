@@ -14,19 +14,24 @@ import reduce from 'lodash/reduce';
 @Injectable()
 export class UtilsService {
   public getDuration(later: string, earlier: string): string {
-    const d1 = new Date(later);
-    const d2 = new Date(earlier);
+    const t1 = new Date(later).getTime();
+    const t2 = new Date(earlier).getTime();
 
-    const days = d1.getDate() - d2.getDate();
+    const diff = t1 - t2;
 
-    const h = d1.getHours() - d2.getHours();
-    const hours = h < 10 ? '0' + h.toString() : h.toString();
+    const s = Math.floor(diff / 1000);
+    let tmp = s % 60;
+    const seconds = tmp < 10 ? '0' + tmp.toString() : tmp.toString();
 
-    const m = d1.getMinutes() - d2.getMinutes();
-    const minutes = m < 10 ? '0' + m.toString() : m.toString();
+    const m = Math.floor(s / 60);
+    tmp = m % 60;
+    const minutes = tmp < 10 ? '0' + tmp.toString() : tmp.toString();
 
-    const s = d1.getSeconds() - d2.getSeconds();
-    const seconds = s < 10 ? '0' + s.toString() : s.toString();
+    const h = Math.floor(m / 60);
+    tmp = h % 60;
+    const hours = tmp < 10 ? '0' + tmp.toString() : tmp.toString();
+
+    const days = Math.floor(h / 24);
 
     if (days > 0) {
       return `${days}:${hours}:${minutes}:${seconds}`;
