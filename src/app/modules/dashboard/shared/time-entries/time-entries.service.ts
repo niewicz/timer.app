@@ -52,7 +52,7 @@ export class TimeEntriesService {
       .catch(error => Observable.throw(error));
   }
 
-  updateTimeEntry(params: ITransferTimeEntry): Observable<ITimeEntry> {
+  updateTimeEntry(params: ITimeEntry): Observable<ITimeEntry> {
     return this.http
       .patch<ITimeEntryResponse>(this.api.timeEntryPath(params.id), {
         time_entry: this.utils.decamelize(params),

@@ -81,6 +81,32 @@ export function reducer(
         pending: false,
         errors: action.payload,
       };
+    case timeEntriesActions.UPDATE_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.UPDATE_TIME_ENTRY_SUCCESS:
+      const updatedTimeEntry = action.payload;
+      const updatedTimeEntriesList = state.timeEntries.slice();
+      const indexOfTimeEntry = updatedTimeEntriesList.findIndex(
+        te => te.id === updatedTimeEntry.id,
+      );
+      updatedTimeEntriesList.splice(indexOfTimeEntry, 1, updatedTimeEntry);
+
+      return {
+        ...state,
+        peding: false,
+        errors: undefined,
+        timeEntries: updatedTimeEntriesList,
+      };
+    case timeEntriesActions.UPDATE_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
     case timeEntriesActions.CREATE_TIME_ENTRY:
       return {
         ...state,

@@ -10,7 +10,8 @@
     fxFlex="49">
     <timer-select-task
       [displayText]="'Describe what you have done'"
-      [selectedTask]="timeEntry?.task">
+      [selectedTask]="timeEntry?.task"
+      (selectTask)="handleSelectTask($event)">
     </timer-select-task>
   </div>
 

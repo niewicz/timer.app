@@ -94,17 +94,17 @@ export class LoadMoreTimeEntriesFailureAction implements Action {
 }
 
 export class UpdateTimeEntryAction implements Action {
-  readonly type = UPDATE_CURRENT_TIME_ENTRY;
-  constructor(public payload: ITransferTimeEntry) {}
+  readonly type = UPDATE_TIME_ENTRY;
+  constructor(public payload: ITimeEntry) {}
 }
 
 export class UpdateTimeEntrySuccessAction implements Action {
-  readonly type = UPDATE_CURRENT_TIME_ENTRY_SUCCESS;
+  readonly type = UPDATE_TIME_ENTRY_SUCCESS;
   constructor(public payload: ITimeEntry) {}
 }
 
 export class UpdateTimeEntryFailureAction implements Action {
-  readonly type = UPDATE_CURRENT_TIME_ENTRY_FAILURE;
+  readonly type = UPDATE_TIME_ENTRY_FAILURE;
   constructor(public payload: any) {}
 }
 
@@ -154,7 +154,7 @@ export class CreateTimeEntryFailureAction implements Action {
 
 export class UpdateCurrentTimeEntryAction implements Action {
   readonly type = UPDATE_CURRENT_TIME_ENTRY;
-  constructor(public payload: ITransferTimeEntry) {}
+  constructor(public payload: ITimeEntry) {}
 }
 
 export class UpdateCurrentTimeEntrySuccessAction implements Action {

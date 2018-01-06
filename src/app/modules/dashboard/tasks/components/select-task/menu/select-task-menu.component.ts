@@ -25,6 +25,7 @@ export class SelectTaskMenuComponent {
   @Output() forceClear = new EventEmitter();
 
   onClick(task: ITask): void {
+    console.log('select task menu');
     this.selectTask.emit(task);
     this.forceClear.emit();
   }

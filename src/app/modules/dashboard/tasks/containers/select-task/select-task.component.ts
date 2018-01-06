@@ -34,6 +34,7 @@ export class SelectTaskComponent {
   }
 
   handleSelectTask(event: ITask): void {
+    console.log('select task');
     this.selectTask.emit(event);
   }
 
