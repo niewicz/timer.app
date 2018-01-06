@@ -29,6 +29,10 @@ export class TimeEntriesDispatchers {
     this.store.dispatch(new timeEntriesActions.UpdateTimeEntryAction(params));
   }
 
+  public getCurrentTimeEntry(): void {
+    this.store.dispatch(new timeEntriesActions.GetCurrentTimeEntryAction());
+  }
+
   public updateCurrentTimeEntry(params: ITransferTimeEntry): void {
     this.store.dispatch(
       new timeEntriesActions.UpdateCurrentTimeEntryAction(params),

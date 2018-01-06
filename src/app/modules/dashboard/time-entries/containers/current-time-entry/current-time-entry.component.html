@@ -1,8 +1,9 @@
 <timer-current-time-entry-form
   [currentTimeEntry]="currentTimeEntry$ | async"
   (menu)="handleMenu($event)"
-  (create)="handleCreate($event)"
-  (update)="handleUpdate($event)"
+  (createTimeEntry)="handleCreateTimeEntry($event)"
+  (updateTimeEntry)="handleUpdateTimeEntry($event)"
+  (updateTask)="handleUpdateTask($event)"
   (stop)="handleStop($event)"
   style="width: stretch;">
 </timer-current-time-entry-form>

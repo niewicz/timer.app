@@ -127,6 +127,26 @@ export class TimeEntriesEffects {
         ),
     );
 
+  @Effect()
+  updateCurrntTimeEntry$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY)
+    .map(toPayload)
+    .switchMap((payload: ITimeEntry) =>
+      this.timeEntriesService
+        .updateTimeEntry(payload)
+        .map(
+          (timeEntry: ITimeEntry) =>
+            new timeEntriesActions.UpdateCurrentTimeEntrySuccessAction(
+              timeEntry,
+            ),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.UpdateCurrentTimeEntryFailureAction(error),
+          ),
+        ),
+    );
+
   constructor(
     private actions$: Actions,
     private timeEntriesService: TimeEntriesService,

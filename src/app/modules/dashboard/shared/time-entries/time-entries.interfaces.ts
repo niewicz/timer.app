@@ -9,7 +9,6 @@ export interface ITimeEntry {
   task?: ITask;
   taskId?: number;
   project?: IProject;
-  projectId?: number;
 }
 
 export interface ITimeEntriesParams {

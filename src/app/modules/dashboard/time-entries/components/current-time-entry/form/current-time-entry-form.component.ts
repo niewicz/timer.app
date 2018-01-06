@@ -29,9 +29,10 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   @Input() currentTimeEntry: ITimeEntry;
 
   @Output() menu = new EventEmitter<boolean>();
-  @Output() create = new EventEmitter<ITransferTimeEntry>();
-  @Output() update = new EventEmitter<ITransferTimeEntry>();
-  @Output() stop = new EventEmitter<ITransferTimeEntry>();
+  @Output() createTimeEntry = new EventEmitter<ITransferTimeEntry>();
+  @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
+  @Output() stop = new EventEmitter<ITimeEntry>();
+  @Output() updateTask = new EventEmitter<ITask>();
 
   showMenu = false;
 
@@ -53,23 +54,17 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
       startAt: '',
       endAt: '',
       taskId: '',
-      projectId: '',
     });
   }
 
   ngOnChanges() {
+    console.log(this.currentTimeEntry);
     if (this.currentTimeEntry) {
       this.timeEntry.patchValue({
         id: this.currentTimeEntry.id,
         startAt: this.currentTimeEntry.startAt,
       });
-    }
-
-    if (this.currentTimeEntry && this.currentTimeEntry.project) {
-      this.selectedProject = this.currentTimeEntry.project;
-      this.timeEntry.patchValue({
-        projectId: this.currentTimeEntry.project.id,
-      });
+      this.continueToggling();
     }
 
     if (this.currentTimeEntry && this.currentTimeEntry.task) {
@@ -87,14 +82,14 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     }
   }
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.showMenu = !this.showMenu;
     this.menu.emit(this.showMenu);
   }
 
   startToggling(): void {
     this.timeEntry.patchValue({ startAt: new Date().toString() });
-    this.create.emit(this.timeEntry.value);
+    this.createTimeEntry.emit(this.timeEntry.value);
     this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
       this.duration = this.utils.getDuration(
         new Date().toString(),
@@ -103,6 +98,17 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
       this.cd.detectChanges();
     });
     this.toggling = true;
+  }
+
+  continueToggling(): void {
+    this.toggling = true;
+    this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
+      this.duration = this.utils.getDuration(
+        new Date().toString(),
+        this.timeEntry.get('startAt').value,
+      );
+      this.cd.detectChanges();
+    });
   }
 
   stopToggling(): void {
@@ -117,22 +123,15 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
 
   onSelectTask(event: ITask): void {
     this.timeEntry.patchValue({ taskId: event.id });
-    this.selectedTask = event;
-    if (event.project) {
-      this.selectedProject = event.project;
-    }
 
     if (this.toggling) {
-      this.update.emit(this.timeEntry.value);
+      this.updateTimeEntry.emit(this.timeEntry.value);
     }
   }
 
   onSelectProject(event: IProject): void {
-    this.timeEntry.patchValue({ projectId: event.id });
-    this.selectedProject = event;
-
-    if (this.toggling) {
-      this.update.emit(this.timeEntry.value);
-    }
+    this.updateTask.emit(
+      Object.assign({}, this.selectedTask, { projectId: event.id }),
+    );
   }
 }

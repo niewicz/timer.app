@@ -6,10 +6,6 @@ import {
   ITimeEntry,
   ITransferTimeEntry,
 } from './time-entries.interfaces';
-import {
-  GetClientsSuccessAction,
-  GetClientsFailureAction,
-} from '../clients/clients.actions';
 
 export const GET_TIME_ENTRIES = '[Dahboard] Get Time Entries';
 export const GET_TIME_ENTRIES_SUCCESS = '[Dahboard] Get Time Entries Success';
@@ -210,8 +206,8 @@ export type Actions =
   | RemoveTimeEntrySuccessAction
   | RemoveTimeEntryFailureAction
   | GetCurrentTimeEntryAction
-  | GetClientsSuccessAction
-  | GetClientsFailureAction
+  | GetCurrentTimeEntrySuccessAction
+  | GetCurrentTimeEntryFailureAction
   | CreateTimeEntryAction
   | CreateTimeEntrySuccessAction
   | CreateTimeEntryFailureAction

@@ -127,6 +127,44 @@ export function reducer(
         pending: false,
         errors: action.payload,
       };
+    case timeEntriesActions.GET_CURRENT_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.GET_CURRENT_TIME_ENTRY_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        currentTimeEntry: action.payload,
+      };
+    case timeEntriesActions.GET_CURRENT_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+    case timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        currentTimeEntry: action.payload,
+      };
+    case timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
     case timeEntriesActions.STOP_CURRENT_TIME_ENTRY:
       return {
         ...state,
@@ -173,8 +211,15 @@ function stateAfterTaskUpdate(state, updatedTask): TimeEntriesState {
     }
   });
 
+  const newCurrentTimeEntry = Object.assign({}, state.currentTimeEntry);
+
+  if ((newCurrentTimeEntry.taskId = updatedTask.id)) {
+    newCurrentTimeEntry.task = updatedTask;
+  }
+
   return {
     ...state,
+    currentTimeEntry: newCurrentTimeEntry,
     timeEntries: newTimeEntries,
   };
 }
