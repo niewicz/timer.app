@@ -4,6 +4,8 @@ import {
   Output,
   ChangeDetectionStrategy,
   EventEmitter,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 
 import { ITask } from '../../../../shared/tasks/tasks.interfaces';
@@ -25,12 +27,14 @@ export class SelectTaskMenuComponent {
   @Output() search = new EventEmitter<string>();
   @Output() forceClear = new EventEmitter();
 
+  @ViewChild('inputTask') input: ElementRef;
+
   onClick(task: ITask): void {
     this.selectTask.emit(task);
     this.forceClear.emit();
   }
 
-  onBlur(event: string): void {
+  onEnter(event: string): void {
     if (event.length > 1) {
       if (this.selectedTask && this.selectedTask.project) {
         this.createTask.emit({
@@ -40,6 +44,16 @@ export class SelectTaskMenuComponent {
       } else {
         this.createTask.emit({ title: event });
       }
+    } else {
+      if (this.selectedTask) {
+        this.input.nativeElement.value = this.selectedTask.title;
+      }
+    }
+  }
+
+  onBlur(event: string) {
+    if (event.length < 2 && this.selectedTask) {
+      this.input.nativeElement.value = this.selectedTask.title;
     }
   }
 
