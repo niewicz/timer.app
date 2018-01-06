@@ -6,6 +6,7 @@ export interface TasksState {
   params: ITasksParams;
   pending: boolean;
   errors: any;
+  newTask: ITask;
 }
 
 const initialState: TasksState = {
@@ -18,6 +19,7 @@ const initialState: TasksState = {
   },
   pending: false,
   errors: undefined,
+  newTask: undefined,
 };
 
 export function reducer(state = initialState, action: tasksActions.Actions) {
@@ -53,6 +55,48 @@ export function reducer(state = initialState, action: tasksActions.Actions) {
           ...state.params,
           q: action.payload.q,
         },
+      };
+    case tasksActions.CREATE_TASK:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case tasksActions.CREATE_TASK_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        newTask: action.payload,
+      };
+    case tasksActions.CREATE_TASK_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+    case tasksActions.CLEAR_NEW_TASK:
+      return {
+        ...state,
+        newTask: undefined,
+      };
+    case tasksActions.UPDATE_TASK:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case tasksActions.UPDATE_TASK_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+      };
+    case tasksActions.UPDATE_TASK_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
       };
     case tasksActions.CLEAR_TASKS:
       return {

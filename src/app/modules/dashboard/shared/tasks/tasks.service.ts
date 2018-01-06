@@ -5,7 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { UtilsService } from '../../../../core/services/utils.service';
 
 import { ApiRoutes } from '../../../../core/services/api-routes.service';
-import { ITask, ITasksParams, ITasksResponse } from './tasks.interfaces';
+import {
+  ITask,
+  ITasksParams,
+  ITaskResponse,
+  ITasksResponse,
+} from './tasks.interfaces';
 
 @Injectable()
 export class TasksService {
@@ -30,6 +35,24 @@ export class TasksService {
       })
       .map(response => this.utils.camelize(response))
       .map(response => response.tasks)
+      .catch(error => Observable.throw(error));
+  }
+
+  createTask(params: ITask): Observable<ITask> {
+    const task = this.utils.decamelize(params);
+    return this.http
+      .post<ITaskResponse>(this.api.tasksPath(), { task })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.task)
+      .catch(error => Observable.throw(error));
+  }
+
+  updateTask(params: ITask): Observable<ITask> {
+    const task = this.utils.decamelize(params);
+    return this.http
+      .patch<ITaskResponse>(this.api.taskPath(params.id), { task })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.task)
       .catch(error => Observable.throw(error));
   }
 }

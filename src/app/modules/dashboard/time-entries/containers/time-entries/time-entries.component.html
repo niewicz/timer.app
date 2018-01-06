@@ -1,6 +1,7 @@
 <timer-time-entries-list
   [timeEntries]="timeEntries$ | async"
-  (updateTimeEntry)="handleUpdateTimeEntry($event)">
+  (updateTimeEntry)="handleUpdateTimeEntry($event)"
+  (updateTask)="handleUpdateTask($event)">
 </timer-time-entries-list>
 <div
   fxLayoutAlign="center center"

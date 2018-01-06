@@ -21,6 +21,7 @@ export class SelectTaskMenuComponent {
   @Input() navbar = false;
 
   @Output() selectTask = new EventEmitter<ITask>();
+  @Output() createTask = new EventEmitter<ITask>();
   @Output() search = new EventEmitter<string>();
   @Output() forceClear = new EventEmitter();
 
@@ -30,8 +31,10 @@ export class SelectTaskMenuComponent {
     this.forceClear.emit();
   }
 
-  onBlur() {
-    // this.forceClear.emit();
+  onBlur(event: string): void {
+    if (event.length > 0) {
+      this.createTask.emit({ title: event });
+    }
   }
 
   onSearch(q: string): void {

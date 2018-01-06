@@ -17,14 +17,13 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
   selector: 'timer-time-entries-item',
   templateUrl: './time-entries-item.component.html',
   styleUrls: ['./time-entries-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeEntriesItemComponent {
   showIcons = false;
 
   @Input() timeEntry: ITimeEntry;
 
-  // @Output() updateProject = new EventEmitter<{id: }>();
+  @Output() updateTask = new EventEmitter<ITask>();
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
 
   get duration() {
@@ -42,13 +41,14 @@ export class TimeEntriesItemComponent {
   }
 
   handleSelectTask(event: ITask): void {
-    console.log('time entries item');
     this.updateTimeEntry.emit(
       Object.assign({}, this.timeEntry, { taskId: event.id }),
     );
   }
 
   handleSelectProject(event: IProject): void {
-    // this.updateProject.emit(event);
+    this.updateTask.emit(
+      Object.assign({}, this.timeEntry.task, { projectId: event.id }),
+    );
   }
 }

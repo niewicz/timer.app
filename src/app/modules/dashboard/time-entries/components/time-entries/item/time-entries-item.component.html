@@ -20,7 +20,7 @@
     fxLayoutAlign="center center"
     class="add-project">
     <timer-select-project
-      [selectedProject]="timeEntry?.project"
+      [selectedProject]="timeEntry?.task?.project"
       [displayText]="'Select Project'"
       (selectProject)="handleSelectProject($event)">
     </timer-select-project>

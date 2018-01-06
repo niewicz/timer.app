@@ -21,8 +21,10 @@ export class SelectTaskComponent {
   @Input() navbar: boolean;
 
   @Output() selectTask = new EventEmitter<ITask>();
+  @Output() createTask = new EventEmitter<ITask>();
 
   tasks$ = this.selectors.getTasks();
+  newTask$ = this.selectors.getNewTask();
 
   constructor(
     private dispatchers: TasksDispatchers,
@@ -34,11 +36,20 @@ export class SelectTaskComponent {
   }
 
   handleSelectTask(event: ITask): void {
-    console.log('select task');
     this.selectTask.emit(event);
   }
 
-  handleForceClear() {
+  handleCreateTask(event: ITask): void {
+    this.dispatchers.createTask(event);
+    this.newTask$.subscribe(task => {
+      if (task) {
+        this.selectTask.emit(task);
+        this.dispatchers.clearNewTask();
+      }
+    });
+  }
+
+  handleForceClear(): void {
     this.dispatchers.clearTasks();
   }
 }

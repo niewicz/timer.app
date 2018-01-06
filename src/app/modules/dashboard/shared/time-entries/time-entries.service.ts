@@ -21,7 +21,6 @@ export class TimeEntriesService {
   ) {}
 
   getTimeEntries(params: ITimeEntriesParams): Observable<ITimeEntriesResponse> {
-    console.log(params);
     return this.http
       .get<ITimeEntriesResponse>(this.api.timeEntriesPath(), {
         params: new HttpParams()

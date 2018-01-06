@@ -1,4 +1,5 @@
 import * as timeEntriesActions from './time-entries.actions';
+import * as tasksActions from '../tasks/tasks.actions';
 import { ITimeEntry, ITimeEntriesParams } from './time-entries.interfaces';
 
 export interface TimeEntriesState {
@@ -27,7 +28,7 @@ const initialState: TimeEntriesState = {
 
 export function reducer(
   state = initialState,
-  action: timeEntriesActions.Actions,
+  action: timeEntriesActions.Actions | tasksActions.Actions,
 ) {
   switch (action.type) {
     case timeEntriesActions.GET_TIME_ENTRIES:
@@ -146,7 +147,36 @@ export function reducer(
         pending: false,
         errors: action.payload,
       };
+    case tasksActions.UPDATE_TASK_SUCCESS:
+      return stateAfterTaskUpdate(state, action.payload);
     default:
       return state;
   }
+}
+
+function stateAfterTaskUpdate(state, updatedTask): TimeEntriesState {
+  const newTimeEntries = state.timeEntries.slice();
+
+  let indexOfTimeEntry;
+  let updatedTimeEntry;
+
+  console.log(newTimeEntries);
+  state.timeEntries.forEach(timeEntry => {
+    if (timeEntry.taskId === updatedTask.id) {
+      indexOfTimeEntry = newTimeEntries.findIndex(te => te.id === timeEntry.id);
+      updatedTimeEntry = Object.assign({}, timeEntry, {
+        task: updatedTask,
+        taskId: updatedTask.id,
+        project: updatedTask.project,
+        projectId: updatedTask.projectId,
+      });
+      newTimeEntries.splice(indexOfTimeEntry, 1, updatedTimeEntry);
+    }
+  });
+  console.log(newTimeEntries);
+
+  return {
+    ...state,
+    timeEntries: newTimeEntries,
+  };
 }

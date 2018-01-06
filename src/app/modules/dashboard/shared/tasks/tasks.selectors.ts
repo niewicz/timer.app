@@ -9,6 +9,7 @@ export class TasksSelectors {
   private tasks$ = this.store.select(state => state.tasks.tasks);
   private pending$ = this.store.select(state => state.tasks.pending);
   private params$ = this.store.select(state => state.tasks.params);
+  private newTask$ = this.store.select(state => state.tasks.newTask);
 
   constructor(private store: Store<State>) {}
 
@@ -22,5 +23,9 @@ export class TasksSelectors {
 
   public getParams(): Observable<ITasksParams> {
     return this.params$;
+  }
+
+  public getNewTask(): Observable<ITask> {
+    return this.newTask$;
   }
 }
