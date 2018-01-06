@@ -3,7 +3,7 @@
   class="input"
   [ngClass]="{'title-navbar': navbar, 'title': !navbar}"
   (input)="onSearch($event.target.value)"
-  (blur)="onBlur($event.target.value)"
+  (keydown.enter)="onBlur($event.target.value)"
   [value]="selectedTask?.title"
   [placeholder]="displayText ? displayText : ''"
   [matAutocomplete]="auto">

@@ -1,4 +1,5 @@
 import { IProject } from './../projects/projects.interfaces';
+
 export interface ITask {
   id?: number;
   projectId?: number;

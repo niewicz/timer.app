@@ -26,14 +26,20 @@ export class SelectTaskMenuComponent {
   @Output() forceClear = new EventEmitter();
 
   onClick(task: ITask): void {
-    console.log('select task menu');
     this.selectTask.emit(task);
     this.forceClear.emit();
   }
 
   onBlur(event: string): void {
-    if (event.length > 0) {
-      this.createTask.emit({ title: event });
+    if (event.length > 1) {
+      if (this.selectedTask && this.selectedTask.project) {
+        this.createTask.emit({
+          title: event,
+          projectId: this.selectedTask.projectId,
+        });
+      } else {
+        this.createTask.emit({ title: event });
+      }
     }
   }
 

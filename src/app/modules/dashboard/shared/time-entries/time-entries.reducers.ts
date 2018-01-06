@@ -160,7 +160,6 @@ function stateAfterTaskUpdate(state, updatedTask): TimeEntriesState {
   let indexOfTimeEntry;
   let updatedTimeEntry;
 
-  console.log(newTimeEntries);
   state.timeEntries.forEach(timeEntry => {
     if (timeEntry.taskId === updatedTask.id) {
       indexOfTimeEntry = newTimeEntries.findIndex(te => te.id === timeEntry.id);
@@ -173,7 +172,6 @@ function stateAfterTaskUpdate(state, updatedTask): TimeEntriesState {
       newTimeEntries.splice(indexOfTimeEntry, 1, updatedTimeEntry);
     }
   });
-  console.log(newTimeEntries);
 
   return {
     ...state,
