@@ -6,6 +6,7 @@ export interface ProjectsState {
   params: IProjectsParams;
   pending: boolean;
   errors: any;
+  total: number;
 }
 
 const initialState: ProjectsState = {
@@ -18,6 +19,7 @@ const initialState: ProjectsState = {
   },
   pending: false,
   errors: undefined,
+  total: undefined,
 };
 
 export function reducer(state = initialState, action: projectsActions.Actions) {
@@ -39,10 +41,41 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
         ...state,
         pending: false,
         errors: undefined,
-        projects: action.payload,
+        projects: action.payload.projects,
+        total: action.payload.total,
       };
 
     case projectsActions.GET_PROJECTS_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case projectsActions.LOAD_MORE_PROJECTS:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+        params: {
+          ...state.params,
+          limit: 15,
+          offset: state.projects.length,
+        },
+      };
+
+    case projectsActions.LOAD_MORE_PROJECTS_SUCCESS:
+      const afterLoadMore = state.projects.concat(action.payload.projects);
+
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        projects: afterLoadMore,
+        total: action.payload.total,
+      };
+
+    case projectsActions.LOAD_MORE_PROJECTS_FAILURE:
       return {
         ...state,
         pending: false,

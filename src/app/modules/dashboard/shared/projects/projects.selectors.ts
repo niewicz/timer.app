@@ -9,6 +9,7 @@ export class ProjectsSelectors {
   private projects$ = this.store.select(state => state.projects.projects);
   private pending$ = this.store.select(state => state.projects.pending);
   private params$ = this.store.select(state => state.projects.params);
+  private total$ = this.store.select(state => state.projects.total);
 
   constructor(private store: Store<State>) {}
 
@@ -22,5 +23,9 @@ export class ProjectsSelectors {
 
   public getParams(): Observable<IProjectsParams> {
     return this.params$;
+  }
+
+  public getTotal(): Observable<number> {
+    return this.total$;
   }
 }

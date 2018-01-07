@@ -17,6 +17,7 @@ export interface IProjectsParams {
 
 export interface IProjectsResponse {
   projects: IProject[];
+  total: number;
 }
 
 export interface IProjectResponse {

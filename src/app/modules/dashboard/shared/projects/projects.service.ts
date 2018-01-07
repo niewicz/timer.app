@@ -19,17 +19,16 @@ export class ProjectsService {
     private api: ApiRoutes,
   ) {}
 
-  getProjects(params: IProjectsParams): Observable<IProject[]> {
+  getProjects(params: IProjectsParams): Observable<IProjectsResponse> {
     return this.http
       .get<IProjectsResponse>(this.api.projectsPath(), {
         params: new HttpParams()
           .set('limit', params.limit ? params.limit.toString() : '')
-          .set('offest', params.offset ? params.offset.toString() : '')
+          .set('offset', params.offset ? params.offset.toString() : '')
           .set('client_id', params.clientId ? params.clientId.toString() : '')
           .set('q', params.q ? params.q : ''),
       })
       .map(response => this.utils.camelize(response))
-      .map(response => response.projects)
       .catch(error => Observable.throw(error));
   }
 

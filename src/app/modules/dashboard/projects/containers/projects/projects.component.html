@@ -4,3 +4,20 @@
 <timer-projects-list
   [projects]="projects$ | async">
 </timer-projects-list>
+<div
+  fxLayoutAlign="center center"
+  style="padding-bottom: 20px; padding-top: 20px;">
+  <mat-progress-spinner
+    *ngIf="pending$ | async"
+    color="warn"
+    mode="indeterminate">
+  </mat-progress-spinner>
+  <button
+    *ngIf="(total$ | async) > (projects$ | async)?.length && !(pending$ | async)"
+    mat-raised-button
+    color="warn"
+    class="app-button"
+    (click)="handleLoadMore()">
+    Load more
+  </button>
+</div>

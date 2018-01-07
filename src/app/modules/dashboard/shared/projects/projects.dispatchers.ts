@@ -13,6 +13,10 @@ export class ProjectsDispatchers {
     this.store.dispatch(new projectsActions.GetProjectsAction());
   }
 
+  public loadMoreProjects(): void {
+    this.store.dispatch(new projectsActions.LoadMoreProjectsAction());
+  }
+
   public searchProjects(params: IProjectsParams): void {
     this.store.dispatch(new projectsActions.SearchProjectsAction(params));
   }

@@ -9,6 +9,8 @@ import { ProjectsDispatchers } from '../../../shared/projects/projects.dispatche
 })
 export class ProjectsComponent {
   projects$ = this.projectsSelectors.getProjects();
+  pending$ = this.projectsSelectors.isPending();
+  total$ = this.projectsSelectors.getTotal();
 
   constructor(
     private projectsDispatchers: ProjectsDispatchers,
@@ -19,5 +21,13 @@ export class ProjectsComponent {
 
   handleSearchProjects(event: string): void {
     this.projectsDispatchers.searchProjects({ q: event });
+  }
+
+  handleLoadMore(): void {
+    this.projectsDispatchers.loadMoreProjects();
+  }
+
+  handleRemoveProject(event: number): void {
+    // this.projectsDispatchers.removeProject(event);
   }
 }

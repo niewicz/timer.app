@@ -5,7 +5,11 @@ import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
 import { ProjectsService } from './projects.service';
-import { IProject, IProjectsParams } from './projects.interfaces';
+import {
+  IProject,
+  IProjectsParams,
+  IProjectsResponse,
+} from './projects.interfaces';
 import * as projectsActions from './projects.actions';
 
 @Injectable()
@@ -18,11 +22,29 @@ export class ProjectsEffects {
       return this.projectsService
         .getProjects(params)
         .map(
-          (projects: IProject[]) =>
-            new projectsActions.GetProjectsSuccessAction(projects),
+          (response: IProjectsResponse) =>
+            new projectsActions.GetProjectsSuccessAction(response),
         )
         .catch((error: any) =>
           Observable.of(new projectsActions.GetProjectsFailureAction(error)),
+        );
+    });
+
+  @Effect()
+  loadMoreProjects$: Observable<Action> = this.actions$
+    .ofType(projectsActions.LOAD_MORE_PROJECTS)
+    .withLatestFrom(this.store, (action, state) => state.projects.params)
+    .switchMap((params: IProjectsParams) => {
+      return this.projectsService
+        .getProjects(params)
+        .map(
+          (response: IProjectsResponse) =>
+            new projectsActions.LoadMoreProjectsSuccessAction(response),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new projectsActions.LoadMoreProjectsFailureAction(error),
+          ),
         );
     });
 
