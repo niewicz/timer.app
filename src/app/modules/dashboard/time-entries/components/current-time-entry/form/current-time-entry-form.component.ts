@@ -41,7 +41,6 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   toggled$: Subscription;
   duration = '00:00:00';
 
-  selectedProject: IProject;
   selectedTask: ITask;
 
   constructor(
@@ -74,7 +73,6 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
       this.selectedTask = this.currentTimeEntry.task;
 
       if (this.currentTimeEntry.task.project) {
-        this.selectedProject = this.currentTimeEntry.task.project;
         this.timeEntry.patchValue({
           projectId: this.currentTimeEntry.task.project.id,
         });
@@ -117,7 +115,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     this.toggled$.unsubscribe();
     this.timeEntry.patchValue({ endAt: new Date().toString() });
     this.stop.emit(this.timeEntry.value);
-    this.selectedProject = undefined;
+    this.selectedTask = undefined;
     this.timeEntry.reset();
   }
 
@@ -126,6 +124,8 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
 
     if (this.toggling) {
       this.updateTimeEntry.emit(this.timeEntry.value);
+    } else {
+      this.startToggling();
     }
   }
 
