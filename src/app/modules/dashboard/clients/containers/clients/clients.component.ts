@@ -22,4 +22,8 @@ export class ClientsComponent {
   handleRemoveClient(event: number): void {
     this.clientsDispatchers.removeClient(event);
   }
+
+  handleLoadMore(): void {
+    this.clientsDispatchers.loadMoreClients();
+  }
 }

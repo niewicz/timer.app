@@ -124,6 +124,7 @@ export function reducer(
         pending: false,
         errors: undefined,
         timeEntries: afterTimeEntryRemoval,
+        total: state.total - 1,
       };
     case timeEntriesActions.REMOVE_TIME_ENTRY_FAILURE:
       return {

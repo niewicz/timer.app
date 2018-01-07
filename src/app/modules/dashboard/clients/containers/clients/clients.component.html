@@ -1,3 +1,6 @@
+<timer-clients-top-bar
+  (search)="handleSearchClients($event)">
+</timer-clients-top-bar>
 <timer-clients-list
   [clients]="clients$ | async"
   (removeClient)="handleRemoveClient($event)">

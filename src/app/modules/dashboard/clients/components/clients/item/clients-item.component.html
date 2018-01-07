@@ -7,8 +7,9 @@
   <div
     fxFlex="92"
     fxLayout="row"
-    fxLayoutAlign="space-between center">
+    fxLayoutAlign="start center">
     <div
+      fxFlex="30"
       class="client-name">
       {{ client.name }}
     </div>
@@ -22,6 +23,7 @@
     </div>
     <div
       *ngIf="client?.email"
+      fxFlex="15"
       class="client-email">
       <a
         [href]="'mailto:' + client.email">
@@ -60,8 +62,7 @@
   <mat-icon
     *ngIf="showIcons"
     fxLayoutAlign="center center"
-    class="delete"
-    (click)="onRemove()">
+    class="delete">
     mode_edit
   </mat-icon>
   <mat-icon

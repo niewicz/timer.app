@@ -10,6 +10,10 @@ export const GET_CLIENTS = '[Dahboard] Get Clients';
 export const GET_CLIENTS_SUCCESS = '[Dahboard] Get Clients Success';
 export const GET_CLIENTS_FAILURE = '[Dahboard] Get Clients Failure';
 
+export const LOAD_MORE_CLIENTS = '[Dahboard] Load More Clients';
+export const LOAD_MORE_CLIENTS_SUCCESS = '[Dahboard] Load More Clients Success';
+export const LOAD_MORE_CLIENTS_FAILURE = '[Dahboard] Load More Clients Failure';
+
 export const SEARCH_CLIENTS = '[Dashboard] Search Clients';
 
 export const CREATE_CLIENT = '[Dashboard] Craete Client';
@@ -31,6 +35,20 @@ export class GetClientsSuccessAction implements Action {
 
 export class GetClientsFailureAction implements Action {
   readonly type = GET_CLIENTS_FAILURE;
+  constructor(public payload: any) {}
+}
+
+export class LoadMoreClientsAction implements Action {
+  readonly type = LOAD_MORE_CLIENTS;
+}
+
+export class LoadMoreClientsSuccessAction implements Action {
+  readonly type = LOAD_MORE_CLIENTS_SUCCESS;
+  constructor(public payload: IClientsResponse) {}
+}
+
+export class LoadMoreClientsFailureAction implements Action {
+  readonly type = LOAD_MORE_CLIENTS_FAILURE;
   constructor(public payload: any) {}
 }
 
@@ -73,6 +91,9 @@ export type Actions =
   | GetClientsAction
   | GetClientsSuccessAction
   | GetClientsFailureAction
+  | LoadMoreClientsAction
+  | LoadMoreClientsSuccessAction
+  | LoadMoreClientsFailureAction
   | SearchClientsAction
   | CreateClientAction
   | CreateClientSuccessAction

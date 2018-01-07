@@ -34,6 +34,7 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
           offset: 0,
         },
       };
+
     case clientsActions.GET_CLIENTS_SUCCESS:
       return {
         ...state,
@@ -42,7 +43,38 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         clients: action.payload.clients,
         total: action.payload.total,
       };
+
     case clientsActions.GET_CLIENTS_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case clientsActions.LOAD_MORE_CLIENTS:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+        params: {
+          ...state.params,
+          limit: 15,
+          offset: state.clients.length,
+        },
+      };
+
+    case clientsActions.LOAD_MORE_CLIENTS_SUCCESS:
+      const afterLoadMore = state.clients.concat(action.payload.clients);
+
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        clients: afterLoadMore,
+        total: action.payload.total,
+      };
+
+    case clientsActions.LOAD_MORE_CLIENTS_FAILURE:
       return {
         ...state,
         pending: false,
@@ -98,6 +130,7 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         pending: false,
         clients: afterClientRemoval,
         errors: undefined,
+        total: state.total - 1,
       };
 
     case clientsActions.REMOVE_CLIENT_FAILURE:

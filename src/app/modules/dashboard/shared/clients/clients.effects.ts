@@ -31,6 +31,22 @@ export class ClientsEffects {
     );
 
   @Effect()
+  loadMoreClients$: Observable<Action> = this.actions$
+    .ofType(clientsActions.LOAD_MORE_CLIENTS)
+    .withLatestFrom(this.store, (action, state) => state.clients.params)
+    .switchMap((params: IClientsParams) =>
+      this.clientsService
+        .getClients(params)
+        .map(
+          (response: IClientsResponse) =>
+            new clientsActions.LoadMoreClientsSuccessAction(response),
+        )
+        .catch((error: any) =>
+          Observable.of(new clientsActions.LoadMoreClientsFailureAction(error)),
+        ),
+    );
+
+  @Effect()
   searchClients$: Observable<Action> = this.actions$
     .ofType(clientsActions.SEARCH_CLIENTS)
     .map(() => new clientsActions.GetClientsAction());
