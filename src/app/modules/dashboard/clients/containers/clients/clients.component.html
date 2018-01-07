@@ -1,5 +1,6 @@
 <timer-clients-list
-  [clients]="clients$ | async">
+  [clients]="clients$ | async"
+  (removeClient)="handleRemoveClient($event)">
 </timer-clients-list>
 <div
   fxLayoutAlign="center center"

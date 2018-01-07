@@ -16,6 +16,10 @@ export const CREATE_CLIENT = '[Dashboard] Craete Client';
 export const CREATE_CLIENT_SUCCESS = '[Dashboard] Craete Client Success';
 export const CREATE_CLIENT_FAILURE = '[Dashboard] Craete Client Failure';
 
+export const REMOVE_CLIENT = '[Dashboard] Remove Client';
+export const REMOVE_CLIENT_SUCCESS = '[Dashboard] Remove Client Success';
+export const REMOVE_CLIENT_FAILURE = '[Dashboard] Remove Client Failure';
+
 export class GetClientsAction implements Action {
   readonly type = GET_CLIENTS;
 }
@@ -50,6 +54,21 @@ export class CreateClientFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class RemoveClientAction implements Action {
+  readonly type = REMOVE_CLIENT;
+  constructor(public payload: number) {}
+}
+
+export class RemoveClientSuccessAction implements Action {
+  readonly type = REMOVE_CLIENT_SUCCESS;
+  constructor(public payload: number) {}
+}
+
+export class RemoveClientFailureAction implements Action {
+  readonly type = REMOVE_CLIENT_FAILURE;
+  constructor(public payload: any) {}
+}
+
 export type Actions =
   | GetClientsAction
   | GetClientsSuccessAction
@@ -57,4 +76,7 @@ export type Actions =
   | SearchClientsAction
   | CreateClientAction
   | CreateClientSuccessAction
-  | CreateClientFailureAction;
+  | CreateClientFailureAction
+  | RemoveClientAction
+  | RemoveClientSuccessAction
+  | RemoveClientFailureAction;

@@ -1,4 +1,5 @@
 <timer-clients-item
   *ngFor="let client of clients"
-  [client]="client">
+  [client]="client"
+  (remove)="handleRemoveClient($event)">
 </timer-clients-item>

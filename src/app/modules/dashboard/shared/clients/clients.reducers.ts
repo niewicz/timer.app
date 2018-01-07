@@ -80,6 +80,33 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         pending: false,
         errors: action.payload,
       };
+
+    case clientsActions.REMOVE_CLIENT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case clientsActions.REMOVE_CLIENT_SUCCESS:
+      const afterClientRemoval = state.clients.filter(
+        c => c.id !== action.payload,
+      );
+
+      return {
+        ...state,
+        pending: false,
+        clients: afterClientRemoval,
+        errors: undefined,
+      };
+
+    case clientsActions.REMOVE_CLIENT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
     default:
       return state;
   }

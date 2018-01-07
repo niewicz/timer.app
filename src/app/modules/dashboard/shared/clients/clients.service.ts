@@ -40,4 +40,10 @@ export class ClientsService {
       .map(response => response.client)
       .catch(error => Observable.throw(error));
   }
+
+  removeClient(id: number): Observable<void> {
+    return this.http
+      .delete(this.api.clientPath(id))
+      .catch(error => Observable.throw(error));
+  }
 }

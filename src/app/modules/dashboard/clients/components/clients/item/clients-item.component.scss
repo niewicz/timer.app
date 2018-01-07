@@ -4,6 +4,7 @@
   border: 1px solid #dddddd;
   border-radius: 5px;
   margin: 20px 30px 0 30px;
+  min-height: 56px;
 }
 
 .client-name {
@@ -59,7 +60,7 @@
 
 .delete {
   color: #666666;
-  font-size: 20px;
+  font-size: 17px;
   cursor: pointer;
 
   &:hover {

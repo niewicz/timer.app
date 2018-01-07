@@ -1,10 +1,13 @@
 <div
   fxLayout="row"
   fxLayoutAlign="space-between center"
-  class="client">
+  class="client"
+  (mouseover)="onMouseover()"
+  (mouseleave)="onMouseleave()">
   <div
+    fxFlex="92"
     fxLayout="row"
-    fxLayoutAlign="start center">
+    fxLayoutAlign="space-between center">
     <div
       class="client-name">
       {{ client.name }}
@@ -55,6 +58,14 @@
     </div>
   </div>
   <mat-icon
+    *ngIf="showIcons"
+    fxLayoutAlign="center center"
+    class="delete"
+    (click)="onRemove()">
+    mode_edit
+  </mat-icon>
+  <mat-icon
+    *ngIf="showIcons"
     fxLayoutAlign="center center"
     class="delete"
     (click)="onRemove()">

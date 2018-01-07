@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  EventEmitter,
+  Output,
+} from '@angular/core';
+
 import { IClient } from '../../../../shared/clients/clients.interfaces';
 
 @Component({
@@ -9,4 +16,20 @@ import { IClient } from '../../../../shared/clients/clients.interfaces';
 })
 export class ClientsItemComponent {
   @Input() client: IClient;
+
+  @Output() remove = new EventEmitter<number>();
+
+  showIcons = false;
+
+  onRemove(): void {
+    this.remove.emit(this.client.id);
+  }
+
+  onMouseover(): void {
+    this.showIcons = true;
+  }
+
+  onMouseleave(): void {
+    this.showIcons = false;
+  }
 }

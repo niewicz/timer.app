@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  EventEmitter,
+  Output,
+} from '@angular/core';
+
 import { IClient } from '../../../../shared/clients/clients.interfaces';
 
 @Component({
@@ -8,4 +15,10 @@ import { IClient } from '../../../../shared/clients/clients.interfaces';
 })
 export class ClientsListComponent {
   @Input() clients: IClient[];
+
+  @Output() removeClient = new EventEmitter<number>();
+
+  handleRemoveClient(event: number): void {
+    this.removeClient.emit(event);
+  }
 }

@@ -51,6 +51,19 @@ export class ClientsEffects {
         ),
     );
 
+  @Effect()
+  removeClient$: Observable<Action> = this.actions$
+    .ofType(clientsActions.REMOVE_CLIENT)
+    .map(toPayload)
+    .switchMap((payload: number) =>
+      this.clientsService
+        .removeClient(payload)
+        .map(() => new clientsActions.RemoveClientSuccessAction(payload))
+        .catch((error: any) =>
+          Observable.of(new clientsActions.RemoveClientFailureAction(error)),
+        ),
+    );
+
   constructor(
     private actions$: Actions,
     private clientsService: ClientsService,

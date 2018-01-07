@@ -18,4 +18,8 @@ export class ClientsComponent {
   ) {
     this.clientsDispatchers.getClients();
   }
+
+  handleRemoveClient(event: number): void {
+    this.clientsDispatchers.removeClient(event);
+  }
 }
