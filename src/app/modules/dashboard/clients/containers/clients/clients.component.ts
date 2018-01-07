@@ -26,4 +26,8 @@ export class ClientsComponent {
   handleLoadMore(): void {
     this.clientsDispatchers.loadMoreClients();
   }
+
+  handleSearchClients(event: string): void {
+    this.clientsDispatchers.searchClients({ q: event });
+  }
 }

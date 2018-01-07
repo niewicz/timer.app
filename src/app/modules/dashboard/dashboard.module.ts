@@ -1,4 +1,3 @@
-import { SelectTaskMenuComponent } from './tasks/components/select-task/menu/select-task-menu.component';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -47,6 +46,8 @@ import { CurrentTimeEntryFormComponent } from './time-entries/components/current
 import { SelectProjectComponent } from './projects/containers/select-project/select-project.component';
 import { CreateProjectComponent } from './projects/containers/create-project/create-project.component';
 import { SelectClientMenuComponent } from './clients/components/select-client/menu/select-client-menu.component';
+import { SelectTaskMenuComponent } from './tasks/components/select-task/menu/select-task-menu.component';
+import { ClientsTopBarComponent } from './clients/components/clients/top-bar/clients-top-bar.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { SelectClientMenuComponent } from './clients/components/select-client/me
     CurrentTimeEntryFormComponent,
     ClientsListComponent,
     ClientsItemComponent,
+    ClientsTopBarComponent,
     SelectClientMenuComponent,
     ProjectsListComponent,
     ProjectsItemComponent,

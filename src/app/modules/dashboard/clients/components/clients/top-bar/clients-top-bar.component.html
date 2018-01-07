@@ -1,0 +1,26 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  class="top-bar">
+  <div
+    fxFlex="80">
+    <input
+      class="searchbox"
+      placeholder="Search..."
+      (input)="onSearch($event.target.value)">
+  </div>
+  <div
+    fxFlex="20"
+    fxLayout="row"
+    fxLayoutAlign="end center"
+    class="add">
+    <div
+      class="add-text">
+      Create client
+    </div>
+    <mat-icon
+      class="add-icon">
+      person_add
+    </mat-icon>
+  </div>
+</div>
