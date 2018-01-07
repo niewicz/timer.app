@@ -10,6 +10,12 @@
   [matAutocomplete]="auto"
   id="inputTask"
   #inputTask>
+<div
+  *ngIf="showHint"
+  [ngClass]="{'hint-navbar': navbar}"
+  class="hint">
+  Press enter to save
+</div>
 
  <mat-autocomplete
   #auto="matAutocomplete">

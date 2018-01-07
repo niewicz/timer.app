@@ -29,12 +29,15 @@ export class SelectTaskMenuComponent {
 
   @ViewChild('inputTask') input: ElementRef;
 
+  showHint = false;
+
   onClick(task: ITask): void {
     this.selectTask.emit(task);
     this.forceClear.emit();
   }
 
   onEnter(event: string): void {
+    this.showHint = false;
     if (event.length > 1) {
       if (this.selectedTask && this.selectedTask.project) {
         this.createTask.emit({
@@ -55,9 +58,15 @@ export class SelectTaskMenuComponent {
     if (event.length < 2 && this.selectedTask) {
       this.input.nativeElement.value = this.selectedTask.title;
     }
+    if (event === this.selectedTask.title) {
+      this.showHint = false;
+    }
   }
 
   onSearch(q: string): void {
+    if (this.selectedTask && q !== this.selectedTask.title) {
+      this.showHint = true;
+    }
     if (q.length >= 2) {
       this.search.emit(q);
     } else {

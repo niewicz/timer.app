@@ -7,6 +7,16 @@
   (mouseleave)="onMouseleave()">
 
   <div
+    fxFlex
+    fxLayoutAlign="center center">
+    <mat-icon
+      *ngIf="showIcons && timeEntry?.task?.title"
+      [matTooltip]="'Unassign task'"
+      (click)="handleUnassignTask()">
+      cancel
+    </mat-icon>
+  </div>
+  <div
     fxFlex="49">
     <timer-select-task
       [displayText]="'Describe what you have done'"
