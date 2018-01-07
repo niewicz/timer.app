@@ -3,21 +3,35 @@
   fxLayoutAlign="space-between center"
   class="client">
   <div
-    fxLayout="column"
-    fxLayoutAlign="center start">
+    fxLayout="row"
+    fxLayoutAlign="start center">
     <div
-      fxLayout="row"
-      fxLayoutAlign="start center"
-      [ngClass]="{'top-row': client?.contactPersonName || client?.contactPersonEmail}">
-      <div
-        class="client-name">
-        {{ client.name }}
-      </div>
-      <div
-        *ngIf="client?.email"
-        class="client-email">
+      class="client-name">
+      {{ client.name }}
+    </div>
+    <div
+      *ngIf="client?.email">
+      <mat-icon
+        fxLayoutAlign="center center"
+        class="dot">
+        fiber_manual_record
+      </mat-icon>
+    </div>
+    <div
+      *ngIf="client?.email"
+      class="client-email">
+      <a
+        [href]="'mailto:' + client.email">
         {{ client.email }}
-      </div>
+      </a>
+    </div>
+    <div
+      *ngIf="client?.contactPersonName || client?.contactPersonEmail">
+      <mat-icon
+        fxLayoutAlign="center center"
+        class="dot">
+        fiber_manual_record
+      </mat-icon>
     </div>
     <div
       *ngIf="client?.contactPersonName || client?.contactPersonEmail"
@@ -33,11 +47,17 @@
       </div>
       <div
         class="contact-email">
-        {{ client.contactPersonEmail }}
+        <a
+          [href]="'mailto:' + client.contactPersonEmail">
+          {{ client.contactPersonEmail }}
+        </a>
       </div>
     </div>
   </div>
-  <mat-icon>
+  <mat-icon
+    fxLayoutAlign="center center"
+    class="delete"
+    (click)="onRemove()">
     delete
   </mat-icon>
 </div>

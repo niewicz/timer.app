@@ -1,25 +1,33 @@
 .client {
-  padding: 15px 20px 15px 20px;
-  background-color: #fefefe;
+  padding: 15px 30px 15px 30px;
+  background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 5px;
-  margin: 30px 15px 0 15px;
+  margin: 20px 30px 0 30px;
 }
 
 .client-name {
-  font-size: 16px;
-  padding: 0 20px 0 0;
+  font-size: 17px;
 }
 
 .client-email {
-  font-size: 13px;
-  font-style: italic;
-  cursor: pointer;
-  color: #666666;
+  a {
+    font-size: 13px;
+    font-style: italic;
+    text-decoration: none;
+    cursor: pointer;
+    color: #666666;
+
+    &:hover {
+      color: #333333;
+    }
+  }
 }
 
-.top-row {
-  padding: 0 0 15px 0;
+.dot {
+  font-size: 8px;
+  padding: 0 40px 0 40px;
+  color: #444444;
 }
 
 .contact-person {
@@ -36,8 +44,25 @@
 }
 
 .contact-email {
-  font-size: 13px;
-  font-style: italic;
-  color: #444444;
+  a {
+    font-size: 13px;
+    font-style: italic;
+    text-decoration: none;
+    cursor: pointer;
+    color: #666666;
+
+    &:hover {
+      color: #333333;
+    }
+  }
+}
+
+.delete {
+  color: #666666;
+  font-size: 20px;
   cursor: pointer;
+
+  &:hover {
+    color: #333333;
+  }
 }

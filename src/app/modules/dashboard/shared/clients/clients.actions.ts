@@ -1,6 +1,10 @@
 import { Action } from '@ngrx/store';
 
-import { IClientsParams, IClient } from './clients.interfaces';
+import {
+  IClientsParams,
+  IClient,
+  IClientsResponse,
+} from './clients.interfaces';
 
 export const GET_CLIENTS = '[Dahboard] Get Clients';
 export const GET_CLIENTS_SUCCESS = '[Dahboard] Get Clients Success';
@@ -18,7 +22,7 @@ export class GetClientsAction implements Action {
 
 export class GetClientsSuccessAction implements Action {
   readonly type = GET_CLIENTS_SUCCESS;
-  constructor(public payload: IClient[]) {}
+  constructor(public payload: IClientsResponse) {}
 }
 
 export class GetClientsFailureAction implements Action {

@@ -6,6 +6,7 @@ export interface ClientsState {
   params: IClientsParams;
   pending: boolean;
   errors: any;
+  total: number;
 }
 
 const initialState: ClientsState = {
@@ -17,6 +18,7 @@ const initialState: ClientsState = {
   },
   pending: false,
   errors: undefined,
+  total: undefined,
 };
 
 export function reducer(state = initialState, action: clientsActions.Actions) {
@@ -37,7 +39,8 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         ...state,
         pending: false,
         errors: undefined,
-        clients: action.payload,
+        clients: action.payload.clients,
+        total: action.payload.total,
       };
     case clientsActions.GET_CLIENTS_FAILURE:
       return {

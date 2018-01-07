@@ -5,7 +5,11 @@ import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
 import { ClientsService } from './clients.service';
-import { IClient, IClientsParams } from './clients.interfaces';
+import {
+  IClient,
+  IClientsParams,
+  IClientsResponse,
+} from './clients.interfaces';
 import * as clientsActions from './clients.actions';
 
 @Injectable()
@@ -18,8 +22,8 @@ export class ClientsEffects {
       this.clientsService
         .getClients(params)
         .map(
-          (clients: IClient[]) =>
-            new clientsActions.GetClientsSuccessAction(clients),
+          (response: IClientsResponse) =>
+            new clientsActions.GetClientsSuccessAction(response),
         )
         .catch((error: any) =>
           Observable.of(new clientsActions.GetClientsFailureAction(error)),

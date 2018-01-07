@@ -9,6 +9,7 @@ export class ClientsSelectors {
   private clients$ = this.store.select(state => state.clients.clients);
   private pending$ = this.store.select(state => state.clients.pending);
   private params$ = this.store.select(state => state.clients.params);
+  private total$ = this.store.select(state => state.clients.total);
 
   constructor(private store: Store<State>) {}
 
@@ -22,5 +23,9 @@ export class ClientsSelectors {
 
   public getParams(): Observable<IClientsParams> {
     return this.params$;
+  }
+
+  public getTotal(): Observable<number> {
+    return this.total$;
   }
 }

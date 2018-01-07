@@ -14,6 +14,7 @@ export interface IClientsParams {
 
 export interface IClientsResponse {
   clients: IClient[];
+  total: number;
 }
 
 export interface IClientResponse {

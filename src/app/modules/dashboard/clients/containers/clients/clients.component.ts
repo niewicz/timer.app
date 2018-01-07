@@ -9,6 +9,8 @@ import { ClientsDispatchers } from '../../../shared/clients/clients.dispatchers'
 })
 export class ClientsComponent {
   clients$ = this.clientsSelectors.getClients();
+  pending$ = this.clientsSelectors.isPending();
+  total$ = this.clientsSelectors.getTotal();
 
   constructor(
     private clientsDispatchers: ClientsDispatchers,
