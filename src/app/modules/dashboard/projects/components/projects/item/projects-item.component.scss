@@ -1,0 +1,33 @@
+.project {
+  padding: 15px 30px 15px 30px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  margin: 20px 30px 0 30px;
+  min-height: 56px;
+  color: #444444;
+}
+
+.title {
+}
+
+.description {
+  font-size: 15px;
+  color: #666666;
+}
+
+.dot {
+  font-size: 8px;
+  padding: 0 40px 0 40px;
+  color: #444444;
+}
+
+.delete {
+  color: #666666;
+  font-size: 17px;
+  cursor: pointer;
+
+  &:hover {
+    color: #333333;
+  }
+}

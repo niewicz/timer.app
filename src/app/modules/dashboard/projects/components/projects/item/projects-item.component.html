@@ -1,10 +1,43 @@
 <div
   fxLayout="row"
-  fxLayoutAlign="space-between center">
-  <div>
-    {{ project.title }}
+  fxLayoutAlign="space-between center"
+  class="project"
+  (mouseover)="onMouseover()"
+  (mouseleave)="onMouseleave()">
+  <div
+    fxFlex="92"
+    fxLayout="row"
+    fxLayoutAlign="start center">
+    <div
+      class="title">
+      {{ project.title }}
+    </div>
+    <div
+      *ngIf="project?.description">
+      <mat-icon
+        fxLayoutAlign="center center"
+        class="dot">
+        fiber_manual_record
+      </mat-icon>
+    </div>
+    <div
+      *ngIf="project?.description"
+      class="description">
+      {{ project.description }}
+    </div>
   </div>
-  <div>
-    {{ project.description }}
-  </div>
+  <mat-icon
+    *ngIf="showIcons"
+    fxLayoutAlign="center center"
+    class="delete"
+    [routerLink]="['', {outlets: {modal: ['projects', project.id ,'edit']}}]">
+    mode_edit
+  </mat-icon>
+  <mat-icon
+    *ngIf="showIcons"
+    fxLayoutAlign="center center"
+    class="delete"
+    (click)="onRemove()">
+    delete
+  </mat-icon>
 </div>
