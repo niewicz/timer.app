@@ -180,7 +180,6 @@ export class StopCurrentTimeEntryFailureAction implements Action {
 
 export class RemoveCurrentTimeEntryAction implements Action {
   readonly type = REMOVE_CURRENT_TIME_ENTRY;
-  constructor(public payload: number) {}
 }
 
 export class RemoveCurrentTimeEntrySuccessAction implements Action {

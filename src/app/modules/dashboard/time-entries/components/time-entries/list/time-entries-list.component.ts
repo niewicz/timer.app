@@ -20,6 +20,7 @@ export class TimeEntriesListComponent {
 
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
   @Output() updateTask = new EventEmitter<ITask>();
+  @Output() removeTimeEntry = new EventEmitter<number>();
 
   handleUpdateTimeEntry(event: ITimeEntry): void {
     this.updateTimeEntry.emit(event);
@@ -27,5 +28,9 @@ export class TimeEntriesListComponent {
 
   handleUpdateTask(event: ITask): void {
     this.updateTask.emit(event);
+  }
+
+  handleRemoveTimeEntry(event: number) {
+    this.removeTimeEntry.emit(event);
   }
 }

@@ -82,7 +82,8 @@
     fxLayoutAlign="center center"
     class="remove">
     <mat-icon
-      *ngIf="showIcons">
+      *ngIf="showIcons"
+      (click)="onRemoveTimeEntry()">
       delete
     </mat-icon>
   </div>

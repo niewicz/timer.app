@@ -29,6 +29,10 @@ export class TimeEntriesDispatchers {
     this.store.dispatch(new timeEntriesActions.UpdateTimeEntryAction(params));
   }
 
+  public removeTimeEntry(id: number): void {
+    this.store.dispatch(new timeEntriesActions.RemoveTimeEntryAction(id));
+  }
+
   public getCurrentTimeEntry(): void {
     this.store.dispatch(new timeEntriesActions.GetCurrentTimeEntryAction());
   }
@@ -43,5 +47,9 @@ export class TimeEntriesDispatchers {
     this.store.dispatch(
       new timeEntriesActions.StopCurrentTimeEntryAction(params),
     );
+  }
+
+  public removeCurrentTimeEntry(): void {
+    this.store.dispatch(new timeEntriesActions.RemoveCurrentTimeEntryAction());
   }
 }

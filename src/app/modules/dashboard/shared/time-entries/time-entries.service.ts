@@ -60,4 +60,10 @@ export class TimeEntriesService {
       .map(response => response.timeEntry)
       .catch(error => Observable.throw(error));
   }
+
+  removeTimeEntry(id: number): Observable<void> {
+    return this.http
+      .delete(this.api.timeEntryPath(id))
+      .catch(error => Observable.throw(error));
+  }
 }

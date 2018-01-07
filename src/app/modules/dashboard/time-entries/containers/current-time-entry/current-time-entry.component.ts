@@ -54,8 +54,12 @@ export class CurrentTimeEntryComponent implements OnInit {
     this.tasksDispatchers.updateTask(task);
   }
 
-  handleStop(entry: ITransferTimeEntry) {
+  handleStop(entry: ITransferTimeEntry): void {
     console.log(entry);
     this.timeEntriesDispatchers.stopCurrentTimeEntry(entry);
+  }
+
+  handleRemoveTimeEntry(): void {
+    this.timeEntriesDispatchers.removeCurrentTimeEntry();
   }
 }

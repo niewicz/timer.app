@@ -34,4 +34,8 @@ export class TimeEntriesComponent {
   handleUpdateTask(event: ITask): void {
     this.tasksDispatchers.updateTask(event);
   }
+
+  handleRemoveTimeEntry(event: number): void {
+    this.timeEntriesDispatchers.removeTimeEntry(event);
+  }
 }

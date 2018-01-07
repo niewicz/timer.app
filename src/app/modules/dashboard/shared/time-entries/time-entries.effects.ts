@@ -57,6 +57,39 @@ export class TimeEntriesEffects {
     );
 
   @Effect()
+  updateTimeEntry$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.UPDATE_TIME_ENTRY)
+    .map(toPayload)
+    .switchMap((payload: ITimeEntry) =>
+      this.timeEntriesService
+        .updateTimeEntry(payload)
+        .map(
+          (timeEntry: ITimeEntry) =>
+            new timeEntriesActions.UpdateTimeEntrySuccessAction(timeEntry),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.UpdateTimeEntryFailureAction(error),
+          ),
+        ),
+    );
+
+  @Effect()
+  removeTimeEntry$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.REMOVE_TIME_ENTRY)
+    .map(toPayload)
+    .switchMap((payload: number) =>
+      this.timeEntriesService
+        .removeTimeEntry(payload)
+        .map(() => new timeEntriesActions.RemoveTimeEntrySuccessAction(payload))
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.RemoveTimeEntryFailureAction(error),
+          ),
+        ),
+    );
+
+  @Effect()
   getCurrentTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.GET_CURRENT_TIME_ENTRY)
     .switchMap(() =>
@@ -87,24 +120,6 @@ export class TimeEntriesEffects {
         .catch((error: any) =>
           Observable.of(
             new timeEntriesActions.CreateTimeEntryFailureAction(error),
-          ),
-        ),
-    );
-
-  @Effect()
-  updateTimeEntry$: Observable<Action> = this.actions$
-    .ofType(timeEntriesActions.UPDATE_TIME_ENTRY)
-    .map(toPayload)
-    .switchMap((payload: ITimeEntry) =>
-      this.timeEntriesService
-        .updateTimeEntry(payload)
-        .map(
-          (timeEntry: ITimeEntry) =>
-            new timeEntriesActions.UpdateTimeEntrySuccessAction(timeEntry),
-        )
-        .catch((error: any) =>
-          Observable.of(
-            new timeEntriesActions.UpdateTimeEntryFailureAction(error),
           ),
         ),
     );
@@ -143,6 +158,24 @@ export class TimeEntriesEffects {
         .catch((error: any) =>
           Observable.of(
             new timeEntriesActions.UpdateCurrentTimeEntryFailureAction(error),
+          ),
+        ),
+    );
+
+  @Effect()
+  removeCurrentTimeEntry$: Observable<Action> = this.actions$
+    .ofType(timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY)
+    .withLatestFrom(
+      this.store,
+      (action, state) => state.timeEntries.currentTimeEntry.id,
+    )
+    .switchMap((id: number) =>
+      this.timeEntriesService
+        .removeTimeEntry(id)
+        .map(() => new timeEntriesActions.RemoveCurrentTimeEntrySuccessAction())
+        .catch((error: any) =>
+          Observable.of(
+            new timeEntriesActions.RemoveCurrentTimeEntryFailureAction(error),
           ),
         ),
     );

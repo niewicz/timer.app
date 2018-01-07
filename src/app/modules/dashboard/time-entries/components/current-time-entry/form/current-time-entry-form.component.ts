@@ -31,10 +31,12 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   @Output() menu = new EventEmitter<boolean>();
   @Output() createTimeEntry = new EventEmitter<ITransferTimeEntry>();
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
+  @Output() removeTimeEntry = new EventEmitter<void>();
   @Output() stop = new EventEmitter<ITimeEntry>();
   @Output() updateTask = new EventEmitter<ITask>();
 
   showMenu = false;
+  showIcons = false;
 
   timeEntry: FormGroup;
   toggling = false;
@@ -63,19 +65,23 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
         id: this.currentTimeEntry.id,
         startAt: this.currentTimeEntry.startAt,
       });
-      this.continueToggling();
-    }
+      if (!this.toggling) {
+        this.continueToggling();
+      }
 
-    if (this.currentTimeEntry && this.currentTimeEntry.task) {
-      this.timeEntry.patchValue({
-        taskId: this.currentTimeEntry.task.id,
-      });
-      this.selectedTask = this.currentTimeEntry.task;
-
-      if (this.currentTimeEntry.task.project) {
+      if (this.currentTimeEntry.task) {
         this.timeEntry.patchValue({
-          projectId: this.currentTimeEntry.task.project.id,
+          taskId: this.currentTimeEntry.task.id,
         });
+        this.selectedTask = this.currentTimeEntry.task;
+
+        if (this.currentTimeEntry.task.project) {
+          this.timeEntry.patchValue({
+            projectId: this.currentTimeEntry.task.project.id,
+          });
+        }
+      } else {
+        this.selectedTask = undefined;
       }
     }
   }
@@ -129,9 +135,33 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     }
   }
 
+  handleUnassignTask(): void {
+    if (this.toggling) {
+      this.timeEntry.patchValue({ taskId: '' });
+      this.updateTimeEntry.emit(this.timeEntry.value);
+    }
+  }
+
   onSelectProject(event: IProject): void {
     this.updateTask.emit(
       Object.assign({}, this.selectedTask, { projectId: event.id }),
     );
+  }
+
+  onMouseover(): void {
+    this.showIcons = true;
+  }
+
+  onMouseleave(): void {
+    this.showIcons = false;
+  }
+
+  onRemoveTimeEntry(): void {
+    this.removeTimeEntry.emit();
+    this.toggling = false;
+    this.duration = '00:00:00';
+    this.toggled$.unsubscribe();
+    this.selectedTask = undefined;
+    this.timeEntry.reset();
   }
 }

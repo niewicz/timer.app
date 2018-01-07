@@ -1,7 +1,9 @@
 <div
   fxLayout="row"
   fxLayoutAlign="start center"
-  class="form">
+  class="form"
+  (mouseover)="onMouseover()"
+  (mouseleave)="onMouseleave()">
   <div
     fxFlex="20"
     fxLayout="row">
@@ -47,6 +49,14 @@
         (selectTask)="onSelectTask($event)">
       </timer-select-task>
     </div>
+    <mat-icon
+      *ngIf="showIcons && currentTimeEntry?.task?.title"
+      fxLayoutAlign="center center"
+      [matTooltip]="'Unassign task'"
+      (click)="handleUnassignTask()"
+      class="cancel">
+      cancel
+    </mat-icon>
 
     <div
       class="item">
@@ -71,6 +81,14 @@
       class="item">
       {{ duration }}
     </div>
+
+    <mat-icon
+      *ngIf="toggling"
+      fxLayoutAlign="center center"
+      (click)="onRemoveTimeEntry()"
+      class="cancel">
+      delete
+    </mat-icon>
 
     <button
       *ngIf="!toggling"

@@ -108,6 +108,29 @@ export function reducer(
         pending: false,
         errors: action.payload,
       };
+    case timeEntriesActions.REMOVE_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.REMOVE_TIME_ENTRY_SUCCESS:
+      const afterTimeEntryRemoval = state.timeEntries.filter(
+        te => te.id !== action.payload,
+      );
+
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        timeEntries: afterTimeEntryRemoval,
+      };
+    case timeEntriesActions.REMOVE_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
     case timeEntriesActions.CREATE_TIME_ENTRY:
       return {
         ...state,
@@ -187,6 +210,25 @@ export function reducer(
       };
     case tasksActions.UPDATE_TASK_SUCCESS:
       return stateAfterTaskUpdate(state, action.payload);
+    case timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+    case timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        currentTimeEntry: undefined,
+      };
+    case timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
     default:
       return state;
   }

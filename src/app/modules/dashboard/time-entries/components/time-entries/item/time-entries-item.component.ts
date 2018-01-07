@@ -25,6 +25,7 @@ export class TimeEntriesItemComponent {
 
   @Output() updateTask = new EventEmitter<ITask>();
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
+  @Output() removeTimeEntry = new EventEmitter<number>();
 
   get duration() {
     return this.utils.getDuration(this.timeEntry.endAt, this.timeEntry.startAt);
@@ -62,5 +63,9 @@ export class TimeEntriesItemComponent {
         Object.assign({}, this.timeEntry.task, { projectId: '' }),
       );
     }
+  }
+
+  onRemoveTimeEntry(): void {
+    this.removeTimeEntry.emit(this.timeEntry.id);
   }
 }
