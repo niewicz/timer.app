@@ -8,9 +8,9 @@ export const GET_PROJECTS_FAILURE = '[Dahboard] Get Projects Failure';
 
 export const SEARCH_PROJECTS = '[Dashboard] Search Projects';
 
-export const CREATE_PROJECT = '[Dashboard] Craete Client';
-export const CREATE_PROJECT_SUCCESS = '[Dashboard] Craete Client Success';
-export const CREATE_PROJECT_FAILURE = '[Dashboard] Craete Client Failure';
+export const CREATE_PROJECT = '[Dashboard] Create Project';
+export const CREATE_PROJECT_SUCCESS = '[Dashboard] Craete Project Success';
+export const CREATE_PROJECT_FAILURE = '[Dashboard] Craete Project Failure';
 
 export class GetProjectsAction implements Action {
   readonly type = GET_PROJECTS;
