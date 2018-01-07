@@ -1,10 +1,43 @@
 <div
   fxLayout="row"
-  fxLayoutAlign="space-between center">
-  <div>
-    {{ client.name }}
+  fxLayoutAlign="space-between center"
+  class="client">
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center start">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      [ngClass]="{'top-row': client?.contactPersonName || client?.contactPersonEmail}">
+      <div
+        class="client-name">
+        {{ client.name }}
+      </div>
+      <div
+        *ngIf="client?.email"
+        class="client-email">
+        {{ client.email }}
+      </div>
+    </div>
+    <div
+      *ngIf="client?.contactPersonName || client?.contactPersonEmail"
+      fxLayout="row"
+      fxLayoutAlign="start center">
+      <div
+        class="contact-person">
+        Contact person:
+      </div>
+      <div
+        class="contact-name">
+        {{ client.contactPersonName }}
+      </div>
+      <div
+        class="contact-email">
+        {{ client.contactPersonEmail }}
+      </div>
+    </div>
   </div>
-  <div>
-    {{ client.email }}
-  </div>
+  <mat-icon>
+    delete
+  </mat-icon>
 </div>

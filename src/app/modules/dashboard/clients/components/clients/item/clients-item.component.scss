@@ -1,0 +1,43 @@
+.client {
+  padding: 15px 20px 15px 20px;
+  background-color: #fefefe;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  margin: 30px 15px 0 15px;
+}
+
+.client-name {
+  font-size: 16px;
+  padding: 0 20px 0 0;
+}
+
+.client-email {
+  font-size: 13px;
+  font-style: italic;
+  cursor: pointer;
+  color: #666666;
+}
+
+.top-row {
+  padding: 0 0 15px 0;
+}
+
+.contact-person {
+  font-size: 13px;
+  font-weight: bold;
+  color: #444444;
+  padding: 0 20px 0 0;
+}
+
+.contact-name {
+  font-size: 13px;
+  color: #444444;
+  padding: 0 20px 0 0;
+}
+
+.contact-email {
+  font-size: 13px;
+  font-style: italic;
+  color: #444444;
+  cursor: pointer;
+}
