@@ -1,0 +1,28 @@
+.top-bar {
+  margin: 20px 40px 0px 40px;
+}
+
+.searchbox {
+  font-size: 18px;
+  width: stretch;
+  background: transparent;
+  padding: 10px 10px 10px 10px;
+  border: none;
+}
+
+.add {
+  color: #666666;
+  cursor: pointer;
+
+  &:hover {
+    color: #333333;
+  }
+}
+
+.add-icon {
+  padding: 0 10px 0 0;
+}
+
+.add-text {
+  padding: 0 15px 0 0;
+}

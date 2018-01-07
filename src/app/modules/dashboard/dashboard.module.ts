@@ -48,6 +48,7 @@ import { CreateProjectComponent } from './projects/containers/create-project/cre
 import { SelectClientMenuComponent } from './clients/components/select-client/menu/select-client-menu.component';
 import { SelectTaskMenuComponent } from './tasks/components/select-task/menu/select-task-menu.component';
 import { ClientsTopBarComponent } from './clients/components/clients/top-bar/clients-top-bar.component';
+import { ProjectsTopBarComponent } from './projects/components/projects/top-bar/projets-top-bar.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ClientsTopBarComponent } from './clients/components/clients/top-bar/cli
     SelectClientMenuComponent,
     ProjectsListComponent,
     ProjectsItemComponent,
+    ProjectsTopBarComponent,
     TasksListComponent,
     TasksItemComponent,
     SelectTaskMenuComponent,

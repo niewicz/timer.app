@@ -16,4 +16,8 @@ export class ProjectsComponent {
   ) {
     this.projectsDispatchers.getProjects();
   }
+
+  handleSearchProjects(event: string): void {
+    this.projectsDispatchers.searchProjects({ q: event });
+  }
 }

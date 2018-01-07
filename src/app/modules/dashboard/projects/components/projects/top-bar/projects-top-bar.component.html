@@ -1,0 +1,27 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  class="top-bar">
+  <div
+    fxFlex="80">
+    <input
+      class="searchbox"
+      placeholder="Search..."
+      (input)="onSearch($event.target.value)">
+  </div>
+  <div
+    fxFlex="20"
+    fxLayout="row"
+    fxLayoutAlign="end center"
+    class="add"
+    [routerLink]="['', {outlets: {modal: ['projects', 'create']}}]">
+    <div
+      class="add-text">
+      Create project
+    </div>
+    <mat-icon
+      class="add-icon">
+      create_new_folder
+    </mat-icon>
+  </div>
+</div>
