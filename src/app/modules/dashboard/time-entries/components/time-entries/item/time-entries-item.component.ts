@@ -47,8 +47,14 @@ export class TimeEntriesItemComponent {
   }
 
   handleSelectProject(event: IProject): void {
-    this.updateTask.emit(
-      Object.assign({}, this.timeEntry.task, { projectId: event.id }),
-    );
+    if (event) {
+      this.updateTask.emit(
+        Object.assign({}, this.timeEntry.task, { projectId: event.id }),
+      );
+    } else {
+      this.updateTask.emit(
+        Object.assign({}, this.timeEntry.task, { projectId: '' }),
+      );
+    }
   }
 }
