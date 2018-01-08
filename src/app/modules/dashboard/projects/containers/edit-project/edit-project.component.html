@@ -1,0 +1,5 @@
+<timer-project-form
+  [headerText]="'Editing - '"
+  [project]="project$ | async"
+  (submitProject)="handleUpdate($event)">
+</timer-project-form>

@@ -22,6 +22,14 @@ export const CREATE_PROJECT = '[Dashboard] Create Project';
 export const CREATE_PROJECT_SUCCESS = '[Dashboard] Craete Project Success';
 export const CREATE_PROJECT_FAILURE = '[Dashboard] Craete Project Failure';
 
+export const EDIT_PROJECT = '[Dashboard] Edit Project';
+export const EDIT_PROJECT_SUCCESS = '[Dashboard] Edit Project Success';
+export const EDIT_PROJECT_FAILURE = '[Dashboard] Edit Project Failure';
+
+export const UPDATE_PROJECT = '[Dashboard] Update Project';
+export const UPDATE_PROJECT_SUCCESS = '[Dashboard] Update Project Success';
+export const UPDATE_PROJECT_FAILURE = '[Dashboard] Update Project Failure';
+
 export const REMOVE_PROJECT = '[Dashboard] Remove Project';
 export const REMOVE_PROJECT_SUCCESS = '[Dashboard] Remove Project Success';
 export const REMOVE_PROJECT_FAILURE = '[Dashboard] Remove Project Failure';
@@ -74,6 +82,36 @@ export class CreateProjectFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class EditProjectAction implements Action {
+  readonly type = EDIT_PROJECT;
+  constructor(public payload: number) {}
+}
+
+export class EditProjectSuccessAction implements Action {
+  readonly type = EDIT_PROJECT_SUCCESS;
+  constructor(public payload: IProject) {}
+}
+
+export class EditProjectFailureAction implements Action {
+  readonly type = EDIT_PROJECT_FAILURE;
+  constructor(public payload: any) {}
+}
+
+export class UpdateProjectAction implements Action {
+  readonly type = UPDATE_PROJECT;
+  constructor(public payload: IProject) {}
+}
+
+export class UpdateProjectSuccessAction implements Action {
+  readonly type = UPDATE_PROJECT_SUCCESS;
+  constructor(public payload: IProject) {}
+}
+
+export class UpdateProjectFailureAction implements Action {
+  readonly type = UPDATE_PROJECT_FAILURE;
+  constructor(public payload: any) {}
+}
+
 export class RemoveProjectAction implements Action {
   readonly type = REMOVE_PROJECT;
   constructor(public payload: number) {}
@@ -100,6 +138,12 @@ export type Actions =
   | CreateProjectAction
   | CreateProjectSuccessAction
   | CreateProjectFailureAction
+  | EditProjectAction
+  | EditProjectSuccessAction
+  | EditProjectFailureAction
+  | UpdateProjectAction
+  | UpdateProjectSuccessAction
+  | UpdateProjectFailureAction
   | RemoveProjectAction
   | RemoveProjectSuccessAction
   | RemoveProjectFailureAction;

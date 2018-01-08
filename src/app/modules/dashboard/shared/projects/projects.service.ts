@@ -7,9 +7,9 @@ import {
   IProjectsParams,
   IProject,
   IProjectsResponse,
+  IProjectResponse,
 } from './projects.interfaces';
 import { ApiRoutes } from '../../../../core/services/api-routes.service';
-import { IProjectResponse } from './projects.interfaces';
 
 @Injectable()
 export class ProjectsService {
@@ -32,11 +32,29 @@ export class ProjectsService {
       .catch(error => Observable.throw(error));
   }
 
+  editProject(id: number): Observable<IProject> {
+    return this.http
+      .get<IProjectResponse>(this.api.projectEditPath(id))
+      .map(response => this.utils.camelize(response))
+      .map(response => response.project)
+      .catch(error => Observable.throw(error));
+  }
+
   createProject(project: IProject): Observable<IProject> {
     project = this.utils.decamelize(project);
 
     return this.http
       .post<IProjectResponse>(this.api.projectsPath(), { project })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.project)
+      .catch(error => Observable.throw(error));
+  }
+
+  updateProject(project: IProject): Observable<IProject> {
+    project = this.utils.decamelize(project);
+
+    return this.http
+      .patch<IProjectResponse>(this.api.projectPath(project.id), { project })
       .map(response => this.utils.camelize(response))
       .map(response => response.project)
       .catch(error => Observable.throw(error));

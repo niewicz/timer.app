@@ -3,6 +3,7 @@ import { IProject, IProjectsParams } from './projects.interfaces';
 
 export interface ProjectsState {
   projects: IProject[];
+  editProject: IProject;
   params: IProjectsParams;
   pending: boolean;
   errors: any;
@@ -11,6 +12,7 @@ export interface ProjectsState {
 
 const initialState: ProjectsState = {
   projects: undefined,
+  editProject: undefined,
   params: {
     limit: 15,
     offset: 0,
@@ -110,6 +112,58 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
       };
 
     case projectsActions.CREATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case projectsActions.EDIT_PROJECT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+        editProject: undefined,
+      };
+
+    case projectsActions.EDIT_PROJECT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        editProject: action.payload,
+      };
+
+    case projectsActions.EDIT_PROJECT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case projectsActions.UPDATE_PROJECT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case projectsActions.UPDATE_PROJECT_SUCCESS:
+      const updatedProject = action.payload;
+      const updatedList = state.projects.slice();
+      const indexOfUpdated = updatedList.findIndex(
+        p => p.id === updatedProject.id,
+      );
+      updatedList.splice(indexOfUpdated, 1, updatedProject);
+
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        projects: updatedList,
+      };
+
+    case projectsActions.UPDATE_PROJECT_FAILURE:
       return {
         ...state,
         pending: false,

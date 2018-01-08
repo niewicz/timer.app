@@ -43,6 +43,10 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/clients/${id}`;
   }
 
+  public clientEditPath(id: number): string {
+    return `${this.apiBasePath()}/clients/${id}`;
+  }
+
   public tasksPath(): string {
     return `${this.apiBasePath()}/tasks`;
   }
@@ -57,6 +61,10 @@ export class ApiRoutes implements OnInit, OnDestroy {
 
   public projectPath(id: number): string {
     return `${this.apiBasePath()}/projects/${id}`;
+  }
+
+  public projectEditPath(id: number): string {
+    return `${this.apiBasePath()}/projects/${id}/edit`;
   }
 
   private apiBasePath(): string {

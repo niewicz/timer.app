@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ProjectsDispatchers } from '../../../shared/projects/projects.dispatchers';
 import { IProject } from '../../../shared/projects/projects.interfaces';
@@ -8,9 +9,13 @@ import { IProject } from '../../../shared/projects/projects.interfaces';
   templateUrl: './create-project.component.html',
 })
 export class CreateProjectComponent {
-  constructor(private dispatchers: ProjectsDispatchers) {}
+  constructor(
+    private dispatchers: ProjectsDispatchers,
+    private router: Router,
+  ) {}
 
   handleCreate(event: IProject) {
     this.dispatchers.createProject(event);
+    this.router.navigate([{ outlets: { modal: null } }]);
   }
 }

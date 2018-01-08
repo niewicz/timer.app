@@ -70,6 +70,38 @@ export class ProjectsEffects {
     );
 
   @Effect()
+  editProject$: Observable<Action> = this.actions$
+    .ofType(projectsActions.EDIT_PROJECT)
+    .map(toPayload)
+    .switchMap((payload: number) =>
+      this.projectsService
+        .editProject(payload)
+        .map(
+          (project: IProject) =>
+            new projectsActions.EditProjectSuccessAction(project),
+        )
+        .catch((error: any) =>
+          Observable.of(new projectsActions.EditProjectFailureAction(error)),
+        ),
+    );
+
+  @Effect()
+  updateProject$: Observable<Action> = this.actions$
+    .ofType(projectsActions.UPDATE_PROJECT)
+    .map(toPayload)
+    .switchMap((payload: IProject) =>
+      this.projectsService
+        .updateProject(payload)
+        .map(
+          (project: IProject) =>
+            new projectsActions.UpdateProjectSuccessAction(project),
+        )
+        .catch((error: any) =>
+          Observable.of(new projectsActions.UpdateProjectFailureAction(error)),
+        ),
+    );
+
+  @Effect()
   removeProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.REMOVE_PROJECT)
     .map(toPayload)

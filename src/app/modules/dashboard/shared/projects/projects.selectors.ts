@@ -10,11 +10,16 @@ export class ProjectsSelectors {
   private pending$ = this.store.select(state => state.projects.pending);
   private params$ = this.store.select(state => state.projects.params);
   private total$ = this.store.select(state => state.projects.total);
+  private editProject$ = this.store.select(state => state.projects.editProject);
 
   constructor(private store: Store<State>) {}
 
   public getProjects(): Observable<IProject[]> {
     return this.projects$;
+  }
+
+  public getEditProject(): Observable<IProject> {
+    return this.editProject$;
   }
 
   public isPending(): Observable<boolean> {

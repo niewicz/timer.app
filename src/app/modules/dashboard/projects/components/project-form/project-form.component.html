@@ -1,7 +1,7 @@
 <timer-modal>
   <div
     modal-header>
-    Create project
+    {{ headerText }} {{ project?.title }}
   </div>
   <div
     modal-body>
@@ -70,7 +70,14 @@
             class="app-button"
             [disabled]="!form.valid"
             (click)="onSubmit()">
-            Create
+            <span
+              *ngIf="!project">
+              Create
+            </span>
+            <span
+              *ngIf="project">
+              Update
+            </span>
           </button>
         </div>
       </form>

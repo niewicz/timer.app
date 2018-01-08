@@ -1,3 +1,4 @@
-<timer-create-project-form
-  (createProject)="handleCreate($event)">
-</timer-create-project-form>
+<timer-project-form
+  [headerText]="'Create project'"
+  (submitProject)="handleCreate($event)">
+</timer-project-form>
