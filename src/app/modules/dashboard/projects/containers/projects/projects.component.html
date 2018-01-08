@@ -2,7 +2,8 @@
   (search)="handleSearchProjects($event)">
 </timer-projects-top-bar>
 <timer-projects-list
-  [projects]="projects$ | async">
+  [projects]="projects$ | async"
+  (removeProject)="handleRemoveProject($event)">
 </timer-projects-list>
 <div
   fxLayoutAlign="center center"

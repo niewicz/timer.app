@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+
 import { IProject } from '../../../../shared/projects/projects.interfaces';
 
 @Component({
@@ -8,4 +15,10 @@ import { IProject } from '../../../../shared/projects/projects.interfaces';
 })
 export class ProjectsListComponent {
   @Input() projects: IProject[];
+
+  @Output() removeProject = new EventEmitter<number>();
+
+  handleRemove(event: number): void {
+    this.removeProject.emit(event);
+  }
 }

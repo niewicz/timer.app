@@ -69,6 +69,19 @@ export class ProjectsEffects {
         ),
     );
 
+  @Effect()
+  removeProject$: Observable<Action> = this.actions$
+    .ofType(projectsActions.REMOVE_PROJECT)
+    .map(toPayload)
+    .switchMap((payload: number) =>
+      this.projectsService
+        .removeProject(payload)
+        .map(() => new projectsActions.RemoveProjectSuccessAction(payload))
+        .catch((error: any) =>
+          Observable.of(new projectsActions.RemoveProjectFailureAction(error)),
+        ),
+    );
+
   constructor(
     private actions$: Actions,
     private projectsService: ProjectsService,

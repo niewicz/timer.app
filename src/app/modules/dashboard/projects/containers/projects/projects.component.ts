@@ -28,6 +28,6 @@ export class ProjectsComponent {
   }
 
   handleRemoveProject(event: number): void {
-    // this.projectsDispatchers.removeProject(event);
+    this.projectsDispatchers.removeProject(event);
   }
 }

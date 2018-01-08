@@ -24,4 +24,8 @@ export class ProjectsDispatchers {
   public createProject(project: IProject): void {
     this.store.dispatch(new projectsActions.CreateProjectAction(project));
   }
+
+  public removeProject(id: number): void {
+    this.store.dispatch(new projectsActions.RemoveProjectAction(id));
+  }
 }

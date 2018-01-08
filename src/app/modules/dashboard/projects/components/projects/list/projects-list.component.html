@@ -1,4 +1,5 @@
 <timer-projects-item
   *ngFor="let project of projects"
-  [project]="project">
+  [project]="project"
+  (remove)="handleRemove($event)">
 </timer-projects-item>

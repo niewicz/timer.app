@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  EventEmitter,
+  Output,
+} from '@angular/core';
+
 import { IProject } from '../../../../shared/projects/projects.interfaces';
 
 @Component({
@@ -10,6 +17,8 @@ import { IProject } from '../../../../shared/projects/projects.interfaces';
 export class ProjectsItemComponent {
   @Input() project: IProject;
 
+  @Output() remove = new EventEmitter<number>();
+
   showIcons = false;
 
   onMouseover(): void {
@@ -18,5 +27,9 @@ export class ProjectsItemComponent {
 
   onMouseleave(): void {
     this.showIcons = false;
+  }
+
+  onRemove(): void {
+    this.remove.emit(this.project.id);
   }
 }

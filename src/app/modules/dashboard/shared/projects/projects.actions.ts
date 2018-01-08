@@ -22,6 +22,10 @@ export const CREATE_PROJECT = '[Dashboard] Create Project';
 export const CREATE_PROJECT_SUCCESS = '[Dashboard] Craete Project Success';
 export const CREATE_PROJECT_FAILURE = '[Dashboard] Craete Project Failure';
 
+export const REMOVE_PROJECT = '[Dashboard] Remove Project';
+export const REMOVE_PROJECT_SUCCESS = '[Dashboard] Remove Project Success';
+export const REMOVE_PROJECT_FAILURE = '[Dashboard] Remove Project Failure';
+
 export class GetProjectsAction implements Action {
   readonly type = GET_PROJECTS;
 }
@@ -70,6 +74,21 @@ export class CreateProjectFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class RemoveProjectAction implements Action {
+  readonly type = REMOVE_PROJECT;
+  constructor(public payload: number) {}
+}
+
+export class RemoveProjectSuccessAction implements Action {
+  readonly type = REMOVE_PROJECT_SUCCESS;
+  constructor(public payload: number) {}
+}
+
+export class RemoveProjectFailureAction implements Action {
+  readonly type = REMOVE_PROJECT_FAILURE;
+  constructor(public payload: any) {}
+}
+
 export type Actions =
   | GetProjectsAction
   | GetProjectsSuccessAction
@@ -80,4 +99,7 @@ export type Actions =
   | SearchProjectsAction
   | CreateProjectAction
   | CreateProjectSuccessAction
-  | CreateProjectFailureAction;
+  | CreateProjectFailureAction
+  | RemoveProjectAction
+  | RemoveProjectSuccessAction
+  | RemoveProjectFailureAction;

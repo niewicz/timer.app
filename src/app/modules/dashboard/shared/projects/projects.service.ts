@@ -41,4 +41,10 @@ export class ProjectsService {
       .map(response => response.project)
       .catch(error => Observable.throw(error));
   }
+
+  removeProject(id: number): Observable<void> {
+    return this.http
+      .delete(this.api.projectPath(id))
+      .catch(error => Observable.throw(error));
+  }
 }

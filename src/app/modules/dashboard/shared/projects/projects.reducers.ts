@@ -106,9 +106,33 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
         pending: false,
         errors: undefined,
         projects: newList,
+        total: state.total + 1,
       };
 
     case projectsActions.CREATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case projectsActions.REMOVE_PROJECT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case projectsActions.REMOVE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        projects: state.projects.filter(p => p.id !== action.payload),
+        total: state.total - 1,
+      };
+
+    case projectsActions.REMOVE_PROJECT_FAILURE:
       return {
         ...state,
         pending: false,
