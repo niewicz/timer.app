@@ -26,6 +26,14 @@ export class ClientsDispatchers {
     this.store.dispatch(new clientsActions.CreateClientAction(client));
   }
 
+  public editClient(id: number): void {
+    this.store.dispatch(new clientsActions.EditClientAction(id));
+  }
+
+  public updateClient(client: IClient): void {
+    this.store.dispatch(new clientsActions.UpdateClientAction(client));
+  }
+
   public removeClient(id: number): void {
     this.store.dispatch(new clientsActions.RemoveClientAction(id));
   }

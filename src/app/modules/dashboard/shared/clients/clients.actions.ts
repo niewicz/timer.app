@@ -20,6 +20,14 @@ export const CREATE_CLIENT = '[Dashboard] Craete Client';
 export const CREATE_CLIENT_SUCCESS = '[Dashboard] Craete Client Success';
 export const CREATE_CLIENT_FAILURE = '[Dashboard] Craete Client Failure';
 
+export const EDIT_CLIENT = '[Dashboard] Edit Client';
+export const EDIT_CLIENT_SUCCESS = '[Dashboard] Edit Client Success';
+export const EDIT_CLIENT_FAILURE = '[Dashboard] Edit Client Failure';
+
+export const UPDATE_CLIENT = '[Dashboard] Update Client';
+export const UPDATE_CLIENT_SUCCESS = '[Dashboard] Update Client Success';
+export const UPDATE_CLIENT_FAILURE = '[Dashboard] Update Client Failure';
+
 export const REMOVE_CLIENT = '[Dashboard] Remove Client';
 export const REMOVE_CLIENT_SUCCESS = '[Dashboard] Remove Client Success';
 export const REMOVE_CLIENT_FAILURE = '[Dashboard] Remove Client Failure';
@@ -72,6 +80,36 @@ export class CreateClientFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class EditClientAction implements Action {
+  readonly type = EDIT_CLIENT;
+  constructor(public payload: number) {}
+}
+
+export class EditClientSuccessAction implements Action {
+  readonly type = EDIT_CLIENT_SUCCESS;
+  constructor(public payload: IClient) {}
+}
+
+export class EditClientFailureAction implements Action {
+  readonly type = EDIT_CLIENT_FAILURE;
+  constructor(public payload: any) {}
+}
+
+export class UpdateClientAction implements Action {
+  readonly type = UPDATE_CLIENT;
+  constructor(public payload: IClient) {}
+}
+
+export class UpdateClientSuccessAction implements Action {
+  readonly type = UPDATE_CLIENT_SUCCESS;
+  constructor(public payload: IClient) {}
+}
+
+export class UpdateClientFailureAction implements Action {
+  readonly type = UPDATE_CLIENT_FAILURE;
+  constructor(public payload: any) {}
+}
+
 export class RemoveClientAction implements Action {
   readonly type = REMOVE_CLIENT;
   constructor(public payload: number) {}
@@ -98,6 +136,12 @@ export type Actions =
   | CreateClientAction
   | CreateClientSuccessAction
   | CreateClientFailureAction
+  | EditClientAction
+  | EditClientSuccessAction
+  | EditClientFailureAction
+  | UpdateClientAction
+  | UpdateClientSuccessAction
+  | UpdateClientFailureAction
   | RemoveClientAction
   | RemoveClientSuccessAction
   | RemoveClientFailureAction;

@@ -41,6 +41,24 @@ export class ClientsService {
       .catch(error => Observable.throw(error));
   }
 
+  editClient(id: number): Observable<IClient> {
+    return this.http
+      .get<IClientResponse>(this.api.clientEditPath(id))
+      .map(response => this.utils.camelize(response))
+      .map(response => response.client)
+      .catch(error => Observable.throw(error));
+  }
+
+  updateClient(client: IClient): Observable<IClient> {
+    client = this.utils.decamelize(client);
+
+    return this.http
+      .patch<IClientResponse>(this.api.clientPath(client.id), { client })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.client)
+      .catch(error => Observable.throw(error));
+  }
+
   removeClient(id: number): Observable<void> {
     return this.http
       .delete(this.api.clientPath(id))

@@ -3,6 +3,7 @@ import { IClient, IClientsParams } from './clients.interfaces';
 
 export interface ClientsState {
   clients: IClient[];
+  editClient: IClient;
   params: IClientsParams;
   pending: boolean;
   errors: any;
@@ -11,6 +12,7 @@ export interface ClientsState {
 
 const initialState: ClientsState = {
   clients: undefined,
+  editClient: undefined,
   params: {
     limit: 15,
     offset: 0,
@@ -107,6 +109,58 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
       };
 
     case clientsActions.CREATE_CLIENT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case clientsActions.EDIT_CLIENT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+        editClient: undefined,
+      };
+
+    case clientsActions.EDIT_CLIENT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        editClient: action.payload,
+        errors: undefined,
+      };
+
+    case clientsActions.EDIT_CLIENT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
+    case clientsActions.UPDATE_CLIENT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case clientsActions.UPDATE_CLIENT_SUCCESS:
+      const updatedClient = action.payload;
+      const updatedList = state.clients.slice();
+      const indexOfUpdated = updatedList.findIndex(
+        c => c.id === updatedClient.id,
+      );
+      updatedList.splice(indexOfUpdated, 1, updatedClient);
+
+      return {
+        ...state,
+        pending: false,
+        clients: updatedList,
+        errors: undefined,
+      };
+
+    case clientsActions.UPDATE_CLIENT_FAILURE:
       return {
         ...state,
         pending: false,

@@ -68,6 +68,38 @@ export class ClientsEffects {
     );
 
   @Effect()
+  editClient$: Observable<Action> = this.actions$
+    .ofType(clientsActions.EDIT_CLIENT)
+    .map(toPayload)
+    .switchMap((payload: number) =>
+      this.clientsService
+        .editClient(payload)
+        .map(
+          (client: IClient) =>
+            new clientsActions.EditClientSuccessAction(client),
+        )
+        .catch((error: any) =>
+          Observable.of(new clientsActions.EditClientFailureAction(error)),
+        ),
+    );
+
+  @Effect()
+  updateClient$: Observable<Action> = this.actions$
+    .ofType(clientsActions.UPDATE_CLIENT)
+    .map(toPayload)
+    .switchMap((payload: IClient) =>
+      this.clientsService
+        .updateClient(payload)
+        .map(
+          (client: IClient) =>
+            new clientsActions.UpdateClientSuccessAction(client),
+        )
+        .catch((error: any) =>
+          Observable.of(new clientsActions.UpdateClientFailureAction(error)),
+        ),
+    );
+
+  @Effect()
   removeClient$: Observable<Action> = this.actions$
     .ofType(clientsActions.REMOVE_CLIENT)
     .map(toPayload)
