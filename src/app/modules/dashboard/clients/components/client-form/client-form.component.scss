@@ -1,5 +1,10 @@
 .content {
   padding: 5px;
+  color: #444444;
+}
+
+.deeper {
+  padding: 5px 5px 5px 5px;
 }
 
 .field {
@@ -9,6 +14,11 @@
 
 .label {
   padding: 0 0 5px 0;
+  font-size: 15px;
+}
+
+.info-icon {
+  padding: 0 10px 0 0;
 }
 
 .input {
@@ -41,4 +51,10 @@
   &:hover {
     color: #444444;
   }
+}
+
+.error {
+  font-size: 12px;
+  color: #f33f3d;
+  padding: 5px 2px 0 2px;
 }

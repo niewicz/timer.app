@@ -17,55 +17,98 @@
       <form
         [formGroup]="form">
         <div
-          fxLayout="column"
-          fxLayoutAlign="center start"
-          class="field">
-          <div
-            class="label">
-            Name
-          </div>
-          <input
-            class="input"
-            formControlName="name">
+          fxLayout="row"
+          fxLayoutAlign="start center">
+          <mat-icon
+            fxLayoutAlign="center center"
+            class="info-icon">
+            account_balance
+          </mat-icon>
+          Company info
         </div>
 
         <div
-          fxLayout="column"
-          fxLayoutAlign="center start"
-          class="field">
+          class="deeper">
           <div
-            class="label">
-            Email
+            fxLayout="column"
+            fxLayoutAlign="center start"
+            class="field">
+            <div
+              class="label">
+              Name
+            </div>
+            <input
+              class="input"
+              formControlName="name">
+            <div
+              *ngIf="form.controls.name.errors?.required && (form.controls.name.touched || form.controls.name.dirty)"
+              class="error">
+              Name is required
+            </div>
           </div>
-          <input
-            class="input"
-            formControlName="email">
+
+          <div
+            fxLayout="column"
+            fxLayoutAlign="center start"
+            class="field">
+            <div
+              class="label">
+              Email
+            </div>
+            <input
+              class="input"
+              formControlName="email">
+              <div
+                *ngIf="form.controls.email.errors?.email && (form.controls.email.touched || form.controls.email.dirty)"
+                class="error">
+                Provide valid email address
+              </div>
+          </div>
         </div>
 
         <div
-          fxLayout="column"
-          fxLayoutAlign="center start"
-          class="field">
-          <div
-            class="label">
-            Name
-          </div>
-          <input
-            class="input"
-            formControlName="contactPersonName">
+          fxLayout="row"
+          fxLayoutAlign="start center">
+          <mat-icon
+            class="info-icon"
+            fxLayoutAlign="center center">
+            person
+          </mat-icon>
+          Contact person info
         </div>
 
         <div
-          fxLayout="column"
-          fxLayoutAlign="center start"
-          class="field">
+          class="deeper">
           <div
-            class="label">
-            Email
+            fxLayout="column"
+            fxLayoutAlign="center start"
+            class="field">
+            <div
+              class="label">
+              Name
+            </div>
+            <input
+              class="input"
+              formControlName="contactPersonName">
           </div>
-          <input
-            class="input"
-            formControlName="contactPersonEmail">
+
+          <div
+            fxLayout="column"
+            fxLayoutAlign="center start"
+            class="field">
+            <div
+              class="label">
+              Email
+            </div>
+            <input
+              class="input"
+              formControlName="contactPersonEmail">
+              <div
+                *ngIf="form.controls.contactPersonEmail.errors?.email && (form.controls.contactPersonEmail.touched || form.controls.contactPersonEmail.dirty)"
+                class="error">
+                Provide valid email address
+              </div>
+          </div>
         </div>
 
         <div
@@ -75,14 +118,14 @@
             mat-raised-button
             color="warn"
             class="app-button"
-            [disabled]="!form.controls.name.valid"
+            [disabled]="!formValid"
             (click)="onSubmit()">
             <span
-              *ngIf="!project">
+              *ngIf="!client">
               Create
             </span>
             <span
-              *ngIf="project">
+              *ngIf="client">
               Update
             </span>
           </button>

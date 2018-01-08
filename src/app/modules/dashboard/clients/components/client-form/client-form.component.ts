@@ -32,6 +32,21 @@ export class ClientFormComponent implements OnChanges {
     });
   }
 
+  get formValid(): boolean {
+    return (
+      (this.form.controls.name.valid &&
+        this.form.controls.email.value.length === 0 &&
+        this.form.controls.contactPersonEmail.value.length === 0) ||
+      (this.form.controls.name.valid &&
+        this.form.controls.email.valid &&
+        this.form.controls.contactPersonEmail.value.length === 0) ||
+      (this.form.controls.name.valid &&
+        this.form.controls.email.value.length === 0 &&
+        this.form.controls.contactPersonEmail.valid) ||
+      this.form.valid
+    );
+  }
+
   ngOnChanges(): void {
     if (this.client) {
       this.form.patchValue({
