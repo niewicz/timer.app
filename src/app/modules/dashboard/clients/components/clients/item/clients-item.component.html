@@ -62,7 +62,8 @@
   <mat-icon
     *ngIf="showIcons"
     fxLayoutAlign="center center"
-    class="delete">
+    class="delete"
+    [routerLink]="['', {outlets: {modal: ['clients', client.id ,'edit']}}]">
     mode_edit
   </mat-icon>
   <mat-icon

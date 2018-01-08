@@ -33,6 +33,8 @@ import { ProjectFormComponent } from './projects/components/project-form/project
 import { SelectClientComponent } from './clients/containers/select-client/select-client.component';
 import { SelectTaskComponent } from './tasks/containers/select-task/select-task.component';
 import { EditProjectComponent } from './projects/containers/edit-project/edit-project.component';
+import { CreateClientComponent } from './clients/containers/create-client/create-client.component';
+import { EditClientComponent } from './clients/containers/edit-client/edit-client.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -50,6 +52,7 @@ import { SelectClientMenuComponent } from './clients/components/select-client/me
 import { SelectTaskMenuComponent } from './tasks/components/select-task/menu/select-task-menu.component';
 import { ClientsTopBarComponent } from './clients/components/clients/top-bar/clients-top-bar.component';
 import { ProjectsTopBarComponent } from './projects/components/projects/top-bar/projets-top-bar.component';
+import { ClientFormComponent } from './clients/components/client-form/client-form.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +75,7 @@ import { ProjectsTopBarComponent } from './projects/components/projects/top-bar/
     SelectTaskMenuComponent,
     SelectProjectMenuComponent,
     ProjectFormComponent,
+    ClientFormComponent,
     // Containers
     MainNavbarComponent,
     TimeEntriesComponent,
@@ -84,6 +88,8 @@ import { ProjectsTopBarComponent } from './projects/components/projects/top-bar/
     EditProjectComponent,
     TasksComponent,
     SelectTaskComponent,
+    CreateClientComponent,
+    EditClientComponent,
   ],
   providers: [
     Angular2TokenService,

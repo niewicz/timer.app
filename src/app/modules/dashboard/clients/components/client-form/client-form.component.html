@@ -1,0 +1,93 @@
+<timer-modal>
+  <div
+    modal-header>
+    <span
+      *ngIf="!client">
+      Create client
+    </span>
+    <span
+      *ngIf="client">
+      Editing - {{ client?.name }}
+    </span>
+  </div>
+  <div
+    modal-body>
+    <div
+      class="content">
+      <form
+        [formGroup]="form">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center start"
+          class="field">
+          <div
+            class="label">
+            Name
+          </div>
+          <input
+            class="input"
+            formControlName="name">
+        </div>
+
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center start"
+          class="field">
+          <div
+            class="label">
+            Email
+          </div>
+          <input
+            class="input"
+            formControlName="email">
+        </div>
+
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center start"
+          class="field">
+          <div
+            class="label">
+            Name
+          </div>
+          <input
+            class="input"
+            formControlName="contactPersonName">
+        </div>
+
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center start"
+          class="field">
+          <div
+            class="label">
+            Email
+          </div>
+          <input
+            class="input"
+            formControlName="contactPersonEmail">
+        </div>
+
+        <div
+          fxLayoutAlign="end center"
+          class="footer">
+          <button
+            mat-raised-button
+            color="warn"
+            class="app-button"
+            [disabled]="!form.controls.name.valid"
+            (click)="onSubmit()">
+            <span
+              *ngIf="!project">
+              Create
+            </span>
+            <span
+              *ngIf="project">
+              Update
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</timer-modal>

@@ -13,6 +13,8 @@ import { ClientsComponent } from './modules/dashboard/clients/containers/clients
 import { ProjectsComponent } from './modules/dashboard/projects/containers/projects/projects.component';
 import { CreateProjectComponent } from './modules/dashboard/projects/containers/create-project/create-project.component';
 import { EditProjectComponent } from './modules/dashboard/projects/containers/edit-project/edit-project.component';
+import { CreateClientComponent } from './modules/dashboard/clients/containers/create-client/create-client.component';
+import { EditClientComponent } from './modules/dashboard/clients/containers/edit-client/edit-client.component';
 
 const routes: Routes = [
   {
@@ -64,6 +66,18 @@ const routes: Routes = [
   {
     path: 'projects/:projectId/edit',
     component: EditProjectComponent,
+    outlet: 'modal',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'clients/create',
+    component: CreateClientComponent,
+    outlet: 'modal',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'clients/:clientId/edit',
+    component: EditClientComponent,
     outlet: 'modal',
     canActivate: [AuthGuard],
   },

@@ -44,7 +44,7 @@ export class ApiRoutes implements OnInit, OnDestroy {
   }
 
   public clientEditPath(id: number): string {
-    return `${this.apiBasePath()}/clients/${id}`;
+    return `${this.apiBasePath()}/clients/${id}/edit`;
   }
 
   public tasksPath(): string {

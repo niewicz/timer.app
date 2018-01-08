@@ -13,7 +13,8 @@
     fxFlex="20"
     fxLayout="row"
     fxLayoutAlign="end center"
-    class="add">
+    class="add"
+    [routerLink]="['', {outlets: {modal: ['clients', 'create']}}]">
     <div
       class="add-text">
       Create client
