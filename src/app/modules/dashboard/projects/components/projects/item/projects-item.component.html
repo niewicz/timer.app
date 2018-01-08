@@ -13,6 +13,15 @@
       {{ project.title }}
     </div>
     <div
+      *ngIf="project?.client"
+      fxLayout="row"
+      class="menu-trigger client">
+      <div
+        class="content">
+        {{ project?.client?.name }}
+      </div>
+    </div>
+    <div
       *ngIf="project?.description">
       <mat-icon
         fxLayoutAlign="center center"

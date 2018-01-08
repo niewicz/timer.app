@@ -31,3 +31,16 @@
     color: #333333;
   }
 }
+
+.client {
+  color: #444444;
+  font-size: 15px;
+  padding: 0 0 0 10px;
+
+  .content {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px;
+    width: fit-content;
+  }
+}
