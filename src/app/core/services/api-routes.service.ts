@@ -69,6 +69,6 @@ export class ApiRoutes implements OnInit, OnDestroy {
 
   private apiBasePath(): string {
     // TODO use enivroment to store api path
-    return 'http://localhost:3000/api';
+    return 'https://whispering-temple-93009.herokuapp.com/api';
   }
 }
