@@ -32,6 +32,7 @@ import { TimeEntriesEffects } from './modules/dashboard/shared/time-entries/time
 import { ClientsEffects } from './modules/dashboard/shared/clients/clients.effects';
 import { ProjectsEffects } from './modules/dashboard/shared/projects/projects.effects';
 import { TasksEffects } from './modules/dashboard/shared/tasks/tasks.effects';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -68,7 +69,7 @@ import { TasksEffects } from './modules/dashboard/shared/tasks/tasks.effects';
       useClass: TokenInterceptor,
       multi: true,
     },
-
+    { provide: LocationStrategy, useClass:HashLocationStrategy },
     AuthGuard,
   ],
   bootstrap: [AppComponent],
