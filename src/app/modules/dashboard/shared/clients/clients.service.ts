@@ -17,7 +17,7 @@ export class ClientsService {
     private http: HttpClient,
     private utils: UtilsService,
     private api: ApiRoutes,
-  ) {}
+  ) { }
 
   getClients(params: IClientsParams): Observable<IClientsResponse> {
     return this.http
@@ -28,6 +28,13 @@ export class ClientsService {
           .set('q', params.q ? params.q : ''),
       })
       .map(response => this.utils.camelize(response))
+      .catch(error => Observable.throw(error));
+  }
+
+  getClient(id: number): Observable<IClient> {
+    return this.http.get<IClientResponse>(this.api.clientPath(id))
+      .map(response => this.utils.camelize(response))
+      .map(response => response.client)
       .catch(error => Observable.throw(error));
   }
 

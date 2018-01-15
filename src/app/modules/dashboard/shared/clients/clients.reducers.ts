@@ -2,6 +2,7 @@ import * as clientsActions from './clients.actions';
 import { IClient, IClientsParams } from './clients.interfaces';
 
 export interface ClientsState {
+  clientDetails: IClient;
   clients: IClient[];
   editClient: IClient;
   params: IClientsParams;
@@ -11,6 +12,7 @@ export interface ClientsState {
 }
 
 const initialState: ClientsState = {
+  clientDetails: undefined,
   clients: undefined,
   editClient: undefined,
   params: {
@@ -90,6 +92,28 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
           ...state.params,
           q: action.payload.q,
         },
+      };
+
+    case clientsActions.GET_CLIENT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case clientsActions.GET_CLIENT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        clientDetails: action.payload,
+        errors: undefined,
+      };
+
+    case clientsActions.GET_CLIENT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
       };
 
     case clientsActions.CREATE_CLIENT:

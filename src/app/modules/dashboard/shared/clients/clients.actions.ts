@@ -16,6 +16,10 @@ export const LOAD_MORE_CLIENTS_FAILURE = '[Dahboard] Load More Clients Failure';
 
 export const SEARCH_CLIENTS = '[Dashboard] Search Clients';
 
+export const GET_CLIENT = '[Dashboard] Get Client';
+export const GET_CLIENT_SUCCESS = '[Dashboard] Get Client Success';
+export const GET_CLIENT_FAILURE = '[Dashboard] Get Client Failure';
+
 export const CREATE_CLIENT = '[Dashboard] Craete Client';
 export const CREATE_CLIENT_SUCCESS = '[Dashboard] Craete Client Success';
 export const CREATE_CLIENT_FAILURE = '[Dashboard] Craete Client Failure';
@@ -38,12 +42,12 @@ export class GetClientsAction implements Action {
 
 export class GetClientsSuccessAction implements Action {
   readonly type = GET_CLIENTS_SUCCESS;
-  constructor(public payload: IClientsResponse) {}
+  constructor(public payload: IClientsResponse) { }
 }
 
 export class GetClientsFailureAction implements Action {
   readonly type = GET_CLIENTS_FAILURE;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class LoadMoreClientsAction implements Action {
@@ -52,77 +56,92 @@ export class LoadMoreClientsAction implements Action {
 
 export class LoadMoreClientsSuccessAction implements Action {
   readonly type = LOAD_MORE_CLIENTS_SUCCESS;
-  constructor(public payload: IClientsResponse) {}
+  constructor(public payload: IClientsResponse) { }
 }
 
 export class LoadMoreClientsFailureAction implements Action {
   readonly type = LOAD_MORE_CLIENTS_FAILURE;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class SearchClientsAction implements Action {
   readonly type = SEARCH_CLIENTS;
-  constructor(public payload: IClientsParams) {}
+  constructor(public payload: IClientsParams) { }
+}
+
+export class GetClientAction implements Action {
+  readonly type = GET_CLIENT;
+  constructor(public payload: number) { }
+}
+
+export class GetClientSuccessAction implements Action {
+  readonly type = GET_CLIENT_SUCCESS;
+  constructor(public payload: IClient) { }
+}
+
+export class GetClientFailureAction implements Action {
+  readonly type = GET_CLIENT_FAILURE;
+  constructor(public payload: any) { }
 }
 
 export class CreateClientAction implements Action {
   readonly type = CREATE_CLIENT;
-  constructor(public payload: IClient) {}
+  constructor(public payload: IClient) { }
 }
 
 export class CreateClientSuccessAction implements Action {
   readonly type = CREATE_CLIENT_SUCCESS;
-  constructor(public payload: IClient) {}
+  constructor(public payload: IClient) { }
 }
 
 export class CreateClientFailureAction implements Action {
   readonly type = CREATE_CLIENT_FAILURE;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class EditClientAction implements Action {
   readonly type = EDIT_CLIENT;
-  constructor(public payload: number) {}
+  constructor(public payload: number) { }
 }
 
 export class EditClientSuccessAction implements Action {
   readonly type = EDIT_CLIENT_SUCCESS;
-  constructor(public payload: IClient) {}
+  constructor(public payload: IClient) { }
 }
 
 export class EditClientFailureAction implements Action {
   readonly type = EDIT_CLIENT_FAILURE;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class UpdateClientAction implements Action {
   readonly type = UPDATE_CLIENT;
-  constructor(public payload: IClient) {}
+  constructor(public payload: IClient) { }
 }
 
 export class UpdateClientSuccessAction implements Action {
   readonly type = UPDATE_CLIENT_SUCCESS;
-  constructor(public payload: IClient) {}
+  constructor(public payload: IClient) { }
 }
 
 export class UpdateClientFailureAction implements Action {
   readonly type = UPDATE_CLIENT_FAILURE;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class RemoveClientAction implements Action {
   readonly type = REMOVE_CLIENT;
-  constructor(public payload: number) {}
+  constructor(public payload: number) { }
 }
 
 export class RemoveClientSuccessAction implements Action {
   readonly type = REMOVE_CLIENT_SUCCESS;
-  constructor(public payload: number) {}
+  constructor(public payload: number) { }
 }
 
 export class RemoveClientFailureAction implements Action {
   readonly type = REMOVE_CLIENT_FAILURE;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export type Actions =
@@ -133,6 +152,9 @@ export type Actions =
   | LoadMoreClientsSuccessAction
   | LoadMoreClientsFailureAction
   | SearchClientsAction
+  | GetClientAction
+  | GetClientSuccessAction
+  | GetClientFailureAction
   | CreateClientAction
   | CreateClientSuccessAction
   | CreateClientFailureAction

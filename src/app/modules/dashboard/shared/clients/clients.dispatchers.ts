@@ -8,7 +8,7 @@ import { IClientsParams, IClient } from './clients.interfaces';
 
 @Injectable()
 export class ClientsDispatchers {
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) { }
 
   public getClients(): void {
     this.store.dispatch(new clientsActions.GetClientsAction());
@@ -20,6 +20,10 @@ export class ClientsDispatchers {
 
   public searchClients(params: IClientsParams): void {
     this.store.dispatch(new clientsActions.SearchClientsAction(params));
+  }
+
+  public getClient(id: number) {
+    this.store.dispatch(new clientsActions.GetClientAction(id));
   }
 
   public createClient(client: IClient): void {

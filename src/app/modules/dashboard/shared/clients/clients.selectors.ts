@@ -11,11 +11,16 @@ export class ClientsSelectors {
   private params$ = this.store.select(state => state.clients.params);
   private total$ = this.store.select(state => state.clients.total);
   private editClient$ = this.store.select(state => state.clients.editClient);
+  private clientDetails$ = this.store.select(state => state.clients.clientDetails);
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) { }
 
   public getClients(): Observable<IClient[]> {
     return this.clients$;
+  }
+
+  public getClientDetails(): Observable<IClient> {
+    return this.clientDetails$;
   }
 
   public isPending(): Observable<boolean> {

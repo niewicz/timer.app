@@ -35,6 +35,8 @@ import { SelectTaskComponent } from './tasks/containers/select-task/select-task.
 import { EditProjectComponent } from './projects/containers/edit-project/edit-project.component';
 import { CreateClientComponent } from './clients/containers/create-client/create-client.component';
 import { EditClientComponent } from './clients/containers/edit-client/edit-client.component';
+import { ProjectComponent } from './projects/containers/project/project.component';
+import { ClientComponent } from './clients/containers/client/client.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -90,6 +92,8 @@ import { ClientFormComponent } from './clients/components/client-form/client-for
     SelectTaskComponent,
     CreateClientComponent,
     EditClientComponent,
+    ProjectComponent,
+    ClientComponent,
   ],
   providers: [
     Angular2TokenService,
@@ -116,4 +120,4 @@ import { ClientFormComponent } from './clients/components/client-form/client-for
   ],
   exports: [],
 })
-export class DashboardModule {}
+export class DashboardModule { }

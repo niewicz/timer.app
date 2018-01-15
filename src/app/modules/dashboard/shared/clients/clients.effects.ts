@@ -22,13 +22,13 @@ export class ClientsEffects {
       this.clientsService
         .getClients(params)
         .map(
-          (response: IClientsResponse) =>
-            new clientsActions.GetClientsSuccessAction(response),
-        )
+        (response: IClientsResponse) =>
+          new clientsActions.GetClientsSuccessAction(response),
+      )
         .catch((error: any) =>
           Observable.of(new clientsActions.GetClientsFailureAction(error)),
-        ),
-    );
+      ),
+  );
 
   @Effect()
   loadMoreClients$: Observable<Action> = this.actions$
@@ -38,18 +38,34 @@ export class ClientsEffects {
       this.clientsService
         .getClients(params)
         .map(
-          (response: IClientsResponse) =>
-            new clientsActions.LoadMoreClientsSuccessAction(response),
-        )
+        (response: IClientsResponse) =>
+          new clientsActions.LoadMoreClientsSuccessAction(response),
+      )
         .catch((error: any) =>
           Observable.of(new clientsActions.LoadMoreClientsFailureAction(error)),
-        ),
-    );
+      ),
+  );
 
   @Effect()
   searchClients$: Observable<Action> = this.actions$
     .ofType(clientsActions.SEARCH_CLIENTS)
     .map(() => new clientsActions.GetClientsAction());
+
+  @Effect()
+  getClient$: Observable<Action> = this.actions$
+    .ofType(clientsActions.GET_CLIENT)
+    .map(toPayload)
+    .switchMap((payload: number) =>
+      this.clientsService
+        .getClient(payload)
+        .map(
+        (client: IClient) =>
+          new clientsActions.GetClientSuccessAction(client),
+      )
+        .catch((error: any) =>
+          Observable.throw(new clientsActions.GetClientFailureAction(error)),
+      ),
+  );
 
   @Effect()
   createClient$: Observable<Action> = this.actions$
@@ -59,13 +75,13 @@ export class ClientsEffects {
       this.clientsService
         .createClient(payload)
         .map(
-          (client: IClient) =>
-            new clientsActions.CreateClientSuccessAction(client),
-        )
+        (client: IClient) =>
+          new clientsActions.CreateClientSuccessAction(client),
+      )
         .catch((error: any) =>
           Observable.of(new clientsActions.CreateClientFailureAction(error)),
-        ),
-    );
+      ),
+  );
 
   @Effect()
   editClient$: Observable<Action> = this.actions$
@@ -75,13 +91,13 @@ export class ClientsEffects {
       this.clientsService
         .editClient(payload)
         .map(
-          (client: IClient) =>
-            new clientsActions.EditClientSuccessAction(client),
-        )
+        (client: IClient) =>
+          new clientsActions.EditClientSuccessAction(client),
+      )
         .catch((error: any) =>
           Observable.of(new clientsActions.EditClientFailureAction(error)),
-        ),
-    );
+      ),
+  );
 
   @Effect()
   updateClient$: Observable<Action> = this.actions$
@@ -91,13 +107,13 @@ export class ClientsEffects {
       this.clientsService
         .updateClient(payload)
         .map(
-          (client: IClient) =>
-            new clientsActions.UpdateClientSuccessAction(client),
-        )
+        (client: IClient) =>
+          new clientsActions.UpdateClientSuccessAction(client),
+      )
         .catch((error: any) =>
           Observable.of(new clientsActions.UpdateClientFailureAction(error)),
-        ),
-    );
+      ),
+  );
 
   @Effect()
   removeClient$: Observable<Action> = this.actions$
@@ -109,12 +125,12 @@ export class ClientsEffects {
         .map(() => new clientsActions.RemoveClientSuccessAction(payload))
         .catch((error: any) =>
           Observable.of(new clientsActions.RemoveClientFailureAction(error)),
-        ),
-    );
+      ),
+  );
 
   constructor(
     private actions$: Actions,
     private clientsService: ClientsService,
     private store: Store<State>,
-  ) {}
+  ) { }
 }

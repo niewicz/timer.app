@@ -15,6 +15,8 @@ import { CreateProjectComponent } from './modules/dashboard/projects/containers/
 import { EditProjectComponent } from './modules/dashboard/projects/containers/edit-project/edit-project.component';
 import { CreateClientComponent } from './modules/dashboard/clients/containers/create-client/create-client.component';
 import { EditClientComponent } from './modules/dashboard/clients/containers/edit-client/edit-client.component';
+import { ClientComponent } from './modules/dashboard/clients/containers/client/client.component';
+import { ProjectComponent } from './modules/dashboard/projects/containers/project/project.component';
 
 const routes: Routes = [
   {
@@ -51,10 +53,20 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: 'clients/:clientId',
+        component: ClientComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'projects',
         component: ProjectsComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'projects/:projectId',
+        component: ProjectComponent,
+        canActivate: [AuthGuard]
+      }
     ],
   },
   {
@@ -87,4 +99,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
