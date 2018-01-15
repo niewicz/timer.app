@@ -98,22 +98,25 @@ export function reducer(
 
       return {
         ...state,
-        peding: false,
+        pending: false,
         errors: undefined,
         timeEntries: updatedTimeEntriesList,
       };
+
     case timeEntriesActions.UPDATE_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
+
     case timeEntriesActions.REMOVE_TIME_ENTRY:
       return {
         ...state,
         pending: true,
         errors: undefined,
       };
+
     case timeEntriesActions.REMOVE_TIME_ENTRY_SUCCESS:
       const afterTimeEntryRemoval = state.timeEntries.filter(
         te => te.id !== action.payload,
@@ -126,18 +129,21 @@ export function reducer(
         timeEntries: afterTimeEntryRemoval,
         total: state.total - 1,
       };
+
     case timeEntriesActions.REMOVE_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
+
     case timeEntriesActions.CREATE_TIME_ENTRY:
       return {
         ...state,
         pending: true,
         errors: undefined,
       };
+
     case timeEntriesActions.CREATE_TIME_ENTRY_SUCCESS:
       return {
         ...state,
@@ -145,18 +151,21 @@ export function reducer(
         currentTimeEntry: action.payload,
         errors: undefined,
       };
+
     case timeEntriesActions.CREATE_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
+
     case timeEntriesActions.GET_CURRENT_TIME_ENTRY:
       return {
         ...state,
         pending: true,
         errors: undefined,
       };
+
     case timeEntriesActions.GET_CURRENT_TIME_ENTRY_SUCCESS:
       return {
         ...state,
@@ -164,18 +173,21 @@ export function reducer(
         errors: undefined,
         currentTimeEntry: action.payload,
       };
+
     case timeEntriesActions.GET_CURRENT_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
+
     case timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY:
       return {
         ...state,
         pending: true,
         errors: undefined,
       };
+
     case timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY_SUCCESS:
       return {
         ...state,
@@ -183,18 +195,21 @@ export function reducer(
         errors: undefined,
         currentTimeEntry: action.payload,
       };
+
     case timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
+
     case timeEntriesActions.STOP_CURRENT_TIME_ENTRY:
       return {
         ...state,
         pending: true,
         errors: undefined,
       };
+
     case timeEntriesActions.STOP_CURRENT_TIME_ENTRY_SUCCESS:
       return {
         ...state,
@@ -203,20 +218,21 @@ export function reducer(
         timeEntries: [action.payload].concat(state.timeEntries),
         errors: undefined,
       };
+
     case timeEntriesActions.STOP_CURRENT_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
-    case tasksActions.UPDATE_TASK_SUCCESS:
-      return stateAfterTaskUpdate(state, action.payload);
+
     case timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY:
       return {
         ...state,
         pending: true,
         errors: undefined,
       };
+
     case timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY_SUCCESS:
       return {
         ...state,
@@ -224,12 +240,17 @@ export function reducer(
         errors: undefined,
         currentTimeEntry: undefined,
       };
+
     case timeEntriesActions.REMOVE_CURRENT_TIME_ENTRY_FAILURE:
       return {
         ...state,
         pending: false,
         errors: action.payload,
       };
+
+    case tasksActions.UPDATE_TASK_SUCCESS:
+      return stateAfterTaskUpdate(state, action.payload);
+
     default:
       return state;
   }
@@ -254,9 +275,10 @@ function stateAfterTaskUpdate(state, updatedTask): TimeEntriesState {
     }
   });
 
-  const newCurrentTimeEntry = Object.assign({}, state.currentTimeEntry);
+  let newCurrentTimeEntry;
 
-  if ((newCurrentTimeEntry.taskId = updatedTask.id)) {
+  if (state.currentTimeEntry && state.currentTimeEntry.taskId === updatedTask.id) {
+    newCurrentTimeEntry = Object.assign({}, state.currentTimeEntry);
     newCurrentTimeEntry.task = updatedTask;
   }
 

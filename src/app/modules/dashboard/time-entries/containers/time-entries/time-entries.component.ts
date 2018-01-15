@@ -9,6 +9,7 @@ import { ITask } from '../../../shared/tasks/tasks.interfaces';
 @Component({
   selector: 'timer-time-entries',
   templateUrl: './time-entries.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeEntriesComponent {
   timeEntries$ = this.timeEntriesSelectors.getTimeEntries();

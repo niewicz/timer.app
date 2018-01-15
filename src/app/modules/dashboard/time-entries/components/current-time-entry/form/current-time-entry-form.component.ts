@@ -29,9 +29,9 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   @Input() currentTimeEntry: ITimeEntry;
 
   @Output() menu = new EventEmitter<boolean>();
-  @Output() createTimeEntry = new EventEmitter<ITransferTimeEntry>();
-  @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
-  @Output() removeTimeEntry = new EventEmitter<void>();
+  @Output() createCurrentTimeEntry = new EventEmitter<ITransferTimeEntry>();
+  @Output() updateCurrentTimeEntry = new EventEmitter<ITimeEntry>();
+  @Output() removeCurrentTimeEntry = new EventEmitter<void>();
   @Output() stop = new EventEmitter<ITimeEntry>();
   @Output() updateTask = new EventEmitter<ITask>();
 
@@ -93,7 +93,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
 
   startToggling(): void {
     this.timeEntry.patchValue({ startAt: new Date().toString() });
-    this.createTimeEntry.emit(this.timeEntry.value);
+    this.createCurrentTimeEntry.emit(this.timeEntry.value);
     this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
       this.duration = this.utils.getDuration(
         new Date().toString(),
@@ -129,7 +129,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     this.timeEntry.patchValue({ taskId: event.id });
 
     if (this.toggling) {
-      this.updateTimeEntry.emit(this.timeEntry.value);
+      this.updateCurrentTimeEntry.emit(this.timeEntry.value);
     } else {
       this.startToggling();
     }
@@ -138,7 +138,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   handleUnassignTask(): void {
     if (this.toggling) {
       this.timeEntry.patchValue({ taskId: '' });
-      this.updateTimeEntry.emit(this.timeEntry.value);
+      this.updateCurrentTimeEntry.emit(this.timeEntry.value);
     }
   }
 
@@ -157,7 +157,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   }
 
   onRemoveTimeEntry(): void {
-    this.removeTimeEntry.emit();
+    this.removeCurrentTimeEntry.emit();
     this.toggling = false;
     this.duration = '00:00:00';
     this.toggled$.unsubscribe();

@@ -58,14 +58,16 @@ export class SelectTaskMenuComponent {
     if (event.length < 2 && this.selectedTask) {
       this.input.nativeElement.value = this.selectedTask.title;
     }
-    if (event === this.selectedTask.title) {
+    if (this.selectedTask && event === this.selectedTask.title) {
       this.showHint = false;
     }
   }
 
   onSearch(q: string): void {
-    if (this.selectedTask && q !== this.selectedTask.title) {
+    if (this.selectedTask && q !== this.selectedTask.title || !this.selectedTask && q.length > 0) {
       this.showHint = true;
+    } else {
+      this.showHint = false;
     }
     if (q.length >= 2) {
       this.search.emit(q);
