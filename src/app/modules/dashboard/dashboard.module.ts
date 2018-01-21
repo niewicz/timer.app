@@ -21,6 +21,9 @@ import { ProjectsSelectors } from './shared/projects/projects.selectors';
 import { TasksService } from './shared/tasks/tasks.service';
 import { TasksDispatchers } from './shared/tasks/tasks.dispatchers';
 import { TasksSelectors } from './shared/tasks/tasks.selectors';
+import { SummariesService } from './shared/summaries/summaries.service';
+import { SummariesDispatchers } from './shared/summaries/summaries.dispatchers';
+import { SummariesSelectors } from './shared/summaries/summaries.selectors';
 
 import { MainNavbarComponent } from './navigation/containers/main-navbar.component';
 import { TimeEntriesComponent } from './time-entries/containers/time-entries/time-entries.component';
@@ -37,6 +40,7 @@ import { CreateClientComponent } from './clients/containers/create-client/create
 import { EditClientComponent } from './clients/containers/edit-client/edit-client.component';
 import { ProjectComponent } from './projects/containers/project/project.component';
 import { ClientComponent } from './clients/containers/client/client.component';
+import { SummaryComponent } from './summaries/containers/summary/summary.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -55,6 +59,8 @@ import { SelectTaskMenuComponent } from './tasks/components/select-task/menu/sel
 import { ClientsTopBarComponent } from './clients/components/clients/top-bar/clients-top-bar.component';
 import { ProjectsTopBarComponent } from './projects/components/projects/top-bar/projets-top-bar.component';
 import { ClientFormComponent } from './clients/components/client-form/client-form.component';
+import { SummaryChartComponent } from './summaries/components/summary/chart/chart.component';
+import { SummaryLastProjectsComponent } from './summaries/components/summary/last-projects/last-projects.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +84,8 @@ import { ClientFormComponent } from './clients/components/client-form/client-for
     SelectProjectMenuComponent,
     ProjectFormComponent,
     ClientFormComponent,
+    SummaryChartComponent,
+    SummaryLastProjectsComponent,
     // Containers
     MainNavbarComponent,
     TimeEntriesComponent,
@@ -94,6 +102,7 @@ import { ClientFormComponent } from './clients/components/client-form/client-for
     EditClientComponent,
     ProjectComponent,
     ClientComponent,
+    SummaryComponent,
   ],
   providers: [
     Angular2TokenService,
@@ -101,15 +110,22 @@ import { ClientFormComponent } from './clients/components/client-form/client-for
     TimeEntriesService,
     TimeEntriesDispatchers,
     TimeEntriesSelectors,
+
     ClientsService,
     ClientsDispatchers,
     ClientsSelectors,
+
     ProjectsService,
     ProjectsDispatchers,
     ProjectsSelectors,
+
     TasksService,
     TasksDispatchers,
     TasksSelectors,
+
+    SummariesService,
+    SummariesDispatchers,
+    SummariesSelectors,
   ],
   imports: [
     HttpModule,
@@ -120,4 +136,4 @@ import { ClientFormComponent } from './clients/components/client-form/client-for
   ],
   exports: [],
 })
-export class DashboardModule { }
+export class DashboardModule {}
