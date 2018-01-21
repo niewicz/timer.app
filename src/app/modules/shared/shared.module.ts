@@ -1,6 +1,7 @@
-import { ModalComponent } from './components/modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import {
   MatMenuModule,
@@ -34,6 +35,8 @@ import { ContenteditableDirective } from 'ng-contenteditable';
 import { UtilsService } from './../../core/services/utils.service';
 import { ApiRoutes } from './../../core/services/api-routes.service';
 
+import { ModalComponent } from './components/modal.component';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -65,6 +68,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FlexLayoutModule,
 
     PerfectScrollbarModule,
+
+    NgxChartsModule,
   ],
   providers: [
     {
@@ -102,6 +107,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ModalComponent,
 
     PerfectScrollbarModule,
+
+    NgxChartsModule,
   ],
 })
 export class SharedModule {}

@@ -9,6 +9,7 @@ import * as fromTimeEntries from './../modules/dashboard/shared/time-entries/tim
 import * as fromClients from './../modules/dashboard/shared/clients/clients.reducers';
 import * as fromProjects from './../modules/dashboard/shared/projects/projects.reducers';
 import * as fromTasks from './../modules/dashboard/shared/tasks/tasks.reducers';
+import * as fromSummaries from './../modules/dashboard/shared/summaries/summaries.reducers';
 
 export interface State {
   auth: fromAuth.AuthState;
@@ -16,6 +17,7 @@ export interface State {
   clients: fromClients.ClientsState;
   projects: fromProjects.ProjectsState;
   tasks: fromTasks.TasksState;
+  summaries: fromSummaries.SummariesState;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -24,6 +26,7 @@ export const reducers: ActionReducerMap<State> = {
   clients: fromClients.reducer,
   projects: fromProjects.reducer,
   tasks: fromTasks.reducer,
+  summaries: fromSummaries.reducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production

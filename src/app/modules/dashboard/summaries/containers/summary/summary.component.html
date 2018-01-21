@@ -1,0 +1,34 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center">
+  <div
+    fxFlex="70"
+    fxLayout="column"
+    fxLayoutAlign="center start"
+    class="plate">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="chart-bar">
+      <div
+        class="chart-bar-title">
+        Overview
+      </div>
+      <div>
+        Filters
+      </div>
+    </div>
+    <timer-summary-chart
+      fxFlex="90"
+      class="chart"
+      [chartData]="workload$ | async">
+    </timer-summary-chart>
+    <div
+      class="chart-bar chart-bar-title">
+      Last projects
+    </div>
+    <timer-summary-last-projects
+      [projects]="lastProjects$ | async">
+    </timer-summary-last-projects>
+  </div>
+</div>
