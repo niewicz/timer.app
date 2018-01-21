@@ -67,6 +67,10 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/projects/${id}/edit`;
   }
 
+  public summariesWorkloadPath(): string {
+    return `${this.apiBasePath()}/summaries/workload`;
+  }
+
   private apiBasePath(): string {
     // TODO use enivroment to store api path
     return 'http://localhost:3000/api';

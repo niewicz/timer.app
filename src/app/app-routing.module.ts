@@ -17,6 +17,7 @@ import { CreateClientComponent } from './modules/dashboard/clients/containers/cr
 import { EditClientComponent } from './modules/dashboard/clients/containers/edit-client/edit-client.component';
 import { ClientComponent } from './modules/dashboard/clients/containers/client/client.component';
 import { ProjectComponent } from './modules/dashboard/projects/containers/project/project.component';
+import { SummaryComponent } from './modules/dashboard/summaries/containers/summary/summary.component';
 
 const routes: Routes = [
   {
@@ -65,8 +66,13 @@ const routes: Routes = [
       {
         path: 'projects/:projectId',
         component: ProjectComponent,
-        canActivate: [AuthGuard]
-      }
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'summaries',
+        component: SummaryComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
   {
@@ -99,4 +105,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

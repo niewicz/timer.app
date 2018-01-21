@@ -4,6 +4,7 @@ import { environment } from './../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +33,7 @@ import { TimeEntriesEffects } from './modules/dashboard/shared/time-entries/time
 import { ClientsEffects } from './modules/dashboard/shared/clients/clients.effects';
 import { ProjectsEffects } from './modules/dashboard/shared/projects/projects.effects';
 import { TasksEffects } from './modules/dashboard/shared/tasks/tasks.effects';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SummariesEffects } from './modules/dashboard/shared/summaries/summaries.effects';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -55,6 +56,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
       ClientsEffects,
       ProjectsEffects,
       TasksEffects,
+      SummariesEffects,
     ]),
 
     AppRoutingModule,
@@ -69,7 +71,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
       useClass: TokenInterceptor,
       multi: true,
     },
-    { provide: LocationStrategy, useClass:HashLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthGuard,
   ],
   bootstrap: [AppComponent],
