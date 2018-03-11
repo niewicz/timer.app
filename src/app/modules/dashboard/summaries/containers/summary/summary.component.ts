@@ -10,6 +10,7 @@ import { SummariesSelectors } from '../../../shared/summaries/summaries.selector
 })
 export class SummaryComponent implements OnInit {
   workload$ = this.selectors.getWorkload();
+  lastProjects$;
 
   constructor(
     private dispatchers: SummariesDispatchers,

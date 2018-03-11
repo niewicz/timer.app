@@ -24,3 +24,48 @@
 .chart {
   width: 100%;
 }
+
+.filters-trigger {
+  margin: 5px 0 0 0;
+  cursor: pointer;
+  // font-weight: 300;
+  font-size: 14px;
+  color: #444444;
+  padding: 7px 10px 3px 10px;
+  background-color: #efefef;
+  border-radius: 20px;
+
+  span {
+    padding: 0 0 0 15px;
+  }
+
+  mat-icon {
+    height: 20px;
+    font-size: 20px;
+  }
+
+  &:hover {
+    color: #111111;
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  border-radius: 5px;
+}
+
+::ng-deep .mat-menu-content {
+  padding-top: 0px;
+  padding-bottom: 0;
+}
+
+::ng-deep .mat-menu-item {
+  height: 38px;
+  line-height: 38px;
+  color: #444444;
+  font-size: 14px;
+
+  &:hover {
+    background: #f7f7f7 !important;
+    color: #111111;
+  }
+}

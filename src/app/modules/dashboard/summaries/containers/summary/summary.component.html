@@ -15,7 +15,38 @@
         Overview
       </div>
       <div>
-        Filters
+        <mat-menu
+          #filtersMenu="matMenu">
+          <button
+            mat-menu-item>
+            This week
+          </button>
+          <button
+            mat-menu-item>
+            This month
+          </button>
+          <button
+            mat-menu-item>
+            Last week
+          </button>
+          <button
+            mat-menu-item>
+            Last month
+          </button>
+        </mat-menu>
+
+        <div
+          fxLayout="row"
+          fxLayourAlign="start center"
+          class="filters-trigger"
+          [matMenuTriggerFor]="filtersMenu">
+           <span>
+            Filters
+           </span>
+           <mat-icon>
+             arrow_drop_down
+           </mat-icon>
+        </div>
       </div>
     </div>
     <timer-summary-chart
