@@ -1,102 +1,88 @@
 <div
   fxLayout="column"
   fxLayoutAlign="center start"
-  class="background">
-  <div class="bar">
-    <div class="app-title">
-      Timer
-    </div>
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      class="form-container">
-      <form
-        class="sign-up-form"
-        [formGroup]="form">
-
+  class="container">
+  <div class="app-title">
+    timer
+  </div>
+  <div
+    class="form">
+    <form
+      [formGroup]="form">
+      <div
+        class="form__input">
+        <input
+          fxLayoutAlign="start center"
+          placeholder="email"
+          formControlName="email">
         <div
-          class="input-container">
-          <input
-            fxLayoutAlign="start center"
-            class="input"
-            [ngClass]="{'input--error': form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)}"
-            placeholder="Email"
-            formControlName="email">
-          <div
-            *ngIf="form.controls.email.errors?.required && (form.controls.email.touched || form.controls.email.dirty)"
-            class="error">
-            This field is required.
-          </div>
-          <div
-            *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email  && (form.controls.email.touched || form.controls.email.dirty)"
-            class="error">
-            Please provide valid email address.
-          </div>
+          *ngIf="form.get('email').hasError('required') && form.get('email').touched"
+          class="form__error">
+          This field is required.
         </div>
-
         <div
-          class="input-container">
-          <input
-            fxLayoutAlign="start center"
-            class="input"
-            [ngClass]="{'input--error': form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)}"
-            placeholder="Password"
-            type="password"
-            formControlName="password">
-          <div
-            *ngIf="form.controls.password.errors?.required && (form.controls.password.touched || form.controls.password.dirty)"
-            class="error">
-            This field is required.
-          </div>
-          <div
-            *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength && (form.controls.password.touched || form.controls.password.dirty)"
-            class="error">
-            Password is too short.
-          </div>
-          <div
-            *ngIf="form.controls.password.errors?.maxlength && (form.controls.password.touched || form.controls.password.dirty)"
-            class="error">
-            Password is too long.
-          </div>
+          *ngIf="!form.get('email').hasError('required') && form.get('email').hasError('email') && form.get('email').touched"
+          class="form__error">
+          Please provide valid email address.
         </div>
+      </div>
 
+      <div
+        class="form__input">
+        <input
+          fxLayoutAlign="start center"
+          placeholder="password"
+          type="password"
+          formControlName="password">
         <div
-          class="input-container">
-          <input
-            fxLayoutAlign="start center"
-            class="input"
-            [ngClass]="{'input--error': form.controls.passwordConfirmation.invalid && (form.controls.passwordConfirmation.touched || form.controls.passwordConfirmation.dirty)}"
-            placeholder="Password confirmation"
-            type="password"
-            formControlName="passwordConfirmation">
-          <div
-            *ngIf="form.controls.passwordConfirmation.errors?.required && (form.controls.passwordConfirmation.touched || form.controls.passwordConfirmation.dirty)"
-            class="error">
-            This field is required.
-          </div>
+          *ngIf="form.get('password').hasError('required') && form.get('password').touched"
+          class="form__error">
+          This field is required.
         </div>
+        <div
+          *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength') && form.get('password').touched"
+          class="form__error">
+          Password is too short.
+        </div>
+        <div
+          *ngIf="form.get('password').hasError('maxlength') && form.get('password').touched"
+          class="form__error">
+          Password is too long.
+        </div>
+      </div>
 
+      <div
+        class="form__input">
+        <input
+          fxLayoutAlign="start center"
+          placeholder="repeat password"
+          type="password"
+          formControlName="passwordConfirmation">
         <div
-          fxLayout="row"
-          fxLayoutAlign="space-around center"
-          class="below-inputs">
-          <button
-            mat-raised-button
-            class="app-button signup-button"
-            color="warn"
-            type="button"
-            [disabled]="form.invalid || form.pristine"
-            (click)="onSignUp()">
-            &nbsp; Sign up <mat-icon>arrow_right</mat-icon>
-          </button>
-          <div
-            class="signin"
-            [routerLink]="['/', 'users', 'sign_in']">
-            Already have account?
-          </div>
+          *ngIf="form.get('passwordConfirmation').hasError('required') && form.get('passwordConfirmation').touched"
+          class="form__error">
+          This field is required.
         </div>
-      </form>
-    </div>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start end"
+        class="form__actions">
+        <button
+          class="form__button"
+          type="button"
+          [disabled]="!form.valid"
+          (click)="onSignUp()">
+          sign up
+        </button>
+        <button
+          class="form__button--secondary"
+          [routerLink]="['/', 'users', 'sign_in']">
+          already have account?
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 

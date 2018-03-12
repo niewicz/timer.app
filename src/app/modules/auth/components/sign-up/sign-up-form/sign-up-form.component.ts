@@ -9,7 +9,7 @@ import { RegisterData } from 'angular2-token';
 
 @Component({
   selector: 'timer-sign-up-form',
-  styleUrls: ['./sign-up-form.component.scss'],
+  styleUrls: ['./../../auth-layout/auth-layout.component.scss'],
   templateUrl: './sign-up-form.component.html',
 })
 export class AuthSignUpFormComponent {

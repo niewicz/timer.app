@@ -1,80 +1,68 @@
 <div
   fxLayout="column"
   fxLayoutAlign="center start"
-  class="background">
-  <div class="bar">
-    <div class="app-title">
-      Timer
-    </div>
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      class="form-container">
-      <form
-        class="sign-in-form"
-        [formGroup]="form">
-
-        <div
-          class="input-container">
-          <input
-            fxLayoutAlign="start center"
-            class="input"
-            [ngClass]="{'input--error': form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)}"
-            placeholder="Email"
-            formControlName="email">
-            <div
-              *ngIf="form.controls.email.errors?.required && (form.controls.email.touched || form.controls.email.dirty)"
-              class="error">
-              This field is required.
-            </div>
-            <div
-              *ngIf="!form.controls.email.errors?.required && form.controls.email.errors?.email && (form.controls.email.touched || form.controls.email.dirty)"
-              class="error">
-              Please provide valid email address.
-          </div>
-        </div>
-
-        <div
-          class="input-container">
-          <input
-            fxLayoutAlign="start center"
-            placeholder="Password"
-            type="password"
-            class="input"
-            [ngClass]="{'input--error': form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)}"
-            formControlName="password">
-            <div
-              *ngIf="form.controls.password.errors?.required && (form.controls.password.touched || form.controls.password.dirty)"
-              class="error">
-              This field is required.
-            </div>
-            <div
-              *ngIf="!form.controls.password.errors?.required && form.controls.password.errors?.minlength && (form.controls.password.touched || form.controls.password.dirty)"
-              class="error">
-              Password is too short.
-            </div>
-        </div>
-
-        <div
-          fxLayout="row"
-          fxLayoutAlign="space-around center"
-          class="below-inputs">
-          <button
-            mat-raised-button
-            class="app-button signin-button"
-            color="warn"
-            type="submit"
-            [disabled]="form.invalid || form.pristine"
-            (click)="onLogIn()">
-            &nbsp; Log in <mat-icon>keyboard_arrow_right</mat-icon>
-          </button>
+  class="container">
+  <div class="app-title">
+    timer
+  </div>
+  <div
+    class="form">
+    <form
+      [formGroup]="form">
+      <div
+        class="form__input">
+        <input
+          fxLayoutAlign="start center"
+          placeholder="email"
+          formControlName="email">
           <div
-            class="signup"
-            [routerLink]="['/', 'users', 'sign_up']">
-            Don't have account?
+            *ngIf="form.get('email').hasError('required') && form.get('email').touched"
+            class="form__error">
+            This field is required.
           </div>
+          <div
+            *ngIf="!form.get('email').hasError('required') && form.get('email').hasError('email') && form.get('email').touched"
+            class="error">
+            Please provide valid email address.
         </div>
-      </form>
-    </div>
+      </div>
+
+      <div
+        class="form__input">
+        <input
+          fxLayoutAlign="start center"
+          placeholder="password"
+          type="password"
+          formControlName="password">
+          <div
+            *ngIf="form.get('password').hasError('required') && form.get('password').touched"
+            class="error">
+            This field is required.
+          </div>
+          <div
+            *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength') && form.get('password').touched"
+            class="form__error">
+            Password is too short.
+          </div>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start end"
+        class="form__actions">
+        <button
+          class="form__button"
+          type="submit"
+          [disabled]="!form.valid"
+          (click)="onLogIn()">
+          log in
+        </button>
+        <button
+          class="form__button--secondary"
+          [routerLink]="['/', 'users', 'sign_up']">
+          don't have an account?
+        </button>
+      </div>
+    </form>
   </div>
 </div>

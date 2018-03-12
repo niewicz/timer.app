@@ -9,7 +9,7 @@ import { SignInData } from 'angular2-token';
 
 @Component({
   selector: 'timer-sign-in-form',
-  styleUrls: ['./sign-in-form.component.scss'],
+  styleUrls: ['./../../auth-layout/auth-layout.component.scss'],
   templateUrl: './sign-in-form.component.html',
 })
 export class AuthSignInFormComponent {
