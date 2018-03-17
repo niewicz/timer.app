@@ -22,7 +22,7 @@
           </div>
           <div
             *ngIf="!form.get('email').hasError('required') && form.get('email').hasError('email') && form.get('email').touched"
-            class="error">
+            class="form__error">
             Please provide valid email address.
         </div>
       </div>
@@ -36,7 +36,7 @@
           formControlName="password">
           <div
             *ngIf="form.get('password').hasError('required') && form.get('password').touched"
-            class="error">
+            class="form__error">
             This field is required.
           </div>
           <div
