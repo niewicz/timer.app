@@ -1,9 +1,7 @@
 .form {
-  background: linear-gradient(to right, rgb(35, 37, 38), rgb(50, 52, 54));
   width: stretch;
   height: 70px;
   padding: 10px 0 10px 0;
-  color: #fefefe;
 }
 
 .menu-icon {
@@ -18,22 +16,6 @@
 
 mat-icon {
   cursor: pointer;
-}
-
-.app-icon {
-  font-size: 16px;
-}
-
-.app-title {
-  font-family: 'Quicksand';
-  padding: 0 20px 0 0;
-  font-size: 26px;
-  color: #fefefe;
-  cursor: pointer;
-
-  &:focus {
-    outline: 0;
-  }
 }
 
 .item {
@@ -59,8 +41,4 @@ mat-icon {
 .entry {
   padding: 0 0 0 10px;
   width: 100%;
-}
-
-.green {
-  background-color: #55cc55;
 }

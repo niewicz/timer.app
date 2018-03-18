@@ -1,9 +1,9 @@
 <div
   fxLayout="row"
-  fxLayoutAlign="space-around center"
-  class="main-navbar-menu">
+  fxLayoutAlign="space-around end"
+  class="main-navbar__menu">
   <div
-    class="item"
+    class="app-button-2"
     [routerLink]="['/', 'dashboard']"
     fxLayoutAlign="center center">
     <mat-icon>
@@ -12,7 +12,7 @@
     Home
   </div>
   <div
-    class="item"
+    class="app-button-2"
     [routerLink]="['/', 'dashboard', 'summaries']"
     fxLayoutAlign="center center">
     <mat-icon>
@@ -21,7 +21,7 @@
     Summaries
   </div>
   <div
-    class="item"
+    class="app-button-2"
     [routerLink]="['/', 'dashboard', 'projects']"
     fxLayoutAlign="center center">
     <mat-icon>
@@ -30,7 +30,7 @@
     Projects
   </div>
   <div
-    class="item"
+    class="app-button-2"
     [routerLink]="['/', 'dashboard', 'clients']"
     fxLayoutAlign="center center">
     <mat-icon>
@@ -39,7 +39,7 @@
     Clients
   </div>
   <div
-    class="item"
+    class="app-button-2"
     [routerLink]="['/', 'dashboard', 'settings']"
     fxLayoutAlign="center center">
     <mat-icon>
@@ -48,7 +48,7 @@
     Settings
   </div>
   <div
-    class="item"
+    class="app-button-2"
     (click)="onLogOut()"
     fxLayoutAlign="center center">
     <mat-icon>

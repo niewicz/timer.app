@@ -12,12 +12,19 @@
     color="warn"
     mode="indeterminate">
   </mat-progress-spinner>
-  <button
+  <!-- <button
     *ngIf="(total$ | async) > (timeEntries$ | async)?.length && !(pending$ | async)"
     mat-raised-button
     color="warn"
     class="app-button"
     (click)="handleLoadMore()">
     Load more
-  </button>
+  </button> -->
+
+  <div
+    class="app-button-2"
+    *ngIf="(total$ | async) > (timeEntries$ | async)?.length && !(pending$ | async)"
+    (click)="handleLoadMore()">
+    load more
+  </div>
 </div>

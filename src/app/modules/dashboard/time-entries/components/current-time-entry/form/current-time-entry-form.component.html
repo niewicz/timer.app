@@ -4,37 +4,7 @@
   class="form"
   (mouseover)="onMouseover()"
   (mouseleave)="onMouseleave()">
-  <div
-    fxFlex="20"
-    fxLayout="row">
-    <div
-      class="menu-icon"
-      fxLayoutAlign="center end">
-      <mat-icon
-        *ngIf="!showMenu"
-        (click)="toggleMenu()">
-        keyboard_arrow_down
-      </mat-icon>
-      <mat-icon
-        *ngIf="showMenu"
-        (click)="toggleMenu()">
-        keyboard_arrow_up
-      </mat-icon>
-    </div>
-    <div
-      class="app-title"
-      [routerLink]="['/', 'dashboard']">
-      Timer
-      <sup>
-        <mat-icon
-          class="app-icon">
-          access_time
-        </mat-icon>
-      </sup>
-    </div>
-  </div>
   <form
-    fxFlex="80"
     fxLayout="row"
     fxLayoutAlign="end center"
     class="entry">
@@ -90,26 +60,19 @@
       delete
     </mat-icon>
 
-    <button
+    <div
       *ngIf="!toggling"
-      mat-mini-fab
-      class="item green"
-      type="button"
       (click)="startToggling()">
       <mat-icon>
         play_arrow
       </mat-icon>
-    </button>
-    <button
+    </div>
+    <div
       *ngIf="toggling"
-      mat-mini-fab
-      class="item"
-      color="warn"
-      type="button"
       (click)="stopToggling()">
       <mat-icon>
         stop
       </mat-icon>
-    </button>
+    </div>
   </form>
 </div>

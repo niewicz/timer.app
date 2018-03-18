@@ -1,14 +1,25 @@
 <div
   fxLayout="column"
   fxLayoutAlign="center start">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between end"
+    class="main-navbar">
+    <div
+      fxFlex="20"
+      class="app-title"
+      [routerLink]="['/', 'dashboard']">
+      timer
+    </div>
+    <div
+      fxFlex="80">
+      <timer-main-navbar-menu
+        (logOut)="handleLogOut()">
+      </timer-main-navbar-menu>
+    </div>
+  </div>
   <timer-current-time-entry
     (menu)="handleMenu($event)"
-    class="fit-page">
+    class="current-time-entry fit-page">
   </timer-current-time-entry>
-  <timer-main-navbar-menu
-    *ngIf="showMenu"
-    class="fit-page"
-    @ngIfAnimation
-    (logOut)="handleLogOut()">
-  </timer-main-navbar-menu>
 </div>
