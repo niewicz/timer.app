@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter,
   OnInit,
+  Input,
 } from '@angular/core';
 
 import {
@@ -21,6 +22,8 @@ import { TasksDispatchers } from '../../../shared/tasks/tasks.dispatchers';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentTimeEntryComponent implements OnInit {
+  @Input() getCurrent = true;
+
   @Output() menu = new EventEmitter<boolean>();
 
   currentTimeEntry$ = this.timeEntriesSelectors.getCurrentTimeEntry();
@@ -32,7 +35,9 @@ export class CurrentTimeEntryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.timeEntriesDispatchers.getCurrentTimeEntry();
+    if (this.getCurrent) {
+      this.timeEntriesDispatchers.getCurrentTimeEntry();
+    }
   }
 
   handleMenu(show: boolean): void {

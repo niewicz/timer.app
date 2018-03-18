@@ -6,20 +6,32 @@
     fxLayoutAlign="space-between end"
     class="main-navbar">
     <div
-      fxFlex="20"
+      fxFlex="17"
       class="app-title"
       [routerLink]="['/', 'dashboard']">
       timer
     </div>
     <div
-      fxFlex="80">
+      fxFlex="83">
       <timer-main-navbar-menu
+        *ngIf="!scrolled"
         (logOut)="handleLogOut()">
       </timer-main-navbar-menu>
+      <timer-current-time-entry
+        class="current-time-entry fit-page"
+        *ngIf="scrolled"
+        [getCurrent]="getCurrent"
+        (menu)="handleMenu($event)">
+      </timer-current-time-entry>
     </div>
   </div>
-  <timer-current-time-entry
-    (menu)="handleMenu($event)"
-    class="current-time-entry fit-page">
-  </timer-current-time-entry>
+  <div
+    class="current-time-entry">
+    <timer-current-time-entry
+      class="fit-page"
+      *ngIf="!scrolled"
+      [getCurrent]="getCurrent"
+      (menu)="handleMenu($event)">
+    </timer-current-time-entry>
+  </div>
 </div>

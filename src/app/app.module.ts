@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ScrollSpyModule } from 'ngx-scrollspy';
 
 import { reducers, metaReducers } from './store';
 
@@ -58,6 +59,8 @@ import { SummariesEffects } from './modules/dashboard/shared/summaries/summaries
       TasksEffects,
       SummariesEffects,
     ]),
+
+    ScrollSpyModule.forRoot(),
 
     AppRoutingModule,
     SharedModule,

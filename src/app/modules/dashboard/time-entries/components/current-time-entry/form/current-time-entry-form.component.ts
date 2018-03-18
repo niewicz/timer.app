@@ -1,6 +1,5 @@
 import {
   Component,
-  ChangeDetectionStrategy,
   OnChanges,
   Output,
   EventEmitter,
@@ -23,7 +22,6 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
   selector: 'timer-current-time-entry-form',
   templateUrl: './current-time-entry-form.component.html',
   styleUrls: ['./current-time-entry-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class CurrentTimeEntryFormComponent implements OnChanges {
   @Input() currentTimeEntry: ITimeEntry;
@@ -59,7 +57,6 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.currentTimeEntry);
     if (this.currentTimeEntry) {
       this.timeEntry.patchValue({
         id: this.currentTimeEntry.id,
@@ -99,7 +96,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
         new Date().toString(),
         this.timeEntry.get('startAt').value,
       );
-      this.cd.detectChanges();
+      this.cd.markForCheck();
     });
     this.toggling = true;
   }
@@ -111,7 +108,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
         new Date().toString(),
         this.timeEntry.get('startAt').value,
       );
-      this.cd.detectChanges();
+      this.cd.markForCheck();
     });
   }
 

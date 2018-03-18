@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { ScrollSpyModule } from 'ngx-scrollspy';
 import { Angular2TokenService } from 'angular2-token';
 
 import { SharedModule } from './../shared/shared.module';
@@ -133,6 +134,7 @@ import { SummaryLastProjectsComponent } from './summaries/components/summary/las
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    ScrollSpyModule,
   ],
   exports: [],
 })
