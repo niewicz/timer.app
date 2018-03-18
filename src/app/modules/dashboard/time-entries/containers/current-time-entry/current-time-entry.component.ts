@@ -23,6 +23,7 @@ import { TasksDispatchers } from '../../../shared/tasks/tasks.dispatchers';
 })
 export class CurrentTimeEntryComponent implements OnInit {
   @Input() getCurrent = true;
+  @Input() tiny = false;
 
   @Output() menu = new EventEmitter<boolean>();
 

@@ -24,19 +24,23 @@
   }
 }
 
+.duration {
+  cursor: default;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
 // .menu-icon {
 //   font-size: 20px;
 //   padding: 0 0 0 10px;
 // }
 
-// .cancel {
-//   font-size: 16px;
-//   padding: 0 12px 0 0;
-// }
-
-// mat-icon {
-//   cursor: pointer;
-// }
+.icon {
+  font-size: 16px;
+  margin: 0 12px 0 -10px;
+}
 
 // .task-title {
 //   font-size: 18px;

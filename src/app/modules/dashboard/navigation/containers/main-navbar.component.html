@@ -20,6 +20,7 @@
       <timer-current-time-entry
         class="current-time-entry fit-page"
         *ngIf="scrolled"
+        [tiny]="true"
         [getCurrent]="getCurrent"
         (menu)="handleMenu($event)">
       </timer-current-time-entry>

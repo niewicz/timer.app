@@ -25,6 +25,7 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 })
 export class CurrentTimeEntryFormComponent implements OnChanges {
   @Input() currentTimeEntry: ITimeEntry;
+  @Input() tiny = false;
 
   @Output() menu = new EventEmitter<boolean>();
   @Output() createCurrentTimeEntry = new EventEmitter<ITransferTimeEntry>();

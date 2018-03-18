@@ -32,8 +32,9 @@
         {{ task.title }}
       </div>
       <mat-icon
+        fxLayoutAlign="center center"
         *ngIf="task.project">
-        radio_button_unchecked
+        navigate_before
       </mat-icon>
       <div
         *ngIf="task.project"
