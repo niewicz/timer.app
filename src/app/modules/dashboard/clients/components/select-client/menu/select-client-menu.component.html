@@ -2,58 +2,50 @@
   #clientsMenu="matMenu"
   [overlapTrigger]="false">
   <div
-    class="search"
+    class="form__input"
     fxLayout="row">
     <input
-      class="search-input"
       (click)="$event.stopPropagation()"
       (input)="onInput($event.target.value)"
       placeholder="Search"
       type="text">
   </div>
   <div
-    class="items scrollbar"
-    [perfectScrollbar]="config">
+    class="list">
     <div
       *ngFor="let client of clients"
       (click)="onChoice(client)">
       <div
-        class="item">
-        <div
-          class="client">
-          {{ client?.name }}
-        </div>
+        class="list__item">
+        {{ client?.name }}
       </div>
     </div>
   </div>
   <form
-    [formGroup]="form">
-    <div
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    class="create-client">
-    <input
-      class="search-input"
-      type="text"
-      placeholder="Create client"
-      formControlName="name"
-      (click)="$event.stopPropagation()"
-      (keyup.enter)="onCreate()">
-    <mat-icon
-      (click)="onCreate()">
-      person_add
-    </mat-icon>
-    </div>
+    [formGroup]="form"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="form__input">
+      <input
+        type="text"
+        placeholder="Create client"
+        formControlName="name"
+        (click)="$event.stopPropagation()"
+        (keyup.enter)="onCreate()">
+      <mat-icon
+        (click)="onCreate()">
+        person_add
+      </mat-icon>
   </form>
 </mat-menu>
 
 <div
-  [matMenuTriggerFor]="clientsMenu"
-  class="pointer">
+  [matMenuTriggerFor]="clientsMenu">
   <div
     *ngIf="!selected"
     fxLayout="row"
     fxLayoutAlign="start center"
+    fxLayoutGap="5px"
     class="menu-trigger">
     <mat-icon>
       person
@@ -66,9 +58,14 @@
   <div
     *ngIf="selected"
     fxLayout="row"
-    class="menu-trigger selected">
+    fxLayoutAlign="start center"
+    fxLayoutGap="10px"
+    class="menu-trigger client">
+    <span>
+      for:
+    </span>
     <div
-      class="content">
+      class="client__name">
       {{ selected?.name }}
     </div>
   </div>

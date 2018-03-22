@@ -5,59 +5,50 @@
   </div>
   <div
     modal-body>
-    <div
-      class="content">
+    <div>
       <form
+        class="form"
         [formGroup]="form">
         <div
           fxLayout="column"
-          fxLayoutAlign="center start"
-          class="field form__input">
+          class="form__input">
           <input
-            class="input"
             placeholder="title"
             formControlName="title">
             <div
-              *ngIf="form.controls.title.errors?.required && (form.controls.title.touched || form.controls.title.dirty)"
+              *ngIf="form.get('title').hasError('required') && form.get('title').touched"
               class="form__error">
-              Title is required
+              title is required
             </div>
         </div>
 
         <div
           fxLayout="column"
           fxLayoutAlign="center start"
-          class="field">
-          <div
-            class="label">
-            Description
-          </div>
+          class="form__textarea">
           <textarea
-            class="input description"
+            class="description"
+            placeholder="description"
             formControlName="description">
           </textarea>
         </div>
 
         <div
-          class="field">
-          <div
-            class="label">
-            Client
-          </div>
+          class="">
           <div
             fxLayout="row"
-            fxLayoutAlign="start center">
+            fxLayoutAlign="start center"
+            class="client__select">
             <timer-select-client
-              class="select-client"
               [displayText]="'Select client'"
               [selectedClient]="selectedClient"
               (newSelectedClient)="handleClientChange($event)">
             </timer-select-client>
             <mat-icon
-              *ngIf="selectedClient"
-              class="remove-client"
+              fxLayoutAlign="center center"
+              class="client__remove"
               (click)="removeClient()"
-              fxLayoutAlign="center center">
+              *ngIf="selectedClient">
               highlight_off
             </mat-icon>
           </div>
@@ -65,7 +56,7 @@
 
         <div
           fxLayoutAlign="end center"
-          class="footer">
+          class="form+_actions">
           <button
             class="form__button"
             [disabled]="!form.valid"
