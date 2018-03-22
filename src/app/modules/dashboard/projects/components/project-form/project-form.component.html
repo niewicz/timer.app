@@ -12,17 +12,14 @@
         <div
           fxLayout="column"
           fxLayoutAlign="center start"
-          class="field">
-          <div
-            class="label">
-            Title
-          </div>
+          class="field form__input">
           <input
             class="input"
+            placeholder="title"
             formControlName="title">
             <div
               *ngIf="form.controls.title.errors?.required && (form.controls.title.touched || form.controls.title.dirty)"
-              class="error">
+              class="form__error">
               Title is required
             </div>
         </div>
@@ -70,9 +67,7 @@
           fxLayoutAlign="end center"
           class="footer">
           <button
-            mat-raised-button
-            color="warn"
-            class="app-button"
+            class="form__button"
             [disabled]="!form.valid"
             (click)="onSubmit()">
             <span

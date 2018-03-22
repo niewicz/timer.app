@@ -1,60 +1,56 @@
-.content {
-  padding: 5px;
-  color: #444444;
-}
-
-.deeper {
-  padding: 5px 5px 5px 5px;
-}
-
-.field {
-  padding: 5px 5px 10px 5px;
-  width: 100%;
-}
-
-.label {
-  padding: 0 0 5px 0;
-  font-size: 15px;
-}
-
-.info-icon {
-  padding: 0 10px 0 0;
-}
-
-.input {
-  border: 1px solid #aaaaaa;
-  border-radius: 2px;
-  font-size: 15px;
-  padding: 5px;
-  width: stretch;
-}
-
-.description {
-  min-height: 80px;
-  max-height: 200px;
-}
-
-.select-client {
-  padding: 5px;
-  width: auto;
-}
-
-.footer {
-  padding: 5px;
-}
-
-.remove-client {
-  font-size: 20px;
-  color: #aaaaaa;
-  cursor: pointer;
-
-  &:hover {
+.form {
+  &__header {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 15px;
+    padding-top: 10px;
     color: #444444;
   }
-}
-
-.error {
-  font-size: 12px;
-  color: #f33f3d;
-  padding: 5px 2px 0 2px;
+  &__input {
+    padding: 10px 0 0 0;
+    height: 60px;
+    width: 100%;
+    input {
+      background-color: #f5f5f5;
+      padding: 10px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #444444;
+      border: none;
+      width: 510px;
+      &::placeholder {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #aaaaaa;
+      }
+    }
+  }
+  &__error {
+    font-size: 10px;
+    color: #f33f3d;
+    padding: 5px 0 0 1px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  &__button {
+    background: transparent;
+    padding: 0 0 0 0;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #444444;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    &:focus {
+      outline: 0;
+    }
+  }
+  button:disabled {
+    color: #bbb;
+    cursor: default;
+  }
+  &__actions {
+    padding: 5px 0 0 0;
+  }
 }

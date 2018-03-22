@@ -41,6 +41,7 @@
     "lodash": "^4.17.4",
     "ng-contenteditable": "^1.0.5",
     "ng-http-interceptor": "^4.0.0",
+    "ng2-charts": "^1.6.0",
     "ngrx-store-freeze": "^0.2.0",
     "ngx-perfect-scrollbar": "^5.2.0",
     "ngx-scrollspy": "^1.2.0",

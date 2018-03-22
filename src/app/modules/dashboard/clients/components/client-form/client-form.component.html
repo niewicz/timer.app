@@ -3,130 +3,112 @@
     modal-header>
     <span
       *ngIf="!client">
-      Create client
+      create client
     </span>
     <span
       *ngIf="client">
-      Editing - {{ client?.name }}
+      editing - {{ client?.name }}
     </span>
   </div>
   <div
     modal-body>
-    <div
-      class="content">
+    <div>
       <form
+        class="form"
         [formGroup]="form">
         <div
           fxLayout="row"
-          fxLayoutAlign="start center">
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+          class="form__header">
           <mat-icon
-            fxLayoutAlign="center center"
-            class="info-icon">
+            fxLayoutAlign="center center">
             account_balance
           </mat-icon>
-          Company info
+          <span>
+            company info
+          </span>
         </div>
 
-        <div
-          class="deeper">
+        <div>
           <div
             fxLayout="column"
-            fxLayoutAlign="center start"
-            class="field">
-            <div
-              class="label">
-              Name
-            </div>
+            class="form__input">
             <input
-              class="input"
+              placeholder="name"
               formControlName="name">
             <div
-              *ngIf="form.controls.name.errors?.required && (form.controls.name.touched || form.controls.name.dirty)"
-              class="error">
-              Name is required
+              *ngIf="form.get('name').hasError('required') && form.get('name').touched"
+              class="form__error">
+              name is required
             </div>
           </div>
 
           <div
             fxLayout="column"
-            fxLayoutAlign="center start"
-            class="field">
-            <div
-              class="label">
-              Email
-            </div>
+            class="form__input">
             <input
-              class="input"
+              placeholder="email"
               formControlName="email">
-              <div
-                *ngIf="form.controls.email.errors?.email && (form.controls.email.touched || form.controls.email.dirty)"
-                class="error">
-                Provide valid email address
-              </div>
+            <div
+              *ngIf="form.get('email').hasError('email') && form.get('email').touched"
+              class="form__error">
+              provide valid email address
+            </div>
           </div>
         </div>
 
         <div
           fxLayout="row"
-          fxLayoutAlign="start center">
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+          class="form__header">
           <mat-icon
-            class="info-icon"
             fxLayoutAlign="center center">
             person
           </mat-icon>
-          Contact person info
+          <span>
+            contact person info
+          </span>
         </div>
 
-        <div
-          class="deeper">
+        <div>
           <div
             fxLayout="column"
-            fxLayoutAlign="center start"
-            class="field">
-            <div
-              class="label">
-              Name
-            </div>
+            class="form__input">
             <input
-              class="input"
+              placeholder="name"
               formControlName="contactPersonName">
           </div>
 
           <div
             fxLayout="column"
-            fxLayoutAlign="center start"
-            class="field">
-            <div
-              class="label">
-              Email
-            </div>
+            class="field form__input">
             <input
-              class="input"
+              placeholder="email"
               formControlName="contactPersonEmail">
               <div
-                *ngIf="form.controls.contactPersonEmail.errors?.email && (form.controls.contactPersonEmail.touched || form.controls.contactPersonEmail.dirty)"
-                class="error">
-                Provide valid email address
+                *ngIf="form.get('contactPersonEmail').hasError('email') && form.get('contactPersonEmail').touched"
+                class="form__error">
+                provide valid email address
               </div>
           </div>
         </div>
 
         <div
           fxLayoutAlign="end center"
-          class="footer">
+          class="form__actions">
           <button
-            mat-raised-button
-            color="warn"
-            class="app-button"
+            class="form__button"
             [disabled]="!formValid"
             (click)="onSubmit()">
             <span
               *ngIf="!client">
-              Create
+              create
             </span>
             <span
               *ngIf="client">
-              Update
+              update
             </span>
           </button>
         </div>

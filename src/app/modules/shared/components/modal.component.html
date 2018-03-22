@@ -1,30 +1,30 @@
 <div
   class="modal">
   <div
-    class="modal-content">
+    class="modal__content">
     <div
-      class="modal-header">
-      <h2
+      class="modal__header">
+      <span
         fxLayoutAlign="start center">
         <ng-content
           select="[modal-header]">
         </ng-content>
-      </h2>
+      </span>
       <mat-icon
         fxLayoutAlign="center center"
-        class="modal-close"
+        class="modal__close"
         (click)="closeModal()">
         close
       </mat-icon>
     </div>
     <div
-      class="modal-body">
+      class="modal__body">
       <ng-content
         select="[modal-body]">
       </ng-content>
     </div>
     <div
-      class="modal-footer">
+      class="modal__footer">
       <ng-content
         select="[modal-footer]">
       </ng-content>
@@ -32,5 +32,5 @@
   </div>
 </div>
 <div
-  class="modal-overlay">
+  class="modal__overlay">
 </div>
