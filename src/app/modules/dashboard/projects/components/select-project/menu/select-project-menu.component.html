@@ -2,71 +2,75 @@
   #projectsMenu="matMenu"
   [overlapTrigger]="false">
   <div
-    class="search"
-    fxLayout="row">
+    class="form__input"
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
     <input
-      class="search-input"
       (click)="$event.stopPropagation()"
       (input)="onInput($event.target.value)"
       placeholder="Search"
       type="text">
-    <div
-      class="create-project"
-      fxLayoutAlign="center center">
-      <mat-icon
-        fxLayoutAlign="center center"
-        [routerLink]="['', {outlets: {modal: ['projects', 'create']}}]">
-        create_new_folder
-      </mat-icon>
-    </div>
+    <mat-icon
+      fxLayoutAlign="center center"
+      [routerLink]="['', {outlets: {modal: ['projects', 'create']}}]">
+      create_new_folder
+    </mat-icon>
   </div>
   <div
-    *ngFor="let project of projects"
-    (click)="onClick(project)">
-    <div
-      fxLayout="row"
-      class="item">
+    class="list">
+    <ng-container
+      *ngFor="let project of projects"
+      (click)="onClick(project)">
       <div
-        fxLayoutAlign="end center"
-        class="project">
-        {{ project?.title }}
-      </div>
-      <div
-        *ngIf="project?.client"
-        fxFlexLayoutAlign="start center"
-        class="client">
+        fxLayout="row"
+        fxLayoutGap="10px"
+        class="list__item">
         <div
-          class="content">
-          {{ project?.client?.name }}
+          fxLayoutAlign="end center"
+          class="project">
+          {{ project?.title }}
+        </div>
+        <div
+          *ngIf="project?.client"
+          fxFlexLayoutAlign="start center"
+          class="client">
+          <div
+            class="client__name">
+            {{ project?.client?.name }}
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </div>
   <div
-    class="item none pointer"
+    class="list__item"
     (click)="onClick(undefined)">
     None
   </div>
 </mat-menu>
 
 <div
-  [matMenuTriggerFor]="projectsMenu"
-  class="pointer">
+  [matMenuTriggerFor]="projectsMenu">
   <div
-    *ngIf="!selected"
     fxLayout="row"
-    fxLayoutAlign="center center">
-    <mat-icon>
+    fxLayoutAlign="center center"
+    fxLayoutGap="5px"
+    class="menu-trigger menu-trigger__default"
+    *ngIf="!selected"
+    [ngClass]="{'menu-trigger--small': !navbar}">
+    <mat-icon
+      fxLayoutAlign="center center">
       folder
     </mat-icon>
-    <div
-      class="text">
+    <span>
       {{ text }}
-    </div>
+    </span>
   </div>
   <div
-    *ngIf="selected"
     fxLayout="row"
+    fxLayoutGap="10px"
+    class="menu-trigger"
+    *ngIf="selected"
     [ngClass]="{'selected-navbar': navbar}">
     <div
       fxLayoutAlign="end center"
@@ -78,7 +82,7 @@
       fxFlexLayoutAlign="start center"
       class="client">
       <div
-        class="content">
+        class="client__name">
         {{ selected?.client?.name }}
       </div>
     </div>

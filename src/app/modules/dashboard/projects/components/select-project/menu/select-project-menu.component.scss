@@ -1,103 +1,106 @@
-::ng-deep .mat-menu-panel {
-  border-radius: 0px !important;
-  box-shadow: none !important;
-  border: 1px solid #dddddd;
+.selected-navbar {
+  text-transform: none;
+  letter-spacing: 1px;
+  .project {
+    font-size: 16px;
+    color: #444444;
+  }
+  .client {
+    color: #fefefe;
+    &__name {
+      background: linear-gradient(to right, rgb(203, 45, 62), rgb(213, 65, 72));
+    }
+  }
 }
-
-::ng-deep .mat-menu-content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+.list {
+  max-height: 200px;
+  overflow-x: hidden;
+  &__item {
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #444444;
+    cursor: pointer;
+    &:hover {
+      background: #eeeeee;
+    }
+  }
 }
-
-::ng-deep .mat-menu-item {
-  height: 38px;
-  line-height: 38px;
-  color: #444444;
+.form {
+  &__input {
+    height: 40px;
+    width: 100%;
+    background-color: #f8f8f8;
+    input {
+      background-color: inherit;
+      padding: 10px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #444444;
+      border: none;
+      min-width: 200px;
+      &::placeholder {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #aaaaaa;
+      }
+    }
+    mat-icon {
+      padding: 0 15px 0 0;
+      color: #777777;
+      cursor: pointer;
+      &:hover {
+        color: #444444;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}
+.menu-trigger {
   font-size: 14px;
-
-  &:hover {
-    background: #f7f7f7 !important;
-    color: #111111;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 1px;
+  &__default {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  &--small {
+    color: #777777;
+    font-size: 13px;
+    mat-icon {
+      font-size: 20px;
+    }
   }
 }
-
-.search {
-  padding: 10px 10px 15px 10px;
-}
-
-.none {
-  padding: 10px 10px 5px 10px;
-  color: #444444;
-  font-size: 15px;
-  font-style: italic;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.search-input {
-  font-size: 15px;
-  border: 1px solid #aaaaaa;
-  border-radius: 2px;
-  padding: 5px;
-}
-
-.item {
-  padding: 10px 10px 10px 10px;
-
-  &:hover {
-    background: #eeeeee;
-  }
-}
-
-.project {
-  color: #444444;
-  padding: 0 10px 0 0;
-  font-size: 15px;
-  cursor: pointer;
-}
-
 .client {
   color: #444444;
-  font-size: 13px;
-
-  .content {
+  font-size: 12px;
+  &__name {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 5px;
     width: fit-content;
   }
 }
-
-.selected-navbar {
-  .project {
-    color: #efefef;
-  }
-
-  .client {
-    color: #fefefe;
-
-    .content {
-      background: linear-gradient(to right, rgb(203, 45, 62), rgb(213, 65, 72));
-    }
-  }
+::ng-deep .mat-menu-panel {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  border: 1px solid #dddddd;
 }
-
-.create-project {
-  padding: 0 2px 0 7px;
-  cursor: pointer;
-  color: #aaaaaa;
-
-  mat-icon {
-    font-size: 24px;
-  }
-
+::ng-deep .mat-menu-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+::ng-deep .mat-menu-item {
+  height: 38px;
+  line-height: 38px;
+  color: #444444;
+  font-size: 14px;
   &:hover {
-    color: #444444;
+    background: #f7f7f7 !important;
+    color: #111111;
   }
-}
-
-.text {
-  padding: 0 0 0 7px;
 }

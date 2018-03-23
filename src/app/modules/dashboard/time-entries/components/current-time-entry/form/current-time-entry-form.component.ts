@@ -92,7 +92,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   startToggling(): void {
     this.timeEntry.patchValue({ startAt: new Date().toString() });
     this.createCurrentTimeEntry.emit(this.timeEntry.value);
-    this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
+    this.toggled$ = Observable.timer(0, 500).subscribe(tick => {
       this.duration = this.utils.getDuration(
         new Date().toString(),
         this.timeEntry.get('startAt').value,
@@ -104,7 +104,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
 
   continueToggling(): void {
     this.toggling = true;
-    this.toggled$ = Observable.timer(0, 1000).subscribe(tick => {
+    this.toggled$ = Observable.timer(0, 500).subscribe(tick => {
       this.duration = this.utils.getDuration(
         new Date().toString(),
         this.timeEntry.get('startAt').value,
