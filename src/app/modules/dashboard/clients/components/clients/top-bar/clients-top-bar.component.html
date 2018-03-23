@@ -3,24 +3,22 @@
   fxLayoutAlign="space-between center"
   class="top-bar">
   <div
-    fxFlex="80">
+    fxFlex="80"
+    class="top-bar__search">
     <input
-      class="searchbox"
-      placeholder="Search..."
+      placeholder="search..."
       (input)="onSearch($event.target.value)">
   </div>
   <div
-    fxFlex="20"
     fxLayout="row"
     fxLayoutAlign="end center"
-    class="add"
+    fxLayoutGap="10px"
+    class="app-button-2"
     [routerLink]="['', {outlets: {modal: ['clients', 'create']}}]">
-    <div
-      class="add-text">
-      Create client
-    </div>
-    <mat-icon
-      class="add-icon">
+    <span>
+      create client
+    </span>
+    <mat-icon>
       person_add
     </mat-icon>
   </div>
