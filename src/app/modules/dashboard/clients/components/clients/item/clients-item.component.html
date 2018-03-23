@@ -1,77 +1,83 @@
 <div
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
   class="client"
   (mouseover)="onMouseover()"
   (mouseleave)="onMouseleave()">
   <div
-    fxFlex="92"
     fxLayout="row"
-    fxLayoutAlign="start center"
-    [routerLink]="['/', 'dashboard', 'clients', client?.id]">
+    fxLayoutAlign="space-between center">
     <div
-      fxFlex="30"
-      class="client-name">
-      {{ client.name }}
-    </div>
-    <div
-      *ngIf="client?.email">
-      <mat-icon
-        fxLayoutAlign="center center"
-        class="dot">
-        fiber_manual_record
-      </mat-icon>
-    </div>
-    <div
-      *ngIf="client?.email"
-      fxFlex="15"
-      class="client-email">
-      <a
-        [href]="'mailto:' + client.email">
-        {{ client.email }}
-      </a>
-    </div>
-    <div
-      *ngIf="client?.contactPersonName || client?.contactPersonEmail">
-      <mat-icon
-        fxLayoutAlign="center center"
-        class="dot">
-        fiber_manual_record
-      </mat-icon>
-    </div>
-    <div
-      *ngIf="client?.contactPersonName || client?.contactPersonEmail"
+      fxFlex="92"
       fxLayout="row"
-      fxLayoutAlign="start center">
+      fxLayoutAlign="start center"
+      fxLayoutGap="30px"
+      [routerLink]="['/', 'dashboard', 'clients', client?.id]">
       <div
-        class="contact-person">
-        Contact person:
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="client__name">
+        {{ client.name }}
+        <mat-icon
+          fxLayoutAlign="center center">
+          email
+        </mat-icon>
       </div>
       <div
-        class="contact-name">
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="client__contact-name"
+        *ngIf="client?.contactPersonName">
         {{ client.contactPersonName }}
+        <mat-icon
+          fxLayoutAlign="center center">
+          email
+        </mat-icon>
       </div>
-      <div
-        class="contact-email">
-        <a
-          [href]="'mailto:' + client.contactPersonEmail">
-          {{ client.contactPersonEmail }}
-        </a>
-      </div>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayoutGap="10px">
+      <span
+        class="app-button-2">
+        <mat-icon
+          fxLayoutAlign="center center"
+          class="client__icon"
+          *ngIf="showIcons"
+          [routerLink]="['', {outlets: {modal: ['clients', client.id ,'edit']}}]">
+          mode_edit
+        </mat-icon>
+      </span>
+      <span
+        class="app-button-2">
+        <mat-icon
+          class="client__icon"
+          fxLayoutAlign="center center"
+          *ngIf="showIcons"
+          (click)="onRemove()">
+          delete
+        </mat-icon>
+      </span>
     </div>
   </div>
-  <mat-icon
-    *ngIf="showIcons"
-    fxLayoutAlign="center center"
-    class="delete"
-    [routerLink]="['', {outlets: {modal: ['clients', client.id ,'edit']}}]">
-    mode_edit
-  </mat-icon>
-  <mat-icon
-    *ngIf="showIcons"
-    fxLayoutAlign="center center"
-    class="delete"
-    (click)="onRemove()">
-    delete
-  </mat-icon>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center start"
+    fxLayoutGap="10px"
+    class="last-project">
+    <div
+      fxLayoutGap="10px"
+      *ngIf="client?.lastProject">
+      <span
+        class="last-project__label">
+        last project
+      </span>
+      <span
+        class="last-project__title">
+        {{ client?.lastProject?.title }}
+      </span>
+    </div>
+    <div
+      class="last-project__total">
+      {{client?.projectsCounter}} projects in total
+    </div>
+  </div>
 </div>

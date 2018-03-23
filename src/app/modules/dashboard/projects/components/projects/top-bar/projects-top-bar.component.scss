@@ -1,8 +1,9 @@
 .top-bar {
-  margin: 20px 40px 0 20px;
+  margin: 20px 20px 0 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
   &__search {
+    border-bottom: 1px solid #999999;
     input {
       color: #444444;
       font-size: 18px;

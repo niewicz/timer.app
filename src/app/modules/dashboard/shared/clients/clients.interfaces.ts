@@ -1,9 +1,13 @@
+import { IProject } from '../projects/projects.interfaces';
+
 export interface IClient {
   id?: number;
   name: string;
   email?: string;
   contactPersonName?: string;
   contactPersonEmail?: string;
+  projectsCounter?: number;
+  lastProject?: IProject;
 }
 
 export interface IClientsParams {
