@@ -9,5 +9,34 @@ import { IProject } from '../../../../shared/projects/projects.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummaryLastProjectsComponent {
-  @Input() projects: IProject;
+  @Input()
+  projects: IProject[] = [
+    {
+      title: 'ABC',
+      client: {
+        name: 'Prowly',
+      },
+    },
+  ];
+
+  data: IProject[] = [
+    {
+      title: 'ABC',
+      client: {
+        name: 'Prowly',
+      },
+    },
+    {
+      title: 'Echolokacja i systemy wbydowane',
+      client: {
+        name: 'Germain & Filz',
+      },
+    },
+    {
+      title: 'Testy audytoryjne',
+      client: {
+        name: 'Prowly',
+      },
+    },
+  ];
 }

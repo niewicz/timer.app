@@ -1,11 +1,31 @@
-<div
-  class="last-projects-list">
-  <div>
-    <div>
-      Autoresponder
+<ng-container
+  *ngFor="let project of data">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="40px"
+    class="project">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center">
+      <div
+        class="app-button-2 project__title"
+        [routerLink]="['/', 'dashboard', 'projects', project?.id]">
+        {{ project.title }}
+      </div>
+      <div
+        fxLayout="row"
+        class="client"
+        *ngIf="project?.client">
+        <div
+          class="client__name">
+          {{ project?.client?.name }}
+        </div>
+      </div>
     </div>
-    <div>
-      9:40
+    <div
+      class="project__tracked">
+      9:40 hours tracked
     </div>
   </div>
-</div>
+</ng-container>
