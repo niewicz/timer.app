@@ -1,4 +1,5 @@
 import { IClient } from '../clients/clients.interfaces';
+import { ITask } from '../tasks/tasks.interfaces';
 
 export interface IProject {
   id?: number;
@@ -6,6 +7,8 @@ export interface IProject {
   title: string;
   description?: string;
   client?: IClient;
+  taskCounter?: number;
+  lastTask?: ITask;
 }
 
 export interface IProjectsParams {

@@ -9,18 +9,21 @@
       fxFlex="92"
       fxLayout="row"
       fxLayoutAlign="start center"
-      fxLayoutGap="30px"
-      [routerLink]="['/', 'dashboard', 'clients', client?.id]">
+      fxLayoutGap="30px">
       <div
         fxLayout="row"
         fxLayoutAlign="start center"
-        class="client__name">
+        class="app-button-2 client__name"
+        [routerLink]="['/', 'dashboard', 'clients', client?.id]">
         {{ client.name }}
+      </div>
+      <span
+        class="client__email">
         <mat-icon
           fxLayoutAlign="center center">
           email
         </mat-icon>
-      </div>
+      </span>
       <div
         fxLayout="row"
         fxLayoutAlign="start center"

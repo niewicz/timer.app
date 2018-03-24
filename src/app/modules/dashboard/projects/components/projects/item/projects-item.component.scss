@@ -1,34 +1,30 @@
 .project {
-  padding: 15px 30px 15px 30px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  margin: 20px 30px 0 30px;
-  min-height: 56px;
-  color: #444444;
-}
-
-.title {
-}
-
-.description {
-  font-size: 15px;
-  color: #666666;
-}
-
-.dot {
-  font-size: 8px;
-  padding: 0 40px 0 40px;
-  color: #444444;
-}
-
-.delete {
-  color: #666666;
-  font-size: 17px;
-  cursor: pointer;
-
-  &:hover {
-    color: #333333;
+  padding: 15px 20px 15px 20px;
+  background-color: #f5f5f5;
+  margin: 20px 20px 0 20px;
+  &__title {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #444444;
+    font-weight: 600;
+    text-transform: none;
+  }
+  // &__description {
+  //   padding: 20px 0 0 0;
+  //   letter-spacing: 1px;
+  //   max-width: 90%;
+  //   font-size: 14px;
+  //   color: #777777;
+  // }
+  &__tasks {
+    padding: 20px 0 0 0;
+    color: #444444;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  &__icon {
+    font-size: 18px;
   }
 }
 
@@ -36,8 +32,7 @@
   color: #444444;
   font-size: 15px;
   padding: 0 0 0 10px;
-
-  .content {
+  &__name {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 5px;

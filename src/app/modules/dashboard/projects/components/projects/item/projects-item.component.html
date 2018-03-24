@@ -1,52 +1,57 @@
 <div
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
+  fxLayout="column"
   class="project"
   (mouseover)="onMouseover()"
   (mouseleave)="onMouseleave()">
   <div
-    fxFlex="92"
     fxLayout="row"
-    fxLayoutAlign="start center">
+    fxLayoutAlign="space-between center">
     <div
-      class="title">
-      {{ project.title }}
-    </div>
-    <div
-      *ngIf="project?.client"
+      fxFlex="92"
       fxLayout="row"
-      class="menu-trigger client">
+      fxLayoutAlign="start center">
       <div
-        class="content">
-        {{ project?.client?.name }}
+        class="app-button-2 project__title"
+        [routerLink]="['/', 'dashboard', 'projects', project?.id]">
+        {{ project.title }}
+      </div>
+      <div
+        fxLayout="row"
+        class="client"
+        *ngIf="project?.client">
+        <div
+          class="client__name">
+          {{ project?.client?.name }}
+        </div>
       </div>
     </div>
     <div
-      *ngIf="project?.description">
-      <mat-icon
-        fxLayoutAlign="center center"
-        class="dot">
-        fiber_manual_record
-      </mat-icon>
-    </div>
-    <div
-      *ngIf="project?.description"
-      class="description">
-      {{ project.description }}
+      fxLayout="row"
+      fxLayoutGap="10px">
+      <span
+        class="app-button-2">
+        <mat-icon
+          fxLayoutAlign="center center"
+          class="project__icon"
+          *ngIf="showIcons"
+          [routerLink]="['', {outlets: {modal: ['projects', project.id ,'edit']}}]">
+          mode_edit
+        </mat-icon>
+      </span>
+      <span
+        class="app-button-2">
+        <mat-icon
+          fxLayoutAlign="center center"
+          class="project__icon"
+          *ngIf="showIcons"
+          (click)="onRemove()">
+          delete
+        </mat-icon>
+      </span>
     </div>
   </div>
-  <mat-icon
-    *ngIf="showIcons"
-    fxLayoutAlign="center center"
-    class="delete"
-    [routerLink]="['', {outlets: {modal: ['projects', project.id ,'edit']}}]">
-    mode_edit
-  </mat-icon>
-  <mat-icon
-    *ngIf="showIcons"
-    fxLayoutAlign="center center"
-    class="delete"
-    (click)="onRemove()">
-    delete
-  </mat-icon>
+  <div
+    class="project__tasks">
+    {{ project?.taskCounter}} tasks in total
+  </div>
 </div>
