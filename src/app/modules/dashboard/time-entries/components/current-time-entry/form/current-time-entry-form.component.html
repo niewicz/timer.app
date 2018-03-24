@@ -63,7 +63,8 @@
       class="icon"
       *ngIf="!toggling"
       (click)="startToggling()">
-      <mat-icon>
+      <mat-icon
+        fxLayoutAlign="center center">
         play_arrow
       </mat-icon>
     </div>
@@ -71,7 +72,8 @@
       class="icon"
       *ngIf="toggling"
       (click)="stopToggling()">
-      <mat-icon>
+      <mat-icon
+        fxLayoutAlign="center center">
         stop
       </mat-icon>
     </div>

@@ -19,12 +19,12 @@
   <div
     class="list">
     <ng-container
-      *ngFor="let project of projects"
-      (click)="onClick(project)">
+      *ngFor="let project of projects">
       <div
         fxLayout="row"
         fxLayoutGap="10px"
-        class="list__item">
+        class="list__item"
+        (click)="onClick(project)">
         <div
           fxLayoutAlign="end center"
           class="project">
