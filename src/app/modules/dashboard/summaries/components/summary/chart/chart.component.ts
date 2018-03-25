@@ -3,6 +3,7 @@ import {
   Input,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  OnChanges,
 } from '@angular/core';
 
 import { IChartData } from '../../../../shared/summaries/summaries.interfaces';
@@ -14,7 +15,7 @@ import { IChart } from '../../../../../../core/interfaces/chart.interfaces';
   styleUrls: ['./chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SummaryChartComponent {
+export class SummaryChartComponent implements OnChanges {
   @Input() chartData: IChartData[];
 
   total = 0;
@@ -42,6 +43,7 @@ export class SummaryChartComponent {
       scales: {
         xAxes: [
           {
+            barPercentage: 0.7,
             ticks: {
               fontColor: '#444444',
               fontFamily: 'Roboto, sans-serif',
@@ -68,9 +70,7 @@ export class SummaryChartComponent {
               min: 0,
               stepSize: 3600,
               callback: (dataLabel, index) => {
-                return dataLabel % (3 * 3600) === 0
-                  ? this.getDuration(dataLabel)
-                  : null;
+                return index % 3 === 0 ? this.getDuration(dataLabel) : null;
               },
             },
           },
