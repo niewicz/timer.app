@@ -1,13 +1,23 @@
 <div
   class="chart">
-  <ngx-charts-bar-vertical
+  <!-- <ngx-charts-bar-vertical
     [results]="chartData"
     [xAxis]="true"
     [yAxis]="true"
     [showGridLines]="true">
-  </ngx-charts-bar-vertical>
+  </ngx-charts-bar-vertical> -->
+  <canvas
+    *ngIf="chart.labels.length > 0"
+    baseChart
+    [data]="chart.data"
+    [options]="chart.options"
+    [colors]="chart.colors"
+    [labels]="chart.labels"
+    [legend]="chart.legend"
+    [chartType]="chart.type">
+  </canvas>
 </div>
 <div
   class="total-tracked">
-  you have tracked 45 hours 17 minutes in total.
+  you have tracked {{ getDuration(total, true) }} in total.
 </div>
