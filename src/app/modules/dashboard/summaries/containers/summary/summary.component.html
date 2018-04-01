@@ -18,20 +18,10 @@
         <mat-menu
           #filtersMenu="matMenu">
           <div
-            class="menu-item">
-            This week
-          </div>
-          <div
-            class="menu-item">
-            This month
-          </div>
-          <div
-            class="menu-item">
-            Last week
-          </div>
-          <div
-            class="menu-item">
-            Last month
+            *ngFor="let option of menuOptions"
+            class="menu-item"
+            (click)="onSelectOption(option)">
+            {{ option.name }}
           </div>
         </mat-menu>
 
@@ -41,7 +31,7 @@
           class="app-button-2"
           [matMenuTriggerFor]="filtersMenu">
            <span>
-            filters
+            {{ selectedOption ? selectedOption.name : 'filters' }}
            </span>
            <mat-icon>
              arrow_drop_down

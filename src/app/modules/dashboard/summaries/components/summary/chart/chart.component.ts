@@ -99,8 +99,15 @@ export class SummaryChartComponent implements OnChanges {
   };
   // end chart config
 
+  constructor(private cd: ChangeDetectorRef) {}
+
   ngOnChanges() {
     if (this.chartData && this.chartData.length > 0) {
+      this.chart.labels = [];
+      this.chart.data = [];
+      this.total = 0;
+      this.cd.detectChanges();
+
       const data = [];
       const labels = [];
 
@@ -109,9 +116,10 @@ export class SummaryChartComponent implements OnChanges {
         labels.push(item.name);
       });
 
-      this.chart.data = data;
       this.chart.labels = labels;
+      this.chart.data = data;
       this.total = this.chart.data.reduce((x, y) => x + y);
+      this.cd.detectChanges();
     }
   }
 

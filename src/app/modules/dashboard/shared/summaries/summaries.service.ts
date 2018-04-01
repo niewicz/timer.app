@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { UtilsService } from '../../../../core/services/utils.service';
@@ -8,6 +8,7 @@ import {
   IChartDataResponse,
   IChartData,
   ILastProjectsResponse,
+  IChartParams,
 } from './summaries.interfaces';
 import { IProject } from '../projects/projects.interfaces';
 
@@ -19,9 +20,14 @@ export class SummariesService {
     private api: ApiRoutes,
   ) {}
 
-  getSummary(params: any): Observable<IChartData[]> {
+  getSummary(params: IChartParams): Observable<IChartData[]> {
     return this.http
-      .get<IChartDataResponse>(this.api.summariesWorkloadPath())
+      .get<IChartDataResponse>(this.api.summariesWorkloadPath(), {
+        params: new HttpParams()
+          .set('time_range', params.timeRange ? params.timeRange : '')
+          .set('day_start', params.dayStart ? params.dayStart : '')
+          .set('day_end', params.dayEnd ? params.dayEnd : ''),
+      })
       .map(response => response.data)
       .map(response => this.utils.camelize(response))
       .catch(error => Observable.throw(error));

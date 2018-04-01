@@ -5,6 +5,12 @@ export interface IChartData {
   value: number;
 }
 
+export interface IChartParams {
+  timeRange?: string;
+  dayStart?: string;
+  dayEnd?: string;
+}
+
 export interface IChartDataResponse {
   data: IChartData[];
 }

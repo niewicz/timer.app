@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { IChartData } from './summaries.interfaces';
+import { IChartData, IChartParams } from './summaries.interfaces';
 import { IProject } from '../projects/projects.interfaces';
 
 export const GET_WORKLOAD = '[Dashboard] Get Workload';
@@ -15,7 +15,7 @@ export const GET_LAST_PROJECTS_FAILURE =
 
 export class GetWorkloadAction implements Action {
   readonly type = GET_WORKLOAD;
-  constructor(public payload: any) {}
+  constructor(public payload: IChartParams) {}
 }
 
 export class GetWorkloadSuccessAction implements Action {

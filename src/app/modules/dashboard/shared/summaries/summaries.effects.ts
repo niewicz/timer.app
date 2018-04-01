@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store, Action } from '@ngrx/store';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
 import { SummariesService } from './summaries.service';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import * as summariesActions from './summaries.actions';
-import { IChartData } from './summaries.interfaces';
+import { IChartData, IChartParams } from './summaries.interfaces';
 import { IProject } from '../projects/projects.interfaces';
+import * as summariesActions from './summaries.actions';
 
 @Injectable()
 export class SummariesEffects {
@@ -15,7 +15,7 @@ export class SummariesEffects {
   getSummary$: Observable<Action> = this.actions$
     .ofType(summariesActions.GET_WORKLOAD)
     .map(toPayload)
-    .switchMap((params: any) =>
+    .switchMap((params: IChartParams) =>
       this.summariesService
         .getSummary(params)
         .map(
