@@ -9,6 +9,7 @@ export interface IProject {
   client?: IClient;
   taskCounter?: number;
   lastTask?: ITask;
+  totalTracked?: number;
 }
 
 export interface IProjectsParams {

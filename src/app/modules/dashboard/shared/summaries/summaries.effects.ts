@@ -7,6 +7,7 @@ import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import * as summariesActions from './summaries.actions';
 import { IChartData } from './summaries.interfaces';
+import { IProject } from '../projects/projects.interfaces';
 
 @Injectable()
 export class SummariesEffects {
@@ -23,6 +24,24 @@ export class SummariesEffects {
         )
         .catch((error: any) =>
           Observable.of(new summariesActions.GetWorkloadFailureAction(error)),
+        ),
+    );
+
+  @Effect()
+  getLastProjects$: Observable<Action> = this.actions$
+    .ofType(summariesActions.GET_LAST_PROJECTS)
+    .map(toPayload)
+    .switchMap(() =>
+      this.summariesService
+        .getLastProjects()
+        .map(
+          (data: IProject[]) =>
+            new summariesActions.GetLastProjectsSuccessAction(data),
+        )
+        .catch((error: any) =>
+          Observable.of(
+            new summariesActions.GetLastProjectsFailureAction(error),
+          ),
         ),
     );
 

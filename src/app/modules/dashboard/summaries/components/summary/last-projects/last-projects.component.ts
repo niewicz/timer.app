@@ -9,34 +9,18 @@ import { IProject } from '../../../../shared/projects/projects.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummaryLastProjectsComponent {
-  @Input()
-  projects: IProject[] = [
-    {
-      title: 'ABC',
-      client: {
-        name: 'Prowly',
-      },
-    },
-  ];
+  @Input() projects: IProject[];
 
-  data: IProject[] = [
-    {
-      title: 'ABC',
-      client: {
-        name: 'Prowly',
-      },
-    },
-    {
-      title: 'Echolokacja i systemy wbydowane',
-      client: {
-        name: 'Germain & Filz',
-      },
-    },
-    {
-      title: 'Testy audytoryjne',
-      client: {
-        name: 'Prowly',
-      },
-    },
-  ];
+  getDuration(sec: number): string {
+    if (!sec) {
+      sec = 0;
+    }
+
+    const min = Math.floor(sec / 60) % 60;
+    const hour = Math.floor(sec / 3600);
+
+    const partMin = min < 10 ? `0${min}` : `${min}`;
+
+    return `${hour}:${partMin}`;
+  }
 }

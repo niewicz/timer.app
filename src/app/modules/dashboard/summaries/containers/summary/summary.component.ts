@@ -10,7 +10,7 @@ import { SummariesSelectors } from '../../../shared/summaries/summaries.selector
 })
 export class SummaryComponent implements OnInit {
   workload$ = this.selectors.getWorkload();
-  lastProjects$;
+  lastProjects$ = this.selectors.getLastProjects();
 
   constructor(
     private dispatchers: SummariesDispatchers,
@@ -19,5 +19,6 @@ export class SummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.dispatchers.getSummary(null);
+    this.dispatchers.getLastProjects();
   }
 }

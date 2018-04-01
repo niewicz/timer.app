@@ -11,4 +11,8 @@ export class SummariesDispatchers {
   public getSummary(params: any): void {
     this.store.dispatch(new summariesActions.GetWorkloadAction(params));
   }
+
+  public getLastProjects(): void {
+    this.store.dispatch(new summariesActions.GetLastProjectsAction());
+  }
 }
