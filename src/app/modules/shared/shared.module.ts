@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartsModule } from 'ng2-charts';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 import {
   MatMenuModule,
@@ -37,6 +38,7 @@ import { UtilsService } from './../../core/services/utils.service';
 import { ApiRoutes } from './../../core/services/api-routes.service';
 
 import { ModalComponent } from './components/modal.component';
+import { UserResolver } from '../../core/resolvers/user.resolver';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -67,20 +69,23 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatCardModule,
 
     FlexLayoutModule,
-
     PerfectScrollbarModule,
-
     NgxChartsModule,
     ChartsModule,
+    SnotifyModule,
   ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService,
 
     UtilsService,
     ApiRoutes,
+
+    UserResolver,
   ],
   exports: [
     CommonModule,
@@ -105,13 +110,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatCardModule,
 
     FlexLayoutModule,
-
-    ModalComponent,
-
     PerfectScrollbarModule,
-
     NgxChartsModule,
     ChartsModule,
+    SnotifyModule,
+
+    ModalComponent,
   ],
 })
 export class SharedModule {}

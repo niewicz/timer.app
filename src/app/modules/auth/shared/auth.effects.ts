@@ -8,7 +8,8 @@ import * as authActions from './auth.actions';
 import { AuthService } from './auth.service';
 
 import { RegisterData, SignInData } from 'angular2-token';
-import { IUser } from './auth.interfaces';
+import { IUser, IBillingProfile } from './auth.interfaces';
+import { SnotifyService } from 'ng-snotify';
 
 @Injectable()
 export class AuthEffects {
@@ -46,5 +47,42 @@ export class AuthEffects {
         ),
     );
 
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  @Effect()
+  getCurrentUser$: Observable<Action> = this.actions$
+    .ofType(authActions.GET_CURRENT_USER)
+    .switchMap(() =>
+      this.authService
+        .getCurrentUser()
+        .map((user: IUser) => new authActions.GetCurrentUserSuccessAction(user))
+        .catch((error: string) =>
+          Observable.of(new authActions.GetCurrentUserFailureAction(error)),
+        ),
+    );
+
+  @Effect()
+  updateBillingProfile$: Observable<Action> = this.actions$
+    .ofType(authActions.UPDATE_BILLING_PROFILE)
+    .map(toPayload)
+    .switchMap((payload: IBillingProfile) =>
+      this.authService
+        .updateBillingProfile(payload)
+        .map((user: IUser) => {
+          this.notifications.success('We have updated your billing profile.', {
+            showProgressBar: false,
+            position: 'centerBottom',
+          });
+          return new authActions.UpdateBillingProfileSuccessAction(user);
+        })
+        .catch((error: string) =>
+          Observable.of(
+            new authActions.UpdateBillingProfileFailureAction(error),
+          ),
+        ),
+    );
+
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private notifications: SnotifyService,
+  ) {}
 }

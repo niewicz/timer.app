@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import { RegisterData, SignInData } from 'angular2-token';
-import { IUser } from './auth.interfaces';
+import { IUser, IBillingProfile } from './auth.interfaces';
 
 export const CREATE_USER = '[Auth] Create User';
 export const CREATE_USER_SUCCESS = '[Auth] Create User Success';
@@ -15,9 +15,11 @@ export const GET_CURRENT_USER = '[Auth] Get User';
 export const GET_CURRENT_USER_SUCCESS = '[Auth] Get User Success';
 export const GET_CURRENT_USER_FAILURE = '[Auth] Get User Failure';
 
-export const EDIT_CURRENT_USER = '[Auth] Edit User';
-export const EDIT_CURRENT_USER_SUCCESS = '[Auth] Edit User Success';
-export const EDIT_CURRENT_USER_FAILURE = '[Auth] Edit User Failure';
+export const UPDATE_BILLING_PROFILE = '[Auth] Update Billing Profile';
+export const UPDATE_BILLING_PROFILE_SUCCESS =
+  '[Auth] Update Billing Profile Success';
+export const UPDATE_BILLING_PROFILE_FAILURE =
+  '[Auth] Update Billing Profile Failure';
 
 export class CreateUserAction implements Action {
   readonly type = CREATE_USER;
@@ -63,17 +65,18 @@ export class GetCurrentUserFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
-export class EditCurrentUserAction implements Action {
-  readonly type = EDIT_CURRENT_USER;
+export class UpdateBillingProfileAction implements Action {
+  readonly type = UPDATE_BILLING_PROFILE;
+  constructor(public payload: IBillingProfile) {}
 }
 
-export class EditCurrentUserSuccessAction implements Action {
-  readonly type = EDIT_CURRENT_USER_SUCCESS;
+export class UpdateBillingProfileSuccessAction implements Action {
+  readonly type = UPDATE_BILLING_PROFILE_SUCCESS;
   constructor(public payload: IUser) {}
 }
 
-export class EditCurrentUserFailureAction implements Action {
-  readonly type = EDIT_CURRENT_USER_FAILURE;
+export class UpdateBillingProfileFailureAction implements Action {
+  readonly type = UPDATE_BILLING_PROFILE_FAILURE;
   constructor(public payload: any) {}
 }
 
@@ -87,6 +90,6 @@ export type Actions =
   | GetCurrentUserAction
   | GetCurrentUserSuccessAction
   | GetCurrentUserFailureAction
-  | EditCurrentUserAction
-  | EditCurrentUserSuccessAction
-  | EditCurrentUserFailureAction;
+  | UpdateBillingProfileAction
+  | UpdateBillingProfileSuccessAction
+  | UpdateBillingProfileFailureAction;

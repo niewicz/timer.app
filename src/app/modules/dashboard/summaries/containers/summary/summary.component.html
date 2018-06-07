@@ -16,7 +16,8 @@
       </div>
       <div>
         <mat-menu
-          #filtersMenu="matMenu">
+          #filtersMenu="matMenu"
+          [overlapTrigger]="false">
           <div
             *ngFor="let option of menuOptions"
             class="menu-item"

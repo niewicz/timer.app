@@ -42,6 +42,7 @@ import { EditClientComponent } from './clients/containers/edit-client/edit-clien
 import { ProjectComponent } from './projects/containers/project/project.component';
 import { ClientComponent } from './clients/containers/client/client.component';
 import { SummaryComponent } from './summaries/containers/summary/summary.component';
+import { SettingsComponent } from './settings/containers/settings/settings.component';
 
 import { MainNavbarMenuComponent } from './navigation/components/main-navbar/menu/main-navbar-menu.component';
 import { TimeEntriesListComponent } from './time-entries/components/time-entries/list/time-entries-list.component';
@@ -104,6 +105,7 @@ import { SummaryLastProjectsComponent } from './summaries/components/summary/las
     ProjectComponent,
     ClientComponent,
     SummaryComponent,
+    SettingsComponent,
   ],
   providers: [
     Angular2TokenService,

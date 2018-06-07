@@ -15,11 +15,11 @@
           <input
             placeholder="title"
             formControlName="title">
-            <div
-              *ngIf="form.get('title').hasError('required') && form.get('title').touched"
-              class="form__error">
-              title is required
-            </div>
+          <div
+            *ngIf="form.get('title').hasError('required') && form.get('title').touched"
+            class="form__error">
+            title is required
+          </div>
         </div>
 
         <div

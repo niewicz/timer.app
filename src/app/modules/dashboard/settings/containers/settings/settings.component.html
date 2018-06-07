@@ -1,0 +1,146 @@
+
+<form
+  [formGroup]="form"
+  class="container form">
+  <div
+    fxLayout="row"
+    fxLayoutGap="40px">
+    <div
+      fxFlex="50">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="5px"
+        class="form__header">
+        <mat-icon
+          fxLayoutAlign="center center">
+          person
+        </mat-icon>
+        <span>
+          your details
+        </span>
+      </div>
+      <div
+        class="form__input">
+        <input
+          required
+          formControlName="email"
+          placeholder="email">
+        <div
+          *ngIf="form.get('email').hasError('required') && form.get('email').touched"
+          class="form__error">
+          email is required
+        </div>
+        <div
+          *ngIf="form.get('email').hasError('email') && form.get('email').touched"
+          class="form__error">
+          it's not valid email address
+        </div>
+      </div>
+      <div
+        class="form__input">
+        <input
+          required
+          formControlName="personName"
+          placeholder="your name">
+        <div
+          *ngIf="form.get('personName').hasError('required') && form.get('personName').touched"
+          class="form__error">
+          please fill in your name
+        </div>
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="companyName"
+          placeholder="company name">
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="phone"
+          placeholder="phone">
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="address"
+          placeholder="address">
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center">
+        <div
+          fxFlex="55"
+          class="form__input">
+          <input
+            formControlName="city"
+            placeholder="city">
+        </div>
+        <div
+          fxFlex="40"
+          class="form__input">
+          <input
+            formControlName="postalCode"
+            placeholder="postal code">
+        </div>
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="country"
+          placeholder="country">
+      </div>
+    </div>
+    <div
+      fxFlex="50">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="5px"
+        class="form__header">
+        <mat-icon
+          fxLayoutAlign="center center">
+          credit_card
+        </mat-icon>
+        <span>
+          billing info
+        </span>
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="currency"
+          placeholder="currency">
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="accountOwner"
+          placeholder="account owner">
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="iban"
+          placeholder="iban">
+      </div>
+      <div
+        class="form__input">
+        <input
+          formControlName="swiftCode"
+          placeholder="swift code">
+      </div>
+    </div>
+  </div>
+  <div
+    fxLayoutAlign="end center"
+    class="form__actions">
+    <button
+      class="app-button-2 form__button"
+      [disabled]="!form.valid"
+      (click)="onSubmit()">
+      update
+    </button>
+  </div>
+</form>

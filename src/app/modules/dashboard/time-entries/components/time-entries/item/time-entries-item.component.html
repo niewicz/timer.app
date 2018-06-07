@@ -1,28 +1,29 @@
 <div
   fxLayout="row"
   fxLayoutAlign="space-between center"
-  class="item"
-  [ngClass]="{'darken': showIcons}"
-  (mouseover)="onMouseenter()"
-  (mouseleave)="onMouseleave()">
+  fxLayoutGap="10px"
+  class="item">
 
   <div
-    fxFlex
-    fxLayoutAlign="center center">
-    <mat-icon
-      *ngIf="showIcons && timeEntry?.task?.title"
-      [matTooltip]="'Unassign task'"
-      (click)="handleUnassignTask()">
-      cancel
-    </mat-icon>
-  </div>
-  <div
-    fxFlex="49">
+    fxFlex="46">
     <timer-select-task
       [displayText]="'Describe what you have done'"
       [selectedTask]="timeEntry?.task"
       (selectTask)="handleSelectTask($event)">
     </timer-select-task>
+  </div>
+
+  <div
+    fxFlex="3">
+    <mat-icon
+      *ngIf="timeEntry?.task?.title"
+      [matTooltip]="'Unassign task'"
+      (click)="handleUnassignTask()"
+      fxLayoutAlign="center center"
+      fxLayout="row"
+      class="action-icon">
+      clear
+    </mat-icon>
   </div>
 
   <div
@@ -69,21 +70,20 @@
 
   <div
     fxFlex="3"
-    fxLayoutAlign="center center"
     class="continue">
     <mat-icon
-      *ngIf="showIcons">
+    fxLayoutAlign="center center"
+      class="action-icon">
       play_arrow
     </mat-icon>
   </div>
 
   <div
-    fxFlex="3"
-    fxLayoutAlign="center center"
-    class="remove">
+    fxFlex="3">
     <mat-icon
-      *ngIf="showIcons"
-      (click)="onRemoveTimeEntry()">
+      fxLayoutAlign="center center"
+      (click)="onRemoveTimeEntry()"
+      class="action-icon">
       delete
     </mat-icon>
   </div>

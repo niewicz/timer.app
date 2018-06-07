@@ -2,17 +2,21 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { Injectable, Inject } from '@angular/core';
 import { Angular2TokenService, SignInData, RegisterData } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { UtilsService } from './../../../core/services/utils.service';
 import { AuthDispatchers } from './auth.dispatchers';
-import { IUser } from './auth.interfaces';
+import { IUser, IBillingProfile } from './auth.interfaces';
+import { ApiRoutes } from '../../../core/services/api-routes.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject(DOCUMENT) private document,
     private tokenService: Angular2TokenService,
+    private http: HttpClient,
     private utils: UtilsService,
+    private routes: ApiRoutes,
   ) {}
 
   logIn(logInData: SignInData): Observable<IUser> {
@@ -55,6 +59,24 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.tokenService.userSignedIn();
+  }
+
+  getCurrentUser(): Observable<IUser> {
+    return this.http
+      .get(this.routes.getCurrentUserPath())
+      .map(response => this.utils.camelize(response))
+      .map(response => response.data)
+      .catch(error => Observable.throw(error));
+  }
+
+  updateBillingProfile(params: IBillingProfile): Observable<IUser> {
+    return this.http
+      .put(this.routes.updateBillingProfile(), {
+        billing_profile: this.utils.decamelize(params),
+      })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.data)
+      .catch(error => Observable.throw(error));
   }
 
   private _saveValue(key: string, value: string): void {

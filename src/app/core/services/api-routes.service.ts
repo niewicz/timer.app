@@ -1,28 +1,8 @@
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
-import { State } from '../../store/index';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs/Subscription';
+import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ApiRoutes implements OnInit, OnDestroy {
-  private accountId$: Subscription;
-  private accountId: number;
-
-  constructor(private store: Store<State>) {}
-
-  ngOnInit() {
-    this.accountId$ = this.store
-      .select(state => state.auth.currentUser.id)
-      .filter(id => id !== undefined)
-      .subscribe(id => {
-        this.accountId = id;
-      });
-  }
-
-  ngOnDestroy() {
-    this.accountId$.unsubscribe();
-  }
-
+export class ApiRoutes {
+  // time entries
   public timeEntriesPath(): string {
     return `${this.apiBasePath()}/time_entries`;
   }
@@ -35,6 +15,7 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/time_entries/current`;
   }
 
+  // clients
   public clientsPath(): string {
     return `${this.apiBasePath()}/clients`;
   }
@@ -47,6 +28,7 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/clients/${id}/edit`;
   }
 
+  // tasks
   public tasksPath(): string {
     return `${this.apiBasePath()}/tasks`;
   }
@@ -55,6 +37,7 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/tasks/${id}`;
   }
 
+  // projects
   public projectsPath(): string {
     return `${this.apiBasePath()}/projects`;
   }
@@ -67,12 +50,22 @@ export class ApiRoutes implements OnInit, OnDestroy {
     return `${this.apiBasePath()}/projects/${id}/edit`;
   }
 
+  // summaries
   public summariesWorkloadPath(): string {
     return `${this.apiBasePath()}/summaries/workload`;
   }
 
   public summariesLastProjectsPath(): string {
     return `${this.apiBasePath()}/summaries/last_projects`;
+  }
+
+  // user
+  public getCurrentUserPath(): string {
+    return `${this.apiBasePath()}/users/current`;
+  }
+
+  public updateBillingProfile(): string {
+    return `${this.apiBasePath()}/users/update_billing_profile`;
   }
 
   private apiBasePath(): string {

@@ -4,6 +4,7 @@ import { RegisterData, SignInData } from 'angular2-token';
 
 import * as authActions from './auth.actions';
 import { State } from '../../../store/index';
+import { IBillingProfile } from './auth.interfaces';
 
 @Injectable()
 export class AuthDispatchers {
@@ -15,5 +16,13 @@ export class AuthDispatchers {
 
   public signInUser(signInData: SignInData) {
     this.store.dispatch(new authActions.SignInUserAction(signInData));
+  }
+
+  public getCurrentUser() {
+    this.store.dispatch(new authActions.GetCurrentUserAction());
+  }
+
+  public updateBillingProfile(params: IBillingProfile) {
+    this.store.dispatch(new authActions.UpdateBillingProfileAction(params));
   }
 }

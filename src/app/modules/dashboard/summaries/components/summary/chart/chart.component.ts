@@ -45,6 +45,8 @@ export class SummaryChartComponent implements OnChanges {
           {
             barPercentage: 0.7,
             ticks: {
+              maxRotation: 0,
+              maxTicksLimit: 7,
               fontColor: '#444444',
               fontFamily: 'Roboto, sans-serif',
               fontSize: 14,
