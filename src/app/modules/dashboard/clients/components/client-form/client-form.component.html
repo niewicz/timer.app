@@ -96,6 +96,25 @@
         </div>
 
         <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="10px"
+          class="form__checkbox"
+          (click)="onAutoSend()">
+          <div
+            class="checkbox">
+            <mat-icon
+              class="checked">
+              {{ autoSend ? 'done' : 'close' }}
+            </mat-icon>
+          </div>
+          <span
+            class="checkbox__text">
+            autosend report at the end of month
+          </span>
+        </div>
+
+        <div
           fxLayoutAlign="end center"
           class="form__actions">
           <button

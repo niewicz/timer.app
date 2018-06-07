@@ -4,6 +4,7 @@ export interface IClient {
   id?: number;
   name: string;
   email?: string;
+  autoSend: boolean;
   contactPersonName?: string;
   contactPersonEmail?: string;
   projectsCounter?: number;

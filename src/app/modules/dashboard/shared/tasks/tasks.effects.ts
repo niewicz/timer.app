@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
@@ -31,7 +31,7 @@ export class TasksEffects {
   @Effect()
   createTask$: Observable<Action> = this.actions$
     .ofType(tasksActions.CREATE_TASK)
-    .map(toPayload)
+    .map((action: tasksActions.CreateTaskAction) => action.payload)
     .switchMap((payload: ITask) =>
       this.tasksService
         .createTask(payload)
@@ -44,7 +44,7 @@ export class TasksEffects {
   @Effect()
   updateTask$: Observable<Action> = this.actions$
     .ofType(tasksActions.UPDATE_TASK)
-    .map(toPayload)
+    .map((action: tasksActions.UpdateTaskAction) => action.payload)
     .switchMap((payload: ITask) =>
       this.tasksService
         .updateTask(payload)

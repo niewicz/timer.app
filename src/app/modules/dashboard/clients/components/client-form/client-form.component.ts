@@ -21,6 +21,7 @@ export class ClientFormComponent implements OnChanges {
 
   selectedClient: IClient;
   form: FormGroup;
+  autoSend = false;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -29,6 +30,7 @@ export class ClientFormComponent implements OnChanges {
       email: ['', [Validators.email]],
       contactPersonName: '',
       contactPersonEmail: ['', [Validators.email]],
+      autoSend: false,
     });
   }
 
@@ -49,19 +51,18 @@ export class ClientFormComponent implements OnChanges {
 
   ngOnChanges(): void {
     if (this.client) {
-      this.form.patchValue({
-        id: this.client.id,
-        name: this.client.name,
-        email: this.client.email,
-        contactPersonName: this.client.contactPersonName,
-        contactPersonEmail: this.client.contactPersonEmail,
-      });
+      this.form.patchValue(this.client);
+      this.autoSend = this.client.autoSend;
     }
   }
 
   onSubmit(): void {
     if (this.form.controls.name.valid) {
-      this.submitClient.emit(this.form.value);
+      this.submitClient.emit({ ...this.form.value, autoSend: this.autoSend });
     }
+  }
+
+  onAutoSend() {
+    this.autoSend = !this.autoSend;
   }
 }

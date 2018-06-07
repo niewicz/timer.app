@@ -27,6 +27,16 @@ export class TimeEntriesItemComponent {
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
   @Output() removeTimeEntry = new EventEmitter<number>();
 
+  startAt: Date;
+  endAte: Date;
+
+  settings = {
+    bigBanner: true,
+    timePicker: true,
+    format: 'dd-MM-yyyy HH:mm',
+    defaultOpen: false,
+  };
+
   get duration() {
     return this.utils.getDuration(this.timeEntry.endAt, this.timeEntry.startAt);
   }
@@ -63,6 +73,20 @@ export class TimeEntriesItemComponent {
         Object.assign({}, this.timeEntry.task, { projectId: '' }),
       );
     }
+  }
+
+  handleStartAtChange(date: string) {
+    this.updateTimeEntry.emit({
+      ...this.timeEntry,
+      startAt: date,
+    });
+  }
+
+  handleEndAtChange(date: string) {
+    this.updateTimeEntry.emit({
+      ...this.timeEntry,
+      endAt: date,
+    });
   }
 
   onRemoveTimeEntry(): void {

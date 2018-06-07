@@ -1,5 +1,6 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 @import './styles/snotify/custom.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
@@ -10,10 +11,8 @@ body {
   width: stretch;
 }
 
-.app-button {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  border-radius: 20px !important;
+.clickable {
+  cursor: pointer;
 }
 
 .app-button-2 {

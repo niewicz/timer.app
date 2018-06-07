@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, Action } from '@ngrx/store';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
@@ -14,7 +14,7 @@ export class SummariesEffects {
   @Effect()
   getSummary$: Observable<Action> = this.actions$
     .ofType(summariesActions.GET_WORKLOAD)
-    .map(toPayload)
+    .map((action: summariesActions.GetWorkloadAction) => action.payload)
     .switchMap((params: IChartParams) =>
       this.summariesService
         .getSummary(params)
@@ -30,7 +30,6 @@ export class SummariesEffects {
   @Effect()
   getLastProjects$: Observable<Action> = this.actions$
     .ofType(summariesActions.GET_LAST_PROJECTS)
-    .map(toPayload)
     .switchMap(() =>
       this.summariesService
         .getLastProjects()

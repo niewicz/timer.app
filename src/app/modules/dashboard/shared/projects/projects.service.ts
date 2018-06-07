@@ -63,6 +63,7 @@ export class ProjectsService {
   removeProject(id: number): Observable<void> {
     return this.http
       .delete(this.api.projectPath(id))
+      .map(response => null)
       .catch(error => Observable.throw(error));
   }
 }

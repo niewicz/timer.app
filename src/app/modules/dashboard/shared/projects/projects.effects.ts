@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../../../store/index';
@@ -56,7 +56,7 @@ export class ProjectsEffects {
   @Effect()
   createProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.CREATE_PROJECT)
-    .map(toPayload)
+    .map((action: projectsActions.CreateProjectAction) => action.payload)
     .switchMap((payload: IProject) =>
       this.projectsService
         .createProject(payload)
@@ -72,7 +72,7 @@ export class ProjectsEffects {
   @Effect()
   editProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.EDIT_PROJECT)
-    .map(toPayload)
+    .map((action: projectsActions.EditProjectAction) => action.payload)
     .switchMap((payload: number) =>
       this.projectsService
         .editProject(payload)
@@ -88,7 +88,7 @@ export class ProjectsEffects {
   @Effect()
   updateProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.UPDATE_PROJECT)
-    .map(toPayload)
+    .map((action: projectsActions.UpdateProjectAction) => action.payload)
     .switchMap((payload: IProject) =>
       this.projectsService
         .updateProject(payload)
@@ -104,7 +104,7 @@ export class ProjectsEffects {
   @Effect()
   removeProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.REMOVE_PROJECT)
-    .map(toPayload)
+    .map((action: projectsActions.RemoveProjectAction) => action.payload)
     .switchMap((payload: number) =>
       this.projectsService
         .removeProject(payload)

@@ -63,3 +63,121 @@
   font-size: 15px;
   color: #444444;
 }
+
+::ng-deep .cdk-overlay-dark-backdrop {
+  background: rgba(20, 20, 30, 0.5);
+}
+
+::ng-deep .owl-dt-dialog {
+  width: 420px;
+}
+
+::ng-deep .owl-dt-calendar-main {
+  margin-top: 15px;
+  padding: 0 10px 0;
+}
+
+::ng-deep .owl-dt-dialog-container .owl-dt-calendar {
+  height: fit-content;
+  width: 100%;
+}
+
+::ng-deep .owl-dt-dialog-container .owl-dt-timer {
+  width: 100%;
+  height: fit-content;
+  background: #f1f1f3;
+  box-shadow: 0 2px 5px 0 rgba(200, 200, 200, 0.4);
+}
+
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-cell-content {
+  height: 60%;
+  width: 60%;
+  color: #444444
+}
+
+::ng-deep .owl-dt-calendar-control {
+  padding: 20px 15px;
+  background: #f1f1f3;
+  box-shadow: 0 2px 5px 0 rgba(200, 200, 200, 0.4);
+}
+
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
+  background: #e45252;
+  color: #ffffff;
+}
+
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-cell-content {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-header .owl-dt-calendar-table-divider:after {
+  background: transparent;
+}
+
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-cell-selected.owl-dt-calendar-cell-today {
+  box-shadow: none;
+}
+
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-header {
+  color: #444444;
+}
+
+::ng-deep .owl-dt-weekday {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+::ng-deep .owl-dt-timer-content {
+  height: 30px;
+}
+
+::ng-deep .owl-dt-timer-content .owl-dt-timer-input {
+  border: none;
+  border-radius: 0;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: #444444;
+  font-size: 16px;
+  background: transparent;
+}
+
+::ng-deep .owl-dt-timer-content .owl-dt-timer-input:focus {
+  border-bottom: 1px solid #888888;
+}
+
+::ng-deep .owl-dt-timer-divider:after,
+::ng-deep .owl-dt-timer-divider:before {
+  width: .20em;
+  height: .20em;
+  color: #666666;
+  margin: 5px 0;
+}
+
+::ng-deep .owl-dt-control-button {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: #888888;
+  font-size: 14px;
+}
+
+::ng-deep .owl-dt-control-arrow-button[disabled] {
+  color: transparent;
+}
+
+::ng-deep .owl-dt-container-buttons {
+  height: 40px;
+}
+
+::ng-deep .owl-dt-container-control-button:hover .owl-dt-control-button-content {
+  color: #333333;
+  background: transparent;
+}
+
+::ng-deep .owl-dt-container-row {
+  border: none;
+}

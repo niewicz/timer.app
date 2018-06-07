@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -131,7 +130,6 @@ import { SummaryLastProjectsComponent } from './summaries/components/summary/las
     SummariesSelectors,
   ],
   imports: [
-    HttpModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { ChartsModule } from 'ng2-charts';
-import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-
 import {
   MatMenuModule,
   MatSidenavModule,
@@ -25,19 +21,21 @@ import {
   MatButtonToggleModule,
   MatCardModule,
 } from '@angular/material';
-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { ContenteditableDirective } from 'ng-contenteditable';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartsModule } from 'ng2-charts';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { UtilsService } from './../../core/services/utils.service';
 import { ApiRoutes } from './../../core/services/api-routes.service';
 
 import { ModalComponent } from './components/modal.component';
+
 import { UserResolver } from '../../core/resolvers/user.resolver';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -73,6 +71,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgxChartsModule,
     ChartsModule,
     SnotifyModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [
     {
@@ -114,6 +114,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgxChartsModule,
     ChartsModule,
     SnotifyModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
 
     ModalComponent,
   ],

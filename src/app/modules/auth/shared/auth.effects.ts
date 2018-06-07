@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 import * as authActions from './auth.actions';
@@ -16,7 +16,7 @@ export class AuthEffects {
   @Effect()
   createUser$: Observable<Action> = this.actions$
     .ofType(authActions.CREATE_USER)
-    .map(toPayload)
+    .map((action: authActions.CreateUserAction) => action.payload)
     .switchMap((payload: RegisterData) =>
       this.authService
         .signUp(payload)
@@ -37,7 +37,7 @@ export class AuthEffects {
   @Effect()
   signInUser$: Observable<Action> = this.actions$
     .ofType(authActions.SIGN_IN_USER)
-    .map(toPayload)
+    .map((action: authActions.SignInUserAction) => action.payload)
     .switchMap((payload: SignInData) =>
       this.authService
         .logIn(payload)
@@ -62,7 +62,7 @@ export class AuthEffects {
   @Effect()
   updateBillingProfile$: Observable<Action> = this.actions$
     .ofType(authActions.UPDATE_BILLING_PROFILE)
-    .map(toPayload)
+    .map((action: authActions.UpdateBillingProfileAction) => action.payload)
     .switchMap((payload: IBillingProfile) =>
       this.authService
         .updateBillingProfile(payload)

@@ -53,4 +53,22 @@
   &__actions {
     padding: 5px 0 0 0;
   }
+  &__checkbox {
+    padding: 15px 0;
+  }
+}
+
+.checkbox {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background: #f8f8f9;
+  border: 2px solid #f8f8f9;
+  &__text {
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #444444;
+  }
 }

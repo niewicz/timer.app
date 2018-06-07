@@ -12,7 +12,6 @@ import {
   ITimeEntriesResponse,
 } from './time-entries.interfaces';
 import * as timeEntriesActions from './time-entries.actions';
-import { toPayload } from '@ngrx/effects/src/util';
 
 @Injectable()
 export class TimeEntriesEffects {
@@ -59,7 +58,7 @@ export class TimeEntriesEffects {
   @Effect()
   updateTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.UPDATE_TIME_ENTRY)
-    .map(toPayload)
+    .map((action: timeEntriesActions.UpdateTimeEntryAction) => action.payload)
     .switchMap((payload: ITimeEntry) =>
       this.timeEntriesService
         .updateTimeEntry(payload)
@@ -77,7 +76,7 @@ export class TimeEntriesEffects {
   @Effect()
   removeTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.REMOVE_TIME_ENTRY)
-    .map(toPayload)
+    .map((action: timeEntriesActions.RemoveTimeEntryAction) => action.payload)
     .switchMap((payload: number) =>
       this.timeEntriesService
         .removeTimeEntry(payload)
@@ -109,7 +108,7 @@ export class TimeEntriesEffects {
   @Effect()
   createTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.CREATE_TIME_ENTRY)
-    .map(toPayload)
+    .map((action: timeEntriesActions.CreateTimeEntryAction) => action.payload)
     .switchMap((payload: ITransferTimeEntry) =>
       this.timeEntriesService
         .createTimeEntry(payload)
@@ -127,7 +126,9 @@ export class TimeEntriesEffects {
   @Effect()
   stopCurrentTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.STOP_CURRENT_TIME_ENTRY)
-    .map(toPayload)
+    .map(
+      (action: timeEntriesActions.StopCurrentTimeEntryAction) => action.payload,
+    )
     .switchMap((payload: ITransferTimeEntry) =>
       this.timeEntriesService
         .updateTimeEntry(payload)
@@ -145,7 +146,10 @@ export class TimeEntriesEffects {
   @Effect()
   updateCurrntTimeEntry$: Observable<Action> = this.actions$
     .ofType(timeEntriesActions.UPDATE_CURRENT_TIME_ENTRY)
-    .map(toPayload)
+    .map(
+      (action: timeEntriesActions.UpdateCurrentTimeEntryAction) =>
+        action.payload,
+    )
     .switchMap((payload: ITimeEntry) =>
       this.timeEntriesService
         .updateTimeEntry(payload)

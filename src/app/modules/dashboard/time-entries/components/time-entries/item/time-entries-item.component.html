@@ -38,7 +38,9 @@
   </div>
 
   <div
-    fxFlex="8">
+    fxFlex="8"
+    class="clickable"
+    [owlDateTimeTrigger]="dtStartAt">
     <div
       class="date">
       {{ timeEntry.startAt | date: 'yyyy/MM/dd' }}
@@ -47,10 +49,23 @@
       class="time">
       {{ timeEntry.startAt | date: 'HH:mm:ss' }}
     </div>
+    <input
+      hidden
+      [value]="timeEntry.startAt"
+      [owlDateTime]="dtStartAt"
+      [max]="timeEntry.endAt"
+      (dateTimeChange)="handleStartAtChange($event.value)">
+    <owl-date-time
+      #dtStartAt
+      pickerMode="dialog"
+      [showSecondsTimer]="true">
+    </owl-date-time>
   </div>
 
   <div
-    fxFlex="8">
+    fxFlex="8"
+    class="clickable"
+    [owlDateTimeTrigger]="dtEndAt">
     <div
       class="date">
       {{ timeEntry.endAt | date: 'yyyy/MM/dd' }}
@@ -59,6 +74,17 @@
       class="time">
       {{ timeEntry.endAt | date: 'HH:mm:ss' }}
     </div>
+    <input
+      hidden
+      [value]="timeEntry.endAt"
+      [min]="timeEntry.startAt"
+      [owlDateTime]="dtEndAt">
+    <owl-date-time
+      #dtEndAt
+      pickerMode="dialog"
+      [showSecondsTimer]="true"
+      (dateTimeChange)="handleEndAtChange($event.value)">
+    </owl-date-time>
   </div>
 
   <div
