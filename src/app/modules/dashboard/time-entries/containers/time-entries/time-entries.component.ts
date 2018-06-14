@@ -15,6 +15,7 @@ export class TimeEntriesComponent {
   timeEntries$ = this.timeEntriesSelectors.getTimeEntries();
   pending$ = this.timeEntriesSelectors.isPending();
   total$ = this.timeEntriesSelectors.getTotal();
+  current$ = this.timeEntriesSelectors.getCurrentTimeEntry();
 
   constructor(
     private timeEntriesDispatchers: TimeEntriesDispatchers,
@@ -38,5 +39,9 @@ export class TimeEntriesComponent {
 
   handleRemoveTimeEntry(event: number): void {
     this.timeEntriesDispatchers.removeTimeEntry(event);
+  }
+
+  handleStartTimeEntry(event: ITimeEntry): void {
+    this.timeEntriesDispatchers.createTimeEntry(event);
   }
 }

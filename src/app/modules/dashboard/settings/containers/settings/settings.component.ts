@@ -40,6 +40,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.authDispatchers.getCurrentUser();
+
     this.currentUser$
       .takeUntil(this.componentDestroy())
       .subscribe((user: IUser) => {

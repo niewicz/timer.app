@@ -1,8 +1,10 @@
 <timer-time-entries-list
   [timeEntries]="timeEntries$ | async"
+  [isCurrent]="!!(current$ | async)"
   (updateTimeEntry)="handleUpdateTimeEntry($event)"
   (updateTask)="handleUpdateTask($event)"
-  (removeTimeEntry)="handleRemoveTimeEntry($event)">
+  (removeTimeEntry)="handleRemoveTimeEntry($event)"
+  (startTimeEntry)="handleStartTimeEntry($event)">
 </timer-time-entries-list>
 <div
   fxLayoutAlign="center center"

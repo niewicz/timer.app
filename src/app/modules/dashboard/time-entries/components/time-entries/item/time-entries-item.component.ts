@@ -19,13 +19,15 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
   styleUrls: ['./time-entries-item.component.scss'],
 })
 export class TimeEntriesItemComponent {
-  showIcons = false;
-
   @Input() timeEntry: ITimeEntry;
+  @Input() isCurrent: boolean;
 
   @Output() updateTask = new EventEmitter<ITask>();
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
   @Output() removeTimeEntry = new EventEmitter<number>();
+  @Output() startTimeEntry = new EventEmitter<ITimeEntry>();
+
+  showIcons = false;
 
   startAt: Date;
   endAte: Date;
@@ -91,5 +93,12 @@ export class TimeEntriesItemComponent {
 
   onRemoveTimeEntry(): void {
     this.removeTimeEntry.emit(this.timeEntry.id);
+  }
+
+  onContinue(): void {
+    this.startTimeEntry.emit({
+      taskId: this.timeEntry.taskId,
+      startAt: new Date().toString(),
+    });
   }
 }

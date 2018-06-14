@@ -17,10 +17,12 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 })
 export class TimeEntriesListComponent {
   @Input() timeEntries: ITimeEntry[];
+  @Input() isCurrent: boolean;
 
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
   @Output() updateTask = new EventEmitter<ITask>();
   @Output() removeTimeEntry = new EventEmitter<number>();
+  @Output() startTimeEntry = new EventEmitter<ITimeEntry>();
 
   handleUpdateTimeEntry(event: ITimeEntry): void {
     this.updateTimeEntry.emit(event);
@@ -30,7 +32,11 @@ export class TimeEntriesListComponent {
     this.updateTask.emit(event);
   }
 
-  handleRemoveTimeEntry(event: number) {
+  handleRemoveTimeEntry(event: number): void {
     this.removeTimeEntry.emit(event);
+  }
+
+  handleStartTimeEntry(event: ITimeEntry): void {
+    this.startTimeEntry.emit(event);
   }
 }

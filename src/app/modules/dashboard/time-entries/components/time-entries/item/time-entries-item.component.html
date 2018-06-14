@@ -78,12 +78,12 @@
       hidden
       [value]="timeEntry.endAt"
       [min]="timeEntry.startAt"
-      [owlDateTime]="dtEndAt">
+      [owlDateTime]="dtEndAt"
+      (dateTimeChange)="handleEndAtChange($event.value)">
     <owl-date-time
       #dtEndAt
       pickerMode="dialog"
-      [showSecondsTimer]="true"
-      (dateTimeChange)="handleEndAtChange($event.value)">
+      [showSecondsTimer]="true">
     </owl-date-time>
   </div>
 
@@ -98,8 +98,10 @@
     fxFlex="3"
     class="continue">
     <mat-icon
-    fxLayoutAlign="center center"
-      class="action-icon">
+      *ngIf="!isCurrent"
+      fxLayoutAlign="center center"
+      class="action-icon"
+      (click)="onContinue()">
       play_arrow
     </mat-icon>
   </div>

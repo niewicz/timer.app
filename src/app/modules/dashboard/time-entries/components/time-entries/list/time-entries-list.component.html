@@ -1,7 +1,9 @@
 <timer-time-entries-item
   *ngFor="let entry of timeEntries"
   [timeEntry]="entry"
+  [isCurrent]="isCurrent"
   (updateTimeEntry)="handleUpdateTimeEntry($event)"
   (updateTask)="handleUpdateTask($event)"
-  (removeTimeEntry)="handleRemoveTimeEntry($event)">
+  (removeTimeEntry)="handleRemoveTimeEntry($event)"
+  (startTimeEntry)="handleStartTimeEntry($event)">
 </timer-time-entries-item>
