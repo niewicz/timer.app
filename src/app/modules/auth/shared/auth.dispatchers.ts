@@ -25,4 +25,8 @@ export class AuthDispatchers {
   public updateBillingProfile(params: IBillingProfile) {
     this.store.dispatch(new authActions.UpdateBillingProfileAction(params));
   }
+
+  public setTimezone(timezone: string) {
+    this.store.dispatch(new authActions.SetTimezoneAction(timezone));
+  }
 }

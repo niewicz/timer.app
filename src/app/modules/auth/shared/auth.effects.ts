@@ -80,6 +80,25 @@ export class AuthEffects {
         ),
     );
 
+  @Effect()
+  setTimezone$: Observable<Action> = this.actions$
+    .ofType(authActions.SET_TIMEZONE)
+    .map((action: authActions.SetTimezoneAction) => action.payload)
+    .switchMap((payload: string) =>
+      this.authService
+        .setTimezone(payload)
+        .map((user: IUser) => {
+          this.notifications.success('Timezone has been updated.', {
+            showProgressBar: false,
+            position: 'centerBottom',
+          });
+          return new authActions.SetTimezoneSuccessAction(user);
+        })
+        .catch((error: string) =>
+          Observable.of(new authActions.SetTimezoneFailureAction(error)),
+        ),
+    );
+
   constructor(
     private actions$: Actions,
     private authService: AuthService,

@@ -6,6 +6,7 @@ import { AuthSelectors } from '../../../../auth/shared/auth.selectors';
 import { AuthDispatchers } from '../../../../auth/shared/auth.dispatchers';
 import { takeUntil } from 'rxjs/operator/takeUntil';
 import { IUser } from '../../../../auth/shared/auth.interfaces';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'timer-settings',
@@ -17,6 +18,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   componentDestroy;
 
   currentUser$ = this.authSelectors.getCurrentUser();
+
+  timeZones = moment.tz.names();
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -61,5 +64,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
     if (this.form.valid) {
       this.authDispatchers.updateBillingProfile(this.form.value);
     }
+  }
+
+  onSelectTimezone(timezone: string): void {
+    this.authDispatchers.setTimezone(timezone);
   }
 }

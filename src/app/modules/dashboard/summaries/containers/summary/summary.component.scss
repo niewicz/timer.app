@@ -23,36 +23,3 @@
 .chart {
   width: 100%;
 }
-
-.menu-item {
-  padding: 10px;
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #444444;
-  &:hover {
-    background: #eeeeee;
-  }
-}
-
-::ng-deep .mat-menu-panel {
-  border-radius: 0px !important;
-  box-shadow: none !important;
-  border: 1px solid #dddddd;
-}
-
-::ng-deep .mat-menu-content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-::ng-deep .mat-menu-item {
-  height: 38px;
-  line-height: 38px;
-  color: #444444;
-  cursor: pointer;
-  font-size: 14px;
-  &:hover {
-    background: #f7f7f7 !important;
-    color: #111111;
-  }
-}

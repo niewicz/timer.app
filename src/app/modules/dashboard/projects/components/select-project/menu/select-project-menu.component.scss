@@ -12,6 +12,7 @@
     }
   }
 }
+
 .list {
   max-height: 200px;
   overflow-x: hidden;
@@ -20,12 +21,14 @@
     font-size: 14px;
     letter-spacing: 1px;
     color: #444444;
+    width: 250px;
     cursor: pointer;
     &:hover {
       background: #eeeeee;
     }
   }
 }
+
 .form {
   &__input {
     height: 40px;
@@ -58,6 +61,7 @@
     }
   }
 }
+
 .menu-trigger {
   font-size: 14px;
   cursor: pointer;
@@ -75,6 +79,7 @@
     }
   }
 }
+
 .client {
   color: #444444;
   font-size: 12px;
@@ -83,24 +88,5 @@
     border-radius: 5px;
     padding: 5px;
     width: fit-content;
-  }
-}
-::ng-deep .mat-menu-panel {
-  border-radius: 0px !important;
-  box-shadow: none !important;
-  border: 1px solid #dddddd;
-}
-::ng-deep .mat-menu-content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-::ng-deep .mat-menu-item {
-  height: 38px;
-  line-height: 38px;
-  color: #444444;
-  font-size: 14px;
-  &:hover {
-    background: #f7f7f7 !important;
-    color: #111111;
   }
 }

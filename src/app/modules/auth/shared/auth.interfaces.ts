@@ -8,6 +8,7 @@ export interface IUser {
   email: string;
   createdAt?: string;
   updatedAt?: string;
+  timezone?: string;
   billingProfile?: IBillingProfile;
 }
 

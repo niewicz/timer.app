@@ -20,6 +20,7 @@ export function reducer(state = initialState, action: authActions.Actions) {
     case authActions.SIGN_IN_USER:
     case authActions.GET_CURRENT_USER:
     case authActions.UPDATE_BILLING_PROFILE:
+    case authActions.SET_TIMEZONE:
       return {
         ...state,
         pending: true,
@@ -37,6 +38,7 @@ export function reducer(state = initialState, action: authActions.Actions) {
     case authActions.SIGN_IN_USER_FAILURE:
     case authActions.GET_CURRENT_USER_FAILURE:
     case authActions.UPDATE_BILLING_PROFILE_FAILURE:
+    case authActions.SET_TIMEZONE_FAILURE:
       return {
         ...state,
         pending: false,
@@ -46,6 +48,7 @@ export function reducer(state = initialState, action: authActions.Actions) {
     case authActions.SIGN_IN_USER_SUCCESS:
     case authActions.GET_CURRENT_USER_SUCCESS:
     case authActions.UPDATE_BILLING_PROFILE_SUCCESS:
+    case authActions.SET_TIMEZONE_SUCCESS:
       return {
         ...state,
         pending: false,

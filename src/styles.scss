@@ -1,5 +1,3 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 @import './styles/snotify/custom.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,600');
@@ -48,11 +46,6 @@ body {
   }
 }
 
-.scrollbar {
-  overflow: hidden;
-  position: relative;
-}
-
 input {
   &:focus {
     outline-color: rgba(255, 255, 255, 0.15);
@@ -61,4 +54,15 @@ input {
 
 .fullwidth {
   width: 100%;
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #444444;
+  &:hover {
+    background: #eeeeee;
+  }
 }

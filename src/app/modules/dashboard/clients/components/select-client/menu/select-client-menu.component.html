@@ -14,11 +14,9 @@
     class="list">
     <div
       *ngFor="let client of clients"
-      (click)="onChoice(client)">
-      <div
-        class="list__item">
-        {{ client?.name }}
-      </div>
+      (click)="onChoice(client)"
+      class="list__item">
+      {{ client?.name }}
     </div>
   </div>
   <form

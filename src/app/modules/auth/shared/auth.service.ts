@@ -71,7 +71,7 @@ export class AuthService {
 
   updateBillingProfile(params: IBillingProfile): Observable<IUser> {
     return this.http
-      .put(this.routes.updateBillingProfile(), {
+      .put(this.routes.updateBillingProfilePath(), {
         billing_profile: this.utils.decamelize(params),
       })
       .map(response => this.utils.camelize(response))
@@ -79,6 +79,15 @@ export class AuthService {
       .catch(error => Observable.throw(error));
   }
 
+  setTimezone(timezone: string): Observable<IUser> {
+    return this.http
+      .put(this.routes.setTimezonePath(), {
+        timezone,
+      })
+      .map(response => this.utils.camelize(response))
+      .map(response => response.data)
+      .catch(error => Observable.throw(error));
+  }
   private _saveValue(key: string, value: string): void {
     localStorage.setItem(key, value);
   }

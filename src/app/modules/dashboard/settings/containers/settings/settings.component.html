@@ -1,3 +1,40 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  fxLayoutGap="5px"
+  class="container form__header">
+  <mat-icon
+    fxLayoutAlign="center center">
+    access_time
+  </mat-icon>
+  <span>
+    timezone
+  </span>
+
+  <div
+    fxLayout="row"
+    class="timezone"
+    [matMenuTriggerFor]="timezonesMenu">
+    <span>
+      {{ (currentUser$ | async)?.timezone }}
+    </span>
+    <mat-icon>
+      arrow_drop_down
+    </mat-icon>
+  </div>
+
+  <mat-menu
+    #timezonesMenu="matMenu"
+    [overlapTrigger]="false">
+    <div
+      *ngFor="let timezone of timeZones"
+      class="menu-item timezone__item"
+      (click)="onSelectTimezone(timezone)">
+      {{ timezone }}
+    </div>
+  </mat-menu>
+</div>
+
 
 <form
   [formGroup]="form"

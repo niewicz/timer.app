@@ -64,8 +64,12 @@ export class ApiRoutes {
     return `${this.apiBasePath()}/users/current`;
   }
 
-  public updateBillingProfile(): string {
+  public updateBillingProfilePath(): string {
     return `${this.apiBasePath()}/users/update_billing_profile`;
+  }
+
+  public setTimezonePath(): string {
+    return `${this.apiBasePath()}/users/current/set_timezone`;
   }
 
   private apiBasePath(): string {

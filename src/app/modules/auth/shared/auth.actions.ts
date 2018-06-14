@@ -21,6 +21,10 @@ export const UPDATE_BILLING_PROFILE_SUCCESS =
 export const UPDATE_BILLING_PROFILE_FAILURE =
   '[Auth] Update Billing Profile Failure';
 
+export const SET_TIMEZONE = '[Auth] Set Timezone';
+export const SET_TIMEZONE_SUCCESS = '[Auth] Set Timezone Success';
+export const SET_TIMEZONE_FAILURE = '[Auth] Set Timezone Failure';
+
 export class CreateUserAction implements Action {
   readonly type = CREATE_USER;
   constructor(public payload: RegisterData) {}
@@ -80,6 +84,21 @@ export class UpdateBillingProfileFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class SetTimezoneAction implements Action {
+  readonly type = SET_TIMEZONE;
+  constructor(public payload: string) {}
+}
+
+export class SetTimezoneSuccessAction implements Action {
+  readonly type = SET_TIMEZONE_SUCCESS;
+  constructor(public payload: IUser) {}
+}
+
+export class SetTimezoneFailureAction implements Action {
+  readonly type = SET_TIMEZONE_FAILURE;
+  constructor(public payload: any) {}
+}
+
 export type Actions =
   | CreateUserAction
   | CreateUserSuccessAction
@@ -92,4 +111,7 @@ export type Actions =
   | GetCurrentUserFailureAction
   | UpdateBillingProfileAction
   | UpdateBillingProfileSuccessAction
-  | UpdateBillingProfileFailureAction;
+  | UpdateBillingProfileFailureAction
+  | SetTimezoneAction
+  | SetTimezoneSuccessAction
+  | SetTimezoneFailureAction;
