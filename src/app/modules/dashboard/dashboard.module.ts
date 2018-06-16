@@ -62,6 +62,9 @@ import { ProjectsTopBarComponent } from './projects/components/projects/top-bar/
 import { ClientFormComponent } from './clients/components/client-form/client-form.component';
 import { SummaryChartComponent } from './summaries/components/summary/chart/chart.component';
 import { SummaryLastProjectsComponent } from './summaries/components/summary/last-projects/last-projects.component';
+import { ProjectHeaderComponent } from './projects/components/project/header/header.component';
+import { ProjectTaskComponent } from './projects/components/project/task/task.component';
+import { ProjectTasksComponent } from './projects/components/project/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -69,41 +72,57 @@ import { SummaryLastProjectsComponent } from './summaries/components/summary/las
     DashboardLayoutComponent,
     // Components
     MainNavbarMenuComponent,
+
     TimeEntriesListComponent,
     TimeEntriesItemComponent,
+
     CurrentTimeEntryFormComponent,
+
     ClientsListComponent,
     ClientsItemComponent,
     ClientsTopBarComponent,
     SelectClientMenuComponent,
+    ClientFormComponent,
+
     ProjectsListComponent,
     ProjectsItemComponent,
     ProjectsTopBarComponent,
+    ProjectHeaderComponent,
+    ProjectTaskComponent,
+    ProjectTasksComponent,
+    SelectProjectMenuComponent,
+    ProjectFormComponent,
+
     TasksListComponent,
     TasksItemComponent,
     SelectTaskMenuComponent,
-    SelectProjectMenuComponent,
-    ProjectFormComponent,
-    ClientFormComponent,
+
     SummaryChartComponent,
     SummaryLastProjectsComponent,
     // Containers
     MainNavbarComponent,
+
     TimeEntriesComponent,
     CurrentTimeEntryComponent,
+
     ClientsComponent,
     SelectClientComponent,
+
     ProjectsComponent,
     SelectProjectComponent,
     CreateProjectComponent,
     EditProjectComponent,
+
     TasksComponent,
     SelectTaskComponent,
+
     CreateClientComponent,
     EditClientComponent,
     ProjectComponent,
     ClientComponent,
+
     SummaryComponent,
+
     SettingsComponent,
   ],
   providers: [

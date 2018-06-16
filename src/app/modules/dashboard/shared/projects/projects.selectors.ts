@@ -11,6 +11,7 @@ export class ProjectsSelectors {
   private params$ = this.store.select(state => state.projects.params);
   private total$ = this.store.select(state => state.projects.total);
   private editProject$ = this.store.select(state => state.projects.editProject);
+  private project$ = this.store.select(state => state.projects.currentProject);
 
   constructor(private store: Store<State>) {}
 
@@ -20,6 +21,10 @@ export class ProjectsSelectors {
 
   public getEditProject(): Observable<IProject> {
     return this.editProject$;
+  }
+
+  public getProject(): Observable<IProject> {
+    return this.project$;
   }
 
   public isPending(): Observable<boolean> {

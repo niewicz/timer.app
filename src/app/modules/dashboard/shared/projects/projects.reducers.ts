@@ -4,6 +4,7 @@ import { IProject, IProjectsParams } from './projects.interfaces';
 export interface ProjectsState {
   projects: IProject[];
   editProject: IProject;
+  currentProject: IProject;
   params: IProjectsParams;
   pending: boolean;
   errors: any;
@@ -11,8 +12,9 @@ export interface ProjectsState {
 }
 
 const initialState: ProjectsState = {
-  projects: undefined,
+  projects: [],
   editProject: undefined,
+  currentProject: undefined,
   params: {
     limit: 15,
     offset: 0,
@@ -118,6 +120,29 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
         errors: action.payload,
       };
 
+    case projectsActions.GET_PROJECT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+        currentProject: undefined,
+      };
+
+    case projectsActions.GET_PROJECT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+        currentProject: action.payload,
+      };
+
+    case projectsActions.GET_PROJECT_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        errors: action.payload,
+      };
+
     case projectsActions.EDIT_PROJECT:
       return {
         ...state,
@@ -161,6 +186,7 @@ export function reducer(state = initialState, action: projectsActions.Actions) {
         pending: false,
         errors: undefined,
         projects: updatedList,
+        currentProject: action.payload,
       };
 
     case projectsActions.UPDATE_PROJECT_FAILURE:

@@ -1,0 +1,67 @@
+.container {
+  margin: 30px 20px 0;
+}
+
+.text {
+  &--title {
+    color: #444448;
+    font-weight: 400;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  &--subtitle {
+    color: #666670;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  &--normal {
+    color: #444448;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+.panel {
+  padding: 15px 20px 15px 20px;
+  background: #f8f8f9;
+}
+
+.edit-icon {
+  font-size: 18px;
+}
+
+.task {
+  transition: all 300ms ease-in-out;
+  padding: 15px 20px 15px 20px;
+  background-color: #f8f8f9;
+  font-size: 14px;
+  margin-top: 10px;
+  &:hover {
+    transition: all 300ms ease-in-out;
+    box-shadow: 0 5px 10px 0 rgba(200, 200, 200, 0.4);
+  }
+  &__tracked {
+    color: #444448;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+}
+
+.entries {
+  margin-left: 10px;
+}
+
+.date {
+  font-size: 11px;
+  color: #666670;
+}
+
+.time {
+  font-size: 14px;
+  color: #444448;
+}

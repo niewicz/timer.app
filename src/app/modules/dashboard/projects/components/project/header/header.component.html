@@ -1,0 +1,34 @@
+<div
+  fxLayout="column"
+  fxLayoutGap="10px"
+  class="container">
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between start">
+    <div
+      class="text--title">
+      {{ project?.title }}
+    </div>
+    <span
+      class="app-button-2">
+      <mat-icon
+        fxLayoutAlign="center center"
+        [routerLink]="['', {outlets: {modal: ['projects', project?.id ,'edit']}}]">
+        mode_edit
+      </mat-icon>
+    </span>
+  </div>
+
+  <div
+    class="text--subtitle">
+    {{ project?.client?.name }}
+  </div>
+
+  <div
+    *ngIf="project?.description"
+    class="panel text--normal">
+    {{ project?.description }}
+  </div>
+
+</div>

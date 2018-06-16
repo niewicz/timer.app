@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
+import { UtilsService } from '../../../../../../core/services/utils.service';
 import { IProject } from '../../../../shared/projects/projects.interfaces';
 
 @Component({
@@ -11,16 +12,9 @@ import { IProject } from '../../../../shared/projects/projects.interfaces';
 export class SummaryLastProjectsComponent {
   @Input() projects: IProject[];
 
+  constructor(private utils: UtilsService) {}
+
   getDuration(sec: number): string {
-    if (!sec) {
-      sec = 0;
-    }
-
-    const min = Math.floor(sec / 60) % 60;
-    const hour = Math.floor(sec / 3600);
-
-    const partMin = min < 10 ? `0${min}` : `${min}`;
-
-    return `${hour}:${partMin}`;
+    return this.utils.fromSecToFormattedDuration(sec);
   }
 }

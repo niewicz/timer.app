@@ -70,6 +70,22 @@ export class ProjectsEffects {
     );
 
   @Effect()
+  getProject$: Observable<Action> = this.actions$
+    .ofType(projectsActions.GET_PROJECT)
+    .map((action: projectsActions.GetProjectAction) => action.payload)
+    .switchMap((payload: number) =>
+      this.projectsService
+        .getProject(payload)
+        .map(
+          (project: IProject) =>
+            new projectsActions.GetProjectSuccessAction(project),
+        )
+        .catch((error: any) =>
+          Observable.of(new projectsActions.GetProjectFailureAction(error)),
+        ),
+    );
+
+  @Effect()
   editProject$: Observable<Action> = this.actions$
     .ofType(projectsActions.EDIT_PROJECT)
     .map((action: projectsActions.EditProjectAction) => action.payload)

@@ -40,6 +40,15 @@ export class UtilsService {
     }
   }
 
+  fromSecToFormattedDuration(sec: number = 0, addLabels: boolean = false) {
+    const min = Math.floor(sec / 60) % 60;
+    const hour = Math.floor(sec / 3600);
+
+    const partMin = min < 10 ? `0${min}` : `${min}`;
+
+    return addLabels ? `${hour}h ${partMin}min` : `${hour}:${partMin}`;
+  }
+
   public camelize(data: any) {
     if (isString(data)) {
       return camelCase(data);

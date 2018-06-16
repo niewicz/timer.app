@@ -19,8 +19,12 @@ export const LOAD_MORE_PROJECTS_FAILURE =
 export const SEARCH_PROJECTS = '[Dashboard] Search Projects';
 
 export const CREATE_PROJECT = '[Dashboard] Create Project';
-export const CREATE_PROJECT_SUCCESS = '[Dashboard] Craete Project Success';
-export const CREATE_PROJECT_FAILURE = '[Dashboard] Craete Project Failure';
+export const CREATE_PROJECT_SUCCESS = '[Dashboard] Create Project Success';
+export const CREATE_PROJECT_FAILURE = '[Dashboard] Create Project Failure';
+
+export const GET_PROJECT = '[Dashboard] Get Project';
+export const GET_PROJECT_SUCCESS = '[Dashboard] Get Project Success';
+export const GET_PROJECT_FAILURE = '[Dashboard] Get Project Failure';
 
 export const EDIT_PROJECT = '[Dashboard] Edit Project';
 export const EDIT_PROJECT_SUCCESS = '[Dashboard] Edit Project Success';
@@ -82,6 +86,21 @@ export class CreateProjectFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetProjectAction implements Action {
+  readonly type = GET_PROJECT;
+  constructor(public payload: number) {}
+}
+
+export class GetProjectSuccessAction implements Action {
+  readonly type = GET_PROJECT_SUCCESS;
+  constructor(public payload: IProject) {}
+}
+
+export class GetProjectFailureAction implements Action {
+  readonly type = GET_PROJECT_FAILURE;
+  constructor(public payload: any) {}
+}
+
 export class EditProjectAction implements Action {
   readonly type = EDIT_PROJECT;
   constructor(public payload: number) {}
@@ -138,6 +157,9 @@ export type Actions =
   | CreateProjectAction
   | CreateProjectSuccessAction
   | CreateProjectFailureAction
+  | GetProjectAction
+  | GetProjectSuccessAction
+  | GetProjectFailureAction
   | EditProjectAction
   | EditProjectSuccessAction
   | EditProjectFailureAction

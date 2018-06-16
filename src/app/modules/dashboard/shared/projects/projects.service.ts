@@ -32,6 +32,14 @@ export class ProjectsService {
       .catch(error => Observable.throw(error));
   }
 
+  getProject(id: number): Observable<IProject> {
+    return this.http
+      .get<IProjectResponse>(this.api.projectPath(id))
+      .map(response => this.utils.camelize(response))
+      .map(response => response.project)
+      .catch(error => Observable.throw(error));
+  }
+
   editProject(id: number): Observable<IProject> {
     return this.http
       .get<IProjectResponse>(this.api.projectEditPath(id))

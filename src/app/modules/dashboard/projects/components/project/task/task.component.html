@@ -1,0 +1,63 @@
+<div
+  fxLayout="column"
+  fxLayoutGap="20px"
+  class="task"
+  (click)="toggleTimeEntries()">
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="40px">
+    <div
+      class="app-button-2">
+      {{ task.title }}
+    </div>
+    <div
+      class="task__tracked">
+      {{ getDuration(task.totalTime) }}
+    </div>
+  </div>
+
+  <div
+     *ngIf="showTimeEntries"
+     fxLayout="column"
+     fxLayoutGap="10px"
+     class="entries">
+    <div
+      *ngFor="let entry of task.timeEntries"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="text--normal">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="30px">
+        <div
+          fxLayout="column">
+          <div class="date">
+            {{ entry.startAt | date: 'yyyy/MM/dd' }}
+          </div>
+          <div class="time">
+            {{ entry.startAt | date: 'HH:mm:ss' }}
+          </div>
+        </div>
+        <mat-icon>
+          chevron_right
+        </mat-icon>
+        <div
+          fxLayout="column">
+          <div class="date">
+            {{ entry.endAt | date: 'yyyy/MM/dd' }}
+          </div>
+          <div class="time">
+            {{ entry.endAt | date: 'HH:mm:ss' }}
+          </div>
+        </div>
+      </div>
+      <div>
+        {{ getTimeEntryDuration(entry) }}
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,4 +1,5 @@
 import { IProject } from './../projects/projects.interfaces';
+import { ITimeEntry } from '../time-entries/time-entries.interfaces';
 
 export interface ITask {
   id?: number;
@@ -8,6 +9,7 @@ export interface ITask {
   price?: number;
   currency?: string;
   totalTime?: string;
+  timeEntries?: ITimeEntry;
   project?: IProject;
 }
 
