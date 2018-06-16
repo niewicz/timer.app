@@ -1,13 +1,13 @@
 <div
   fxLayout="column"
-  fxLayoutGap="20px"
   class="task"
   (click)="toggleTimeEntries()">
 
   <div
     fxLayout="row"
     fxLayoutAlign="space-between center"
-    fxLayoutGap="40px">
+    fxLayoutGap="40px"
+    class="task__title">
     <div
       class="app-button-2">
       {{ task.title }}
@@ -26,7 +26,7 @@
       *ngFor="let entry of task.timeEntries"
       fxLayout="row"
       fxLayoutAlign="space-between center"
-      class="text--normal">
+      class="text--normal task__entry">
       <div
         fxLayout="row"
         fxLayoutAlign="start center"

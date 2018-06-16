@@ -65,6 +65,9 @@ import { SummaryLastProjectsComponent } from './summaries/components/summary/las
 import { ProjectHeaderComponent } from './projects/components/project/header/header.component';
 import { ProjectTaskComponent } from './projects/components/project/task/task.component';
 import { ProjectTasksComponent } from './projects/components/project/tasks/tasks.component';
+import { ClientHeaderComponent } from './clients/components/client/header/header.component';
+import { ClientProjectsComponent } from './clients/components/client/projects/projects.component';
+import { ClientProjectComponent } from './clients/components/client/project/project.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +86,9 @@ import { ProjectTasksComponent } from './projects/components/project/tasks/tasks
     ClientsTopBarComponent,
     SelectClientMenuComponent,
     ClientFormComponent,
+    ClientHeaderComponent,
+    ClientProjectsComponent,
+    ClientProjectComponent,
 
     ProjectsListComponent,
     ProjectsItemComponent,

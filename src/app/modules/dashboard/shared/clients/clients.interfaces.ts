@@ -9,6 +9,7 @@ export interface IClient {
   contactPersonEmail?: string;
   projectsCounter?: number;
   lastProject?: IProject;
+  projects?: IProject[];
 }
 
 export interface IClientsParams {
