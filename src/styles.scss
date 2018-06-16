@@ -17,13 +17,13 @@ body {
   background: transparent;
   border: none;
   position: relative;
-  color: #777777;
+  color: #777781;
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    color: #444444;
+    color: #444448;
   }
   &:before {
     content: '';
@@ -32,7 +32,7 @@ body {
     height: 1px;
     bottom: 0;
     left: 0;
-    background-color: #444444;
+    background-color: #444448;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
@@ -61,7 +61,7 @@ input {
   padding: 10px;
   font-size: 14px;
   letter-spacing: 1px;
-  color: #444444;
+  color: #444448;
   &:hover {
     background: #eeeeee;
   }

@@ -6,7 +6,7 @@
   color: #fefefe;
   letter-spacing: 1px;
   &::placeholder {
-    color: #777777;
+    color: #777781;
     font-size: 14px;
     font-weight: 300;
   }
@@ -14,7 +14,7 @@
 
 .hint {
   padding: 0 0 0 12px;
-  color: #777777;
+  color: #777781;
   font-size: 11px;
 }
 
@@ -24,13 +24,13 @@
 
 .title {
   font-weight: 600;
-  color: #444444;
+  color: #444448;
   padding: 7px 12px 7px 12px;
   font-size: 15px;
 }
 
 .title-navbar {
-  background: #444444;
+  background: #444448;
   font-weight: 400;
   font-size: 16px;
   color: #fefefe;
@@ -63,12 +63,12 @@ mat-option {
   .task {}
   mat-icon {
     padding: 0 10px 0 10px;
-    color: #444444;
+    color: #444448;
     margin: 0;
     font-size: 14px;
   }
   .project {
-    color: #444444;
+    color: #444448;
     padding: 0 10px 0 0;
   }
   .client {

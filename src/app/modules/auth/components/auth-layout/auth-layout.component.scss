@@ -9,7 +9,7 @@
   text-transform: uppercase;
   letter-spacing: 20px;
   font-size: 60px;
-  color: #444444;
+  color: #444448;
   padding: 0 0 20px 100px;
 }
 
@@ -17,21 +17,18 @@
   background: #ffffff;
   height: 230px;
   padding: 0 0 0 100px;
-
   &__input {
     padding: 10px 0 0 0;
     height: 60px;
-
     input {
       background-color: #f8f8f9;
       padding: 10px;
       font-size: 16px;
       text-transform: uppercase;
       letter-spacing: 5px;
-      color: #444444;
+      color: #444448;
       border: none;
       width: 500px;
-
       &::placeholder {
         text-transform: uppercase;
         letter-spacing: 5px;
@@ -39,7 +36,6 @@
       }
     }
   }
-
   &__error {
     font-size: 10px;
     color: #f33f3d;
@@ -47,7 +43,6 @@
     text-transform: uppercase;
     letter-spacing: 2px;
   }
-
   &__button {
     background: transparent;
     border: none;
@@ -56,12 +51,11 @@
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 5px;
-
     &--secondary {
       background: transparent;
       border: none;
       font-size: 10px;
-      color: #777;
+      color: #777781;
       text-transform: uppercase;
       letter-spacing: 2px;
       padding: 0 0 0 80px;
@@ -69,11 +63,9 @@
       text-decoration: underline;
     }
   }
-
   button:disabled {
     color: #bbb;
   }
-
   &__actions {
     padding: 15px 0 0 0;
   }

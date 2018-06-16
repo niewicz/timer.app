@@ -75,7 +75,7 @@
     <div
       fxLayoutAlign="end center"
       class="project">
-      {{ selected?.title }}
+      {{ selected?.title | truncate: 22 }}
     </div>
     <div
       *ngIf="selected?.client"
@@ -83,7 +83,7 @@
       class="client">
       <div
         class="client__name">
-        {{ selected?.client?.name }}
+        {{ selected?.client?.name | truncate:18 }}
       </div>
     </div>
   </div>

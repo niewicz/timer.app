@@ -19,27 +19,27 @@
   cursor: pointer;
   margin: 0 auto;
   font-size: 20px;
-  color: #888888;
+  color: #888892;
   &:hover {
     transition: all 300ms ease-in-out;
-    color: #444444;
+    color: #444448;
   }
 }
 
 .project {
-  color: #444444;
+  color: #444448;
   padding: 0 10px 0 0;
   font-size: 15px;
   cursor: pointer;
 }
 
 .add-project {
-  color: #555555;
+  color: #555559;
   font-size: 14px;
 }
 
 .client {
-  color: #444444;
+  color: #444448;
   font-size: 13px;
   .content {
     background-color: rgba(0, 0, 0, 0.1);
@@ -51,17 +51,17 @@
 
 .date {
   font-size: 11px;
-  color: #666666;
+  color: #666670;
 }
 
 .time {
   font-size: 14px;
-  color: #444444;
+  color: #444448;
 }
 
 .duration {
   font-size: 15px;
-  color: #444444;
+  color: #444448;
 }
 
 ::ng-deep .cdk-overlay-dark-backdrop {
@@ -92,7 +92,7 @@
 ::ng-deep .owl-dt-calendar-table .owl-dt-calendar-cell-content {
   height: 60%;
   width: 60%;
-  color: #444444
+  color: #444448
 }
 
 ::ng-deep .owl-dt-calendar-control {
@@ -120,7 +120,7 @@
 }
 
 ::ng-deep .owl-dt-calendar-table .owl-dt-calendar-header {
-  color: #444444;
+  color: #444448;
 }
 
 ::ng-deep .owl-dt-weekday {
@@ -140,20 +140,20 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 300;
-  color: #444444;
+  color: #444448;
   font-size: 16px;
   background: transparent;
 }
 
 ::ng-deep .owl-dt-timer-content .owl-dt-timer-input:focus {
-  border-bottom: 1px solid #888888;
+  border-bottom: 1px solid #888892;
 }
 
 ::ng-deep .owl-dt-timer-divider:after,
 ::ng-deep .owl-dt-timer-divider:before {
   width: .20em;
   height: .20em;
-  color: #666666;
+  color: #666670;
   margin: 5px 0;
 }
 
@@ -161,7 +161,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 300;
-  color: #888888;
+  color: #888892;
   font-size: 14px;
 }
 

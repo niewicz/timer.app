@@ -146,6 +146,10 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
     );
   }
 
+  onUpdatePrice(price: number): void {
+    this.updateTask.emit(Object.assign({}, this.selectedTask, { price }));
+  }
+
   onMouseover(): void {
     this.showIcons = true;
   }

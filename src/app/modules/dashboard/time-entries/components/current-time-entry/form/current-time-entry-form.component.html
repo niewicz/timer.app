@@ -31,21 +31,25 @@
     <div
       class="form__item">
       <timer-select-project
+        *ngIf="currentTimeEntry?.task"
         [selectedProject]="selectedTask?.project"
         [navbar]="true"
         (selectProject)="onSelectProject($event)">
       </timer-select-project>
     </div>
     <input
-      fxFlex="6"
+      *ngIf="!tiny"
+      #priceInput
+      fxFlex="5"
       placeholder="Price"
       class="form__item input"
-      *ngIf="!tiny">
+      type="number"
+      (blur)="onUpdatePrice(priceInput.value)">
     <input
-      fxFlex="3"
+      *ngIf="!tiny"
+      fxFlex="4"
       placeholder="$"
-      class="form__item input"
-      *ngIf="!tiny">
+      class="form__item input">
     <div
       class="form__item duration">
       {{ duration }}

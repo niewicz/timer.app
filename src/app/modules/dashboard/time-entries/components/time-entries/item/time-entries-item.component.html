@@ -31,6 +31,7 @@
     fxLayoutAlign="center center"
     class="add-project">
     <timer-select-project
+      *ngIf="timeEntry?.task"
       [selectedProject]="timeEntry?.task?.project"
       [displayText]="'Select Project'"
       (selectProject)="handleSelectProject($event)">

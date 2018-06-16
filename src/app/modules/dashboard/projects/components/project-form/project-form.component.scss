@@ -4,7 +4,7 @@
     letter-spacing: 2px;
     padding-left: 15px;
     padding-top: 10px;
-    color: #444444;
+    color: #444448;
   }
   &__input {
     padding: 10px 0 0 0;
@@ -15,7 +15,7 @@
       padding: 10px;
       font-size: 14px;
       letter-spacing: 2px;
-      color: #444444;
+      color: #444448;
       border: none;
       width: 510px;
       &::placeholder {
@@ -29,7 +29,7 @@
     padding: 10px 0 0 0;
     textarea {
       background: #f8f8f9;
-      color: #444444;
+      color: #444448;
       font-family: inherit;
       letter-spacing: 2px;
       font-size: 14px;
@@ -62,7 +62,7 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    color: #444444;
+    color: #444448;
     text-transform: uppercase;
     letter-spacing: 5px;
     &:focus {
@@ -84,7 +84,7 @@
     color: #aaaaaa;
     cursor: pointer;
     &:hover {
-      color: #444444;
+      color: #444448;
     }
   }
   &__select {
@@ -92,7 +92,7 @@
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #444444;
+    color: #444448;
   }
 }
 ::ng-deep .menu-trigger {

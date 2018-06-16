@@ -47,7 +47,7 @@ export class SummaryChartComponent implements OnChanges {
             ticks: {
               maxRotation: 0,
               maxTicksLimit: 7,
-              fontColor: '#444444',
+              fontColor: '#444448',
               fontFamily: 'Roboto, sans-serif',
               fontSize: 14,
             },
@@ -63,10 +63,10 @@ export class SummaryChartComponent implements OnChanges {
               drawBorder: false,
               color: '#f0f0f0',
               zeroLineWidth: 1,
-              zeroLineColor: '#444444',
+              zeroLineColor: '#444448',
             },
             ticks: {
-              fontColor: '#444444',
+              fontColor: '#444448',
               fontFamily: 'Roboto, sans-serif',
               fontSize: 14,
               min: 0,

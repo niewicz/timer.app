@@ -3,7 +3,7 @@
   letter-spacing: 1px;
   .project {
     font-size: 16px;
-    color: #444444;
+    color: #444448;
   }
   .client {
     color: #fefefe;
@@ -20,7 +20,7 @@
     padding: 10px;
     font-size: 14px;
     letter-spacing: 1px;
-    color: #444444;
+    color: #444448;
     width: 250px;
     cursor: pointer;
     &:hover {
@@ -39,7 +39,7 @@
       padding: 10px;
       font-size: 14px;
       letter-spacing: 2px;
-      color: #444444;
+      color: #444448;
       border: none;
       min-width: 200px;
       &::placeholder {
@@ -50,10 +50,10 @@
     }
     mat-icon {
       padding: 0 15px 0 0;
-      color: #777777;
+      color: #777781;
       cursor: pointer;
       &:hover {
-        color: #444444;
+        color: #444448;
       }
       &:focus {
         outline: 0;
@@ -72,7 +72,7 @@
     letter-spacing: 1px;
   }
   &--small {
-    color: #777777;
+    color: #777781;
     font-size: 13px;
     mat-icon {
       font-size: 20px;
@@ -81,7 +81,7 @@
 }
 
 .client {
-  color: #444444;
+  color: #444448;
   font-size: 12px;
   &__name {
     background-color: rgba(0, 0, 0, 0.1);

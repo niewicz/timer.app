@@ -4,7 +4,7 @@
     letter-spacing: 2px;
     padding-left: 15px;
     padding-top: 10px;
-    color: #444444;
+    color: #444448;
   }
   &__input {
     padding: 10px 0 0 0;
@@ -15,7 +15,7 @@
       padding: 10px;
       font-size: 14px;
       letter-spacing: 2px;
-      color: #444444;
+      color: #444448;
       border: none;
       width: 510px;
       &::placeholder {
@@ -39,7 +39,7 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    color: #444444;
+    color: #444448;
     text-transform: uppercase;
     letter-spacing: 5px;
     &:focus {
@@ -69,6 +69,6 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 14px;
-    color: #444444;
+    color: #444448;
   }
 }
