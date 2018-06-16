@@ -1,57 +1,52 @@
 <div
-  fxLayout="row"
-  fxLayoutAlign="center center">
+  fxLayout="column"
+  fxLayoutAlign="center start"
+  class="plate">
   <div
-    fxFlex="90"
-    fxLayout="column"
-    fxLayoutAlign="center start"
-    class="plate">
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="chart-bar">
     <div
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-      class="chart-bar">
-      <div
-        class="chart-bar-title">
-        overview
-      </div>
-      <div>
-        <mat-menu
-          #filtersMenu="matMenu"
-          [overlapTrigger]="false">
-          <div
-            *ngFor="let option of menuOptions"
-            class="menu-item"
-            (click)="onSelectOption(option)">
-            {{ option.name }}
-          </div>
-        </mat-menu>
-
+      class="text--title">
+      overview
+    </div>
+    <div>
+      <mat-menu
+        #filtersMenu="matMenu"
+        [overlapTrigger]="false">
         <div
-          fxLayout="row"
-          fxLayourAlign="start center"
-          class="app-button-2"
-          [matMenuTriggerFor]="filtersMenu">
-           <span>
-            {{ selectedOption ? selectedOption.name : 'filters' }}
-           </span>
-           <mat-icon>
-             arrow_drop_down
-           </mat-icon>
+          *ngFor="let option of menuOptions"
+          class="menu-item"
+          (click)="onSelectOption(option)">
+          {{ option.name }}
         </div>
+      </mat-menu>
+
+      <div
+        fxLayout="row"
+        fxLayourAlign="start center"
+        class="app-button-2"
+        [matMenuTriggerFor]="filtersMenu">
+          <span>
+          {{ selectedOption ? selectedOption.name : 'filters' }}
+          </span>
+          <mat-icon>
+            arrow_drop_down
+          </mat-icon>
       </div>
     </div>
-    <timer-summary-chart
-      fxFlex="90"
-      class="chart"
-      [chartData]="workload$ | async">
-    </timer-summary-chart>
-    <div
-      class="chart-bar chart-bar-title">
-      last projects
-    </div>
-    <timer-summary-last-projects
-      class="fullwidth"
-      [projects]="lastProjects$ | async">
-    </timer-summary-last-projects>
   </div>
+  <timer-summary-chart
+    fxFlex="90"
+    class="chart"
+    [chartData]="workload$ | async">
+  </timer-summary-chart>
+  <div
+    class="chart-bar text--title">
+    last projects
+  </div>
+  <timer-summary-last-projects
+    class="fullwidth"
+    [projects]="lastProjects$ | async">
+  </timer-summary-last-projects>
 </div>

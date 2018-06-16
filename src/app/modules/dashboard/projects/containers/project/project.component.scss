@@ -2,29 +2,6 @@
   margin: 30px 20px 0;
 }
 
-.text {
-  &--title {
-    color: #444448;
-    font-weight: 400;
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  &--subtitle {
-    color: #666670;
-    font-weight: 400;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  &--normal {
-    color: #444448;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-}
-
 .panel {
   padding: 15px 20px 15px 20px;
   background: #f8f8f9;
@@ -50,10 +27,6 @@
     text-transform: uppercase;
     font-size: 16px;
   }
-}
-
-.entries {
-  margin-left: 10px;
 }
 
 .date {
