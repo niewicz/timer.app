@@ -5,6 +5,7 @@ import { TimeEntriesDispatchers } from '../../../shared/time-entries/time-entrie
 import { ITimeEntry } from '../../../shared/time-entries/time-entries.interfaces';
 import { TasksDispatchers } from '../../../shared/tasks/tasks.dispatchers';
 import { ITask } from '../../../shared/tasks/tasks.interfaces';
+import { AuthSelectors } from '../../../../auth/shared/auth.selectors';
 
 @Component({
   selector: 'timer-time-entries',
@@ -15,12 +16,14 @@ export class TimeEntriesComponent {
   timeEntries$ = this.timeEntriesSelectors.getTimeEntries();
   pending$ = this.timeEntriesSelectors.isPending();
   total$ = this.timeEntriesSelectors.getTotal();
-  current$ = this.timeEntriesSelectors.getCurrentTimeEntry();
+  currentTimeEntry$ = this.timeEntriesSelectors.getCurrentTimeEntry();
+  currentUser$ = this.authSelectors.getCurrentUser();
 
   constructor(
     private timeEntriesDispatchers: TimeEntriesDispatchers,
     private timeEntriesSelectors: TimeEntriesSelectors,
     private tasksDispatchers: TasksDispatchers,
+    private authSelectors: AuthSelectors,
   ) {
     this.timeEntriesDispatchers.getTimeEntries();
   }

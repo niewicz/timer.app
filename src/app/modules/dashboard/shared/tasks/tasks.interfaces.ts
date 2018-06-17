@@ -8,7 +8,7 @@ export interface ITask {
   title: string;
   price?: number;
   currency?: string;
-  totalTime?: string;
+  totalTime?: number;
   timeEntries?: ITimeEntry;
   project?: IProject;
 }

@@ -13,8 +13,16 @@
       {{ task.title }}
     </div>
     <div
-      class="task__tracked">
-      {{ getDuration(task.totalTime) }}
+      class="column">
+      <div
+        class="task__tracked">
+        {{ getDuration(task.totalTime) }}
+      </div>
+      <div
+        *ngIf="task?.price"
+        class="price">
+        {{ (task?.totalTime / 3600 * task.price) | number:'1.0-0' }}{{ currency }} ({{ task.price }}{{ currency }} per hour)
+      </div>
     </div>
   </div>
 

@@ -36,6 +36,7 @@ export class AuthService {
       email: registerData.email,
       password: registerData.password,
       passwordConfirmation: registerData.passwordConfirmation,
+      timezone: registerData.timezone,
     };
 
     return this.tokenService

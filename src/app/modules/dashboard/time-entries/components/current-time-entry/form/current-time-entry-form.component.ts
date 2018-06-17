@@ -26,15 +26,14 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 export class CurrentTimeEntryFormComponent implements OnChanges {
   @Input() currentTimeEntry: ITimeEntry;
   @Input() tiny = false;
+  @Input() currency: string;
 
-  @Output() menu = new EventEmitter<boolean>();
   @Output() createCurrentTimeEntry = new EventEmitter<ITransferTimeEntry>();
   @Output() updateCurrentTimeEntry = new EventEmitter<ITimeEntry>();
   @Output() removeCurrentTimeEntry = new EventEmitter<void>();
   @Output() stop = new EventEmitter<ITimeEntry>();
   @Output() updateTask = new EventEmitter<ITask>();
 
-  showMenu = false;
   showIcons = false;
 
   timeEntry: FormGroup;
@@ -43,6 +42,7 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
   duration = '00:00:00';
 
   selectedTask: ITask;
+  price: number;
 
   constructor(
     private fb: FormBuilder,
@@ -82,11 +82,6 @@ export class CurrentTimeEntryFormComponent implements OnChanges {
         this.selectedTask = undefined;
       }
     }
-  }
-
-  toggleMenu(): void {
-    this.showMenu = !this.showMenu;
-    this.menu.emit(this.showMenu);
   }
 
   startToggling(): void {

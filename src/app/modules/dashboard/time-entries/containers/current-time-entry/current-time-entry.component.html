@@ -1,5 +1,6 @@
 <timer-current-time-entry-form
   [currentTimeEntry]="currentTimeEntry$ | async"
+  [currency]="(currentUser$ | async)?.billingProfile?.currency"
   [tiny]="tiny"
   (menu)="handleMenu($event)"
   (createCurrentTimeEntry)="handleCreateTimeEntry($event)"

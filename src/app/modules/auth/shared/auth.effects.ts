@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 import { RegisterData, SignInData } from 'angular2-token';
 import { IUser, IBillingProfile } from './auth.interfaces';
 import { SnotifyService } from 'ng-snotify';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class AuthEffects {
@@ -41,7 +42,10 @@ export class AuthEffects {
     .switchMap((payload: SignInData) =>
       this.authService
         .logIn(payload)
-        .map((user: IUser) => new authActions.SignInUserSuccessAction(user))
+        .mergeMap((user: IUser) => [
+          new authActions.SignInUserSuccessAction(user),
+          new authActions.GetCurrentUserAction(),
+        ])
         .catch((error: any) =>
           Observable.of(new authActions.SignInUserFailureAction(error)),
         ),
@@ -53,7 +57,19 @@ export class AuthEffects {
     .switchMap(() =>
       this.authService
         .getCurrentUser()
-        .map((user: IUser) => new authActions.GetCurrentUserSuccessAction(user))
+        .map((user: IUser) => {
+          if (moment.tz.guess() !== user.timezone) {
+            this.notifications.error(
+              'Your local timezone is different than timezone in your settings.',
+              {
+                showProgressBar: false,
+                position: 'centerBottom',
+                timeout: 15000,
+              },
+            );
+          }
+          return new authActions.GetCurrentUserSuccessAction(user);
+        })
         .catch((error: string) =>
           Observable.of(new authActions.GetCurrentUserFailureAction(error)),
         ),

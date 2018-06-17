@@ -15,6 +15,7 @@ import { TimeEntriesDispatchers } from '../../../shared/time-entries/time-entrie
 import { TimeEntriesSelectors } from '../../../shared/time-entries/time-entries.selectors';
 import { ITask } from '../../../shared/tasks/tasks.interfaces';
 import { TasksDispatchers } from '../../../shared/tasks/tasks.dispatchers';
+import { AuthSelectors } from '../../../../auth/shared/auth.selectors';
 
 @Component({
   selector: 'timer-current-time-entry',
@@ -28,11 +29,13 @@ export class CurrentTimeEntryComponent implements OnInit {
   @Output() menu = new EventEmitter<boolean>();
 
   currentTimeEntry$ = this.timeEntriesSelectors.getCurrentTimeEntry();
+  currentUser$ = this.authSelectors.getCurrentUser();
 
   constructor(
     private timeEntriesDispatchers: TimeEntriesDispatchers,
     private timeEntriesSelectors: TimeEntriesSelectors,
     private tasksDispatchers: TasksDispatchers,
+    private authSelectors: AuthSelectors,
   ) {}
 
   ngOnInit(): void {

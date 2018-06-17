@@ -13,7 +13,7 @@ export interface TimeEntriesState {
 
 const initialState: TimeEntriesState = {
   currentTimeEntry: undefined,
-  timeEntries: undefined,
+  timeEntries: [],
   params: {
     limit: 15,
     offset: 0,
@@ -277,7 +277,10 @@ function stateAfterTaskUpdate(state, updatedTask): TimeEntriesState {
 
   let newCurrentTimeEntry;
 
-  if (state.currentTimeEntry && state.currentTimeEntry.taskId === updatedTask.id) {
+  if (
+    state.currentTimeEntry &&
+    state.currentTimeEntry.taskId === updatedTask.id
+  ) {
     newCurrentTimeEntry = Object.assign({}, state.currentTimeEntry);
     newCurrentTimeEntry.task = updatedTask;
   }

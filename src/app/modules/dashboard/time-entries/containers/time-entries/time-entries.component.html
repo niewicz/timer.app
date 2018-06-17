@@ -1,6 +1,7 @@
 <timer-time-entries-list
   [timeEntries]="timeEntries$ | async"
-  [isCurrent]="!!(current$ | async)"
+  [isCurrent]="!!(currentTimeEntry$$ | async)"
+  [currency]="(currentUser$ | async)?.billingProfile?.currency"
   (updateTimeEntry)="handleUpdateTimeEntry($event)"
   (updateTask)="handleUpdateTask($event)"
   (removeTimeEntry)="handleRemoveTimeEntry($event)"

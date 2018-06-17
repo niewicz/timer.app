@@ -2,6 +2,7 @@
   *ngFor="let entry of timeEntries"
   [timeEntry]="entry"
   [isCurrent]="isCurrent"
+  [currency]="currency"
   (updateTimeEntry)="handleUpdateTimeEntry($event)"
   (updateTask)="handleUpdateTask($event)"
   (removeTimeEntry)="handleRemoveTimeEntry($event)"

@@ -13,7 +13,8 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
       </div>
       <timer-project-task
         *ngFor="let task of tasks"
-        [task]="task">
+        [task]="task"
+        [currency]="currency">
       </timer-project-task>
     </div>
   `,
@@ -21,4 +22,5 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 })
 export class ProjectTasksComponent {
   @Input() tasks: ITask[];
+  @Input() currency: string;
 }

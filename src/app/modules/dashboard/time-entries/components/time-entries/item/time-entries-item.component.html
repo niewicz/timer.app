@@ -5,7 +5,7 @@
   class="item">
 
   <div
-    fxFlex="46">
+    fxFlex="40">
     <timer-select-task
       [displayText]="'Describe what you have done'"
       [selectedTask]="timeEntry?.task"
@@ -27,7 +27,7 @@
   </div>
 
   <div
-    fxFlex="23"
+    fxFlex="21"
     fxLayoutAlign="center center"
     class="add-project">
     <timer-select-project
@@ -89,10 +89,25 @@
   </div>
 
   <div
-    fxFlex="6"
-    fxLayoutAlign="end center"
-    class="duration">
-    {{ duration }}
+    fxFlex="8">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      class="duration">
+      {{ duration }}
+    </div>
+    <div
+      *ngIf="timeEntry?.task?.price && currency"
+      class="text--normal currency"
+      fxLayout="row"
+      fxLayoutAlign="end center">
+      <div>
+        {{ timeEntry?.task?.price }}
+      </div>
+      <div>
+        {{ currency }}
+      </div>
+    </div>
   </div>
 
   <div

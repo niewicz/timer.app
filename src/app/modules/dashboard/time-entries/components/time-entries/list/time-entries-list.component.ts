@@ -18,6 +18,7 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 export class TimeEntriesListComponent {
   @Input() timeEntries: ITimeEntry[];
   @Input() isCurrent: boolean;
+  @Input() currency: string;
 
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();
   @Output() updateTask = new EventEmitter<ITask>();

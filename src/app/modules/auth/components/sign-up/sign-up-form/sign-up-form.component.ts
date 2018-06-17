@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { RegisterData } from 'angular2-token';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'timer-sign-up-form',
@@ -30,6 +31,7 @@ export class AuthSignUpFormComponent {
         Validators.minLength(8),
         Validators.maxLength(128),
       ]),
+      timezone: '',
     });
   }
 
@@ -39,6 +41,7 @@ export class AuthSignUpFormComponent {
         email: this.form.get('email').value,
         password: this.form.get('password').value,
         passwordConfirmation: this.form.get('passwordConfirmation').value,
+        timezone: moment.tz.guess(),
       });
     }
   }

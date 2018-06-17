@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
+import { SnotifyService } from 'ng-snotify';
 
 import { State } from '../../../../store/index';
 import { TasksService } from './tasks.service';
@@ -48,7 +49,14 @@ export class TasksEffects {
     .switchMap((payload: ITask) =>
       this.tasksService
         .updateTask(payload)
-        .map((task: ITask) => new tasksActions.UpdateTaskSuccessAction(task))
+        .map((task: ITask) => {
+          this.notifications.success(`Task ${task.title} has been updated`, {
+            showProgressBar: false,
+            position: 'centerBottom',
+            timeout: 3000,
+          });
+          return new tasksActions.UpdateTaskSuccessAction(task);
+        })
         .catch((error: any) =>
           Observable.of(new tasksActions.UpdateTaskFailureAction(error)),
         ),
@@ -58,5 +66,6 @@ export class TasksEffects {
     private actions$: Actions,
     private tasksService: TasksService,
     private store: Store<State>,
+    private notifications: SnotifyService,
   ) {}
 }

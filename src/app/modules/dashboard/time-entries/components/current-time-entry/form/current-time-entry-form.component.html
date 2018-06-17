@@ -18,16 +18,6 @@
         (selectTask)="onSelectTask($event)">
       </timer-select-task>
     </div>
-    <div>
-      <mat-icon
-        fxLayoutAlign="center center"
-        class="icon"
-        *ngIf="currentTimeEntry?.task?.title && !tiny"
-        [matTooltip]="'Unassign task'"
-        (click)="handleUnassignTask()">
-        clear
-      </mat-icon>
-    </div>
     <div
       class="form__item">
       <timer-select-project
@@ -38,23 +28,36 @@
       </timer-select-project>
     </div>
     <input
-      *ngIf="!tiny"
+      *ngIf="currentTimeEntry?.task?.title && currency &&  !tiny"
       #priceInput
       fxFlex="5"
       placeholder="Price"
       class="form__item input"
       type="number"
+      [value]="selectedTask?.price"
       (blur)="onUpdatePrice(priceInput.value)">
-    <input
-      *ngIf="!tiny"
-      fxFlex="4"
-      placeholder="$"
-      class="form__item input">
+    <div
+      *ngIf="currentTimeEntry?.task?.title && !tiny"
+      fxFlex="3"
+      class="form__item">
+      {{ currency | slice:0:3 }}
+    </div>
+    <div
+      matTooltip="Unassign task"
+      [matTooltipPosition]="'below'">
+      <mat-icon
+        fxLayoutAlign="center center"
+        class="icon"
+        *ngIf="currentTimeEntry?.task?.title && !tiny"
+        (click)="handleUnassignTask()">
+        highlight_off
+      </mat-icon>
+    </div>
     <div
       class="form__item duration">
       {{ duration }}
     </div>
-    <div
+    <!-- <div
       *ngIf="toggling && !tiny">
       <mat-icon
         fxLayoutAlign="center center"
@@ -62,7 +65,7 @@
         (click)="onRemoveTimeEntry()">
         delete
       </mat-icon>
-    </div>
+    </div> -->
     <div
       class="icon"
       *ngIf="!toggling"

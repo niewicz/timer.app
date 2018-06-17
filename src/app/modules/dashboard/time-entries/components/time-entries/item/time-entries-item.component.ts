@@ -1,14 +1,6 @@
-import {
-  Component,
-  Input,
-  ChangeDetectionStrategy,
-  EventEmitter,
-  Output,
-} from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import { UtilsService } from './../../../../../../core/services/utils.service';
-import { TimeEntriesSelectors } from '../../../../shared/time-entries/time-entries.selectors';
-import { TimeEntriesDispatchers } from '../../../../shared/time-entries/time-entries.dispatchers';
 import { ITimeEntry } from '../../../../shared/time-entries/time-entries.interfaces';
 import { IProject } from '../../../../shared/projects/projects.interfaces';
 import { ITask } from '../../../../shared/tasks/tasks.interfaces';
@@ -21,6 +13,7 @@ import { ITask } from '../../../../shared/tasks/tasks.interfaces';
 export class TimeEntriesItemComponent {
   @Input() timeEntry: ITimeEntry;
   @Input() isCurrent: boolean;
+  @Input() currency: string;
 
   @Output() updateTask = new EventEmitter<ITask>();
   @Output() updateTimeEntry = new EventEmitter<ITimeEntry>();

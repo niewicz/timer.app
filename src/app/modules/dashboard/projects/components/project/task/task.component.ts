@@ -11,6 +11,7 @@ import { ITimeEntry } from '../../../../shared/time-entries/time-entries.interfa
 })
 export class ProjectTaskComponent {
   @Input() task: ITask;
+  @Input() currency: string;
 
   showTimeEntries = false;
 

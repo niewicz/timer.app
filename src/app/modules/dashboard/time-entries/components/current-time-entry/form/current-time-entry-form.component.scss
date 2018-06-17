@@ -14,10 +14,12 @@
   .input {
     background: transparent;
     border: 0;
-    padding: 5px;
     color: #444448;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: end;
+    border-bottom: 1px solid #dadadc;
     &::placeholder {
       color: #777781;
     }
@@ -41,4 +43,5 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  padding: 0;
 }

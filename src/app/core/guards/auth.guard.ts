@@ -1,4 +1,3 @@
-import { environment } from './../../../environments/environment.prod';
 import { Angular2TokenService } from 'angular2-token';
 import { Injectable, Inject } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
