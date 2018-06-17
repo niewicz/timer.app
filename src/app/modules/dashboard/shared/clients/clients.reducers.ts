@@ -48,13 +48,6 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         total: action.payload.total,
       };
 
-    case clientsActions.GET_CLIENTS_FAILURE:
-      return {
-        ...state,
-        pending: false,
-        errors: action.payload,
-      };
-
     case clientsActions.LOAD_MORE_CLIENTS:
       return {
         ...state,
@@ -76,13 +69,6 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         errors: undefined,
         clients: afterLoadMore,
         total: action.payload.total,
-      };
-
-    case clientsActions.LOAD_MORE_CLIENTS_FAILURE:
-      return {
-        ...state,
-        pending: false,
-        errors: action.payload,
       };
 
     case clientsActions.SEARCH_CLIENTS:
@@ -109,13 +95,6 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         errors: undefined,
       };
 
-    case clientsActions.GET_CLIENT_FAILURE:
-      return {
-        ...state,
-        pending: false,
-        errors: action.payload,
-      };
-
     case clientsActions.CREATE_CLIENT:
       return {
         ...state,
@@ -132,13 +111,6 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         errors: undefined,
       };
 
-    case clientsActions.CREATE_CLIENT_FAILURE:
-      return {
-        ...state,
-        pending: false,
-        errors: action.payload,
-      };
-
     case clientsActions.EDIT_CLIENT:
       return {
         ...state,
@@ -153,13 +125,6 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         pending: false,
         editClient: action.payload,
         errors: undefined,
-      };
-
-    case clientsActions.EDIT_CLIENT_FAILURE:
-      return {
-        ...state,
-        pending: false,
-        errors: action.payload,
       };
 
     case clientsActions.UPDATE_CLIENT:
@@ -184,13 +149,6 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         errors: undefined,
       };
 
-    case clientsActions.UPDATE_CLIENT_FAILURE:
-      return {
-        ...state,
-        pending: false,
-        errors: action.payload,
-      };
-
     case clientsActions.REMOVE_CLIENT:
       return {
         ...state,
@@ -211,7 +169,28 @@ export function reducer(state = initialState, action: clientsActions.Actions) {
         total: state.total - 1,
       };
 
+    case clientsActions.SEND_REPORT:
+      return {
+        ...state,
+        pending: true,
+        errors: undefined,
+      };
+
+    case clientsActions.SEND_REPORT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        errors: undefined,
+      };
+
     case clientsActions.REMOVE_CLIENT_FAILURE:
+    case clientsActions.SEND_REPORT_FAILURE:
+    case clientsActions.UPDATE_CLIENT_FAILURE:
+    case clientsActions.EDIT_CLIENT_FAILURE:
+    case clientsActions.CREATE_CLIENT_FAILURE:
+    case clientsActions.GET_CLIENT_FAILURE:
+    case clientsActions.GET_CLIENTS_FAILURE:
+    case clientsActions.LOAD_MORE_CLIENTS_FAILURE:
       return {
         ...state,
         pending: false,

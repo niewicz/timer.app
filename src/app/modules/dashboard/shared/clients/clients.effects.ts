@@ -12,6 +12,8 @@ import {
   IClientsResponse,
 } from './clients.interfaces';
 import * as clientsActions from './clients.actions';
+import { ISendReportPayload } from './clients.interfaces';
+import { SendReportSuccessAction } from './clients.actions';
 
 @Injectable()
 export class ClientsEffects {
@@ -129,6 +131,28 @@ export class ClientsEffects {
         .map(() => new clientsActions.RemoveClientSuccessAction(payload))
         .catch((error: any) =>
           Observable.of(new clientsActions.RemoveClientFailureAction(error)),
+        ),
+    );
+
+  @Effect()
+  sendReport$: Observable<Action> = this.actions$
+    .ofType(clientsActions.SEND_REPORT)
+    .map((action: clientsActions.SendReportAction) => action.payload)
+    .switchMap((payload: ISendReportPayload) =>
+      this.clientsService
+        .sendReport(payload)
+        .map(() => {
+          this.notifications.success(
+            `Report for ${payload.time} has been sent.`,
+            {
+              showProgressBar: false,
+              position: 'centerBottom',
+            },
+          );
+          return new clientsActions.SendReportSuccessAction();
+        })
+        .catch((error: any) =>
+          Observable.of(new clientsActions.SendReportFailureAction(error)),
         ),
     );
 

@@ -68,6 +68,7 @@ import { ProjectTasksComponent } from './projects/components/project/tasks/tasks
 import { ClientHeaderComponent } from './clients/components/client/header/header.component';
 import { ClientProjectsComponent } from './clients/components/client/projects/projects.component';
 import { ClientProjectComponent } from './clients/components/client/project/project.component';
+import { ClientSendReportComponent } from './clients/components/client/send-report/send-report.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ClientProjectComponent } from './clients/components/client/project/proj
     ClientHeaderComponent,
     ClientProjectsComponent,
     ClientProjectComponent,
+    ClientSendReportComponent,
 
     ProjectsListComponent,
     ProjectsItemComponent,

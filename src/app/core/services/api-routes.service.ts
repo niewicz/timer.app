@@ -28,6 +28,10 @@ export class ApiRoutes {
     return `${this.apiBasePath()}/clients/${id}/edit`;
   }
 
+  public sendReportPath(id: number): string {
+    return `${this.apiBasePath()}/clients/${id}/send_report`;
+  }
+
   // tasks
   public tasksPath(): string {
     return `${this.apiBasePath()}/tasks`;

@@ -13,14 +13,22 @@ import { IClient } from '../../../../shared/clients/clients.interfaces';
         class="text--title">
         {{ client?.name }}
       </div>
-      <span
-        class="app-button-2">
-        <mat-icon
-          fxLayoutAlign="center center"
-          [routerLink]="['', {outlets: {modal: ['clients', client?.id ,'edit']}}]">
-          mode_edit
-        </mat-icon>
-      </span>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="end center"
+        fxLayoutGap="20px">
+        <span class="text--subtitle">
+          auto send is {{ client?.autoSend ? 'on' : 'off' }}
+        </span>
+        <span
+          class="app-button-2">
+          <mat-icon
+            fxLayoutAlign="center center"
+            [routerLink]="['', {outlets: {modal: ['clients', client?.id ,'edit']}}]">
+            mode_edit
+          </mat-icon>
+        </span>
+      </div>
     </div>
   `,
   styleUrls: ['../../../containers/client/client.component.scss'],

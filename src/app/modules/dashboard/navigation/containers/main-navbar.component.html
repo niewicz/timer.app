@@ -4,7 +4,8 @@
   <div
     fxLayout="row"
     fxLayoutAlign="space-between end"
-    class="main-navbar">
+    class="main-navbar"
+    [ngClass]="{'main-navbar__shadow': scrolled}">
     <div
       fxFlex="17"
       class="app-title"

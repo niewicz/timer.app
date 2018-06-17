@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
+import { SnotifyService } from 'ng-snotify';
 
 import { State } from '../../../../store/index';
 import { ProjectsService } from './projects.service';
@@ -108,10 +109,13 @@ export class ProjectsEffects {
     .switchMap((payload: IProject) =>
       this.projectsService
         .updateProject(payload)
-        .map(
-          (project: IProject) =>
-            new projectsActions.UpdateProjectSuccessAction(project),
-        )
+        .map((project: IProject) => {
+          this.notifications.success('We have updated your project details.', {
+            showProgressBar: false,
+            position: 'centerBottom',
+          });
+          return new projectsActions.UpdateProjectSuccessAction(project);
+        })
         .catch((error: any) =>
           Observable.of(new projectsActions.UpdateProjectFailureAction(error)),
         ),
@@ -134,5 +138,6 @@ export class ProjectsEffects {
     private actions$: Actions,
     private projectsService: ProjectsService,
     private store: Store<State>,
+    private notifications: SnotifyService,
   ) {}
 }

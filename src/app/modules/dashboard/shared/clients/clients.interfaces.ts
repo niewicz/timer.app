@@ -18,6 +18,11 @@ export interface IClientsParams {
   q?: string;
 }
 
+export interface ISendReportPayload {
+  time: string;
+  id: number;
+}
+
 export interface IClientsResponse {
   clients: IClient[];
   total: number;

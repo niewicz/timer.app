@@ -4,11 +4,15 @@ import { Injectable } from '@angular/core';
 import * as clientsActions from './clients.actions';
 
 import { State } from '../../../../store/index';
-import { IClientsParams, IClient } from './clients.interfaces';
+import {
+  IClientsParams,
+  IClient,
+  ISendReportPayload,
+} from './clients.interfaces';
 
 @Injectable()
 export class ClientsDispatchers {
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {}
 
   public getClients(): void {
     this.store.dispatch(new clientsActions.GetClientsAction());
@@ -40,5 +44,9 @@ export class ClientsDispatchers {
 
   public removeClient(id: number): void {
     this.store.dispatch(new clientsActions.RemoveClientAction(id));
+  }
+
+  public sendReport(payload: ISendReportPayload): void {
+    this.store.dispatch(new clientsActions.SendReportAction(payload));
   }
 }

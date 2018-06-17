@@ -46,6 +46,23 @@ body {
   }
 }
 
+.app-button {
+  transition: all 300ms ease-in-out;
+  background: transparent;
+  border: 1px solid #888892;
+  color: #888892;
+  padding: 5px 10px;
+  margin: auto 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  &:hover {
+    transition: all 300ms ease-in-out;
+    border: 1px solid #444448;
+    color: #444448;
+  }
+}
+
 input {
   &:focus {
     outline-color: rgba(255, 255, 255, 0.15);

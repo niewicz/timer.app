@@ -19,3 +19,23 @@
     font-size: 16px;
   }
 }
+
+.months-menu-item {
+  text-transform: uppercase;
+  width: 212px;
+}
+
+.years-menu-item {
+  text-transform: uppercase;
+  width: 227px;
+}
+
+.select {
+  color: #444448;
+  background: #f8f8f9;
+  padding: 5px 10px;
+  align-items: center;
+  place-content: space-between;
+  width: 250px;
+  cursor: pointer;
+}

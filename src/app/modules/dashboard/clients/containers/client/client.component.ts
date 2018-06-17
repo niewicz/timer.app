@@ -11,6 +11,10 @@ import { ClientsSelectors } from '../../../shared/clients/clients.selectors';
     [client]="client$ | async">
   </timer-client-header>
 
+  <timer-client-send-report
+    (sendReport)="handleSendReport($event)">
+  </timer-client-send-report>
+
   <timer-client-projects
     [projects]="(client$ | async)?.projects">
   </timer-client-projects>
@@ -30,5 +34,9 @@ export class ClientComponent implements OnInit {
 
   ngOnInit(): void {
     this.dispatchers.getClient(this.clientId);
+  }
+
+  handleSendReport(event: string): void {
+    this.dispatchers.sendReport({ id: this.clientId, time: event });
   }
 }

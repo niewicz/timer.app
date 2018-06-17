@@ -9,6 +9,7 @@ import {
   IClientsResponse,
   IClientResponse,
   IClientsParams,
+  ISendReportPayload,
 } from './clients.interfaces';
 
 @Injectable()
@@ -70,6 +71,13 @@ export class ClientsService {
   removeClient(id: number): Observable<void> {
     return this.http
       .delete(this.api.clientPath(id))
+      .map(response => null)
+      .catch(error => Observable.throw(error));
+  }
+
+  sendReport(payload: ISendReportPayload): Observable<void> {
+    return this.http
+      .post(this.api.sendReportPath(payload.id), { time: payload.time })
       .map(response => null)
       .catch(error => Observable.throw(error));
   }
