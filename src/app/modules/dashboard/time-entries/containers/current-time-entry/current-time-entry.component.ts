@@ -31,7 +31,7 @@ export class CurrentTimeEntryComponent implements OnInit, OnDestroy {
 
   currentTimeEntry$ = this.timeEntriesSelectors.getCurrentTimeEntry();
   currentUser$ = this.authSelectors.getCurrentUser();
-  getCurrentLoop: NodeJS.Timer;
+  getCurrentLoop;
 
   constructor(
     private timeEntriesDispatchers: TimeEntriesDispatchers,
