@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter,
   OnInit,
+  OnDestroy,
   Input,
 } from '@angular/core';
 
@@ -22,7 +23,7 @@ import { AuthSelectors } from '../../../../auth/shared/auth.selectors';
   templateUrl: './current-time-entry.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurrentTimeEntryComponent implements OnInit {
+export class CurrentTimeEntryComponent implements OnInit, OnDestroy {
   @Input() getCurrent = true;
   @Input() tiny = false;
 
@@ -30,6 +31,7 @@ export class CurrentTimeEntryComponent implements OnInit {
 
   currentTimeEntry$ = this.timeEntriesSelectors.getCurrentTimeEntry();
   currentUser$ = this.authSelectors.getCurrentUser();
+  getCurrentLoop: NodeJS.Timer;
 
   constructor(
     private timeEntriesDispatchers: TimeEntriesDispatchers,
@@ -42,6 +44,15 @@ export class CurrentTimeEntryComponent implements OnInit {
     if (this.getCurrent) {
       this.timeEntriesDispatchers.getCurrentTimeEntry();
     }
+
+    this.getCurrentLoop = setInterval(
+      () => this.timeEntriesDispatchers.getCurrentTimeEntry(),
+      300000,
+    );
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.getCurrentLoop);
   }
 
   handleMenu(show: boolean): void {

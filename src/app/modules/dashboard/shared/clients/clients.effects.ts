@@ -143,7 +143,8 @@ export class ClientsEffects {
         .sendReport(payload)
         .map(() => {
           this.notifications.success(
-            `Report for ${payload.time} has been sent.`,
+            `Report for ${payload.time[0].toUpperCase() +
+              payload.time.slice(1)} has been sent.`,
             {
               showProgressBar: false,
               position: 'centerBottom',
