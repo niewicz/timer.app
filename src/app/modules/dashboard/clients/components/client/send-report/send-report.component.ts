@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'timer-client-send-report',
@@ -95,6 +96,8 @@ export class ClientSendReportComponent {
   selectedYear: number;
   showSendReport = false;
 
+  constructor(private notifications: SnotifyService) {}
+
   toggleShowSendReport(): void {
     this.showSendReport = !this.showSendReport;
   }
@@ -108,7 +111,15 @@ export class ClientSendReportComponent {
   }
 
   onSendReport(): void {
-    this.sendReport.emit(this.selectedMonth + ' ' + this.selectedYear);
+    if (this.selectedMonth && this.selectedYear) {
+      this.sendReport.emit(this.selectedMonth + ' ' + this.selectedYear);
+    } else {
+      this.notifications.warning('Please select month and year first.', {
+        showProgressBar: false,
+        timeout: 3000,
+        position: 'centerBottom',
+      });
+    }
   }
 
   range(start: number, end: number): number[] {
