@@ -27,6 +27,6 @@ export class MainNavbarComponent implements AfterViewInit {
   }
 
   handleLogOut(): void {
-    this.authService.signOut().subscribe();
+    this.authService.signOut();
   }
 }

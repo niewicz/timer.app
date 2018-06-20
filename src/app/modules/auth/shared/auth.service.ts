@@ -52,7 +52,7 @@ export class AuthService {
       .signOut()
       .map(response => {
         this._cleanStorage();
-        this.document.location.href = '/users/sign_in';
+        this.document.location.href = '/#/users/sign_in';
         return response;
       })
       .catch(error => Observable.throw(error));
