@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 import { UtilsService } from './../../../core/services/utils.service';
-import { AuthDispatchers } from './auth.dispatchers';
 import { IUser, IBillingProfile } from './auth.interfaces';
 import { ApiRoutes } from '../../../core/services/api-routes.service';
 
@@ -89,13 +88,6 @@ export class AuthService {
       .map(response => response.data)
       .catch(error => Observable.throw(error));
   }
-  private _saveValue(key: string, value: string): void {
-    localStorage.setItem(key, value);
-  }
-
-  private _retrieveValue(key: string) {
-    return localStorage.getItem(key);
-  }
 
   private _cleanStorage() {
     localStorage.removeItem('accessToken');
@@ -104,24 +96,6 @@ export class AuthService {
     localStorage.removeItem('tokenType');
     localStorage.removeItem('uid');
     localStorage.removeItem('auth_headers');
-  }
-
-  private _parseAuthToken() {
-    const authHeaders = JSON.parse(this._retrieveValue('auth_headers'));
-    if (authHeaders) {
-      const accessToken = authHeaders['access-token'];
-      this._saveValue('accessToken', accessToken);
-      const tokenType = authHeaders['token-type'];
-      this._saveValue('tokenType', tokenType);
-      const client = authHeaders['client'];
-      this._saveValue('client', client);
-      const expiry = authHeaders['expiry'];
-      this._saveValue('expiry', expiry);
-      const uid = authHeaders['uid'];
-      this._saveValue('uid', uid);
-    } else {
-      this._cleanStorage();
-    }
   }
 
   private _reverseParseAuthToken() {
