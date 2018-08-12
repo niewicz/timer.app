@@ -3,6 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Angular2TokenService, SignInData, RegisterData } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { UtilsService } from './../../../core/services/utils.service';
 import { IUser, IBillingProfile } from './auth.interfaces';
@@ -16,6 +17,7 @@ export class AuthService {
     private http: HttpClient,
     private utils: UtilsService,
     private routes: ApiRoutes,
+    private router: Router,
   ) {}
 
   logIn(logInData: SignInData): Observable<IUser> {

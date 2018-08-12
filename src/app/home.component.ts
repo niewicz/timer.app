@@ -5,7 +5,15 @@ import { AuthService } from './modules/auth/shared/auth.service';
 @Component({
   selector: 'timer-home',
   template: `
-    <div>redirecting</div>
+    <div class="loading__wave">
+      <span class="loading__wave--item"></span>
+      <span class="loading__wave--item"></span>
+      <span class="loading__wave--item"></span>
+      <span class="loading__wave--item"></span>
+    </div>
+    <div class="loading__text">
+      loading
+    </div>
   `,
 })
 export class HomeComponent implements OnInit {
