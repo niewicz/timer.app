@@ -6,7 +6,6 @@ import { DOCUMENT } from '@angular/platform-browser';
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
-    @Inject(DOCUMENT) private document: any,
     private authService: Angular2TokenService,
     private router: Router,
   ) {}
