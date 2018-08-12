@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor(private tokenService: Angular2TokenService) {
     this.tokenService.init({
-      apiBase: 'https://whispering-temple-93009.herokuapp.com',
+      apiBase: 'http://localhost:3000',
     });
   }
 }
