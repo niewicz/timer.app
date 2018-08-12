@@ -77,6 +77,6 @@ export class ApiRoutes {
   }
 
   private apiBasePath(): string {
-    return 'http://localhost:3000/api';
+    return 'https://whispering-temple-93009.herokuapp.com/api';
   }
 }
